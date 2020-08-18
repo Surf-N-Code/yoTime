@@ -1,0 +1,22 @@
+{
+  "success_url": "/",
+  "env": {
+    "APP_ENV": "prod",
+    "APP_SECRET": {"generator": "secret"},
+    "CORS_ALLOW_ORIGIN": "https://diltheymedia.com"
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-php"
+    },
+    {
+      "url": "heroku/php"
+    }
+  ],
+  "scripts": {
+    "postdeploy": "php bin/console doctrine:schema:create"
+  }
+}
