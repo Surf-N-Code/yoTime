@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add php command to docker entrypoint">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.phpunit.result.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.phpunit.result.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/api/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/doctrine.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Migrations/Version20200726172114.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Migrations/Version20200726175222.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Migrations/Version20200809201724.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/IntegrationTestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/IntegrationTestCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.override.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.override.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,8 +27,9 @@
     <execution />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/api" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="PhpDebugGeneral" break_at_first_line="true" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="quay.io/api-platform/php:latest">
     <include_path>
       <path value="$PROJECT_DIR$/api/vendor/willdurand/negotiation" />
@@ -168,19 +184,24 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="postgresql&#10;mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.SlashCommandHandlerTest">
+  <component name="RunManager" selected="PHPUnit.SlashCommandMessageControllerTest.testWorkEvent">
     <configuration name="SlashCommandHandlerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="App\Handler\MessageHandler\Slack\SlashCommandHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" scope="Class" />
       <method v="2" />
@@ -189,25 +210,25 @@
       <TestRunner class="App\Handler\MessageHandler\Slack\SlashCommandHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" method="testAddDailySummaryCommand" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="SlashCommandHandlerTest.testEndBreakCommand" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Handler\MessageHandler\Slack\SlashCommandHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" method="testEndBreakCommand" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="SlashCommandHandlerTest.testEndWorkCommand" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Handler\MessageHandler\Slack\SlashCommandHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" method="testEndWorkCommand" scope="Method" />
-      <method v="2" />
-    </configuration>
     <configuration name="SlashCommandHandlerTest.testPersisting" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="App\Handler\MessageHandler\Slack\SlashCommandHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" method="testPersisting" scope="Method" />
       <method v="2" />
     </configuration>
+    <configuration name="SlashCommandHandlerTest.testWorkCommand" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Handler\MessageHandler\Slack\SlashCommandHandlerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" method="testWorkCommand" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SlashCommandMessageControllerTest.testWorkEvent" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageController\Slack\SlashCommandMessageControllerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" method="testWorkEvent" scope="Method" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.SlashCommandMessageControllerTest.testWorkEvent" />
+        <item itemvalue="PHPUnit.SlashCommandHandlerTest.testWorkCommand" />
         <item itemvalue="PHPUnit.SlashCommandHandlerTest" />
         <item itemvalue="PHPUnit.SlashCommandHandlerTest.testPersisting" />
         <item itemvalue="PHPUnit.SlashCommandHandlerTest.testAddDailySummaryCommand" />
-        <item itemvalue="PHPUnit.SlashCommandHandlerTest.testEndWorkCommand" />
-        <item itemvalue="PHPUnit.SlashCommandHandlerTest.testEndBreakCommand" />
       </list>
     </recent_temporary>
   </component>
@@ -220,62 +241,102 @@
       <option name="presentableId" value="Default" />
       <updated>1597693758753</updated>
       <workItem from="1597693759766" duration="6351000" />
-      <workItem from="1597773391407" duration="329000" />
+      <workItem from="1597773391407" duration="8821000" />
     </task>
+    <task id="LOCAL-00001" summary="Add php command to docker entrypoint">
+      <created>1597775564461</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1597775564461</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/YoTime/api" />
+      <path value="$PROJECT_DIR$/api" />
+    </ignored-roots>
+    <MESSAGE value="Add php command to docker entrypoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add php command to docker entrypoint" />
   </component>
   <component name="WindowStateProjectService">
     <state x="538" y="171" width="828" height="674" key="#CLI_Interpreters" timestamp="1597693915528">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="538" y="171" width="828" height="674" key="#CLI_Interpreters/0.0.1920.1080@0.0.1920.1080" timestamp="1597693915528" />
+    <state x="718" y="204" width="804" height="667" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597779276487">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="718" y="204" width="804" height="667" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597779276487" />
     <state x="691" y="289" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597695590745">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="691" y="289" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597695590745" />
-    <state x="567" y="121" width="776" height="810" key="CommitChangelistDialog2" timestamp="1597693766104">
+    <state x="559" y="49" width="776" height="810" key="CommitChangelistDialog2" timestamp="1597776943994">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="567" y="121" width="776" height="810" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1597693766104" />
-    <state width="1816" height="266" key="GridCell.Tab.0.bottom" timestamp="1597736313941">
+    <state x="559" y="49" width="776" height="810" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1597776943994" />
+    <state width="1816" height="254" key="GridCell.Tab.0.bottom" timestamp="1597778865955">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313941" />
-    <state width="1816" height="266" key="GridCell.Tab.0.center" timestamp="1597736313941">
+    <state width="1816" height="254" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597778865955" />
+    <state width="1816" height="254" key="GridCell.Tab.0.center" timestamp="1597778865954">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="266" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313941" />
-    <state width="1816" height="266" key="GridCell.Tab.0.left" timestamp="1597736313941">
+    <state width="1816" height="254" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597778865954" />
+    <state width="1816" height="254" key="GridCell.Tab.0.left" timestamp="1597778865953">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="266" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313941" />
-    <state width="1816" height="266" key="GridCell.Tab.0.right" timestamp="1597736313941">
+    <state width="1816" height="254" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597778865953" />
+    <state width="1816" height="254" key="GridCell.Tab.0.right" timestamp="1597778865955">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="266" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313941" />
-    <state width="1816" height="266" key="GridCell.Tab.1.bottom" timestamp="1597736313941">
+    <state width="1816" height="254" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597778865955" />
+    <state width="1816" height="254" key="GridCell.Tab.1.bottom" timestamp="1597777536755">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="266" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313941" />
-    <state width="1816" height="266" key="GridCell.Tab.1.center" timestamp="1597736313940">
+    <state width="1816" height="254" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597777536755" />
+    <state width="1816" height="254" key="GridCell.Tab.1.center" timestamp="1597777536754">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="266" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313940" />
-    <state width="1816" height="266" key="GridCell.Tab.1.left" timestamp="1597736313940">
+    <state width="1816" height="254" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597777536754" />
+    <state width="1816" height="254" key="GridCell.Tab.1.left" timestamp="1597777536754">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="266" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313940" />
-    <state width="1816" height="266" key="GridCell.Tab.1.right" timestamp="1597736313940">
+    <state width="1816" height="254" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597777536754" />
+    <state width="1816" height="254" key="GridCell.Tab.1.right" timestamp="1597777536754">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="266" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313940" />
-    <state x="452" y="148" key="SettingsEditor" timestamp="1597693970214">
+    <state width="1816" height="254" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597777536754" />
+    <state width="1816" height="254" key="GridCell.Tab.2.bottom" timestamp="1597776300736">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="452" y="148" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1597693970214" />
+    <state width="1816" height="254" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597776300736" />
+    <state width="1816" height="254" key="GridCell.Tab.2.center" timestamp="1597776300736">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="254" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597776300736" />
+    <state width="1816" height="254" key="GridCell.Tab.2.left" timestamp="1597776300735">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="254" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597776300735" />
+    <state width="1816" height="254" key="GridCell.Tab.2.right" timestamp="1597776300736">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="254" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597776300736" />
+    <state width="227" height="471" key="HiddenNamespacesPopup" timestamp="1597779290582">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="227" height="471" key="HiddenNamespacesPopup/0.0.1920.1080@0.0.1920.1080" timestamp="1597779290582" />
+    <state x="436" y="4" key="SettingsEditor" timestamp="1597782374506">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="436" y="4" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1597782374506" />
     <state x="622" y="345" width="666" height="362" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1597695509244">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -293,6 +354,16 @@
           <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php</url>
           <line>82</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/TimerHandler.php</url>
+          <line>35</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/api/tests/IntegrationTestCase.php</url>
+          <line>18</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
