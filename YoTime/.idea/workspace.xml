@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c1a53408-94ca-46e8-b0d7-4d40ac4f31d4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/Slack/AbstractSlack.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Slack/AbstractSlack.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/BotMessageHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/BotMessageHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/PunchTimerHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/PunchTimerHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/PunchTimerHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/PunchTimerHandlerTest.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/api/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="1" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="SCHEME" value="Project" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/api" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="quay.io/api-platform/php:latest">
+    <include_path>
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/api/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/mercure-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/api/vendor/composer" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/webimpress/safe-writer" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/apache-pack" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/api/vendor/easyrdf/easyrdf" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/api/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/api/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/inflector" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/debug-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/api/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/api/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/monolog-bridge" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/mercure" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/test-pack" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/messenger" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/mailer" />
+      <path value="$PROJECT_DIR$/api/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/api/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/web-link" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/api/vendor/nelmio/cors-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/api/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/api/vendor/ocramius/package-versions" />
+      <path value="$PROJECT_DIR$/api/vendor/ocramius/proxy-manager" />
+      <path value="$PROJECT_DIR$/api/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/api/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/api/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/api/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/api/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/api/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/api/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/api/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/api/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/api/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/api/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/api/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/api/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/api/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/api/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/api/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/api/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/api/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/api/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/api/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/api/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/api/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/api/vendor/laminas/laminas-eventmanager" />
+      <path value="$PROJECT_DIR$/api/vendor/laminas/laminas-zendframework-bridge" />
+      <path value="$PROJECT_DIR$/api/vendor/laminas/laminas-code" />
+      <path value="$PROJECT_DIR$/api/vendor/phpspec/prophecy-phpunit" />
+      <path value="$PROJECT_DIR$/api/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/api/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/api/vendor/php-cs-fixer/diff" />
+      <path value="$PROJECT_DIR$/api/vendor/oro/doctrine-extensions" />
+      <path value="$PROJECT_DIR$/api/vendor/api-platform/api-pack" />
+      <path value="$PROJECT_DIR$/api/vendor/api-platform/core" />
+      <path value="$PROJECT_DIR$/api/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/api/vendor/fig/link-util" />
+      <path value="$PROJECT_DIR$/api/vendor/liip/functional-test-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/league/html-to-markdown" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/api/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/api/vendor/friendsofphp/php-cs-fixer" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/api/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/api/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/reflection" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/api/vendor/api-platform/schema-generator" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1gBmGpPndx7vUCARjfM4RqvN5rY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+  </component>
+  <component name="RunManager" selected="PHPUnit.DailySummaryHandlerTest.testAddDailySummaryFromSlackCommandWithoutPunchout">
+    <configuration name="DailySummaryHandlerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\DailySummaryHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="DailySummaryHandlerTest.testAddDailySummaryFromSlackCommandWithoutPunchout" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\DailySummaryHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" method="testAddDailySummaryFromSlackCommandWithoutPunchout" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PunchTimerHandlerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\PunchTimerHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/PunchTimerHandlerTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PunchTimerHandlerTest.testPunchInAtTime" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\PunchTimerHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/PunchTimerHandlerTest.php" method="testPunchInAtTime" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TimerHandlerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\TimerHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/TimerHandlerTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.DailySummaryHandlerTest.testAddDailySummaryFromSlackCommandWithoutPunchout" />
+        <item itemvalue="PHPUnit.DailySummaryHandlerTest" />
+        <item itemvalue="PHPUnit.TimerHandlerTest" />
+        <item itemvalue="PHPUnit.PunchTimerHandlerTest" />
+        <item itemvalue="PHPUnit.PunchTimerHandlerTest.testPunchInAtTime" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c1a53408-94ca-46e8-b0d7-4d40ac4f31d4" name="Default Changelist" comment="" />
+      <created>1597596266154</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597596266154</updated>
+      <workItem from="1597596267185" duration="17256000" />
+      <workItem from="1597692857143" duration="710000" />
+    </task>
+    <task id="LOCAL-00001" summary="Remove admin reporting and register endpoints">
+      <created>1597608550254</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1597608550254</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Remove admin reporting and register endpoints" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove admin reporting and register endpoints" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="520" y="26" width="828" height="674" key="#CLI_Interpreters" timestamp="1597602629215">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="520" y="26" width="828" height="674" key="#CLI_Interpreters/0.0.1920.1080@0.0.1920.1080" timestamp="1597602629215" />
+    <state x="648" y="153" width="613" height="697" key="#PHP" timestamp="1597602647897">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="648" y="153" width="613" height="697" key="#PHP/0.0.1920.1080@0.0.1920.1080" timestamp="1597602647897" />
+    <state x="689" y="288" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597603214264">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="689" y="288" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597603214264" />
+    <state x="456" y="121" width="998" height="810" key="CommitChangelistDialog2" timestamp="1597608550128">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="456" y="121" width="998" height="810" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1597608550128" />
+    <state width="1816" height="265" key="GridCell.Tab.0.bottom" timestamp="1597652384931">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597652384931" />
+    <state width="1816" height="265" key="GridCell.Tab.0.center" timestamp="1597652384930">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="265" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597652384930" />
+    <state width="1816" height="265" key="GridCell.Tab.0.left" timestamp="1597652384930">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="265" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597652384930" />
+    <state width="1816" height="265" key="GridCell.Tab.0.right" timestamp="1597652384930">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="265" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597652384930" />
+    <state width="1816" height="265" key="GridCell.Tab.1.bottom" timestamp="1597652384930">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="265" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597652384930" />
+    <state width="1816" height="265" key="GridCell.Tab.1.center" timestamp="1597652384930">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="265" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597652384930" />
+    <state width="1816" height="265" key="GridCell.Tab.1.left" timestamp="1597652384930">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="265" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597652384930" />
+    <state width="1816" height="265" key="GridCell.Tab.1.right" timestamp="1597652384930">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="265" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597652384930" />
+    <state x="676" y="286" width="557" height="532" key="NewPhpClassDialog" timestamp="1597603188581">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="676" y="286" width="557" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597603188581" />
+    <state x="440" y="66" key="SettingsEditor" timestamp="1597693345107">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="440" y="66" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1597693345107" />
+    <state x="29" y="82" width="1862" height="969" key="VCS.FileHistoryDialog" timestamp="1597610219415">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="29" y="82" width="1862" height="969" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597610219415" />
+    <state x="668" y="315" width="675" height="502" key="find.popup" timestamp="1597602047908">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="668" y="315" width="675" height="502" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1597602047908" />
+    <state x="623" y="267" width="672" height="678" key="search.everywhere.popup" timestamp="1597596274493">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="267" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1597596274493" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php</url>
+          <line>40</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/YoTime@DailySummaryHandlerTest.xml" NAME="DailySummaryHandlerTest Coverage Results" MODIFIED="1597610834666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/YoTime@TimerHandlerTest.xml" NAME="TimerHandlerTest Coverage Results" MODIFIED="1597610866662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/YoTime@PunchTimerHandlerTest.xml" NAME="PunchTimerHandlerTest Coverage Results" MODIFIED="1597610823859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

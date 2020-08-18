@@ -1,0 +1,9 @@
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+framework:
+    profiler:
+        enabled: true
+        only_exceptions: true
+        dsn: 'file:/srv/api/var/cache/dev/profiler'

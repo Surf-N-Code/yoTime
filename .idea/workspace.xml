@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/YoTime/api" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="quay.io/api-platform/php:latest" />
+  <component name="ProjectId" id="1gExsM8FIq0lHaxkXe1QEYFbYHZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHPUnit.SlashCommandHandlerTest">
+    <configuration name="SlashCommandHandlerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Handler\MessageHandler\Slack\SlashCommandHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SlashCommandHandlerTest.testAddDailySummaryCommand" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Handler\MessageHandler\Slack\SlashCommandHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" method="testAddDailySummaryCommand" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SlashCommandHandlerTest.testEndBreakCommand" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Handler\MessageHandler\Slack\SlashCommandHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" method="testEndBreakCommand" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SlashCommandHandlerTest.testEndWorkCommand" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Handler\MessageHandler\Slack\SlashCommandHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" method="testEndWorkCommand" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SlashCommandHandlerTest.testPersisting" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Handler\MessageHandler\Slack\SlashCommandHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" method="testPersisting" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.SlashCommandHandlerTest" />
+        <item itemvalue="PHPUnit.SlashCommandHandlerTest.testPersisting" />
+        <item itemvalue="PHPUnit.SlashCommandHandlerTest.testAddDailySummaryCommand" />
+        <item itemvalue="PHPUnit.SlashCommandHandlerTest.testEndWorkCommand" />
+        <item itemvalue="PHPUnit.SlashCommandHandlerTest.testEndBreakCommand" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="" />
+      <created>1597693758753</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597693758753</updated>
+      <workItem from="1597693759766" duration="6351000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="538" y="171" width="828" height="674" key="#CLI_Interpreters" timestamp="1597693915528">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="538" y="171" width="828" height="674" key="#CLI_Interpreters/0.0.1920.1080@0.0.1920.1080" timestamp="1597693915528" />
+    <state x="691" y="289" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597695590745">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="691" y="289" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597695590745" />
+    <state x="567" y="121" width="776" height="810" key="CommitChangelistDialog2" timestamp="1597693766104">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="567" y="121" width="776" height="810" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1597693766104" />
+    <state width="1816" height="266" key="GridCell.Tab.0.bottom" timestamp="1597736313941">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="266" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313941" />
+    <state width="1816" height="266" key="GridCell.Tab.0.center" timestamp="1597736313941">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="266" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313941" />
+    <state width="1816" height="266" key="GridCell.Tab.0.left" timestamp="1597736313941">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="266" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313941" />
+    <state width="1816" height="266" key="GridCell.Tab.0.right" timestamp="1597736313941">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="266" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313941" />
+    <state width="1816" height="266" key="GridCell.Tab.1.bottom" timestamp="1597736313941">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="266" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313941" />
+    <state width="1816" height="266" key="GridCell.Tab.1.center" timestamp="1597736313940">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="266" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313940" />
+    <state width="1816" height="266" key="GridCell.Tab.1.left" timestamp="1597736313940">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="266" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313940" />
+    <state width="1816" height="266" key="GridCell.Tab.1.right" timestamp="1597736313940">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1816" height="266" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597736313940" />
+    <state x="452" y="148" key="SettingsEditor" timestamp="1597693970214">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="452" y="148" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1597693970214" />
+    <state x="622" y="345" width="666" height="362" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1597695509244">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="622" y="345" width="666" height="362" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597695509244" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php</url>
+          <line>40</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php</url>
+          <line>82</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/yoTime@SlashCommandHandlerTest.xml" NAME="SlashCommandHandlerTest Coverage Results" MODIFIED="1597698388851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

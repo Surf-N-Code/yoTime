@@ -1,0 +1,7 @@
+helm install yotime ./helm/api \
+    --set php.repository=gcr.io/yotime/php \
+    --set nginx.repository=gcr.io/yotime/nginx \
+    --set secret=b75da6c3e8e4ff93001658e469bfcda288d2aa3d \
+    --set postgresql.postgresPassword=password \
+    --set postgresql.persistence.enabled=true \
+    --set corsAllowOrigin='^https?://[a-z\]*\.diltheymedia.com$'
