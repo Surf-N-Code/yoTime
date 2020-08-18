@@ -216,7 +216,7 @@
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
   <component name="PhpUnit">
     <phpunit_settings>
-      <phpunit_by_interpreter interpreter_id="4b309c62-b21f-4e2a-b370-93c03e5ec845" custom_loader_path="/opt/project/api/vendor/autoload.php" phpunit_phar_path="" />
+      <phpunit_by_interpreter interpreter_id="4b309c62-b21f-4e2a-b370-93c03e5ec845" configuration_file_path="/opt/project/api/phpunit.xml" custom_loader_path="/opt/project/api/vendor/autoload.php" phpunit_phar_path="" use_configuration_file="true" />
     </phpunit_settings>
   </component>
 </project>

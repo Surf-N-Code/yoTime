@@ -30,14 +30,14 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
             "ts" => "1571559946.000600",
             "command" => "/work",
             "trigger_id" => "1274946476807.608073127745.5d3143756558cfeeb528ccbb7dad531e",
-            "response_url" => "https://hooks.slack.com/commands/THW253RMX/1289688930754/oxcAdThmZqvmXH2Ln7llYTO8"
+            "response_url" => ""
         ];
 
-        $payload = http_build_query($data);
+//        $payload = http_build_query($data);
 //        dump($payload);
-//        $response = $this->request('POST', '/slack/slashcommand', $payload);
+//        $response = $this->request('POST', '/slack/slashcommand', json_encode($data), null, ['HTTPS' => true]);
         $response = $this->request('GET', '/time_entries.json');
-//        dd($response->getContent());
+        dd($response->getContent());
 //        $data = json_decode($response->getContent(), true);
 //        dd($data);
 

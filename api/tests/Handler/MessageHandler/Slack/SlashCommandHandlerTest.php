@@ -21,14 +21,12 @@ class SlashCommandHandlerTest extends TestCase
     use ProphecyTrait;
 
     private $em;
-    private $timeEntryRepository;
     private $time;
     private $user;
-    private $dateTimeProvider;
     private $timeEntryProphecy;
     private $timerHandler;
     private $userProvider;
-    private $slashCommandHandler;
+    private SlashCommandHandler $slashCommandHandler;
     private $databaseHelper;
     private $userHelpHandler;
     private $mailer;
@@ -37,10 +35,8 @@ class SlashCommandHandlerTest extends TestCase
 
     public function setup(): void
     {
-        $this->timeEntryRepository = $this->prophesize(TimeEntryRepository::class);
         $this->user = $this->prophesize(User::class);
         $this->time = $this->prophesize(Time::class);
-        $this->dateTimeProvider = $this->prophesize(DateTimeProvider::class);
         $this->timeEntryProphecy = $this->prophesize(TimeEntry::class);
         $this->userProvider = $this->prophesize(UserProvider::class);
         $this->databaseHelper = $this->prophesize(DatabaseHelper::class);

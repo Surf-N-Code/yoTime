@@ -55,20 +55,31 @@ services:
         published: 8443
         protocol: tcp
 
+#  db:
+#    image: postgres:12-alpine
+#    environment:
+#      - POSTGRES_DB=api
+#      - POSTGRES_PASSWORD=api-platform
+#      - POSTGRES_USER=api-platform
+#    volumes:
+#      - db-data:/var/lib/postgresql/data:rw
+#      # you may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+#      # - ./api/docker/db/data:/var/lib/postgresql/data:rw
+#    ports:
+#      - target: 5432
+#        published: 5432
+#        protocol: tcp
   db:
-    image: postgres:12-alpine
-    environment:
-      - POSTGRES_DB=api
-      - POSTGRES_PASSWORD=api-platform
-      - POSTGRES_USER=api-platform
+    image: mysql:8
     volumes:
-      - db-data:/var/lib/postgresql/data:rw
-      # you may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./api/docker/db/data:/var/lib/postgresql/data:rw
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_USER: api-platform
+      MYSQL_ROOT_PASSWORD: api-platform
+      MYSQL_PASSWORD: api-platform
+      MYSQL_DATABASE: yoTime
     ports:
-      - target: 5432
-        published: 5432
-        protocol: tcp
+      - "5432:3306"
 
   mercure:
     image: dunglas/mercure

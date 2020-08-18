@@ -30,9 +30,9 @@ class IntegrationTestCase extends WebTestCase
         $headers['HTTP_Authorization'] = 'Bearer '.$token;
 
         $headers = array_merge([
-            'CONTENT_TYPE' => 'application/x-www-form-urlencoded', //@todo change for betmessage event
-            'HTTPS'=> true,
-            'HTTP_HOST' => 'localhost:8443'
+            'CONTENT_TYPE' => 'application/json', //@todo change for betmessage event
+//            'HTTPS'=> true,
+//            'HTTP_HOST' => 'localhost:8443'
         ], $headers);
 
         $client->request($method, $uri, [], $files, $headers, $content);
