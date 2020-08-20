@@ -33,6 +33,7 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/guzzlehttp/guzzle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/guzzlehttp/promises" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/justinrainbow/json-schema" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/laminas/laminas-code" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/laminas/laminas-eventmanager" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/laminas/laminas-zendframework-bridge" />
@@ -134,7 +135,6 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/serializer" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/service-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/stopwatch" />
-      <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/test-pack" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/translation-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/twig-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/twig-bundle" />

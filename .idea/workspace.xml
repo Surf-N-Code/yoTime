@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add timer entity">
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/PunchTimerHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/PunchTimerHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/ObjectFactories/TimeEntryFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/ObjectFactories/TimerFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Repository/TimeEntryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Repository/TimeEntryRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Services/Time.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Services/Time.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/BotMessageHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/BotMessageHandlerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/PunchTimerHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/PunchTimerHandlerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/TimerHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/TimerHandlerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Services/TimeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Services/TimeTest.php" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add migration">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/yoTime.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yoTime.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.env" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/docker-compose.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/IntegrationTestCase.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +109,6 @@
       <path value="$PROJECT_DIR$/api/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/stopwatch" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/twig-bundle" />
-      <path value="$PROJECT_DIR$/api/vendor/symfony/test-pack" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-php73" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/dotenv" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/security-csrf" />
@@ -170,6 +170,7 @@
       <path value="$PROJECT_DIR$/api/vendor/liip/functional-test-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/php-cs-fixer/diff" />
       <path value="$PROJECT_DIR$/api/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/api/vendor/justinrainbow/json-schema" />
     </include_path>
   </component>
   <component name="ProjectId" id="1gExsM8FIq0lHaxkXe1QEYFbYHZ" />
@@ -184,18 +185,20 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/src/Handler/MessageHandler" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.debug" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/api/src/Handler/MessageHandler" />
-      <recent name="$PROJECT_DIR$/api" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api/src/Handler/MessageController" />
       <recent name="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api" />
+      <recent name="$PROJECT_DIR$/api/config/packages/dev" />
+      <recent name="$PROJECT_DIR$/api/src/Handler/MessageHandler" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.SlashCommandMessageControllerTest.testWorkSlashCommandEvent">
@@ -239,7 +242,7 @@
       <updated>1597693758753</updated>
       <workItem from="1597693759766" duration="6351000" />
       <workItem from="1597773391407" duration="16302000" />
-      <workItem from="1597836286532" duration="5130000" />
+      <workItem from="1597836286532" duration="11298000" />
     </task>
     <task id="LOCAL-00001" summary="Add php command to docker entrypoint">
       <created>1597775564461</created>
@@ -269,7 +272,21 @@
       <option name="project" value="LOCAL" />
       <updated>1597949363546</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fix issues related to timer_entry entity">
+      <created>1597949811060</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1597949811061</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add migration">
+      <created>1597949822488</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1597949822488</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,7 +301,9 @@
     <MESSAGE value="Add mysql database" />
     <MESSAGE value="Remove timer_entry add timer" />
     <MESSAGE value="Add timer entity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add timer entity" />
+    <MESSAGE value="Fix issues related to timer_entry entity" />
+    <MESSAGE value="Add migration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add migration" />
   </component>
   <component name="WindowStateProjectService">
     <state x="534" y="135" width="822" height="674" key="#CLI_Interpreters" timestamp="1597783630954">
@@ -295,70 +314,70 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="713" y="290" width="454" height="317" key="#Docker2/0.0.1920.1080@0.0.1920.1080" timestamp="1597783550185" />
-    <state x="716" y="186" width="804" height="667" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597785959195">
+    <state x="704" y="78" width="804" height="667" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597956057073">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="716" y="186" width="804" height="667" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597785959195" />
-    <state x="691" y="289" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597695590745">
+    <state x="704" y="78" width="804" height="667" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597956057073" />
+    <state x="689" y="271" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597949609183">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="691" y="289" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597695590745" />
-    <state x="186" y="-19" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1597949475643">
+    <state x="689" y="271" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597949609183" />
+    <state x="180" y="-73" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1597957218237">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="186" y="-19" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1597949475643" />
+    <state x="180" y="-73" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1597957218237" />
     <state x="741" y="315" width="428" height="474" key="FileChooserDialogImpl" timestamp="1597785370806">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="741" y="315" width="428" height="474" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1597785370806" />
-    <state width="1816" height="265" key="GridCell.Tab.0.bottom" timestamp="1597945973428">
+    <state width="1816" height="265" key="GridCell.Tab.0.bottom" timestamp="1597961658769">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597945973428" />
-    <state width="1816" height="265" key="GridCell.Tab.0.center" timestamp="1597945973427">
+    <state width="1816" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597961658769" />
+    <state width="1816" height="265" key="GridCell.Tab.0.center" timestamp="1597961658768">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597945973427" />
-    <state width="1816" height="265" key="GridCell.Tab.0.left" timestamp="1597945973426">
+    <state width="1816" height="265" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597961658768" />
+    <state width="1816" height="265" key="GridCell.Tab.0.left" timestamp="1597961658768">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597945973426" />
-    <state width="1816" height="265" key="GridCell.Tab.0.right" timestamp="1597945973427">
+    <state width="1816" height="265" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597961658768" />
+    <state width="1816" height="265" key="GridCell.Tab.0.right" timestamp="1597961658768">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597945973427" />
-    <state width="1816" height="265" key="GridCell.Tab.1.bottom" timestamp="1597945973431">
+    <state width="1816" height="265" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597961658768" />
+    <state width="1816" height="265" key="GridCell.Tab.1.bottom" timestamp="1597957084584">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597945973431" />
-    <state width="1816" height="265" key="GridCell.Tab.1.center" timestamp="1597945973430">
+    <state width="1816" height="265" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597957084584" />
+    <state width="1816" height="265" key="GridCell.Tab.1.center" timestamp="1597957084584">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597945973430" />
-    <state width="1816" height="265" key="GridCell.Tab.1.left" timestamp="1597945973429">
+    <state width="1816" height="265" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597957084584" />
+    <state width="1816" height="265" key="GridCell.Tab.1.left" timestamp="1597957084584">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597945973429" />
-    <state width="1816" height="265" key="GridCell.Tab.1.right" timestamp="1597945973430">
+    <state width="1816" height="265" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597957084584" />
+    <state width="1816" height="265" key="GridCell.Tab.1.right" timestamp="1597957084584">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597945973430" />
-    <state width="1816" height="265" key="GridCell.Tab.2.bottom" timestamp="1597945973432">
+    <state width="1816" height="265" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597957084584" />
+    <state width="1816" height="265" key="GridCell.Tab.2.bottom" timestamp="1597949911088">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597945973432" />
-    <state width="1816" height="265" key="GridCell.Tab.2.center" timestamp="1597945973431">
+    <state width="1816" height="265" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597949911088" />
+    <state width="1816" height="265" key="GridCell.Tab.2.center" timestamp="1597949911088">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597945973431" />
-    <state width="1816" height="265" key="GridCell.Tab.2.left" timestamp="1597945973431">
+    <state width="1816" height="265" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597949911088" />
+    <state width="1816" height="265" key="GridCell.Tab.2.left" timestamp="1597949911087">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597945973431" />
-    <state width="1816" height="265" key="GridCell.Tab.2.right" timestamp="1597945973432">
+    <state width="1816" height="265" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597949911087" />
+    <state width="1816" height="265" key="GridCell.Tab.2.right" timestamp="1597949911088">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597945973432" />
+    <state width="1816" height="265" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597949911088" />
     <state width="227" height="471" key="HiddenNamespacesPopup" timestamp="1597779290582">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -405,6 +424,11 @@
           <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/TimerHandler.php</url>
           <line>35</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/ApiTestCase.php</url>
+          <line>49</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

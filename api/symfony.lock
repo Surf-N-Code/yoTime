@@ -137,6 +137,9 @@
     "guzzlehttp/psr7": {
         "version": "1.6.1"
     },
+    "justinrainbow/json-schema": {
+        "version": "5.2.10"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },

@@ -2,10 +2,10 @@
 
 namespace App\Tests\Handler\MessageController\Slack;
 
+use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
 use App\Entity\Slack\SlashCommand;
-use App\Tests\IntegrationTestCase;
 
-class SlashCommandMessageControllerTest extends IntegrationTestCase
+class SlashCommandMessageControllerTest extends ApiTestCase
 {
     public function testWorkSlashCommandEvent()
     {
@@ -42,15 +42,21 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
 
 //        $payload = http_build_query($data);
 //        dump($payload);
-        $response = $this->request('POST', '/time_entries', json_encode($timeEntry), null);
+//        $response = $this->request('GET', '/timers');
 //        $response = $this->request('GET', '/time_entries.json');
-        dump($response->getStatusCode());
-        dd($response->getContent());
+//        dump($response->getStatusCode());
+//        dd($response->getContent());
 //        $data = json_decode($response->getContent(), true);
 //        dd($data);
 
 //        dd($response);
-        self::assertEquals(200, $response->getStatusCode());
+//        self::assertEquals(200, $response->getStatusCode());
+
+        // The client implements Symfony HttpClient's `HttpClientInterface`, and the response `ResponseInterface`
+        $response = static::createClient()->request('GET', '/timers');
+
+        dump($response);
+        $this->assertResponseIsSuccessful();
     }
 
     public function testSlackBotVerification()
