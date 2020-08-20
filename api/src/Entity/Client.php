@@ -23,13 +23,13 @@ class Client
     private $id;
 
     /**
-     * @Groups({"TimeEntry"})
+     * @Groups({"Timer"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @Groups({"TimeEntry"})
+     * @Groups({"Timer"})
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;

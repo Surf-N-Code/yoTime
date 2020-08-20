@@ -23,20 +23,20 @@ class Project
     private $id;
 
     /**
-     * @Groups({"TimeEntry"})
+     * @Groups({"Timer"})
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @Groups({"TimeEntry"})
+     * @Groups({"Timer"})
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
     /**
      * @ApiSubresource()
-     * @ORM\OneToMany(targetEntity="App\Entity\TimeEntry", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="App\Entity\Timer", mappedBy="project")
      */
     private $timeEntries;
 
@@ -47,7 +47,7 @@ class Project
     private $tasks;
 
     /**
-     * @Groups({"TimeEntry"})
+     * @Groups({"Timer"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="projects")
      */
     private $client;
@@ -94,14 +94,14 @@ class Project
     }
 
     /**
-     * @return Collection|TimeEntry[]
+     * @return Collection|Timer[]
      */
     public function getTimeEntries(): Collection
     {
         return $this->timeEntries;
     }
 
-    public function startTimer(TimeEntry $timeEntry): self
+    public function startTimer(Timer $timeEntry): self
     {
         if (!$this->timeEntries->contains($timeEntry)) {
             $this->timeEntries[] = $timeEntry;
@@ -111,7 +111,7 @@ class Project
         return $this;
     }
 
-    public function removeTimeEntry(TimeEntry $timeEntry): self
+    public function removeTimer(Timer $timeEntry): self
     {
         if ($this->timeEntries->contains($timeEntry)) {
             $this->timeEntries->removeElement($timeEntry);

@@ -7,7 +7,7 @@ use App\Tests\IntegrationTestCase;
 
 class SlashCommandMessageControllerTest extends IntegrationTestCase
 {
-    public function testWorkEvent()
+    public function testWorkSlashCommandEvent()
     {
         $sc = new SlashCommand();
         $sc->setChannelId('654654');
@@ -33,10 +33,18 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
             "response_url" => ""
         ];
 
+        $timeEntry = [
+            "date_start" => "2020-08-15T08:01:00+00:00",
+            "task" => "tasks/1",
+            "user" => "users/1",
+            "timer_type" => "work"
+        ];
+
 //        $payload = http_build_query($data);
 //        dump($payload);
-//        $response = $this->request('POST', '/slack/slashcommand', json_encode($data), null, ['HTTPS' => true]);
-        $response = $this->request('GET', '/time_entries.json');
+        $response = $this->request('POST', '/time_entries', json_encode($timeEntry), null);
+//        $response = $this->request('GET', '/time_entries.json');
+        dump($response->getStatusCode());
         dd($response->getContent());
 //        $data = json_decode($response->getContent(), true);
 //        dd($data);
@@ -60,7 +68,7 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
         $client->enableProfiler();
         $client->request('POST', '/slack/bot/message', [], [], ['CONTENT_TYPE' => 'application/json'], $payload);
         $response = $client->getResponse();
-//        dump($response);
+        dump($response);
         self::assertEquals(200, $response->getStatusCode());
     }
 }
