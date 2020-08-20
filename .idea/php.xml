@@ -83,7 +83,6 @@
       <path value="$PROJECT_DIR$/api/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/stopwatch" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/twig-bundle" />
-      <path value="$PROJECT_DIR$/api/vendor/symfony/test-pack" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-php73" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/dotenv" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/security-csrf" />
@@ -145,6 +144,7 @@
       <path value="$PROJECT_DIR$/api/vendor/liip/functional-test-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/php-cs-fixer/diff" />
       <path value="$PROJECT_DIR$/api/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/api/vendor/justinrainbow/json-schema" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
