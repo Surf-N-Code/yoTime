@@ -5,23 +5,23 @@ namespace App\Handler\MessageHandler\Slack;
 
 
 use App\Entity\Slack\SlackMessage;
-use App\Entity\TimeEntry;use App\Entity\TimerType;
+use App\Entity\Timer;use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
-use App\Repository\TimeEntryRepository;
+use App\Repository\TimerRepository;
 use App\Services\DatabaseHelper;use App\Services\DateTimeProvider;
 use App\Services\Time;
 
 class PunchTimerHandler
 {
 
-    private TimeEntryRepository $timeEntryRepo;
+    private TimerRepository $timeEntryRepo;
     private Time $time;
     private DatabaseHelper $databaseHelper;
 
     public function __construct(
         Time $time,
-        TimeEntryRepository $timeEntryRepo,
+        TimerRepository $timeEntryRepo,
         DatabaseHelper $databaseHelper
     )
     {
@@ -30,14 +30,14 @@ class PunchTimerHandler
         $this->databaseHelper = $databaseHelper;
     }
 
-    public function punchIn(User $user): TimeEntry
+    public function punchIn(User $user): Timer
     {
         $this->getRunningPunchTimerOrThrow($user);
         $this->time->stopNonPunchTimers($user);
         return $this->time->startTimer($user, TimerType::PUNCH);
     }
 
-    public function punchOut(User $user): TimeEntry
+    public function punchOut(User $user): Timer
     {
         $signInOutTimer = $this->timeEntryRepo->findPunchTimer($user);
 
@@ -54,7 +54,7 @@ class PunchTimerHandler
         return $timeEntry;
     }
 
-    public function punchInAtTime(User $user, string $timeStr): TimeEntry
+    public function punchInAtTime(User $user, string $timeStr): Timer
     {
         $this->getRunningPunchTimerOrThrow($user);
         $this->time->stopNonPunchTimers($user);
