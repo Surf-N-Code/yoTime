@@ -5,12 +5,12 @@ namespace App\Tests\Handler\MessageHandler\Slack;
 
 
 use App\Entity\Slack\SlashCommand;
-use App\Entity\TimeEntry;
+use App\Entity\Timer;
 use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
 use App\Handler\MessageHandler\Slack\PunchTimerHandler;use App\Handler\MessageHandler\Slack\TimerHandler;
-use App\Repository\TimeEntryRepository;
+use App\Repository\TimerRepository;
 use App\Services\Time;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
@@ -30,10 +30,10 @@ class TimerHandlerTest extends TestCase
     
     public function setup(): void
     {
-        $this->timeEntryRepository = $this->prophesize(TimeEntryRepository::class);
+        $this->timeEntryRepository = $this->prophesize(TimerRepository::class);
         $this->user = $this->prophesize(User::class);
         $this->time = $this->prophesize(Time::class);
-        $this->timeEntryProphecy = $this->prophesize(TimeEntry::class);
+        $this->timeEntryProphecy = $this->prophesize(Timer::class);
         $this->punchTimerHandler = $this->prophesize(PunchTimerHandler::class);
 
         $this->timerHandler = new TimerHandler(
@@ -158,7 +158,7 @@ class TimerHandlerTest extends TestCase
         $this->timeEntryRepository->findNonPunchTimers($this->user->reveal())
                     ->shouldBeCalled()
                     ->willReturn($this->timeEntryProphecy->reveal());
-        $this->time->addTaskToTimeEntry($this->timeEntryProphecy->reveal(), 'Task description')
+        $this->time->addTaskToTimer($this->timeEntryProphecy->reveal(), 'Task description')
                     ->shouldBeCalled()
                     ->willReturn($this->timeEntryProphecy->reveal());
         $this->time->stopTimer($this->user->reveal(), $this->timeEntryProphecy->reveal())

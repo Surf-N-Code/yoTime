@@ -28,38 +28,38 @@ class User
     private $id;
 
     /**
-     * @Groups({"TimeEntry"})
+     * @Groups({"Timer"})
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Email()
      */
     private $email;
 
     /**
-     * @Groups({"TimeEntry"})
+     * @Groups({"Timer"})
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $fullName;
 
     /**
-     * @Groups({"TimeEntry"})
+     * @Groups({"Timer"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $slackUserId;
 
     /**
-     * @Groups({"TimeEntry"})
+     * @Groups({"Timer"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $tz;
 
     /**
-     * @Groups({"TimeEntry"})
+     * @Groups({"Timer"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $tzOffset;
 
     /**
-     * @Groups({"TimeEntry"})
+     * @Groups({"Timer"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $displayName;

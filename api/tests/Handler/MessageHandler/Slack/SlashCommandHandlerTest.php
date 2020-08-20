@@ -5,10 +5,10 @@ namespace App\Handler\MessageHandler\Slack;
 use App\Entity\DailySummary;
 use App\Entity\Slack\SlackMessage;
 use App\Entity\Slack\SlashCommand;
-use App\Entity\TimeEntry;
+use App\Entity\Timer;
 use App\Entity\User;
 use App\Mail\Mailer;
-use App\Repository\TimeEntryRepository;
+use App\Repository\TimerRepository;
 use App\Services\DatabaseHelper;
 use App\Services\DateTimeProvider;
 use App\Services\Time;
@@ -37,7 +37,7 @@ class SlashCommandHandlerTest extends TestCase
     {
         $this->user = $this->prophesize(User::class);
         $this->time = $this->prophesize(Time::class);
-        $this->timeEntryProphecy = $this->prophesize(TimeEntry::class);
+        $this->timeEntryProphecy = $this->prophesize(Timer::class);
         $this->userProvider = $this->prophesize(UserProvider::class);
         $this->databaseHelper = $this->prophesize(DatabaseHelper::class);
         $this->userHelpHandler = $this->prophesize(UserHelpHandler::class);

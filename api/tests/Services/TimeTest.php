@@ -5,11 +5,11 @@ namespace App\tests;
 
 
 use App\Entity\Task;
-use App\Entity\TimeEntry;
+use App\Entity\Timer;
 use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
-use App\Repository\TimeEntryRepository;
+use App\Repository\TimerRepository;
 use App\Repository\UserRepository;
 use App\Services\DateTimeProvider;
 use App\Services\Time;
@@ -42,9 +42,9 @@ class TimeTest extends TestCase
         $this->em = $this->prophesize(EntityManagerInterface::class);
         $this->logger = $this->prophesize(LoggerInterface::class);
         $this->userRepository = $this->prophesize(UserRepository::class);
-        $this->timeEntryRepository = $this->prophesize(TimeEntryRepository::class);
+        $this->timeEntryRepository = $this->prophesize(TimerRepository::class);
         $this->task = $this->prophesize(Task::class);
-        $this->timeEntry = $this->prophesize(TimeEntry::class);
+        $this->timeEntry = $this->prophesize(Timer::class);
         $this->user = $this->prophesize(User::class);
         $this->timerType = $this->prophesize(TimerType::class);
         $this->timeProphecy = $this->prophesize(Time::class);
@@ -66,7 +66,7 @@ class TimeTest extends TestCase
             ->willReturn((new \DateTime()));
 
         $this->em->flush()->shouldBeCalled();
-        $this->em->persist(Argument::type(TimeEntry::class))->shouldBeCalled();
+        $this->em->persist(Argument::type(Timer::class))->shouldBeCalled();
 
         $this->time->startTimer(
             $this->user->reveal(),
@@ -105,12 +105,12 @@ class TimeTest extends TestCase
 //        $dateEnd = clone($dateStart);
 //        $dateEnd = $dateEnd->add(new \DateInterval(sprintf('PT%sH%sM', $timeParts[0], $timeParts[1])));
 //
-//        $timeEntry = $this->prophesize(TimeEntry::class);
+//        $timeEntry = $this->prophesize(Timer::class);
 //        $timeEntry->setDateStart($dateStart)->shouldBeCalled();
 //        $timeEntry->setDateEnd($dateEnd)->shouldBeCalled();
 
         $this->em->flush()->shouldBeCalled();
-        $this->em->persist(Argument::type(TimeEntry::class))->shouldBeCalled();
+        $this->em->persist(Argument::type(Timer::class))->shouldBeCalled();
         $this->time->addFinishedTimer($this->user->reveal(), TimerType::WORK, $duration);
     }
 
@@ -138,7 +138,7 @@ class TimeTest extends TestCase
                                ->willReturn((new \DateTime()));
 
         $this->em->flush()->shouldNotBeCalled();
-        $this->em->persist(Argument::type(TimeEntry::class))->shouldNotBeCalled();
+        $this->em->persist(Argument::type(Timer::class))->shouldNotBeCalled();
         $this->time->addFinishedTimer($this->user->reveal(), TimerType::WORK, $duration);
     }
 
@@ -157,11 +157,11 @@ class TimeTest extends TestCase
         $this->timeEntry->getTimerType()->shouldBeCalled()->willReturn(TimerType::WORK);
 
         $this->em->flush()->shouldBeCalled();
-        $this->em->persist(Argument::type(TimeEntry::class))->shouldBeCalled();
+        $this->em->persist(Argument::type(Timer::class))->shouldBeCalled();
         $this->time->startTimer($this->user->reveal(), TimerType::WORK);
 
         $this->em->flush()->shouldBeCalled();
-        $this->em->persist(Argument::type(TimeEntry::class))->shouldBeCalled();
+        $this->em->persist(Argument::type(Timer::class))->shouldBeCalled();
 
         $this->time->stopTimer($this->user->reveal(), $this->timeEntry->reveal(), 'Description');
     }
@@ -182,11 +182,11 @@ class TimeTest extends TestCase
 
 
         $this->em->flush()->shouldBeCalled();
-        $this->em->persist(Argument::type(TimeEntry::class))->shouldBeCalled();
+        $this->em->persist(Argument::type(Timer::class))->shouldBeCalled();
         $this->time->startTimer($this->user->reveal(), TimerType::WORK);
 
         $this->em->flush()->shouldBeCalled();
-        $this->em->persist(Argument::type(TimeEntry::class))->shouldBeCalled();
+        $this->em->persist(Argument::type(Timer::class))->shouldBeCalled();
 
         $this->time->stopTimer($this->user->reveal(), $this->timeEntry->reveal(), null);
     }
@@ -236,7 +236,7 @@ class TimeTest extends TestCase
         $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
                                ->shouldBeCalled()
                                ->willReturn((new \DateTime()));
-        $this->em->persist(Argument::type(TimeEntry::class))->shouldBeCalled();
+        $this->em->persist(Argument::type(Timer::class))->shouldBeCalled();
         $this->em->flush()->shouldBeCalled();
         $this->time->startTimerFromTimeString($this->user->reveal(), $validTime, TimerType::PUNCH);
     }

@@ -7,7 +7,7 @@ use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
 use App\Handler\MessageHandler\Slack\BotMessageHandler;
 use App\Handler\MessageHandler\Slack\PunchTimerHandler;
-use App\Repository\TimeEntryRepository;
+use App\Repository\TimerRepository;
 use App\Repository\UserRepository;
 use App\Services\Time;
 use App\Services\UserProvider;
@@ -38,7 +38,7 @@ class BotMessageHandlerTest extends TestCase
         $this->em = $this->prophesize(EntityManagerInterface::class);
         $this->logger = $this->prophesize(LoggerInterface::class);
         $this->userRepository = $this->prophesize(UserRepository::class);
-        $this->timeEntryRepository = $this->prophesize(TimeEntryRepository::class);
+        $this->timeEntryRepository = $this->prophesize(TimerRepository::class);
         $this->timerType = $this->prophesize(TimerType::class);
         $this->userProvider = $this->prophesize(UserProvider::class);
         $this->user = $this->prophesize(User::class);

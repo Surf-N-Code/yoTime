@@ -4,18 +4,18 @@
 namespace App\ObjectFactories;
 
 
-use App\Entity\TimeEntry;
+use App\Entity\Timer;
 use App\Entity\User;
 
-class TimeEntryFactory
+class TimerFactory
 {
-    public function updateTimeEntryObject(
+    public function updateTimerObject(
         $timerType,
         User $user,
-        TimeEntry $timeEntry,
-        \DateTime $dateStart = null,
+        Timer $timeEntry,
+        \DateTime $dateStart,
         \DateTime $dateEnd = null
-    ): TimeEntry
+    ): Timer
     {
         $timeEntry->setDateStart($dateStart);
         $timeEntry->setDateEnd($dateEnd);
@@ -24,14 +24,14 @@ class TimeEntryFactory
         return $timeEntry;
     }
 
-    public function createTimeEntryObject(
+    public function createTimerObject(
         $timerType,
         User $user,
         \DateTime $dateStart,
         \DateTime $dateEnd = null
-    ): TimeEntry
+    ): Timer
     {
-        $timeEntry = new TimeEntry();
+        $timeEntry = new Timer();
         $timeEntry->setDateStart($dateStart);
         $timeEntry->setDateEnd($dateEnd);
         $timeEntry->setTimerType($timerType);

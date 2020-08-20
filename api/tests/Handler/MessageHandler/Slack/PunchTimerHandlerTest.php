@@ -4,12 +4,12 @@
 namespace App\Tests\Handler\MessageHandler\Slack;
 
 
-use App\Entity\TimeEntry;
+use App\Entity\Timer;
 use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
 use App\Handler\MessageHandler\Slack\PunchTimerHandler;
-use App\Repository\TimeEntryRepository;
+use App\Repository\TimerRepository;
 use App\Services\DatabaseHelper;use App\Services\DateTimeProvider;
 use App\Services\Time;
 use App\Services\UserProvider;
@@ -34,11 +34,11 @@ class PunchTimerHandlerTest extends TestCase
 
     public function setup(): void
     {
-        $this->timeEntryRepository = $this->prophesize(TimeEntryRepository::class);
+        $this->timeEntryRepository = $this->prophesize(TimerRepository::class);
         $this->user = $this->prophesize(User::class);
         $this->time = $this->prophesize(Time::class);
         $this->dateTimeProvider = $this->prophesize(DateTimeProvider::class);
-        $this->timeEntryProphecy = $this->prophesize(TimeEntry::class);
+        $this->timeEntryProphecy = $this->prophesize(Timer::class);
         $this->userProvider = $this->prophesize(UserProvider::class);
         $this->databaseHelper = $this->prophesize(DatabaseHelper::class);
 

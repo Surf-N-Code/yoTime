@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add mysql database">
-      <change beforePath="$PROJECT_DIR$/.idea/php-docker-settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php-docker-settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.env" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Project.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/Slack/SlashCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Slack/SlashCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/TimeEntry.php" beforeDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add timer entity">
       <change beforePath="$PROJECT_DIR$/api/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/TimerHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/TimerHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Slack/SlackMessageHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Slack/SlackMessageHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/IntegrationTestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/IntegrationTestCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/PunchTimerHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/PunchTimerHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/ObjectFactories/TimeEntryFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/ObjectFactories/TimerFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Repository/TimeEntryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Repository/TimeEntryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Services/Time.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Services/Time.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/BotMessageHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/BotMessageHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/PunchTimerHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/PunchTimerHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/TimerHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/TimerHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Services/TimeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Services/TimeTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +239,7 @@
       <updated>1597693758753</updated>
       <workItem from="1597693759766" duration="6351000" />
       <workItem from="1597773391407" duration="16302000" />
-      <workItem from="1597836286532" duration="4890000" />
+      <workItem from="1597836286532" duration="5130000" />
     </task>
     <task id="LOCAL-00001" summary="Add php command to docker entrypoint">
       <created>1597775564461</created>
@@ -261,7 +255,21 @@
       <option name="project" value="LOCAL" />
       <updated>1597782421694</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Remove timer_entry add timer">
+      <created>1597949346050</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1597949346050</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add timer entity">
+      <created>1597949363546</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1597949363546</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,7 +282,9 @@
     </ignored-roots>
     <MESSAGE value="Add php command to docker entrypoint" />
     <MESSAGE value="Add mysql database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add mysql database" />
+    <MESSAGE value="Remove timer_entry add timer" />
+    <MESSAGE value="Add timer entity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add timer entity" />
   </component>
   <component name="WindowStateProjectService">
     <state x="534" y="135" width="822" height="674" key="#CLI_Interpreters" timestamp="1597783630954">
@@ -293,10 +303,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="691" y="289" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597695590745" />
-    <state x="192" y="-55" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1597946515691">
+    <state x="186" y="-19" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1597949475643">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="192" y="-55" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1597946515691" />
+    <state x="186" y="-19" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1597949475643" />
     <state x="741" y="315" width="428" height="474" key="FileChooserDialogImpl" timestamp="1597785370806">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -365,18 +375,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="622" y="345" width="666" height="362" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597695509244" />
-    <state x="668" y="324" width="637" height="560" key="find.popup" timestamp="1597946611358">
+    <state x="668" y="324" width="637" height="560" key="find.popup" timestamp="1597949436722">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="668" y="324" width="637" height="560" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1597946611358" />
+    <state x="668" y="324" width="637" height="560" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1597949436722" />
     <state x="623" y="333" width="672" height="678" key="search.everywhere.popup" timestamp="1597945534188">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="623" y="333" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1597945534188" />
-    <state x="681" y="428" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1597946697629">
+    <state x="675" y="374" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1597949521867">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="681" y="428" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597946697629" />
+    <state x="675" y="374" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597949521867" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

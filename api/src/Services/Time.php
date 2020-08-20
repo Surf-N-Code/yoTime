@@ -3,12 +3,12 @@
 namespace App\Services;
 
 use App\Entity\Task;
-use App\Entity\TimeEntry;
+use App\Entity\Timer;
 use App\Entity\TimerType;use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
-use App\Repository\TimeEntryRepository;
+use App\Repository\TimerRepository;
 use App\Repository\UserRepository;
-use App\ObjectFactories\TimeEntryFactory;
+use App\ObjectFactories\TimerFactory;
 
 class Time
 {
@@ -21,10 +21,10 @@ class Time
     private $timeEntryFactory;
 
     public function __construct(
-        TimeEntryRepository $timeEntryRepository,
+        TimerRepository $timeEntryRepository,
         UserRepository $userRepository,
         DateTimeProvider $dateTimeProvider,
-        TimeEntryFactory $timeEntryFactory
+        TimerFactory $timeEntryFactory
     )
     {
         $this->timeEntryRepository = $timeEntryRepository;
@@ -33,13 +33,13 @@ class Time
         $this->timeEntryFactory = $timeEntryFactory;
     }
 
-    public function startTimer(User $user, $timerType, \DateTime $dateStart = null): TimeEntry
+    public function startTimer(User $user, $timerType, \DateTime $dateStart = null): Timer
     {
         $currentUserTime = $this->dateTimeProvider->getLocalUserTime($user);
-        return $this->timeEntryFactory->createTimeEntryObject($timerType, $user, $dateStart ?? $currentUserTime);
+        return $this->timeEntryFactory->createTimerObject($timerType, $user, $dateStart ?? $currentUserTime);
     }
 
-    public function stopTimer(User $user, TimeEntry $timeEntry): TimeEntry
+    public function stopTimer(User $user, Timer $timeEntry): Timer
     {
         $currentUserTime = $this->dateTimeProvider->getLocalUserTime($user);
         $timeEntry->setDateEnd($currentUserTime);
@@ -56,7 +56,7 @@ class Time
         }
     }
 
-    public function addTaskToTimeEntry(TimeEntry $timeEntry, string $taskDescription): TimeEntry
+    public function addTaskToTimer(Timer $timeEntry, string $taskDescription): Timer
     {
         $task = new Task();
         $task->setDescription($taskDescription);
@@ -64,7 +64,7 @@ class Time
         return $timeEntry;
     }
 
-    public function startTimerFromTimeString(User $user, $timeString, $timerType): TimeEntry
+    public function startTimerFromTimeString(User $user, $timeString, $timerType): Timer
     {
         preg_match('/^([01]?\d|2[0-3]):?([0-5]\d)/', $timeString, $militaryTime);
         if (!empty($militaryTime)) {
@@ -81,12 +81,12 @@ class Time
         throw new MessageHandlerException(sprintf('The time you entered: %s is not valid. Please enter your time in the form `hh:mm`, e.g.: `14:21`', $timeString), 412);
     }
 
-    public function addFinishedTimer(User $user, string $timerType, array $timeParts): TimeEntry
+    public function addFinishedTimer(User $user, string $timerType, array $timeParts): Timer
     {
         $dateStart = (new \DateTime($this->dateTimeProvider->getLocalUserTime($user)->format('Y-m-d H:i:s')))->setTime(1,0,0);
         $dateEnd = clone($dateStart);
         $dateEnd->add(new \DateInterval(sprintf('PT%sH%sM', $timeParts[0], $timeParts[1])));
-        return $this->timeEntryFactory->createTimeEntryObject($timerType, $user, $dateStart, $dateEnd);
+        return $this->timeEntryFactory->createTimerObject($timerType, $user, $dateStart, $dateEnd);
     }
 
     public function getHoursAndMinutesFromString(string $str)
