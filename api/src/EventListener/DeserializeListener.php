@@ -6,6 +6,7 @@ use ApiPlatform\Core\Util\RequestAttributesExtractor;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use ApiPlatform\Core\EventListener\DeserializeListener as DecoratedListener;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use ApiPlatform\Core\Serializer\SerializerContextBuilderInterface;
 
@@ -22,7 +23,7 @@ final class DeserializeListener
         $this->decorated = $decorated;
     }
 
-    public function onKernelRequest(GetResponseEvent $event): void {
+    public function onKernelRequest(ResponseEvent $event): void {
         $request = $event->getRequest();
         if ($request->isMethodCacheable(false) || $request->isMethod(Request::METHOD_DELETE)) {
             return;

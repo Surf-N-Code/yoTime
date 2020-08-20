@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add migration">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/yoTime.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yoTime.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.env" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/docker-compose.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/IntegrationTestCase.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/EventListener/DeserializeListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/EventListener/DeserializeListener.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +233,7 @@
       <updated>1597693758753</updated>
       <workItem from="1597693759766" duration="6351000" />
       <workItem from="1597773391407" duration="16302000" />
-      <workItem from="1597836286532" duration="11298000" />
+      <workItem from="1597836286532" duration="12418000" />
     </task>
     <task id="LOCAL-00001" summary="Add php command to docker entrypoint">
       <created>1597775564461</created>
@@ -286,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597949822488</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add env prod in .env">
+      <created>1597961844817</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1597961844817</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,7 +301,8 @@
     <MESSAGE value="Add timer entity" />
     <MESSAGE value="Fix issues related to timer_entry entity" />
     <MESSAGE value="Add migration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add migration" />
+    <MESSAGE value="Add env prod in .env" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add env prod in .env" />
   </component>
   <component name="WindowStateProjectService">
     <state x="534" y="135" width="822" height="674" key="#CLI_Interpreters" timestamp="1597783630954">
@@ -322,30 +321,30 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="689" y="271" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597949609183" />
-    <state x="180" y="-73" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1597957218237">
+    <state x="178" y="-91" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1597961844285">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="180" y="-73" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1597957218237" />
+    <state x="178" y="-91" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1597961844285" />
     <state x="741" y="315" width="428" height="474" key="FileChooserDialogImpl" timestamp="1597785370806">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="741" y="315" width="428" height="474" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1597785370806" />
-    <state width="1816" height="265" key="GridCell.Tab.0.bottom" timestamp="1597961658769">
+    <state width="1816" height="265" key="GridCell.Tab.0.bottom" timestamp="1597961886989">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597961658769" />
-    <state width="1816" height="265" key="GridCell.Tab.0.center" timestamp="1597961658768">
+    <state width="1816" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597961886989" />
+    <state width="1816" height="265" key="GridCell.Tab.0.center" timestamp="1597961886988">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597961658768" />
-    <state width="1816" height="265" key="GridCell.Tab.0.left" timestamp="1597961658768">
+    <state width="1816" height="265" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597961886988" />
+    <state width="1816" height="265" key="GridCell.Tab.0.left" timestamp="1597961886986">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597961658768" />
-    <state width="1816" height="265" key="GridCell.Tab.0.right" timestamp="1597961658768">
+    <state width="1816" height="265" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597961886986" />
+    <state width="1816" height="265" key="GridCell.Tab.0.right" timestamp="1597961886988">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597961658768" />
+    <state width="1816" height="265" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597961886988" />
     <state width="1816" height="265" key="GridCell.Tab.1.bottom" timestamp="1597957084584">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -394,14 +393,14 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="622" y="345" width="666" height="362" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597695509244" />
-    <state x="668" y="324" width="637" height="560" key="find.popup" timestamp="1597949436722">
+    <state x="666" y="156" width="637" height="560" key="find.popup" timestamp="1597962310321">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="668" y="324" width="637" height="560" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1597949436722" />
-    <state x="623" y="333" width="672" height="678" key="search.everywhere.popup" timestamp="1597945534188">
+    <state x="666" y="156" width="637" height="560" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1597962310321" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1597962768739">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="623" y="333" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1597945534188" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1597962768739" />
     <state x="675" y="374" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1597949521867">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
