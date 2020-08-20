@@ -5,16 +5,16 @@ namespace App\Handler\MessageHandler\Slack;
 
 
 use App\Entity\Slack\SlashCommand;
-use App\Entity\TimeEntry;use App\Entity\TimerType;
+use App\Entity\Timer;use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
-use App\Repository\TimeEntryRepository;
+use App\Repository\TimerRepository;
 use App\Services\Time;
 
 class TimerHandler
 {
 
-    private TimeEntryRepository $timeEntryRepo;
+    private TimerRepository $timeEntryRepo;
 
     private Time $time;
 
@@ -22,7 +22,7 @@ class TimerHandler
 
     public function __construct(
         Time $time,
-        TimeEntryRepository $timeEntryRepo,
+        TimerRepository $timeEntryRepo,
         PunchTimerHandler $punchTimerHandler
     )
     {
@@ -31,38 +31,38 @@ class TimerHandler
         $this->punchTimerHandler = $punchTimerHandler;
     }
 
-    public function startTimer(string $commandStr, User $user): TimeEntry
+    public function startTimer(string $commandStr, User $user): Timer
     {
         $this->time->stopNonPunchTimers($user);
         $timerType = str_replace('/', '', $commandStr);
         return $this->time->startTimer($user, $timerType);
     }
 
-    public function stopTimer(User $user, string $taskDescription = null): TimeEntry
+    public function stopTimer(User $user, string $taskDescription = null): Timer
     {
         $timeEntry = $this->timeEntryRepo->findNonPunchTimers($user);
         $this->throwWhenMissingTimer($timeEntry);
 
         if ($taskDescription) {
-            $timeEntry = $this->time->addTaskToTimeEntry($timeEntry, $taskDescription);
+            $timeEntry = $this->time->addTaskToTimer($timeEntry, $taskDescription);
         }
 
         return $this->time->stopTimer($user, $timeEntry);
     }
 
-    public function addBreakManually(User $user, string $breakTimeStr): TimeEntry {
+    public function addBreakManually(User $user, string $breakTimeStr): Timer {
         $timeParts = $this->time->getHoursAndMinutesFromString($breakTimeStr);
         return $this->time->addFinishedTimer($user, TimerType::BREAK, $timeParts);
     }
 
-    public function lateSignIn(User $user, string $timeStr): TimeEntry
+    public function lateSignIn(User $user, string $timeStr): Timer
     {
         $runningTimer = $this->timeEntryRepo->findPunchTimer($user);
         $this->throwWhenAlreadyPunchedIn($runningTimer);
         return $this->punchTimerHandler->punchInAtTime($user, $timeStr);
     }
 
-    private function throwWhenMissingTimer(?TimeEntry $timeEntry)
+    private function throwWhenMissingTimer(?Timer $timeEntry)
     {
         if (!$timeEntry) {
             throw new MessageHandlerException(
@@ -75,7 +75,7 @@ class TimerHandler
         }
     }
 
-    private function throwWhenAlreadyPunchedIn(?TimeEntry $runningTimer)
+    private function throwWhenAlreadyPunchedIn(?Timer $runningTimer)
     {
         if ($runningTimer) {
             throw new MessageHandlerException(

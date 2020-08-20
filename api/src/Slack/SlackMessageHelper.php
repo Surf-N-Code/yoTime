@@ -5,7 +5,7 @@ namespace App\Slack;
 
 
 use App\Entity\Slack\SlackMessage;
-use App\Entity\TimeEntry;
+use App\Entity\Timer;
 use App\Entity\TimerType;use App\Entity\User;use App\Services\Time;
 
 class SlackMessageHelper
@@ -32,7 +32,7 @@ class SlackMessageHelper
         return $m;
     }
 
-    public function getTimeSpentOnTaskMessage(TimeEntry $timeEntry): string
+    public function getTimeSpentOnTaskMessage(Timer $timeEntry): string
     {
         $timeSpent = $this->time->formatSecondsAsHoursAndMinutes(
             abs($timeEntry->getDateEnd()->getTimestamp() - $timeEntry->getDateStart()->getTimestamp())

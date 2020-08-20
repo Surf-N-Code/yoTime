@@ -6,7 +6,7 @@ namespace App\Tests\Handler\MessageHandler\Slack;
 
 use App\Entity\DailySummary;
 use App\Entity\Slack\SlackMessage;use App\Entity\Slack\SlashCommand;
-use App\Entity\TimeEntry;use App\Entity\TimerType;
+use App\Entity\Timer;use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;use App\Handler\MessageHandler\Slack\DailySummaryHandler;
 use App\Handler\MessageHandler\Slack\PunchTimerHandler;
@@ -36,7 +36,7 @@ class DailySummaryHandlerTest extends TestCase
 
     public function setup(): void
     {
-        $this->timeEntryProphecy = $this->prophesize(TimeEntry::class);
+        $this->timeEntryProphecy = $this->prophesize(Timer::class);
         $this->user = $this->prophesize(User::class);
         $this->dailySummaryRepo = $this->prophesize(DailySummaryRepository::class);
         $this->time = $this->prophesize(Time::class);

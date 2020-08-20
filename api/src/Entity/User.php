@@ -47,12 +47,6 @@ class User
     private $slackUserId;
 
     /**
-     * @ApiSubresource()
-     * @ORM\OneToMany(targetEntity="App\Entity\TimeEntry", mappedBy="user")
-     */
-    private $timeEntries;
-
-    /**
      * @Groups({"TimeEntry"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -100,14 +94,20 @@ class User
      */
     private $dailySummary;
 
+    /**
+     * @ApiSubresource()
+     * @ORM\OneToMany(targetEntity=Timer::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $timers;
+
     public function __construct()
     {
-        $this->timeEntries = new ArrayCollection();
         $this->projects    = new ArrayCollection();
         $this->tasks       = new ArrayCollection();
         $this->clients     = new ArrayCollection();
         $this->slackTeams = new ArrayCollection();
         $this->dailySummary = new ArrayCollection();
+        $this->timers = new ArrayCollection();
     }
 
     //only needed for fixtures
@@ -140,37 +140,6 @@ class User
     public function setSlackUserId($slackUserId): self
     {
         $this->slackUserId = $slackUserId;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|TimeEntry[]
-     */
-    public function getTimeEntries(): Collection
-    {
-        return $this->timeEntries;
-    }
-
-    public function startTimer(TimeEntry $timeEntry): self
-    {
-        if (!$this->timeEntries->contains($timeEntry)) {
-            $this->timeEntries[] = $timeEntry;
-            $timeEntry->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTimeEntry(TimeEntry $timeEntry): self
-    {
-        if ($this->timeEntries->contains($timeEntry)) {
-            $this->timeEntries->removeElement($timeEntry);
-            // set the owning side to null (unless already changed)
-            if ($timeEntry->getUser() === $this) {
-                $timeEntry->setUser(null);
-            }
-        }
 
         return $this;
     }
@@ -368,5 +337,36 @@ class User
     public function setFullName($fullName): void
     {
         $this->fullName = $fullName;
+    }
+
+    /**
+     * @return Collection|Timer[]
+     */
+    public function getTimers(): Collection
+    {
+        return $this->timers;
+    }
+
+    public function addTimer(Timer $timer): self
+    {
+        if (!$this->timers->contains($timer)) {
+            $this->timers[] = $timer;
+            $timer->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTimer(Timer $timer): self
+    {
+        if ($this->timers->contains($timer)) {
+            $this->timers->removeElement($timer);
+            // set the owning side to null (unless already changed)
+            if ($timer->getUser() === $this) {
+                $timer->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -42,11 +42,6 @@ class Task
     private $notes;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\TimeEntry", mappedBy="task")
-     */
-    private $timeEntries;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="tasks")
      */
     private $project;
@@ -57,10 +52,15 @@ class Task
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Timer::class, mappedBy="task")
+     */
+    private $timers;
+
 
     public function __construct()
     {
-        $this->timeEntries = new ArrayCollection();
+        $this->timers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -104,37 +104,6 @@ class Task
         return $this;
     }
 
-    /**
-     * @return Collection|TimeEntry[]
-     */
-    public function getTimeEntries(): Collection
-    {
-        return $this->timeEntries;
-    }
-
-    public function startTimer(TimeEntry $timeEntry): self
-    {
-        if (!$this->timeEntries->contains($timeEntry)) {
-            $this->timeEntries[] = $timeEntry;
-            $timeEntry->setTask($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTimeEntry(TimeEntry $timeEntry): self
-    {
-        if ($this->timeEntries->contains($timeEntry)) {
-            $this->timeEntries->removeElement($timeEntry);
-            // set the owning side to null (unless already changed)
-            if ($timeEntry->getTask() === $this) {
-                $timeEntry->setTask(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getProject(): ?project
     {
         return $this->project;
@@ -155,6 +124,37 @@ class Task
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Timer[]
+     */
+    public function getTimers(): Collection
+    {
+        return $this->timers;
+    }
+
+    public function addTimer(Timer $timer): self
+    {
+        if (!$this->timers->contains($timer)) {
+            $this->timers[] = $timer;
+            $timer->setTask($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTimer(Timer $timer): self
+    {
+        if ($this->timers->contains($timer)) {
+            $this->timers->removeElement($timer);
+            // set the owning side to null (unless already changed)
+            if ($timer->getTask() === $this) {
+                $timer->setTask(null);
+            }
+        }
 
         return $this;
     }

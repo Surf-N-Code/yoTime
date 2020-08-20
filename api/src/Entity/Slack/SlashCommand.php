@@ -11,6 +11,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *         "post"={
  *              "method"="POST",
  *              "path"="/slack/slashcommand",
+ *              "status"=202
  *          },
  *     },
  *     itemOperations={},

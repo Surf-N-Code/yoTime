@@ -23,16 +23,16 @@ class IntegrationTestCase extends WebTestCase
     {
         self::ensureKernelShutdown();
         $client = $this->makeClient();
-        $_SERVER['APP_ENV'] = 'dev';
 
         $client->enableProfiler();
 
-        $headers['HTTP_Authorization'] = 'Bearer '.$token;
+//        $headers['HTTP_Authorization'] = 'Bearer '.$token;
 
         $headers = array_merge([
             'CONTENT_TYPE' => 'application/json', //@todo change for betmessage event
 //            'HTTPS'=> true,
-//            'HTTP_HOST' => 'localhost:8443'
+//            'HTTP_HOST' => 'localhost:8443',
+//            'APP_ENV' => 'dev'
         ], $headers);
 
         $client->request($method, $uri, [], $files, $headers, $content);
