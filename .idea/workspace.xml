@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Switch to new RequestEvent">
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.env" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/Timer.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Timer.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,7 +239,8 @@
       <workItem from="1597693759766" duration="6351000" />
       <workItem from="1597773391407" duration="16302000" />
       <workItem from="1597836286532" duration="14063000" />
-      <workItem from="1598033996797" duration="398000" />
+      <workItem from="1598033996797" duration="8907000" />
+      <workItem from="1598095397127" duration="1233000" />
     </task>
     <task id="LOCAL-00001" summary="Add php command to docker entrypoint">
       <created>1597775564461</created>
@@ -303,7 +305,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597962947446</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Remove client and admin containers">
+      <created>1598034413274</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1598034413274</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,7 +332,8 @@
     <MESSAGE value="Add env prod in .env" />
     <MESSAGE value="Switch to new Responseevent" />
     <MESSAGE value="Switch to new RequestEvent" />
-    <option name="LAST_COMMIT_MESSAGE" value="Switch to new RequestEvent" />
+    <MESSAGE value="Remove client and admin containers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove client and admin containers" />
   </component>
   <component name="WindowStateProjectService">
     <state x="534" y="135" width="822" height="674" key="#CLI_Interpreters" timestamp="1597783630954">
@@ -342,10 +352,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="689" y="271" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597949609183" />
-    <state x="172" y="-35" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1598034353379">
+    <state x="170" y="-53" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1598034413166">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="172" y="-35" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1598034353379" />
+    <state x="170" y="-53" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1598034413166" />
     <state x="741" y="315" width="428" height="474" key="FileChooserDialogImpl" timestamp="1597785370806">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -406,10 +416,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="799" y="152" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597945426096" />
-    <state x="454" y="192" key="SettingsEditor" timestamp="1598034393906">
+    <state x="450" y="156" key="SettingsEditor" timestamp="1598034398757">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="454" y="192" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598034393906" />
+    <state x="450" y="156" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598034398757" />
     <state x="553" y="267" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1597962810349">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
