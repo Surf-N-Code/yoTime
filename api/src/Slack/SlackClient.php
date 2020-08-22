@@ -50,7 +50,6 @@ class SlackClient
 
     public function sendWebhook($data)
     {
-        dump($data);
         $responseUrl = $data['response_url'] ?? $_ENV['SLACK_WEBHOOK_URI'];
         unset($data['response_url']);
         $this->client->request('POST', $responseUrl, [
