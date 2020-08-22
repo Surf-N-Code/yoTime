@@ -6,7 +6,7 @@
     "CORS_ALLOW_ORIGIN": "https://diltheymedia.com"
   },
   "addons": [
-    "heroku-postgresql"
+    "cleardb:ignite"
   ],
   "buildpacks": [
     {
