@@ -30,6 +30,7 @@ final class DeserializeListener
             return;
         }
 
+        $cnt = $request->getContentType();
         if ('form' === $request->getContentType()) {
             $this->denormalizeFormRequest($request);
         } else {

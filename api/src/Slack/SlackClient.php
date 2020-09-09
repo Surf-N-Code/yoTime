@@ -5,50 +5,26 @@ namespace App\Slack;
 
 
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class SlackClient
 {
     /** @var HttpClient */
     private $client;
-//    protected static $instance;
 
-//    public static function getClient()
-//    {
-//        if (null === self::$instance) {
-//            self::$instance = new self();
-//            self::$instance::clientSetup();
-//        }
-//        return self::$client;
-//    }
-//
-//    protected function __clone() {}
-
-//    private static function clientSetup()
-//    {
-//        $client = HttpClient::create([
-//            'auth_bearer' => $_ENV['SLACK_BOT_TOKEN'],
-//            'base_uri' => 'http://localhost:8080/'
-//        ]);
-//        self::$client = $client;
-//    }
-    public function __construct()
+    public function __construct(HttpClientInterface $slackClient)
     {
-        $this->client = HttpClient::create([
-            'auth_bearer' => $_ENV['SLACK_BOT_TOKEN'],
-            'base_uri' => 'https://slack.com/api/'
-        ]);
+        $this->client = $slackClient;
     }
 
-    const DEFAULT_WEBHOOK = 'https://hooks.slack.com/services/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';
-
-    public function sendEphemeral($data)
+    public function slackApiCall($method, $slackEndpoint, $data)
     {
-        $this->client->request('POST', 'chat.postEphemeral', [
+        $this->client->request($method, $slackEndpoint, [
             'json' => $data
         ]);
     }
 
-    public function sendWebhook($data)
+    public function slackWebhook($data)
     {
         $responseUrl = $data['response_url'] ?? $_ENV['SLACK_WEBHOOK_URI'];
         unset($data['response_url']);

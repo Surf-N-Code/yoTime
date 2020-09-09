@@ -28,15 +28,15 @@ final class SlashCommandController implements MessageHandlerInterface
     public function __invoke(SlashCommand $command): void
     {
         try {
-            $m = $this->slashCommandHandler->getSlashCommandToExecute($command);
+            $this->slashCommandHandler->getSlashCommandToExecute($command);
         } catch (SlashCommandException | MessageHandlerException | DatabaseException $e) {
             $m = new SlackMessage();
             $m->addTextSection($e->getMessage());
-        }
 
-        $this->slackClient->sendWebhook([
-            'response_url' => $command->getResponseUrl(),
-            'blocks' => $m->getBlocks()
-        ]);
+            $this->slackClient->slackWebhook([
+                'response_url' => $command->getResponseUrl(),
+                'blocks' => $m->getBlocks()
+            ]);
+        }
     }
 }

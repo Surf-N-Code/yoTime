@@ -8,9 +8,12 @@ use App\Entity\Slack\SlackMessage;
 use App\Entity\Slack\SlashCommand;
 use App\Entity\TimerType;
 use App\Entity\User;
-use App\Exceptions\MessageHandlerException;
+use App\Mail\Mailer;
 use App\ObjectFactories\DailySummaryFactory;use App\Repository\DailySummaryRepository;
+use App\Services\DatabaseHelper;
 use App\Services\Time;
+use App\Slack\SlackClient;
+use Symfony\Component\Mailer\MailerInterface;
 
 class DailySummaryHandler
 {
@@ -23,42 +26,142 @@ class DailySummaryHandler
 
     private DailySummaryFactory $dailySummaryFactory;
 
+    private SlackClient $slackClient;
+
+    private DatabaseHelper $databaseHelper;
+
+    private Mailer $mailer;
+
     public function __construct(
         PunchTimerHandler $punchTimerHandler,
         DailySummaryRepository $dailySummaryRepo,
         Time $time,
-        DailySummaryFactory $dailySummaryFactory
+        DailySummaryFactory $dailySummaryFactory,
+        SlackClient $slackClient,
+        DatabaseHelper $databaseHelper,
+        Mailer $mailer
     )
     {
         $this->dailySummaryRepo = $dailySummaryRepo;
         $this->time = $time;
         $this->punchTimerHandler = $punchTimerHandler;
         $this->dailySummaryFactory = $dailySummaryFactory;
+        $this->slackClient = $slackClient;
+        $this->databaseHelper = $databaseHelper;
+        $this->mailer = $mailer;
     }
 
-    public function addDailySummaryFromSlackCommand(string $summary, User $user)
+    public function getDailySummarySubmitView(SlashCommand $command): void
     {
-        if ($summary === '' || !$summary) {
-            throw new MessageHandlerException('The daily summary is empty. Please provide some content for your daily summary. You could for example list the tasks you completed today. :call_me_hand:');
-        }
+        $view = [
+            'trigger_id' => $command->getTriggerId(),
+            'view' => [
+                'type' => 'modal',
+                'callback_id' => 'ml_ds',
+                'title' => [
+                    'type' => 'plain_text',
+                    'text' => 'Daily Summary'
+                ],
+                'submit' => [
+                    'type' => 'plain_text',
+                    'text' => 'Send'
+                ],
+                'blocks' => [
+                    [
+                        'type' => 'input',
+                        'block_id' => 'ml_block',
+                        'element' => [
+                            'type' => 'plain_text_input',
+                            'action_id' => 'ml_input',
+                            'multiline' => true,
+                            'placeholder' => [
+                                'type' => 'plain_text',
+                                'text' => 'Add the tasks your completed here...'
+                            ]
+                        ],
+                        'label' => [
+                            'type' => 'plain_text',
+                            'text' => 'Tasks'
+                        ]
+                    ],
+                    [
+                        'type' => 'section',
+                        'text' => [
+                            'type' => 'mrkdwn',
+                            'text' => 'Send Email?'
+                        ],
+                        'accessory' => [
+                            'type' => 'checkboxes',
+                            'options' => [
+                                [
+                                    'text' => [
+                                        'type' => 'plain_text',
+                                        'text' => 'Yes, please!',
+                                    ],
+                                    'value' => 'email'
+                                ],
+                                [
+                                    'text' => [
+                                        'type' => 'plain_text',
+                                        'text' => 'No, thanks!',
+                                    ],
+                                    'value' => 'no-email'
+                                ]
+                            ]
+                        ],
+                    ]
+                ]
+            ]
+        ];
+        $this->slackClient->slackApiCall('POST', 'views.open', $view);
+    }
 
+    public function getDailySummaryConfirmView(SlackMessage $m): array
+    {
+        return [
+            'response_action' => 'update',
+            'view' => [
+                'type' => 'modal',
+                'title' => [
+                    'type' => 'plain_text',
+                    'text' => 'Daily Summary sent!'
+                ],
+                'close' => [
+                    'type' => 'plain_text',
+                    'text' => 'Close'
+                ],
+                'blocks' => [
+                    [
+                        'type' => 'section',
+                        'text' => [
+                            'type' => 'mrkdwn',
+                            'text' => $m->getBlockText(0)
+                        ],
+                    ]
+                ],
+            ]
+        ];
+    }
+
+    public function handleDailySummaryEvent(string $summary, User $user)
+    {
         $punchOutTimer = $this->punchTimerHandler->punchOut($user);
 
-        $timeOnWork = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::WORK);
+        $timeOnWork = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::PUNCH);
         $timeOnBreak = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::BREAK);
 
         $ds = $this->updateOrCreateDailysummary($summary, $user, $timeOnWork, $timeOnBreak);
 
-        return [
-            $this->getDailySummaryAddSlackMessage($timeOnWork, $timeOnBreak, $punchOutTimer),
-            $ds
-        ];
+        $this->databaseHelper->flushAndPersist($ds);
+        $this->mailer->sendDAilySummaryMail(($timeOnWork-$timeOnBreak), $timeOnBreak, $user, $ds->getDailySummary());
+
+        return $this->getDailySummaryAddSlackMessage($timeOnWork, $timeOnBreak, $punchOutTimer);
     }
 
     public function updateOrCreateDailysummary(string $summary, User $user, int $timeOnWork, int $timeOnBreak)
     {
         $dailySummary = $this->dailySummaryRepo->findOneBy(['date' => new \DateTime('now')]);
-        return $this->dailySummaryFactory->createDailySummaryObject($summary, $dailySummary, $user, $timeOnWork, $timeOnBreak);
+        return $this->dailySummaryFactory->createDailySummaryObject($summary, $user, $dailySummary, $timeOnWork, $timeOnBreak);
     }
 
     private function getDailySummaryAddSlackMessage(int $timeOnWork, int $timeOnBreak, $punchOutTimer): SlackMessage
@@ -69,7 +172,7 @@ class DailySummaryHandler
         $formattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($timeOnWork - $timeOnBreak);
 
         if ($punchOutTimer) {
-            $msg = sprintf('Signed you out for the day and sent your daily summary :call_me_hand:. You spent `%s` on work and `%s` on break.', $formattedTimeOnWork, $formattedTimeOnBreak ?? '0h 0m');
+            $msg = sprintf(':heavy_check_mark: Signed you out for the day and sent your daily summary :call_me_hand:. \n\nYou spent *%s* on work and *%s* on break.', $formattedTimeOnWork, $formattedTimeOnBreak ?? '0h 0m');
         }
         return $m->addTextSection($msg ?? 'Sent your daily summary for today.');
     }

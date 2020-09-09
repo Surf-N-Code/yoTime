@@ -14,3 +14,8 @@ framework:
     #fragments: true
     php_errors:
         log: true
+    http_client:
+        scoped_clients:
+            slack.client:
+                auth_bearer: '%env(SLACK_BOT_TOKEN)%'
+                base_uri: 'https://slack.com/api/'

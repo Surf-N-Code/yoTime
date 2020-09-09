@@ -1,15 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add idea folder to gitignore">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/nginx_app.conf" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add nginx to heroku">
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Slack/SlackInteractionEvent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Slack/SlackSecurityVoter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Handler/MessageController/Slack/InteractionEventController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/InteractionEventHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Security/Slack/EventListener/SecurityListener.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTestTemp.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/api/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/api/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.env" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/framework.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Project.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/Slack/SlackBotMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Slack/SlackBotMessage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/Slack/SlashCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Slack/SlashCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/Timer.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Timer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/EventListener/DeserializeListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/EventListener/DeserializeListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageController/Slack/BotMessageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageController/Slack/BotMessageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageController/Slack/SlashCommandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageController/Slack/SlashCommandController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/TimerHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/TimerHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Mail/Mailer.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Mail/Mailer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/ObjectFactories/DailySummaryFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/ObjectFactories/DailySummaryFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Repository/TimerRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Repository/TimerRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Services/DatabaseHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Services/DatabaseHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Services/Time.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Services/Time.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Services/UserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Services/UserProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/Slack/SlackClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Slack/SlackClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +65,15 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="api-platform" id="e32424dd-4548-41dc-9a97-80939239a3f6" name="Unnamed" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$" remote-root="/api" />
+        </path_mappings>
+      </server>
+    </servers>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="quay.io/api-platform/php:latest">
     <include_path>
@@ -182,38 +234,41 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/api" />
-      <recent name="$PROJECT_DIR$/api/config/packages/dev" />
-      <recent name="$PROJECT_DIR$/api/src/Handler/MessageHandler" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/src" />
       <recent name="$PROJECT_DIR$/api/src/Handler/MessageController" />
       <recent name="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack" />
+      <recent name="$PROJECT_DIR$/api/src/Handler/MessageController/Slack" />
+      <recent name="$PROJECT_DIR$/api/src/Entity/Slack" />
+      <recent name="$PROJECT_DIR$/api" />
+      <recent name="$PROJECT_DIR$/api/tests/Security/Slack/EventListener" />
+    </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.SlashCommandMessageControllerTest.testWorkSlashCommandEvent">
-    <configuration name="SlashCommandHandlerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Handler\MessageHandler\Slack\SlashCommandHandlerTest" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" scope="Class" />
+  <component name="RunManager" selected="PHPUnit.SecurityListenerTestTemp.testWorkSlashCommandEvent">
+    <configuration name="SecurityListenerTest2.testWorkSlashCommandEvent" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Security\Slack\EventListener\SecurityListenerTest2" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTestTemp.php" method="testWorkSlashCommandEvent" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="SlashCommandHandlerTest.testWorkCommand" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Handler\MessageHandler\Slack\SlashCommandHandlerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" method="testWorkCommand" scope="Method" />
+    <configuration name="SecurityListenerTestTemp.testWorkSlashCommandEvent" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Security\Slack\EventListener\SecurityListenerTestTemp" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTestTemp.php" method="testWorkSlashCommandEvent" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="SlashCommandMessageControllerTest.testSlackBotVerification" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Handler\MessageController\Slack\SlashCommandMessageControllerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" method="testSlackBotVerification" scope="Method" />
+    <configuration name="SecurityListenerTest.testWorkSlashCommandEvent (1)" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Security\Slack\EventListener\SecurityListenerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTestTemp.php" method="testWorkSlashCommandEvent" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="SlashCommandMessageControllerTest.testWorkEvent" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Handler\MessageController\Slack\SlashCommandMessageControllerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" method="testWorkEvent" scope="Method" />
+    <configuration name="SecurityListenerTest.testWorkSlashCommandEvent" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Security\Slack\EventListener\SecurityListenerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTest.php" method="testWorkSlashCommandEvent" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="SlashCommandMessageControllerTest.testWorkSlashCommandEvent" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -222,11 +277,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.SecurityListenerTestTemp.testWorkSlashCommandEvent" />
+        <item itemvalue="PHPUnit.SecurityListenerTest2.testWorkSlashCommandEvent" />
+        <item itemvalue="PHPUnit.SecurityListenerTest.testWorkSlashCommandEvent (1)" />
+        <item itemvalue="PHPUnit.SecurityListenerTest.testWorkSlashCommandEvent" />
         <item itemvalue="PHPUnit.SlashCommandMessageControllerTest.testWorkSlashCommandEvent" />
-        <item itemvalue="PHPUnit.SlashCommandMessageControllerTest.testSlackBotVerification" />
-        <item itemvalue="PHPUnit.SlashCommandMessageControllerTest.testWorkEvent" />
-        <item itemvalue="PHPUnit.SlashCommandHandlerTest.testWorkCommand" />
-        <item itemvalue="PHPUnit.SlashCommandHandlerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -245,7 +300,16 @@
       <workItem from="1597773391407" duration="16302000" />
       <workItem from="1597836286532" duration="14063000" />
       <workItem from="1598033996797" duration="8907000" />
-      <workItem from="1598095397127" duration="6292000" />
+      <workItem from="1598095397127" duration="8145000" />
+      <workItem from="1598256229602" duration="461000" />
+      <workItem from="1599157108931" duration="5897000" />
+      <workItem from="1599248850099" duration="34436000" />
+      <workItem from="1599456728091" duration="137000" />
+      <workItem from="1599458320481" duration="1513000" />
+      <workItem from="1599496493605" duration="10273000" />
+      <workItem from="1599543987784" duration="6000" />
+      <workItem from="1599583672818" duration="11344000" />
+      <workItem from="1599596586761" duration="3471000" />
     </task>
     <task id="LOCAL-00001" summary="Add php command to docker entrypoint">
       <created>1597775564461</created>
@@ -324,11 +388,30 @@
       <option name="project" value="LOCAL" />
       <updated>1598106970811</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add nginx to heroku">
+      <created>1598116829652</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1598116829652</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -346,7 +429,8 @@
     <MESSAGE value="Switch to new RequestEvent" />
     <MESSAGE value="Remove client and admin containers" />
     <MESSAGE value="Add idea folder to gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add idea folder to gitignore" />
+    <MESSAGE value="Add nginx to heroku" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add nginx to heroku" />
   </component>
   <component name="WindowStateProjectService">
     <state x="534" y="135" width="822" height="674" key="#CLI_Interpreters" timestamp="1597783630954">
@@ -357,98 +441,122 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="713" y="290" width="454" height="317" key="#Docker2/0.0.1920.1080@0.0.1920.1080" timestamp="1597783550185" />
-    <state x="700" y="42" width="804" height="667" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598113543712">
+    <state x="615" y="64" width="804" height="667" key="#Servers" timestamp="1599344354582">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="700" y="42" width="804" height="667" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1598113543712" />
-    <state x="689" y="271" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597949609183">
+    <state x="615" y="64" width="804" height="667" key="#Servers/0.0.1920.1080@0.0.1920.1080" timestamp="1599344354582" />
+    <state x="688" y="-66" width="804" height="667" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599399360279">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="689" y="271" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597949609183" />
-    <state x="162" y="-25" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1598116768399">
+    <state x="688" y="-66" width="804" height="667" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599399360279" />
+    <state x="86" y="-36" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1599585568423">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="162" y="-25" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1598116768399" />
+    <state x="86" y="-36" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599585568423" />
+    <state x="687" y="253" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599308227346">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="687" y="253" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599308227346" />
+    <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog" timestamp="1599332894112">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
+    <state x="156" y="-79" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1599589389971">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="156" y="-79" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1599589389971" />
+    <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="516" height="465" key="DebuggerActiveHint/0.0.1920.1080@0.0.1920.1080" timestamp="1599333625815" />
+    <state x="29" y="100" width="1862" height="951" key="DiffContextDialog" timestamp="1599390510154">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="29" y="100" width="1862" height="951" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599390510154" />
     <state x="741" y="315" width="428" height="474" key="FileChooserDialogImpl" timestamp="1597785370806">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="741" y="315" width="428" height="474" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1597785370806" />
-    <state width="1816" height="265" key="GridCell.Tab.0.bottom" timestamp="1597993957922">
+    <state width="1816" height="253" key="GridCell.Tab.0.bottom" timestamp="1599590962820">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597993957922" />
-    <state width="1816" height="265" key="GridCell.Tab.0.center" timestamp="1597993957922">
+    <state width="1816" height="253" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962820" />
+    <state width="1816" height="253" key="GridCell.Tab.0.center" timestamp="1599590962819">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597993957922" />
-    <state width="1816" height="265" key="GridCell.Tab.0.left" timestamp="1597993957922">
+    <state width="1816" height="253" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962819" />
+    <state width="1816" height="253" key="GridCell.Tab.0.left" timestamp="1599590962819">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597993957922" />
-    <state width="1816" height="265" key="GridCell.Tab.0.right" timestamp="1597993957922">
+    <state width="1816" height="253" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962819" />
+    <state width="1816" height="253" key="GridCell.Tab.0.right" timestamp="1599590962820">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597993957922" />
-    <state width="1816" height="265" key="GridCell.Tab.1.bottom" timestamp="1597993957922">
+    <state width="1816" height="253" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962820" />
+    <state width="1816" height="253" key="GridCell.Tab.1.bottom" timestamp="1599590962860">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597993957922" />
-    <state width="1816" height="265" key="GridCell.Tab.1.center" timestamp="1597993957922">
+    <state width="1816" height="253" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962860" />
+    <state width="1816" height="253" key="GridCell.Tab.1.center" timestamp="1599590962860">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597993957922" />
-    <state width="1816" height="265" key="GridCell.Tab.1.left" timestamp="1597993957921">
+    <state width="1816" height="253" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962860" />
+    <state width="1816" height="253" key="GridCell.Tab.1.left" timestamp="1599590962860">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597993957921" />
-    <state width="1816" height="265" key="GridCell.Tab.1.right" timestamp="1597993957922">
+    <state width="1816" height="253" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962860" />
+    <state width="1816" height="253" key="GridCell.Tab.1.right" timestamp="1599590962860">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597993957922" />
-    <state width="1816" height="265" key="GridCell.Tab.2.bottom" timestamp="1597993957919">
+    <state width="1816" height="253" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962860" />
+    <state width="1816" height="253" key="GridCell.Tab.2.bottom" timestamp="1599590962821">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1597993957919" />
-    <state width="1816" height="265" key="GridCell.Tab.2.center" timestamp="1597993957919">
+    <state width="1816" height="253" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962821" />
+    <state width="1816" height="253" key="GridCell.Tab.2.center" timestamp="1599590962820">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1597993957919" />
-    <state width="1816" height="265" key="GridCell.Tab.2.left" timestamp="1597993957919">
+    <state width="1816" height="253" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962820" />
+    <state width="1816" height="253" key="GridCell.Tab.2.left" timestamp="1599590962820">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1597993957919" />
-    <state width="1816" height="265" key="GridCell.Tab.2.right" timestamp="1597993957919">
+    <state width="1816" height="253" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962820" />
+    <state width="1816" height="253" key="GridCell.Tab.2.right" timestamp="1599590962820">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="265" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1597993957919" />
+    <state width="1816" height="253" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962820" />
     <state width="227" height="471" key="HiddenNamespacesPopup" timestamp="1598113578403">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="227" height="471" key="HiddenNamespacesPopup/0.0.1920.1080@0.0.1920.1080" timestamp="1598113578403" />
+    <state x="629" y="242" width="648" height="532" key="NewPhpClassDialog" timestamp="1599304354262">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="629" y="242" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599304354262" />
     <state x="799" y="152" width="389" height="578" key="RollbackChangesDialog" timestamp="1597945426096">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="799" y="152" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597945426096" />
-    <state x="450" y="156" key="SettingsEditor" timestamp="1598034398757">
+    <state x="454" y="183" key="SettingsEditor" timestamp="1599588458437">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="450" y="156" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1598034398757" />
-    <state x="551" y="249" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1598106997202">
+    <state x="454" y="183" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1599588458437" />
+    <state x="549" y="231" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1598116833523">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="551" y="249" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1598106997202" />
-    <state x="622" y="345" width="666" height="362" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1597695509244">
+    <state x="549" y="231" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1598116833523" />
+    <state x="620" y="327" width="666" height="362" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1599305736194">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="622" y="345" width="666" height="362" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597695509244" />
-    <state x="666" y="156" width="637" height="560" key="find.popup" timestamp="1598116597419">
+    <state x="620" y="327" width="666" height="362" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599305736194" />
+    <state x="666" y="156" width="722" height="560" key="find.popup" timestamp="1599348264878">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="666" y="156" width="637" height="560" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1598116597419" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1598116782906">
+    <state x="666" y="156" width="722" height="560" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1599348264878" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1599507438241">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1598116782906" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1599507438241" />
     <state x="675" y="374" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1597949521867">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -458,24 +566,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php</url>
-          <line>40</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php</url>
-          <line>82</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/TimerHandler.php</url>
           <line>35</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/ApiTestCase.php</url>
-          <line>49</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/api/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php</url>
+          <line>737</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php</url>
+          <line>124</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -38,7 +38,7 @@ class Project
      * @ApiSubresource()
      * @ORM\OneToMany(targetEntity="App\Entity\Timer", mappedBy="project")
      */
-    private $timeEntries;
+    private $timers;
 
     /**
      * @ApiSubresource()
@@ -59,7 +59,8 @@ class Project
 
     public function __construct()
     {
-        $this->timeEntries = new ArrayCollection();
+        $this->timers
+            = new ArrayCollection();
         $this->tasks = new ArrayCollection();
         $this->users = new ArrayCollection();
     }
@@ -96,28 +97,28 @@ class Project
     /**
      * @return Collection|Timer[]
      */
-    public function getTimeEntries(): Collection
+    public function getTimers(): Collection
     {
-        return $this->timeEntries;
+        return $this->timers;
     }
 
-    public function startTimer(Timer $timeEntry): self
+    public function startTimer(Timer $timer): self
     {
-        if (!$this->timeEntries->contains($timeEntry)) {
-            $this->timeEntries[] = $timeEntry;
-            $timeEntry->setProject($this);
+        if (!$this->timers->contains($timer)) {
+            $this->timers[] = $timer;
+            $timer->setProject($this);
         }
 
         return $this;
     }
 
-    public function removeTimer(Timer $timeEntry): self
+    public function removeTimer(Timer $timer): self
     {
-        if ($this->timeEntries->contains($timeEntry)) {
-            $this->timeEntries->removeElement($timeEntry);
+        if ($this->timers->contains($timer)) {
+            $this->timers->removeElement($timer);
             // set the owning side to null (unless already changed)
-            if ($timeEntry->getProject() === $this) {
-                $timeEntry->setProject(null);
+            if ($timer->getProject() === $this) {
+                $timer->setProject(null);
             }
         }
 

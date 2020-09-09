@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Entity\Slack\SlackUser;
 use App\Entity\SlackTeam;
+use App\Entity\Task;
 use App\Entity\User;
 use App\Slack\SlackClient;use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
@@ -43,7 +44,7 @@ class UserProvider
         return $dbUser;
     }
 
-    public function getSlackUserInfo($slackUserId): SlackUser
+    public function getSlackUserInfo($slackUserId): SlackUserW
     {
         try {
             $response = $this->client->getSlackUserProfile($slackUserId);
@@ -57,7 +58,7 @@ class UserProvider
 
     public function getDbUserBySlackId($slackUserId): User
     {
-        /** @var User $user */
+        $users = $this->em->getRepository(User::class)->findAll();
         $user = $this->em->getRepository(User::class)->findOneBy(['slackUserId' => $slackUserId]);
         if (!$user) {
             $msg = sprintf('Could not find user with slack ID: %s in our database. The user in question should use the `/register` command', $slackUserId);

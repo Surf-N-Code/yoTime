@@ -24,7 +24,7 @@ class DatabaseHelper {
             $this->em->flush();
         } catch (\Exception $e) {
             $this->logger->error('Error adding object to db with message: ' . $e->getMessage());
-            throw new \RuntimeException('An error occurred while ending your timer. Please contact support', 400);
+            throw new \RuntimeException('Uuupss... an error occurred. Please contact support', 400);
         }
     }
 }

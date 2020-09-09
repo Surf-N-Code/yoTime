@@ -12,18 +12,31 @@ use App\Exceptions\SlashCommandException;
 use App\Mail\Mailer;use App\Services\DatabaseHelper;
 use App\Services\Time;
 use App\Services\UserProvider;
+use App\Slack\SlackClient;
 use App\Slack\SlackMessageHelper;
+use Doctrine\DBAL\DBALException;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class SlashCommandHandler {
 
     private UserProvider $userProvider;
+
     private TimerHandler $timerHandler;
+
     private UserHelpHandler $userHelpHandler;
+
     private DailySummaryHandler $dailySummaryHandler;
+
     private SlackMessageHelper $slackMessageHelper;
+
     private DatabaseHelper $databaseHelper;
+
     private Time $time;
+
     private Mailer $mailer;
+
+    private SlackClient $slackClient;
 
     public function __construct(
         UserHelpHandler $userHelpHandler,
@@ -32,7 +45,8 @@ class SlashCommandHandler {
         UserProvider $userProvider,
         DatabaseHelper $databaseHelper,
         Mailer $mailer,
-        Time $time
+        Time $time,
+        SlackClient $slackClient
     )
     {
         $this->userHelpHandler = $userHelpHandler;
@@ -42,48 +56,55 @@ class SlashCommandHandler {
         $this->databaseHelper = $databaseHelper;
         $this->mailer = $mailer;
         $this->time = $time;
+        $this->slackClient = $slackClient;
     }
 
-    public function getSlashCommandToExecute(SlashCommand $command): ?SlackMessage
+    public function getSlashCommandToExecute(SlashCommand $command)
     {
         $message = new SlackMessage();
         $user = $this->getUser($command->getUserId());
         $commandStr = $command->getCommand();
         $commandText = $command->getText();
+        $responseUrl = $command->getResponseUrl();
         switch ($commandStr) {
             case '/'.TimerType::WORK:
             case '/'.TimerType::BREAK:
-                $objectToPersist = $this->timerHandler->startTimer($commandStr, $user);
-                $message = $message->addTextSection(sprintf('%s timer started', ucfirst($objectToPersist->getTimerType())));
+                $timer = $this->timerHandler->startTimer($commandStr, $user);
+                $message = $message->addTextSection(sprintf('%s timer started', ucfirst($timer->getTimerType())));
+                $this->databaseHelper->flushAndPersist($timer);
+                $this->sendSlackMessage($responseUrl, $message);
                 break;
 
             case '/late_hi':
-                $objectToPersist = $this->timerHandler->lateSignIn($user, $commandText);
-                $message->addTextSection(sprintf('Checked you in at %s :rocket:', $objectToPersist->getDateStart()->format('d.m.Y H:i:s')));
+                $timer = $this->timerHandler->lateSignIn($user, $commandText);
+                $message->addTextSection(sprintf('Checked you in at %s :rocket:', $timer->getDateStart()->format('d.m.Y H:i:s')));
+                $this->databaseHelper->flushAndPersist($timer);
+                $this->sendSlackMessage($responseUrl, $message);
                 break;
 
             case '/late_break':
-                $objectToPersist = $this->timerHandler->addBreakManually($user, $commandText);
+                $timer = $this->timerHandler->addBreakManually($user, $commandText);
                 $message->addTextSection('Break successfully added');
+                $this->databaseHelper->flushAndPersist($timer);
+                $this->sendSlackMessage($responseUrl, $message);
                 break;
 
             case '/end_break':
             case '/end_work':
-                $objectToPersist = $this->timerHandler->stopTimer($user, $commandText);
+                $timer = $this->timerHandler->stopTimer($user, $commandText);
                 $timeSpent = $this->time->formatSecondsAsHoursAndMinutes(
-                    abs($objectToPersist->getDateEnd()->getTimestamp() - $objectToPersist->getDateStart()->getTimestamp())
+                    abs($timer->getDateEnd()->getTimestamp() - $timer->getDateStart()->getTimestamp())
                 );
-                $msg = sprintf('You spent `%s` on `%s`', $timeSpent, $objectToPersist->getTimerType());
+                $msg = sprintf('You spent `%s` on `%s`', $timeSpent, $timer->getTimerType());
 
                 $message->addTextSection(sprintf('Timer stopped. %s', $msg));
+                $this->databaseHelper->flushAndPersist($timer);
+                $this->sendSlackMessage($responseUrl, $message);
                 break;
 
             case '/dailysummary':
             case '/ds':
-                [$message, $objectToPersist] = $this->dailySummaryHandler->addDailySummaryFromSlackCommand($command->getText(), $user);
-                $timeOnWorkInS = $objectToPersist->getTimeWorkedInS();
-                $timeOnBreakInS = $objectToPersist->getTimeBreakInS();
-                $this->mailer->sendDAilySummaryMail(($timeOnWorkInS-$timeOnBreakInS), $timeOnBreakInS, $user, $objectToPersist->getDailySummary());
+                $this->dailySummaryHandler->getDailySummarySubmitView($command);
                 break;
 
             case '/help':
@@ -93,12 +114,6 @@ class SlashCommandHandler {
             default:
                 $message->addTextSection(sprintf('Command `%s` is not supported. Try `/help` for a list of available commands',$command->getCommand()));
         }
-
-        if ($objectToPersist) {
-            $this->databaseHelper->flushAndPersist($objectToPersist);
-        }
-
-        return $message;
     }
 
     private function getUser(string $slackUserId): User
@@ -107,10 +122,18 @@ class SlashCommandHandler {
 
         try {
             $user = $this->userProvider->getDbUserBySlackId($slackUserId);
-        } catch (\Exception $e) {
+        } catch (NotFoundHttpException $e) {
             throw new SlashCommandException($message, 412);
         }
 
         return $user;
+    }
+
+    private function sendSlackMessage(string $respnseUrl, SlackMessage $m)
+    {
+        $this->slackClient->slackWebhook([
+            'response_url' => $respnseUrl,
+            'blocks' => $m->getBlocks()
+        ]);
     }
 }

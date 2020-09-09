@@ -18,6 +18,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
  */
 class SlackBotMessage extends AbstractSlack
 {
+    const ENDPOINT_PATH = '/slack/bot/message';
+
     /**
      * @var SlackBotEvent
      */

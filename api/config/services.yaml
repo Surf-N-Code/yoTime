@@ -36,3 +36,10 @@ services:
         decorates: 'api_platform.listener.request.deserialize'
         arguments:
             $decorated: '@App\EventListener\DeserializeListener.inner'
+
+    App\Security\Slack\EventListener\SecurityListener:
+        arguments:
+            $slackSignSecret: '%env(SLACK_SIGN_SECRET)%'
+            $slackApiAppId: '%env(SLACK_API_APP_ID)%'
+#        tags:
+#            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
