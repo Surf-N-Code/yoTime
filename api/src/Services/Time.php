@@ -36,6 +36,7 @@ class Time
     public function startTimer(User $user, $timerType, \DateTime $dateStart = null): Timer
     {
         $currentUserTime = $this->dateTimeProvider->getLocalUserTime($user);
+        dump($currentUserTime);
         return $this->timeEntryFactory->createTimerObject($timerType, $user, $dateStart ?? $currentUserTime);
     }
 
@@ -154,7 +155,7 @@ class Time
             $s += abs($tE - $entry->getDateStart()->getTimestamp());
         }
 
-        return (int) $s;
+        return $s ?? 0;
     }
 
     public function getWorktimeByPeriod(User $user, $period)

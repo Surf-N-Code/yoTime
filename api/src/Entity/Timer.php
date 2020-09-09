@@ -31,7 +31,7 @@ class Timer
     private $dateEnd;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Project::class)
+     * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="timers")
      */
     private $project;
 

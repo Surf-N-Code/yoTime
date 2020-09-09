@@ -45,7 +45,7 @@ final class BotMessageController implements MessageHandlerInterface
                 return new Response($challenge, 200);
             }
         } catch (\Exception $e) {
-            $this->client->sendEphemeral([
+            $this->client->slackEphemeral([
                 'channel' => $slackBotMessage->getChannelId(),
                 'user' => $slackBotMessage->getUserId(),
                 'text' => $slackBotMessage->getText()
@@ -62,7 +62,7 @@ final class BotMessageController implements MessageHandlerInterface
             $m->addTextSection($e->getMessage());
         }
 
-        $this->client->sendWebhook([
+        $this->client->slackWebhook([
             'channel' => $slackBotMessage->getEvent()->getChannel(),
             'text' => $m->getBlockText(0),
             'user' => $slackUserId

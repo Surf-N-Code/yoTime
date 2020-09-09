@@ -10,7 +10,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *     collectionOperations={
  *         "post"={
  *              "method"="POST",
- *              "path"="/slack/slashcommand",
+ *              "path"="/slack/interaction",
  *              "status"=202
  *          },
  *     },
@@ -18,7 +18,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *     output=false
  * )
  */
-class SlashCommand extends AbstractSlack
+class SlackInteractionEvent
 {
-    const ENDPOINT_PATH = '/slack/slashcommand';
+    const ENDPOINT_PATH = '/slack/interaction';
+
+    public $payload;
+
+    public function getPayload()
+    {
+        return json_decode($this->payload, true);
+    }
 }

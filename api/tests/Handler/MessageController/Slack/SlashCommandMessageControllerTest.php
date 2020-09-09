@@ -53,7 +53,7 @@ class SlashCommandMessageControllerTest extends ApiTestCase
 //        self::assertEquals(200, $response->getStatusCode());
 
         // The client implements Symfony HttpClient's `HttpClientInterface`, and the response `ResponseInterface`
-        $response = static::createClient()->request('GET', '/timers');
+        $response = static::createClient()->request('GET', '/slack/slashcommand');
 
         dump($response);
         $this->assertResponseIsSuccessful();

@@ -4,7 +4,12 @@
 namespace App\Mail;
 
 
-use App\Entity\User;use App\Exceptions\MessageHandlerException;use App\Services\Time;use Psr\Log\LoggerInterface;use Symfony\Component\Mailer\Exception\TransportExceptionInterface;use Symfony\Component\Mailer\MailerInterface;use Symfony\Component\Mime\Email;
+use App\Entity\User;use App\Exceptions\MessageHandlerException;use App\Services\Time;use Psr\Log\LoggerInterface;
+use Symfony\Component\Mailer\Envelope;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mime\RawMessage;
 
 class Mailer {
 
@@ -46,6 +51,11 @@ class Mailer {
 
         $subject = sprintf('Daily Summary of %s', $user->getFullName());
         $content = sprintf('<strong>%s</strong><br>Work: %s<br>Break: %s<br><pre>%s</pre>', $user->getFullName(), $ormattedTimeOnWork, $formattedTimeOnBreak, $summary);
-        $this->mailer->send('timey@timey.com', 'ndilthey@gmail.com', $subject, $content);
+        $sender = new Address('yoTime@yotime.io', 'yoTime');
+        $recipient = new Address('ndilthey@gmail.com', 'Norman Dilthey
+        ');
+        $envelope = new Envelope($sender, [$recipient]);
+        $rawMessage = new RawMessage($content);
+        $this->mailer->send($rawMessage, $envelope);
     }
 }
