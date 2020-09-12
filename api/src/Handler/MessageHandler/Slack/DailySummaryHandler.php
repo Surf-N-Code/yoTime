@@ -70,10 +70,10 @@ class DailySummaryHandler
                 'blocks' => [
                     [
                         'type' => 'input',
-                        'block_id' => 'ml_block',
+                        'block_id' => 'summary_block',
                         'element' => [
                             'type' => 'plain_text_input',
-                            'action_id' => 'ml_input',
+                            'action_id' => 'summary_block_input',
                             'multiline' => true,
                             'placeholder' => [
                                 'type' => 'plain_text',
@@ -87,6 +87,7 @@ class DailySummaryHandler
                     ],
                     [
                         'type' => 'input',
+                        'block_id' => 'mail_block',
                         'label' => [
                             'type' => 'plain_text',
                             'text' => 'Send E-Mail?',
@@ -94,6 +95,7 @@ class DailySummaryHandler
                         ],
                         'element' => [
                             'type' => 'static_select',
+                            'action_id' => 'mail_choice',
                             'placeholder' => [
                                 'type' => 'plain_text',
                                 'text' => 'Send E-Mail?',
@@ -104,7 +106,7 @@ class DailySummaryHandler
                                     'type' => 'plain_text',
                                     'text' => ':heavy_check_mark: yes'
                                 ],
-                                'value' => 'value-0'
+                                'value' => 'true'
 				            ],
                             'options' => [
                                 [
@@ -113,7 +115,7 @@ class DailySummaryHandler
                                         'text' => ':heavy_check_mark: yes',
                                         'emoji' => true
 						            ],
-						            'value' => 'value-0'
+						            'value' => 'true'
                                 ],
                                 [
                                     "text" => [
@@ -121,7 +123,7 @@ class DailySummaryHandler
                                         'text' => ':x: no',
                                         'emoji' => true
                                     ],
-                                    'value' => 'value-1'
+                                    'value' => 'false'
                                 ],
                             ]
                         ]
@@ -158,7 +160,7 @@ class DailySummaryHandler
         ];
     }
 
-    public function handleDailySummaryEvent(string $summary, User $user)
+    public function handleDailySummaryEvent(string $summary, User $user, bool $doSendMail)
     {
 
         try {
@@ -173,7 +175,7 @@ class DailySummaryHandler
         $ds = $this->updateOrCreateDailysummary($summary, $user, $timeOnWork, $timeOnBreak);
 
         $this->databaseHelper->flushAndPersist($ds);
-        $this->mailer->sendDAilySummaryMail(($timeOnWork-$timeOnBreak), $timeOnBreak, $user, $ds->getDailySummary());
+        $doSendMail ? $this->mailer->sendDAilySummaryMail(($timeOnWork-$timeOnBreak), $timeOnBreak, $user, $ds->getDailySummary()) : null;
 
         return $this->getDailySummaryAddSlackMessage($timeOnWork, $timeOnBreak, $punchOutTimer);
     }

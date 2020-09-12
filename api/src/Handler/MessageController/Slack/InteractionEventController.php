@@ -47,6 +47,7 @@ final class InteractionEventController implements MessageHandlerInterface
         dump($payload);
         try {
             $m = $this->interactionEventHandler->parseEventType($payload);
+
             $json = $this->dailySummaryHandler->getDailySummaryConfirmView($m);
             dump($json);
             return new JsonResponse($json, 200); //@todo change to 200
