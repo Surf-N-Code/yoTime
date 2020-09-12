@@ -20,7 +20,7 @@ final class InteractionEventController implements MessageHandlerInterface
 {
     private JsonBodyTransform $jsonBodyTransform;
     private RequestStack $requestStack;
-    private SlackClient $client;
+    private SlackClient $slackClient;
     private InteractionEventHandler $interactionEventHandler;
 
     private DailySummaryHandler $dailySummaryHandler;
@@ -28,14 +28,14 @@ final class InteractionEventController implements MessageHandlerInterface
     public function __construct(
         JsonBodyTransform $jsonBodyTransform,
         RequestStack $requestStack,
-        SlackClient $client,
+        SlackClient $slackClient,
         InteractionEventHandler $interactionEventHandler,
         DailySummaryHandler $dailySummaryHandler
     )
     {
         $this->jsonBodyTransform = $jsonBodyTransform;
         $this->requestStack = $requestStack;
-        $this->client = $client;
+        $this->slackClient = $slackClient;
         $this->interactionEventHandler = $interactionEventHandler;
         $this->dailySummaryHandler = $dailySummaryHandler;
     }

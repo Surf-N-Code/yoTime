@@ -104,7 +104,8 @@ class SlashCommandHandler {
 
             case '/dailysummary':
             case '/ds':
-                $this->dailySummaryHandler->getDailySummarySubmitView($command);
+                $modal = $this->dailySummaryHandler->getDailySummarySubmitView($command->getTriggerId());
+                $this->slackClient->slackApiCall('POST', 'views.open', $modal);
                 break;
 
             case '/help':
