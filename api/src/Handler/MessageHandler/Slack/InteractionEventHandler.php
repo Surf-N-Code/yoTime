@@ -49,8 +49,9 @@ class InteractionEventHandler
         }
 
         if ($eventType === 'view_submission') {
-            $summaryText = $evt['view']['state']['values']['ml_block']['ml_input']['value'];
-            return $this->dailySummaryHandler->handleDailySummaryEvent($summaryText, $user);
+            $summaryText = $evt['view']['state']['values']['summary_block']['summary_block_input']['value'];
+            $doSendMail = $evt['view']['state']['values']['mail_block']['mail_choice']['selected_option']['value'] === 'true';
+            return $this->dailySummaryHandler->handleDailySummaryEvent($summaryText, $user, $doSendMail);
         }
 
         if ($eventType === 'block_actions') {
