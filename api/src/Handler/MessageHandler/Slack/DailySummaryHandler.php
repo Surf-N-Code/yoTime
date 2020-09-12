@@ -8,6 +8,7 @@ use App\Entity\Slack\SlackMessage;
 use App\Entity\Slack\SlashCommand;
 use App\Entity\TimerType;
 use App\Entity\User;
+use App\Exceptions\MessageHandlerException;
 use App\Mail\Mailer;
 use App\ObjectFactories\DailySummaryFactory;use App\Repository\DailySummaryRepository;
 use App\Services\DatabaseHelper;
@@ -51,10 +52,10 @@ class DailySummaryHandler
         $this->mailer = $mailer;
     }
 
-    public function getDailySummarySubmitView(SlashCommand $command): void
+    public function getDailySummarySubmitView(string $slackTriggerId): array
     {
-        $view = [
-            'trigger_id' => $command->getTriggerId(),
+        return [
+            'trigger_id' => $slackTriggerId,
             'view' => [
                 'type' => 'modal',
                 'callback_id' => 'ml_ds',
@@ -85,35 +86,49 @@ class DailySummaryHandler
                         ]
                     ],
                     [
-                        'type' => 'section',
-                        'text' => [
-                            'type' => 'mrkdwn',
-                            'text' => 'Send Email?'
+                        'type' => 'input',
+                        'label' => [
+                            'type' => 'plain_text',
+                            'text' => 'Send E-Mail?',
+                            'emoji' => true
                         ],
-                        'accessory' => [
-                            'type' => 'checkboxes',
+                        'element' => [
+                            'type' => 'static_select',
+                            'placeholder' => [
+                                'type' => 'plain_text',
+                                'text' => 'Send E-Mail?',
+                                'emoji' => true
+                            ],
+                            'initial_option' => [
+                                'text' => [
+                                    'type' => 'plain_text',
+                                    'text' => ':heavy_check_mark: yes'
+                                ],
+                                'value' => 'value-0'
+				            ],
                             'options' => [
                                 [
-                                    'text' => [
+                                    "text" => [
                                         'type' => 'plain_text',
-                                        'text' => 'Yes, please!',
-                                    ],
-                                    'value' => 'email'
+                                        'text' => ':heavy_check_mark: yes',
+                                        'emoji' => true
+						            ],
+						            'value' => 'value-0'
                                 ],
                                 [
-                                    'text' => [
+                                    "text" => [
                                         'type' => 'plain_text',
-                                        'text' => 'No, thanks!',
+                                        'text' => ':x: no',
+                                        'emoji' => true
                                     ],
-                                    'value' => 'no-email'
-                                ]
+                                    'value' => 'value-1'
+                                ],
                             ]
-                        ],
+                        ]
                     ]
                 ]
             ]
         ];
-        $this->slackClient->slackApiCall('POST', 'views.open', $view);
     }
 
     public function getDailySummaryConfirmView(SlackMessage $m): array
@@ -145,7 +160,12 @@ class DailySummaryHandler
 
     public function handleDailySummaryEvent(string $summary, User $user)
     {
-        $punchOutTimer = $this->punchTimerHandler->punchOut($user);
+
+        try {
+            $punchOutTimer = $this->punchTimerHandler->punchOut($user);
+        } catch (MessageHandlerException $e) {
+            return (new SlackMessage())->addTextSection($e->getMessage());
+        }
 
         $timeOnWork = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::PUNCH);
         $timeOnBreak = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::BREAK);

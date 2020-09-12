@@ -67,7 +67,7 @@ services:
       MYSQL_DATABASE: yoTime
     ports:
       - target: 3306
-        published: 3307
+        published: 3308
         protocol: tcp
 
   mercure:
