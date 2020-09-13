@@ -31,7 +31,7 @@ class TimerHandler
         $this->punchTimerHandler = $punchTimerHandler;
     }
 
-    public function startTimer(string $commandStr, User $user): Timer
+    public function startTimer(User $user, string $commandStr): Timer
     {
         $this->time->stopNonPunchTimers($user);
         $timerType = str_replace('/', '', $commandStr);
@@ -49,11 +49,6 @@ class TimerHandler
         }
 
         return $this->time->stopTimer($user, $timeEntry);
-    }
-
-    public function addBreakManually(User $user, string $breakTimeStr): Timer {
-        $timeParts = $this->time->getHoursAndMinutesFromString($breakTimeStr);
-        return $this->time->addFinishedTimer($user, TimerType::BREAK, $timeParts);
     }
 
     public function lateSignIn(User $user, string $timeStr): Timer

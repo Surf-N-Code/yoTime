@@ -69,7 +69,7 @@ class SlashCommandHandler {
         switch ($commandStr) {
             case '/'.TimerType::WORK:
             case '/'.TimerType::BREAK:
-                $timer = $this->timerHandler->startTimer($commandStr, $user);
+                $timer = $this->timerHandler->startTimer($user, $commandStr);
                 $message = $message->addTextSection(sprintf('%s timer started', ucfirst($timer->getTimerType())));
                 $this->databaseHelper->flushAndPersist($timer);
                 $this->sendSlackMessage($responseUrl, $message);
@@ -83,7 +83,7 @@ class SlashCommandHandler {
                 break;
 
             case '/late_break':
-                $timer = $this->timerHandler->addBreakManually($user, $commandText);
+                $timer = $this->time->addFinishedTimer($user, TimerType::BREAK, $commandText);
                 $message->addTextSection('Break successfully added');
                 $this->databaseHelper->flushAndPersist($timer);
                 $this->sendSlackMessage($responseUrl, $message);
@@ -106,6 +106,7 @@ class SlashCommandHandler {
             case '/ds':
                 $modal = $this->dailySummaryHandler->getDailySummarySubmitView($command->getTriggerId());
                 $this->slackClient->slackApiCall('POST', 'views.open', $modal);
+                dump($modal);
                 break;
 
             case '/help':

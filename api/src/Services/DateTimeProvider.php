@@ -22,7 +22,7 @@ class DateTimeProvider
         return $this->applyOffset($dateTimeUser, $timezoneOffset);
     }
 
-    public function applyOffset(\DateTime $dateTime, int $timezoneOffset): \DateTime
+    private function applyOffset(\DateTime $dateTime, int $timezoneOffset): \DateTime
     {
         if ($timezoneOffset < 0) {
             $modify = sprintf('- %d seconds', abs($timezoneOffset));
@@ -40,6 +40,7 @@ class DateTimeProvider
             $user
         );
     }
+
     public function getUserLocalDateTime(User $user)
     {
         $myDateTime = new \DateTime('now', new \DateTimeZone('GMT'));

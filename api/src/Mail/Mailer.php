@@ -4,12 +4,13 @@
 namespace App\Mail;
 
 
-use App\Entity\User;use App\Exceptions\MessageHandlerException;use App\Services\Time;use Psr\Log\LoggerInterface;
-use Symfony\Component\Mailer\Envelope;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Address;
+use App\Entity\User;
+use App\Exceptions\MessageHandlerException;
+use App\Services\Time;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
-use Symfony\Component\Mime\RawMessage;
 
 class Mailer {
 
@@ -44,18 +45,13 @@ class Mailer {
         }
     }
 
-    public function sendDAilySummaryMail(int $timeOnBreak, int $timeOnWork, User $user, string $summary)
+    public function sendDailySummaryMail(int $timeOnBreak, int $timeOnWork, User $user, string $summary)
     {
         $formattedTimeOnBreak = $this->time->formatSecondsAsHoursAndMinutes($timeOnBreak);
         $ormattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($timeOnWork - $timeOnBreak);
 
         $subject = sprintf('Daily Summary of %s', $user->getFullName());
         $content = sprintf('<strong>%s</strong><br>Work: %s<br>Break: %s<br><pre>%s</pre>', $user->getFullName(), $ormattedTimeOnWork, $formattedTimeOnBreak, $summary);
-        $sender = new Address('yoTime@yotime.io', 'yoTime');
-        $recipient = new Address('ndilthey@gmail.com', 'Norman Dilthey
-        ');
-        $envelope = new Envelope($sender, [$recipient]);
-        $rawMessage = new RawMessage($content);
-        $this->mailer->send($rawMessage, $envelope);
+        $this->send('mailer@yotime.com', 'ndilthey@gmail.com', $subject, $content);
     }
 }

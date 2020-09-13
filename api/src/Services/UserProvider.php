@@ -58,7 +58,6 @@ class UserProvider
 
     public function getDbUserBySlackId($slackUserId): User
     {
-        $users = $this->em->getRepository(User::class)->findAll();
         $user = $this->em->getRepository(User::class)->findOneBy(['slackUserId' => $slackUserId]);
         if (!$user) {
             $msg = sprintf('Could not find user with slack ID: %s in our database. The user in question should use the `/register` command', $slackUserId);

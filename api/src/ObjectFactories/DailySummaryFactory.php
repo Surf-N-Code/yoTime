@@ -20,9 +20,8 @@ class DailySummaryFactory {
         if (!$dailySummary) {
             $dailySummary = new DailySummary();
             $dailySummary->setDate(new \DateTime());
-            $dailySummary->setDailySummary($summary);
             $dailySummary->setTimeWorkedInS($timeOnWork);
-            $dailySummary->setTimeBreakInS($timeOnBreak);
+            $dailySummary->setTimeBreakInS($timeOnBreak ?? 0);
         }
 
         $dailySummary->setDailySummary($summary);
