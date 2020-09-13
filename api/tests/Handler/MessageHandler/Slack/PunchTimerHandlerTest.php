@@ -10,11 +10,9 @@ use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
 use App\Handler\MessageHandler\Slack\PunchTimerHandler;
 use App\Repository\TimerRepository;
-use App\Services\DatabaseHelper;use App\Services\DateTimeProvider;
+use App\Services\DatabaseHelper;
 use App\Services\Time;
-use App\Services\UserProvider;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
 
 class PunchTimerHandlerTest extends TestCase
@@ -25,21 +23,16 @@ class PunchTimerHandlerTest extends TestCase
     private $timeEntryRepository;
     private $time;
     private $user;
-    private $dateTimeProvider;
     private $timeEntryProphecy;
-    private $timerHandler;
-    private $userProvider;
-    private $punchTimerHandler;
     private $databaseHelper;
+    private PunchTimerHandler $punchTimerHandler;
 
     public function setup(): void
     {
         $this->timeEntryRepository = $this->prophesize(TimerRepository::class);
         $this->user = $this->prophesize(User::class);
         $this->time = $this->prophesize(Time::class);
-        $this->dateTimeProvider = $this->prophesize(DateTimeProvider::class);
         $this->timeEntryProphecy = $this->prophesize(Timer::class);
-        $this->userProvider = $this->prophesize(UserProvider::class);
         $this->databaseHelper = $this->prophesize(DatabaseHelper::class);
 
         $this->punchTimerHandler = new PunchTimerHandler(
@@ -64,7 +57,10 @@ class PunchTimerHandlerTest extends TestCase
 
         $this->time->stopNonPunchTimers($this->user->reveal())->shouldBeCalled();
         $this->time->startTimer($this->user->reveal(), TimerType::PUNCH)
-                   ->shouldBeCalled();
+                   ->shouldBeCalled()
+                   ->willReturn($this->timeEntryProphecy->reveal());
+        $this->databaseHelper->flushAndPersist($this->timeEntryProphecy->reveal())
+            ->shouldBeCalled();
         $this->punchTimerHandler->punchIn($this->user->reveal());
     }
 
@@ -90,7 +86,9 @@ class PunchTimerHandlerTest extends TestCase
                             ->willReturn($this->timeEntryProphecy->reveal());
 
         $this->time->stopTimer($this->user->reveal(), $this->timeEntryProphecy->reveal())
-                   ->shouldBeCalled();
+                   ->shouldBeCalled()
+                   ->willReturn($this->timeEntryProphecy->reveal());
+        $this->databaseHelper->flushAndPersist($this->timeEntryProphecy->reveal());
         $this->punchTimerHandler->punchOut($this->user->reveal());
     }
 
@@ -126,7 +124,11 @@ class PunchTimerHandlerTest extends TestCase
         $this->time->stopNonPunchTimers($this->user->reveal())
             ->shouldBeCalled();
         $this->time->startTimerFromTimeString($this->user->reveal(), '08:30', TimerType::PUNCH)
-                   ->shouldBeCalled();
+                   ->shouldBeCalled()
+                   ->willReturn($this->timeEntryProphecy->reveal());
+        $this->databaseHelper->flushAndPersist($this->timeEntryProphecy->reveal())
+            ->shouldBecalled();
+
         $this->punchTimerHandler->punchInAtTime($this->user->reveal(), '08:30');
     }
 }

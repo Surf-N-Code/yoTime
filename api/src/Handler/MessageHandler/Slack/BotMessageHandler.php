@@ -50,7 +50,6 @@ class BotMessageHandler
                     $m->addTextSection($e->getMessage());
                     break;
                 }
-                $this->punchTimerHandler->punchIn($user);
                 $m->addTextSection('Happy working :rocket:');
                 break;
 

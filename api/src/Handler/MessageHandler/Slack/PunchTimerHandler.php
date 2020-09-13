@@ -30,11 +30,12 @@ class PunchTimerHandler
         $this->databaseHelper = $databaseHelper;
     }
 
-    public function punchIn(User $user): Timer
+    public function punchIn(User $user): void
     {
-        $this->getRunningPunchTimerOrThrow($user);
+        $this->throwOnRunningPunchTimer($user);
         $this->time->stopNonPunchTimers($user);
-        return $this->time->startTimer($user, TimerType::PUNCH);
+        $timer = $this->time->startTimer($user, TimerType::PUNCH);
+        $this->databaseHelper->flushAndPersist($timer);
     }
 
     public function punchOut(User $user): bool
@@ -54,14 +55,15 @@ class PunchTimerHandler
         return true;
     }
 
-    public function punchInAtTime(User $user, string $timeStr): Timer
+    public function punchInAtTime(User $user, string $timeStr): void
     {
-        $this->getRunningPunchTimerOrThrow($user);
+        $this->throwOnRunningPunchTimer($user);
         $this->time->stopNonPunchTimers($user);
-        return $this->time->startTimerFromTimeString($user, $timeStr, TimerType::PUNCH);
+        $timer = $this->time->startTimerFromTimeString($user, $timeStr, TimerType::PUNCH);
+        $this->databaseHelper->flushAndPersist($timer);
     }
 
-    private function getRunningPunchTimerOrThrow(User $user)
+    private function throwOnRunningPunchTimer(User $user)
     {
         $signInOutTimer = $this->timeEntryRepo->findPunchTimer($user);
 

@@ -9,7 +9,7 @@ use App\Entity\Timer;
 use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
-use App\Handler\MessageHandler\Slack\PunchTimerHandler;use App\Handler\MessageHandler\Slack\TimerHandler;
+use App\Tests\Handler\MessageHandler\Slack\PunchTimerHandler;use App\Tests\Handler\MessageHandler\Slack\TimerHandler;
 use App\Repository\TimerRepository;
 use App\Services\Time;
 use PHPUnit\Framework\TestCase;

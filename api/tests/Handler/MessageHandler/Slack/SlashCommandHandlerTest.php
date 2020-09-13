@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Handler\MessageHandler\Slack;
+namespace App\Tests\Handler\MessageHandler\Slack;
 
 use App\Entity\DailySummary;
 use App\Entity\Slack\SlackMessage;
@@ -31,9 +31,7 @@ class SlashCommandHandlerTest extends TestCase
     private SlashCommandHandler $slashCommandHandler;
     private $databaseHelper;
     private $userHelpHandler;
-    private $mailer;
     private $dailySummaryHandler;
-    private $slackMessage;
     private $slackClient;
     private $sc;
 
@@ -67,7 +65,6 @@ class SlashCommandHandlerTest extends TestCase
             $this->timerHandler->reveal(),
             $this->userProvider->reveal(),
             $this->databaseHelper->reveal(),
-            $this->mailer->reveal(),
             $this->time->reveal(),
             $this->slackClient->reveal()
         );
