@@ -11,6 +11,13 @@ class DateTimeProviderTest extends TestCase
 {
 
     use ProphecyTrait;
+
+    private $user;
+
+    public function setup(): void
+    {
+        $this->user = $this->prophesize(User::class);
+    }
     public function getLocalUserTimeDataProvider()
     {
         // offset returned from User::getTimeZoneOffset; server time; expected local time
@@ -24,18 +31,18 @@ class DateTimeProviderTest extends TestCase
     /**
      * @dataProvider getLocalUserTimeDataProvider
      */
-    public function testgetLocalUserTime(int $timeZoneOffset, string $serverTime, string $expectedLocalTime)
+    public function testConvertToLocalUserTime(int $timeZoneOffset, string $serverTime, string $expectedLocalTime)
     {
         $dateTimeProvider = new DateTimeProvider();
 
-        $user = $this->prophesize(User::class);
-        $user->getTzOffset()
+
+        $this->user->getTzOffset()
              ->shouldBeCalled()
              ->willReturn($timeZoneOffset);
 
         $now = new \DateTime($serverTime);
 
-        $localTime = $dateTimeProvider->convertToLocalUserTime($now, $user->reveal());
+        $localTime = $dateTimeProvider->convertToLocalUserTime($now, $this->user->reveal());
 
         self::assertEquals($expectedLocalTime, $localTime->format('Y-m-d H:i:s'));
     }

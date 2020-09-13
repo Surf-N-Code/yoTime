@@ -37,7 +37,7 @@ class PunchTimerHandler
         return $this->time->startTimer($user, TimerType::PUNCH);
     }
 
-    public function punchOut(User $user): Timer
+    public function punchOut(User $user): bool
     {
         $signInOutTimer = $this->timeEntryRepo->findPunchTimer($user);
 
@@ -46,12 +46,12 @@ class PunchTimerHandler
         }
 
         if ($signInOutTimer->getDateEnd()) {
-            return $signInOutTimer;
+            return false;
         }
 
         $timeEntry = $this->time->stopTimer($user, $signInOutTimer);
         $this->databaseHelper->flushAndPersist($timeEntry);
-        return $timeEntry;
+        return true;
     }
 
     public function punchInAtTime(User $user, string $timeStr): Timer

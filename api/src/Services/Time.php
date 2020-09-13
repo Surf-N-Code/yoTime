@@ -18,33 +18,31 @@ class Time
 
     private $dateTimeProvider;
 
-    private $timeEntryFactory;
+    private $timerFactory;
 
     public function __construct(
         TimerRepository $timeEntryRepository,
         UserRepository $userRepository,
         DateTimeProvider $dateTimeProvider,
-        TimerFactory $timeEntryFactory
+        TimerFactory $timerFactory
     )
     {
         $this->timeEntryRepository = $timeEntryRepository;
         $this->userRepository = $userRepository;
         $this->dateTimeProvider = $dateTimeProvider;
-        $this->timeEntryFactory = $timeEntryFactory;
+        $this->timerFactory = $timerFactory;
     }
 
     public function startTimer(User $user, $timerType, \DateTime $dateStart = null): Timer
     {
         $currentUserTime = $this->dateTimeProvider->getLocalUserTime($user);
-        dump($currentUserTime);
-        return $this->timeEntryFactory->createTimerObject($timerType, $user, $dateStart ?? $currentUserTime);
+        return $this->timerFactory->createTimerObject($timerType, $user, $dateStart ?? $currentUserTime);
     }
 
-    public function stopTimer(User $user, Timer $timeEntry): Timer
+    public function stopTimer(User $user, Timer $timer): Timer
     {
         $currentUserTime = $this->dateTimeProvider->getLocalUserTime($user);
-        $timeEntry->setDateEnd($currentUserTime);
-        return $timeEntry;
+        return $timer->setDateEnd($currentUserTime);
     }
 
     public function stopNonPunchTimers(User $user): void
@@ -82,21 +80,18 @@ class Time
         throw new MessageHandlerException(sprintf('The time you entered: %s is not valid. Please enter your time in the form `hh:mm`, e.g.: `14:21`', $timeString), 412);
     }
 
-    public function addFinishedTimer(User $user, string $timerType, array $timeParts): Timer
+    public function addFinishedTimer(User $user, string $timerType, string $timeString): Timer
     {
+        preg_match('/^([01]?\d|2[0-3]):([0-5]\d)/', $timeString, $durationMatch);
+        if (empty($durationMatch)) {
+            throw new MessageHandlerException(sprintf('The time you entered: %s is not valid. Please enter your time in a valid military (24H) format `hh:mm` like 08:30', $timeString), 412);
+        }
+        $timeParts = explode(':', $timeString);
+
         $dateStart = (new \DateTime($this->dateTimeProvider->getLocalUserTime($user)->format('Y-m-d H:i:s')))->setTime(1,0,0);
         $dateEnd = clone($dateStart);
         $dateEnd->add(new \DateInterval(sprintf('PT%sH%sM', $timeParts[0], $timeParts[1])));
-        return $this->timeEntryFactory->createTimerObject($timerType, $user, $dateStart, $dateEnd);
-    }
-
-    public function getHoursAndMinutesFromString(string $str)
-    {
-        preg_match('/^([01]?\d|2[0-3]):([0-5]\d)/', $str, $durationMatch);
-        if (empty($durationMatch)) {
-            throw new MessageHandlerException(sprintf('The time you entered: %s is not valid. Please enter your time in a valid military (24H) format `hh:mm` like 08:30', $str), 412);
-        }
-        return explode(':', $str);
+        return $this->timerFactory->createTimerObject($timerType, $user, $dateStart, $dateEnd);
     }
 
     public function formatSecondsAsHoursAndMinutes(int $seconds): string

@@ -12,18 +12,18 @@ class BotMessageHandler
 {
     private UserProvider $userProvider;
     private PunchTimerHandler $punchTimerHandler;
-    private SlackMessageHelper $slackMessageHelper;
+
+    private Time $time;
 
     public function __construct(
         UserProvider $userProvider,
         PunchTimerHandler $punchTimerHandler,
-        SlackMessageHelper $slackMessageHelper,
         Time $time
     )
     {
         $this->userProvider = $userProvider;
         $this->punchTimerHandler = $punchTimerHandler;
-        $this->slackMessageHelper = $slackMessageHelper;
+        $this->time = $time;
     }
 
     public function parseEventType($evt): SlackMessage
@@ -41,16 +41,44 @@ class BotMessageHandler
             throw new MessageHandlerException('Seems like you have not registered an account with YoTime yet. Please contact the admin of your slack workspace to add you to the service.', 412,);
         }
 
-        $m = $this->slackMessageHelper->createSlackMessage();
+        $m = new SlackMessage();
         switch ($command) {
             case strpos($command, '/hi') !== false:
+                try {
+                    $this->punchTimerHandler->punchIn($user);
+                } catch (MessageHandlerException $e) {
+                    $m->addTextSection($e->getMessage());
+                    break;
+                }
                 $this->punchTimerHandler->punchIn($user);
                 $m->addTextSection('Happy working :rocket:');
                 break;
 
             case strpos($command, '/bye') !== false:
-                $this->punchTimerHandler->punchOut($user);
-                $m->addTextSection('You ' . $this->slackMessageHelper->getFormattedTimeSpentOnWorkAndBreak($user));
+                try {
+                    $isPunchedIn = $this->punchTimerHandler->punchOut($user);
+                    if (!$isPunchedIn) {
+                        $m->addTextSection('You have already punched out for today.');
+                        break;
+                    }
+                } catch (MessageHandlerException $e) {
+                    $m->addTextSection($e->getMessage());
+                    break;
+                }
+                $timeOnWork = $this->time->getTimeSpentOnTypeByPeriod(
+                    $user,
+                    'day',
+                    TimerType::PUNCH
+                );
+
+                $timeOnBreak = $this->time->getTimeSpentOnTypeByPeriod(
+                    $user,
+                    'day',
+                    TimerType::BREAK
+                );
+                $formattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($timeOnWork - $timeOnBreak);
+                $formattedTimeOnBreak = $this->time->formatSecondsAsHoursAndMinutes($timeOnBreak);
+                $m->addTextSection(sprintf('spent `%s` on work and `%s` on break.', $formattedTimeOnWork, $formattedTimeOnBreak));
                 break;
             default:
                 throw new MessageHandlerException('You pinged me, however I do not recognise your command. Try `/help` to get a list of available commands', 412);

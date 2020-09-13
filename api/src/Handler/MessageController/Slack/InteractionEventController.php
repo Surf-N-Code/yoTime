@@ -4,13 +4,10 @@
 namespace App\Handler\MessageController\Slack;
 
 use App\Entity\Slack\SlackInteractionEvent;
-use App\Entity\Slack\SlackBotMessage;
 use App\Entity\Slack\SlackMessage;
-use App\Exceptions\MessageHandlerException;use App\Handler\MessageHandler\Slack\BotMessageHandler;
+use App\Exceptions\MessageHandlerException;
 use App\Handler\MessageHandler\Slack\DailySummaryHandler;
-use App\Handler\MessageHandler\Slack\InteractionEventHandler;
-use App\Services\JsonBodyTransform;
-use App\Slack\SlackClient;
+use App\Services\UserProvider;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,42 +15,45 @@ use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
 final class InteractionEventController implements MessageHandlerInterface
 {
-    private JsonBodyTransform $jsonBodyTransform;
     private RequestStack $requestStack;
-    private SlackClient $slackClient;
-    private InteractionEventHandler $interactionEventHandler;
 
     private DailySummaryHandler $dailySummaryHandler;
 
+    private UserProvider $userProvider;
+
     public function __construct(
-        JsonBodyTransform $jsonBodyTransform,
-        RequestStack $requestStack,
-        SlackClient $slackClient,
-        InteractionEventHandler $interactionEventHandler,
-        DailySummaryHandler $dailySummaryHandler
+        DailySummaryHandler $dailySummaryHandler,
+        UserProvider $userProvider
     )
     {
-        $this->jsonBodyTransform = $jsonBodyTransform;
-        $this->requestStack = $requestStack;
-        $this->slackClient = $slackClient;
-        $this->interactionEventHandler = $interactionEventHandler;
         $this->dailySummaryHandler = $dailySummaryHandler;
+        $this->userProvider = $userProvider;
     }
 
     public function __invoke(SlackInteractionEvent $interactionEvent)
     {
-        dump( $this->requestStack->getCurrentRequest());
         $payload = $interactionEvent->getPayload();
-        dump($payload);
         try {
-            $m = $this->interactionEventHandler->parseEventType($payload);
+            try {
+                $user = $this->userProvider->getDbUserBySlackId($payload['user']['id']);
+            } catch (\Exception $e) {
+                throw new MessageHandlerException('Seems like you have not registered an account with YoTime yet. Please contact the admin of your slack workspace to add you to the service.', 412,);
+            }
 
-            $json = $this->dailySummaryHandler->getDailySummaryConfirmView($m);
-            dump($json);
-            return new JsonResponse($json, 200); //@todo change to 200
+            if (!empty($payload['view']['state']['values']['daily_summary_block'] && $payload['type'] === 'view_submission')) {
+                $modalStatus = $this->dailySummaryHandler->handleModalSubmission($payload, $user);
+                $confirmView = $this->dailySummaryHandler->getDailySummaryConfirmView($modalStatus);
+                dump($confirmView);
+                return new JsonResponse($confirmView, 200);
+            }
+
+            if ($payload['type'] === 'block_actions') {
+                return new Response('successful block action', 200);
+            }
+
+            return new Response(sprintf('Unsupported event detected in payload: %s', json_encode($payload)), 400);
         } catch (\Exception $e) {
-            dump($e);
-            return new Response(400);
+            return new Response($e->getMessage(), 400);
         }
     }
 }

@@ -64,14 +64,12 @@ class TimerHandlerTest extends TestCase
             'timerType'    => TimerType::WORK
         ];
 
-        $command = $this->generateSlashcommand($parameters['slashcommand'], '');
-
         $this->time->stopNonPunchTimers($this->user->reveal())
                    ->shouldBeCalled();
         $this->time->startTimer($this->user->reveal(), $parameters['timerType'])
                    ->shouldBeCalled()
                    ->willReturn($this->timeEntryProphecy->reveal());
-        $this->timerHandler->startTimer($command, $this->user->reveal());
+        $this->timerHandler->startTimer($this->user->reveal(), $parameters['slashcommand']);
     }
 
     public function testBreakTimerStart()
@@ -81,51 +79,13 @@ class TimerHandlerTest extends TestCase
             'timerType'    => TimerType::BREAK
         ];
 
-        $command = $this->generateSlashcommand($parameters['slashcommand'], '');
-
         $this->time->stopNonPunchTimers($this->user->reveal())
                    ->shouldBeCalled();
         $this->time->startTimer($this->user->reveal(), $parameters['timerType'])
                    ->shouldBeCalled()
                    ->willReturn($this->timeEntryProphecy->reveal());
-        $this->timerHandler->startTimer($command, $this->user->reveal());
+        $this->timerHandler->startTimer($this->user->reveal(), $parameters['slashcommand']);
 
-    }
-
-    public function testBreakTimerManually()
-    {
-        $parameters = [
-            'slashcommand' => '/late_break',
-            'commandText'  => '07:30',
-        ];
-
-        $command = $this->generateSlashcommand($parameters['slashcommand'], $parameters['commandText']);
-
-        $this->time->getHoursAndMinutesFromString($parameters['commandText'])
-                   ->shouldBeCalled()
-                   ->willReturn(['07', '30']);
-        $this->time->addFinishedTimer($this->user->reveal(), TimerType::BREAK, ['07', '30'])
-                   ->shouldBeCalled()
-                   ->willReturn($this->timeEntryProphecy->reveal());
-        $this->timerHandler->addBreakManually($command, $this->user->reveal());
-    }
-
-    public function testBreakTimerMauallyInvalid()
-    {
-        $parameters = [
-            'slashcommand' => '/late_break',
-            'commandText'  => '0730',
-        ];
-
-        $command = $this->generateSlashcommand($parameters['slashcommand'], $parameters['commandText']);
-
-         $this->time->getHoursAndMinutesFromString($parameters['commandText'])
-                   ->shouldBeCalled()
-                   ->willThrow(MessageHandlerException::class);
-        $this->time->addFinishedTimer($this->user->reveal(), TimerType::BREAK, ['07', '30'])
-                   ->shouldNotBeCalled();
-        $this->expectException(MessageHandlerException::class);
-        $this->timerHandler->addBreakManually($command, $this->user->reveal());
     }
 
     public function testStopTimer()
@@ -143,39 +103,31 @@ class TimerHandlerTest extends TestCase
         $this->time->stopTimer($this->user->reveal(), $this->timeEntryProphecy->reveal())
                    ->shouldBeCalled()
                    ->willReturn($this->timeEntryProphecy->reveal());
-        $this->timerHandler->stopTimer($this->user->reveal(), $command);
+        $this->timerHandler->stopTimer($this->user->reveal());
     }
 
     public function testStopTimerWithTask()
     {
         $parameters = [
             'slashcommand' => '/end_work',
-            'timerType'    => TimerType::WORK
+            'timerType'    => TimerType::WORK,
+            'task' => 'Task Description'
         ];
-
-        $command = $this->generateSlashcommand($parameters['slashcommand'], 'Task description');
 
         $this->timeEntryRepository->findNonPunchTimers($this->user->reveal())
                     ->shouldBeCalled()
                     ->willReturn($this->timeEntryProphecy->reveal());
-        $this->time->addTaskToTimer($this->timeEntryProphecy->reveal(), 'Task description')
+        $this->time->addTaskToTimer($this->timeEntryProphecy->reveal(), $parameters['task'])
                     ->shouldBeCalled()
                     ->willReturn($this->timeEntryProphecy->reveal());
         $this->time->stopTimer($this->user->reveal(), $this->timeEntryProphecy->reveal())
                    ->shouldBeCalled()
                    ->willReturn($this->timeEntryProphecy->reveal());
-        $this->timerHandler->stopTimer($this->user->reveal(), $command);
+        $this->timerHandler->stopTimer($this->user->reveal(), $parameters['task']);
     }
 
     public function testStopTimerWithoutRunningTimer()
     {
-        $parameters = [
-            'slashcommand' => '/end_work',
-            'timerType'    => TimerType::WORK
-        ];
-
-        $command = $this->generateSlashcommand($parameters['slashcommand'], '');
-
         $this->timeEntryRepository->findNonPunchTimers($this->user->reveal())
                     ->shouldBeCalled()
                     ->willReturn(null);
@@ -183,7 +135,7 @@ class TimerHandlerTest extends TestCase
                    ->shouldNotBeCalled()
                    ->willReturn($this->timeEntryProphecy->reveal());
         $this->expectException(MessageHandlerException::class);
-        $this->timerHandler->stopTimer($this->user->reveal(), $command);
+        $this->timerHandler->stopTimer($this->user->reveal());
     }
 
     public function testLateSigninTime()

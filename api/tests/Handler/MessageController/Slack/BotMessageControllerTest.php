@@ -2,11 +2,12 @@
 
 namespace App\Tests\Handler\MessageController\Slack;
 
+use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
 use App\Entity\Slack\SlashCommand;
 use App\Tests\IntegrationTestCase;use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Serializer\Serializer;
 
-class BotMessageControllerTest extends IntegrationTestCase
+class BotMessageControllerTest extends ApiTestCase
 {
 
     public function testHiBotMention()

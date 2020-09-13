@@ -4,8 +4,8 @@
 namespace App\Handler\MessageHandler\Slack;
 
 
+use App\Entity\Slack\ModalSubmissionDto;
 use App\Entity\Slack\SlackMessage;
-use App\Entity\Slack\SlashCommand;
 use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
@@ -13,8 +13,7 @@ use App\Mail\Mailer;
 use App\ObjectFactories\DailySummaryFactory;use App\Repository\DailySummaryRepository;
 use App\Services\DatabaseHelper;
 use App\Services\Time;
-use App\Slack\SlackClient;
-use Symfony\Component\Mailer\MailerInterface;
+use App\Slack\SlackMessageHelper;
 
 class DailySummaryHandler
 {
@@ -27,29 +26,29 @@ class DailySummaryHandler
 
     private DailySummaryFactory $dailySummaryFactory;
 
-    private SlackClient $slackClient;
-
     private DatabaseHelper $databaseHelper;
 
     private Mailer $mailer;
+
+    private SlackMessageHelper $slackMessageHelper;
 
     public function __construct(
         PunchTimerHandler $punchTimerHandler,
         DailySummaryRepository $dailySummaryRepo,
         Time $time,
         DailySummaryFactory $dailySummaryFactory,
-        SlackClient $slackClient,
         DatabaseHelper $databaseHelper,
-        Mailer $mailer
+        Mailer $mailer,
+        SlackMessageHelper $slackMessageHelper
     )
     {
         $this->dailySummaryRepo = $dailySummaryRepo;
         $this->time = $time;
         $this->punchTimerHandler = $punchTimerHandler;
         $this->dailySummaryFactory = $dailySummaryFactory;
-        $this->slackClient = $slackClient;
         $this->databaseHelper = $databaseHelper;
         $this->mailer = $mailer;
+        $this->slackMessageHelper = $slackMessageHelper;
     }
 
     public function getDailySummarySubmitView(string $slackTriggerId): array
@@ -70,7 +69,7 @@ class DailySummaryHandler
                 'blocks' => [
                     [
                         'type' => 'input',
-                        'block_id' => 'summary_block',
+                        'block_id' => 'daily_summary_block',
                         'element' => [
                             'type' => 'plain_text_input',
                             'action_id' => 'summary_block_input',
@@ -133,7 +132,7 @@ class DailySummaryHandler
         ];
     }
 
-    public function getDailySummaryConfirmView(SlackMessage $m): array
+    public function getDailySummaryConfirmView(ModalSubmissionDto $modal): array
     {
         return [
             'response_action' => 'update',
@@ -141,7 +140,7 @@ class DailySummaryHandler
                 'type' => 'modal',
                 'title' => [
                     'type' => 'plain_text',
-                    'text' => 'Daily Summary sent!'
+                    'text' => $modal->getTitle()
                 ],
                 'close' => [
                     'type' => 'plain_text',
@@ -152,7 +151,7 @@ class DailySummaryHandler
                         'type' => 'section',
                         'text' => [
                             'type' => 'mrkdwn',
-                            'text' => $m->getBlockText(0)
+                            'text' => $modal->getMessage()
                         ],
                     ]
                 ],
@@ -160,13 +159,15 @@ class DailySummaryHandler
         ];
     }
 
-    public function handleDailySummaryEvent(string $summary, User $user, bool $doSendMail)
+    public function handleModalSubmission($evt, User $user): ModalSubmissionDto
     {
+        $summary = $evt['view']['state']['values']['daily_summary_block']['summary_block_input']['value'];
+        $doSendMail = $evt['view']['state']['values']['mail_block']['mail_choice']['selected_option']['value'] === 'true';
 
         try {
             $punchOutTimer = $this->punchTimerHandler->punchOut($user);
         } catch (MessageHandlerException $e) {
-            return (new SlackMessage())->addTextSection($e->getMessage());
+            return new ModalSubmissionDto(ModalSubmissionDto::STATUS_ERROR, ':heavy_exclamation_mark: '.$e->getMessage(), 'Something is wrong :(');
         }
 
         $timeOnWork = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::PUNCH);
@@ -175,27 +176,33 @@ class DailySummaryHandler
         $ds = $this->updateOrCreateDailysummary($summary, $user, $timeOnWork, $timeOnBreak);
 
         $this->databaseHelper->flushAndPersist($ds);
-        $doSendMail ? $this->mailer->sendDAilySummaryMail(($timeOnWork-$timeOnBreak), $timeOnBreak, $user, $ds->getDailySummary()) : null;
+        $doSendMail ? $this->mailer->sendDailySummaryMail($timeOnBreak, $timeOnWork-$timeOnBreak, $user, $ds->getDailySummary()) : null;
 
-        return $this->getDailySummaryAddSlackMessage($timeOnWork, $timeOnBreak, $punchOutTimer);
+        $m = $this->getDailySummaryAddSlackMessage($timeOnWork, $timeOnBreak, $punchOutTimer, $doSendMail);
+        return new ModalSubmissionDto(ModalSubmissionDto::STATUS_SUCCESS, $m->getBlockText(0), 'Success');
     }
 
-    public function updateOrCreateDailysummary(string $summary, User $user, int $timeOnWork, int $timeOnBreak)
+    public function updateOrCreateDailysummary(string $summaryText, User $user, int $timeOnWork, int $timeOnBreak)
     {
-        $dailySummary = $this->dailySummaryRepo->findOneBy(['date' => new \DateTime('now')]);
-        return $this->dailySummaryFactory->createDailySummaryObject($summary, $user, $dailySummary, $timeOnWork, $timeOnBreak);
+        $dailySummaryEntity = $this->dailySummaryRepo->findOneBy(['date' => new \DateTime('now')]);
+        return $this->dailySummaryFactory->createDailySummaryObject($summaryText, $user, $dailySummaryEntity, $timeOnWork, $timeOnBreak);
     }
 
-    private function getDailySummaryAddSlackMessage(int $timeOnWork, int $timeOnBreak, $punchOutTimer): SlackMessage
+    private function getDailySummaryAddSlackMessage(int $timeOnWork, int $timeOnBreak, $punchOutTimer, $doSendMail): SlackMessage
     {
-        $m = new SlackMessage();
-
         $formattedTimeOnBreak = $this->time->formatSecondsAsHoursAndMinutes($timeOnBreak);
         $formattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($timeOnWork - $timeOnBreak);
 
+        $m = $this->slackMessageHelper->createSlackMessage();
         if ($punchOutTimer) {
-            $msg = sprintf(':heavy_check_mark: Signed you out for the day and sent your daily summary :call_me_hand:. \n\nYou spent *%s* on work and *%s* on break.', $formattedTimeOnWork, $formattedTimeOnBreak ?? '0h 0m');
+            $breakText = $formattedTimeOnBreak === '0h 0min' ? '' : sprintf(' and *%s* on break', $formattedTimeOnBreak);
+            $msg = sprintf(':heavy_check_mark: Signed you out for the day%s :call_me_hand:. You spent *%s* on work%s.', $doSendMail ? ' and sent your summary via mail' : '', $formattedTimeOnWork, $breakText);
+            $this->slackMessageHelper->addTextSection($msg, $m);
+            return $m;
         }
-        return $m->addTextSection($msg ?? 'Sent your daily summary for today.');
+
+        $msg = $doSendMail ? 'Summary sent :slightly_smiling_face:' : 'Summary saved :slightly_smiling_face:';
+        $this->slackMessageHelper->addTextSection($msg, $m);
+        return $m;
     }
 }

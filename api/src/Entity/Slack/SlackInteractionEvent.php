@@ -28,4 +28,13 @@ class SlackInteractionEvent
     {
         return json_decode($this->payload, true);
     }
+
+    public function getEventType()
+    {
+        if (is_array($this->payload)) {
+            return $this->payload['type'];
+        }
+
+        return json_decode($this->payload, true)['type'];
+    }
 }

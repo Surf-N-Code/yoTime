@@ -9,6 +9,7 @@ use App\Entity\Timer;
 use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
+use App\ObjectFactories\TimerFactory;
 use App\Repository\TimerRepository;
 use App\Repository\UserRepository;
 use App\Services\DateTimeProvider;
@@ -32,10 +33,11 @@ class TimeTest extends TestCase
     private $timeProphecy;
     private $time;
     private $task;
-    private $timeEntry;
+    private $timer;
     private $timeEntryRepository;
     private $timerType;
     private $dateTimeProvider;
+    private $timerFactory;
 
     public function setup(): void
     {
@@ -44,159 +46,141 @@ class TimeTest extends TestCase
         $this->userRepository = $this->prophesize(UserRepository::class);
         $this->timeEntryRepository = $this->prophesize(TimerRepository::class);
         $this->task = $this->prophesize(Task::class);
-        $this->timeEntry = $this->prophesize(Timer::class);
+        $this->timer = $this->prophesize(Timer::class);
         $this->user = $this->prophesize(User::class);
         $this->timerType = $this->prophesize(TimerType::class);
         $this->timeProphecy = $this->prophesize(Time::class);
         $this->dateTimeProvider = $this->prophesize(DateTimeProvider::class);
+        $this->timerFactory = $this->prophesize(TimerFactory::class);
 
         $this->time = new Time(
-            $this->em->reveal(),
-            $this->logger->reveal(),
             $this->timeEntryRepository->reveal(),
             $this->userRepository->reveal(),
-            $this->dateTimeProvider->reveal()
+            $this->dateTimeProvider->reveal(),
+            $this->timerFactory->reveal()
         );
     }
 
     public function testStartTimer()
     {
+        $date = new \DateTime('now');
         $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
             ->shouldBeCalled()
             ->willReturn((new \DateTime()));
 
-        $this->em->flush()->shouldBeCalled();
-        $this->em->persist(Argument::type(Timer::class))->shouldBeCalled();
+        $this->timerFactory->createTimerObject('work', $this->user->reveal(), $date)
+            ->shouldBeCalled()
+            ->willReturn($this->timer->reveal());
 
         $this->time->startTimer(
             $this->user->reveal(),
-            $this->timerType->reveal(),
-            (new \DateTime())
+            TimerType::WORK,
+            $date
         );
     }
 
-    public function validBreakTimesProvider()
+    public function testStopTimer()
     {
-        return [
-            [
-                '13:30',
-                '1:30',
-                '07:35',
-                '11:35',
-                '08:34',
-                '23:33',
-            ]
-        ];
+        $date = new \DateTime('now');
+        $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
+                               ->shouldBeCalled()
+                               ->willReturn($date);
+
+        $this->timer->setDateEnd($date)
+            ->shouldBeCalled()
+            ->willReturn($this->timer->reveal());
+
+        $this->time->stopTimer(
+            $this->user->reveal(),
+            $this->timer->reveal()
+        );
+    }
+
+    public function testStopNonPunchTimer()
+    {
+        $date = new \DateTime('now');
+        $this->timeEntryRepository->findNonPunchTimers($this->user->reveal())
+            ->shouldBeCalled()
+            ->willReturn([$this->timer->reveal(), $this->timer->reveal()]);
+
+        $date = new \DateTime('now');
+        $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
+                               ->shouldBeCalled()
+                               ->willReturn($date);
+
+        $this->timer->setDateEnd($date)
+                    ->shouldBeCalled()
+                    ->willReturn($this->timer->reveal());
+
+        $this->time->stopNonPunchTimers(
+            $this->user->reveal()
+        );
+    }
+
+    /** @dataProvider validTimesProvider */
+    public function testStartTimerFromValidTimeString($timeString)
+    {
+        preg_match('/^([01]?\d|2[0-3]):?([0-5]\d)/', $timeString, $militaryTime);
+        $date = \DateTime::createFromFormat('Y-m-d H:i', date('Y-m-d').' '.$militaryTime[1].':'.$militaryTime[2]);
+        $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
+                               ->shouldBeCalled()
+                               ->willReturn($date);
+
+        $this->timerFactory->createTimerObject(TimerType::PUNCH, $this->user->reveal(), $date)
+                           ->shouldBeCalled()
+                           ->willReturn($this->timer->reveal());
+
+        $this->time->startTimerFromTimeString($this->user->reveal(), $timeString, TimerType::PUNCH);
+    }
+
+    /** @dataProvider invalidTimesProvider */
+    public function testStartTimerFromInvalidTimeString($timeString)
+    {
+        preg_match('/^([01]?\d|2[0-3]):?([0-5]\d)/', $timeString, $militaryTime);
+        $this->expectException(MessageHandlerException::class);
+
+        $this->time->startTimerFromTimeString($this->user->reveal(), $timeString, TimerType::PUNCH);
     }
 
     /**
      * @dataProvider validBreakTimesProvider
      */
-    public function testAddFinishedTimerValidForm($duration)
+    public function testAddFinishedTimerValidForm($timeString)
     {
         $userLocalTime = new \DateTime('2019-09-09 01:00:00');
         $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
                                ->shouldBeCalled()
                                ->willReturn($userLocalTime);
 
-//        $dateStart = (new \DateTime($userLocalTime->format('Y-m-d H:i:s')))->setTime(1,0,0);
-//        $timeParts = explode(':', $duration);
-//
-//        $dateEnd = clone($dateStart);
-//        $dateEnd = $dateEnd->add(new \DateInterval(sprintf('PT%sH%sM', $timeParts[0], $timeParts[1])));
-//
-//        $timeEntry = $this->prophesize(Timer::class);
-//        $timeEntry->setDateStart($dateStart)->shouldBeCalled();
-//        $timeEntry->setDateEnd($dateEnd)->shouldBeCalled();
+        $dateEnd = clone($userLocalTime);
+        $timeParts = explode(':', $timeString);
+        $dateEnd->add(new \DateInterval(sprintf('PT%sH%sM', $timeParts[0], $timeParts[1])));
 
-        $this->em->flush()->shouldBeCalled();
-        $this->em->persist(Argument::type(Timer::class))->shouldBeCalled();
-        $this->time->addFinishedTimer($this->user->reveal(), TimerType::WORK, $duration);
-    }
-
-    public function invalidBreakTimesProvider()
-    {
-        return [
-            [
-                '130',
-                '24:30',
-                '11:77',
-                '1a:77',
-                '33:33',
-            ]
-        ];
+        $this->timerFactory->createTimerObject(TimerType::WORK, $this->user->reveal(), $userLocalTime ,$dateEnd);
+        $this->time->addFinishedTimer($this->user->reveal(), TimerType::WORK, $timeString);
     }
 
     /**
      * @dataProvider invalidBreakTimesProvider
      */
-    public function testAddFinishedTimerInvalidForm($duration)
+    public function testAddFinishedTimerInvalidForm($timeString)
     {
         $this->expectException(MessageHandlerException::class);
-        $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
-                               ->shouldNotBeCalled()
-                               ->willReturn((new \DateTime()));
-
-        $this->em->flush()->shouldNotBeCalled();
-        $this->em->persist(Argument::type(Timer::class))->shouldNotBeCalled();
-        $this->time->addFinishedTimer($this->user->reveal(), TimerType::WORK, $duration);
+        $this->time->addFinishedTimer($this->user->reveal(), TimerType::WORK, $timeString);
     }
 
-    public function testEndTimerWithDescription()
+    public function validTimesProvider()
     {
-        $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
-                               ->shouldBeCalled()
-                               ->willReturn((new \DateTime()));
-
-        $this->timeEntry->setTask(Argument::type(Task::class))->shouldBeCalled();
-        $this->timeEntry->getDateStart()->shouldBeCalled()->willReturn(new \DateTime('now'));
-        $this->timeEntry->setDateStart(Argument::type(\DateTime::class))->shouldBeCalled();
-        $this->timeEntry->setDateEnd(Argument::type(\DateTime::class))->shouldBeCalled();
-        $this->timeEntry->setUser($this->user->reveal())->shouldBeCalled();
-        $this->timeEntry->setTimerType(TimerType::WORK)->shouldBeCalled();
-        $this->timeEntry->getTimerType()->shouldBeCalled()->willReturn(TimerType::WORK);
-
-        $this->em->flush()->shouldBeCalled();
-        $this->em->persist(Argument::type(Timer::class))->shouldBeCalled();
-        $this->time->startTimer($this->user->reveal(), TimerType::WORK);
-
-        $this->em->flush()->shouldBeCalled();
-        $this->em->persist(Argument::type(Timer::class))->shouldBeCalled();
-
-        $this->time->stopTimer($this->user->reveal(), $this->timeEntry->reveal(), 'Description');
-    }
-
-    public function testEndTimerWithoutDescription()
-    {
-        $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
-                               ->shouldBeCalled()
-                               ->willReturn((new \DateTime()));
-
-        $this->timeEntry->setTask(Argument::type(Task::class))->shouldNotBeCalled();
-        $this->timeEntry->getDateStart()->shouldBeCalled()->willReturn(new \DateTime('now'));
-        $this->timeEntry->setDateStart(Argument::type(\DateTime::class))->shouldBeCalled();
-        $this->timeEntry->setDateEnd(Argument::type(\DateTime::class))->shouldBeCalled();
-        $this->timeEntry->setUser($this->user->reveal())->shouldBeCalled();
-        $this->timeEntry->setTimerType(TimerType::WORK)->shouldBeCalled();
-        $this->timeEntry->getTimerType()->shouldBeCalled()->willReturn(TimerType::WORK);
-
-
-        $this->em->flush()->shouldBeCalled();
-        $this->em->persist(Argument::type(Timer::class))->shouldBeCalled();
-        $this->time->startTimer($this->user->reveal(), TimerType::WORK);
-
-        $this->em->flush()->shouldBeCalled();
-        $this->em->persist(Argument::type(Timer::class))->shouldBeCalled();
-
-        $this->time->stopTimer($this->user->reveal(), $this->timeEntry->reveal(), null);
-    }
-
-    /** @dataProvider invalidTimesProvider */
-    public function testLateSigninInvalidTimeformatProvided($invalidTime)
-    {
-        $this->dateTimeProvider->getUserLocalDateTime($this->user->reveal())->shouldNotBeCalled();
-        $this->expectException(MessageHandlerException::class);
-        $this->time->startTimerFromTimeString($this->user->reveal(), $invalidTime, TimerType::PUNCH);
+        return [
+            [
+                '13:30',
+                '1:30',
+                '07:35 PM',
+                '11:35 am',
+                '0834',
+                '23:33'
+            ]
+        ];
     }
 
     public function invalidTimesProvider()
@@ -216,28 +200,30 @@ class TimeTest extends TestCase
         ];
     }
 
-    public function validTimesProvider()
+    public function validBreakTimesProvider()
     {
         return [
             [
                 '13:30',
                 '1:30',
-                '07:35 PM',
-                '11:35 am',
-                '0834',
-                '23:33'
+                '07:35',
+                '11:35',
+                '08:34',
+                '23:33',
             ]
         ];
     }
 
-    /** @dataProvider validTimesProvider */
-    public function testLateSigninValidTimeformatProvided($validTime)
+    public function invalidBreakTimesProvider()
     {
-        $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
-                               ->shouldBeCalled()
-                               ->willReturn((new \DateTime()));
-        $this->em->persist(Argument::type(Timer::class))->shouldBeCalled();
-        $this->em->flush()->shouldBeCalled();
-        $this->time->startTimerFromTimeString($this->user->reveal(), $validTime, TimerType::PUNCH);
+        return [
+            [
+                '130',
+                '24:30',
+                '11:77',
+                '1a:77',
+                '33:33',
+            ]
+        ];
     }
 }

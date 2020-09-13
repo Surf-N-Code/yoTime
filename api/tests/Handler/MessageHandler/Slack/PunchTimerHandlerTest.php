@@ -94,6 +94,19 @@ class PunchTimerHandlerTest extends TestCase
         $this->punchTimerHandler->punchOut($this->user->reveal());
     }
 
+    public function testPunchOutAlreadyPunchedOut()
+    {
+        $this->timeEntryRepository->findPunchTimer($this->user->reveal())
+                                  ->shouldBeCalled()
+                                  ->willReturn($this->timeEntryProphecy->reveal());
+        $this->timeEntryProphecy->getDateEnd()->shouldBeCalled()->willReturn(new \DateTime('now'));
+
+        $this->time->stopTimer($this->user->reveal(), $this->timeEntryProphecy->reveal())
+                   ->shouldNotBeCalled();
+        $ret = $this->punchTimerHandler->punchOut($this->user->reveal());
+        $this->assertFalse($ret);
+    }
+
     public function testPunchOutMissingPunchIn()
     {
         $this->timeEntryRepository->findPunchTimer($this->user->reveal())
