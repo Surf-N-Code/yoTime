@@ -34,8 +34,6 @@ class SlashCommandHandler {
 
     private Time $time;
 
-    private Mailer $mailer;
-
     private SlackClient $slackClient;
 
     public function __construct(
@@ -44,7 +42,6 @@ class SlashCommandHandler {
         TimerHandler $timerHandler,
         UserProvider $userProvider,
         DatabaseHelper $databaseHelper,
-        Mailer $mailer,
         Time $time,
         SlackClient $slackClient
     )
@@ -54,7 +51,6 @@ class SlashCommandHandler {
         $this->timerHandler = $timerHandler;
         $this->userProvider = $userProvider;
         $this->databaseHelper = $databaseHelper;
-        $this->mailer = $mailer;
         $this->time = $time;
         $this->slackClient = $slackClient;
     }

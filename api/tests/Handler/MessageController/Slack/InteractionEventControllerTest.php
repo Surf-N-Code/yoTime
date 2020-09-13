@@ -7,7 +7,7 @@ use App\Entity\Slack\SlackInteractionEvent;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
 use App\Handler\MessageController\Slack\InteractionEventController;
-use App\Handler\MessageHandler\Slack\DailySummaryHandler;
+use App\Tests\Handler\MessageHandler\Slack\DailySummaryHandler;
 use App\Services\UserProvider;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
