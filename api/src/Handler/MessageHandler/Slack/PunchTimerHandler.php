@@ -55,12 +55,13 @@ class PunchTimerHandler
         return true;
     }
 
-    public function punchInAtTime(User $user, string $timeStr): void
+    public function punchInAtTime(User $user, string $timeStr): Timer
     {
         $this->throwOnRunningPunchTimer($user);
         $this->time->stopNonPunchTimers($user);
         $timer = $this->time->startTimerFromTimeString($user, $timeStr, TimerType::PUNCH);
         $this->databaseHelper->flushAndPersist($timer);
+        return $timer;
     }
 
     private function throwOnRunningPunchTimer(User $user)

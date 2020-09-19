@@ -129,6 +129,7 @@ class PunchTimerHandlerTest extends TestCase
         $this->databaseHelper->flushAndPersist($this->timeEntryProphecy->reveal())
             ->shouldBecalled();
 
-        $this->punchTimerHandler->punchInAtTime($this->user->reveal(), '08:30');
+        $timer = $this->punchTimerHandler->punchInAtTime($this->user->reveal(), '08:30');
+        $this->assertEquals($timer, $this->timeEntryProphecy->reveal());
     }
 }
