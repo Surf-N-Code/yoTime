@@ -42,6 +42,6 @@ class SecurityListener
 
     private function isSecurityEnabledSlackRequest(Request $request): bool
     {
-        return in_array($request->getRequestUri(), SlackSecurityVoter::SECURITY_ENABLED_ENDPOINTS);
+        return in_array($request->getRequestUri(), SlackSecurityVoter::SECURITY_ENABLED_ENDPOINTS, false);
     }
 }

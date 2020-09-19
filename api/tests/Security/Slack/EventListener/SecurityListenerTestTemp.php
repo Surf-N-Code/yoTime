@@ -8,6 +8,7 @@ use App\Kernel;
 use App\Security\Slack\EventListener\SecurityListener;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -32,24 +33,39 @@ class SecurityListenerTestTemp extends ApiTestCase
 
     public function testWorkSlashCommandEvent()
     {
-        $response = static::createClient()->request(
-            'POST',
-            '/tasks',
-            [
-                'json' => [
-                    "description" => "description",
-                    "billable" => true,
-                    "notes" => "Note",
-                    "user" => "users/3"
-                ],
-//                'headers' => [
-//                    'X-Slack-Request-Timestamp' => 123123,
-//                    'X-Slack-Signature' => 'v0=b12793eef34f4c725b152ea2192d08c6a8a8f718dafd3a23644be494a745dfed',
-//                    'Content-Type' => 'application/ld+json'
+//        $response = static::createClient([], ['base_uri' => 'https://localhost:8443'])->request(
+//            'POST',
+//            '/tasks',
+//            [
+//                'json' => [
+//                    "description" => "description",
+//                    "billable" => true,
+//                    "notes" => "Note",
+//                    "user" => "users/3"
 //                ],
-                'base_uri' => 'https://localhost:8443'
-            ]
+////                'headers' => [
+////                    'X-Slack-Request-Timestamp' => 123123,
+////                    'X-Slack-Signature' => 'v0=b12793eef34f4c725b152ea2192d08c6a8a8f718dafd3a23644be494a745dfed',
+////                    'Content-Type' => 'application/ld+json'
+////                ],
+//                'base_uri' => 'https://localhost:8443'
+//            ]
+//        );
+//        dd($response);
+//        $client = static::createClient();
+//
+//        $client->request('GET', 'https://localhost:8443/tasks');
+//
+//        dump(json_decode($client->getResponse()->getContent()));
+//        dd(json_decode($client->getResponse()));
+//        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+
+        $response = static::createClient()->request(
+            'GET',
+            '/tasks',
+            ['base_uri' => 'https://localhost:8443']
         );
+        dd($response);
         $this->assertEquals(202, $response->getStatusCode());
     }
 }
