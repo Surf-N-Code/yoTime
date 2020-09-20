@@ -176,7 +176,7 @@ class DailySummaryHandler
         $doSendMail = $evt['view']['state']['values']['mail_block']['mail_choice']['selected_option']['value'] === 'true';
 
         try {
-            $punchTimerStatus = $this->punchTimerHandler->punchOut($user);
+            $punchTimerStatusDto = $this->punchTimerHandler->punchOut($user);
         } catch (MessageHandlerException $e) {
             return new ModalSubmissionDto(ModalSubmissionDto::STATUS_ERROR, ':heavy_exclamation_mark: '.$e->getMessage(), 'Something is wrong :(');
         }
@@ -185,7 +185,7 @@ class DailySummaryHandler
         $timeOnBreak = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::BREAK);
 
         $dailySummaryEntity = $this->dailySummaryRepo->findOneBy(['date' => new \DateTime('now')]);
-        $ds = $this->dailySummaryFactory->createDailySummaryObject($summary, $user, $punchTimerStatus->getTimer(), $dailySummaryEntity, $timeOnWork, $timeOnBreak);
+        $ds = $this->dailySummaryFactory->createDailySummaryObject($summary, $user, $punchTimerStatusDto->getTimer(), $dailySummaryEntity, $timeOnWork, $timeOnBreak);
 
         if ($doSendMail) {
             try {
@@ -200,9 +200,9 @@ class DailySummaryHandler
             try {
                 $response = $this->personio->postAttendanceForEmployee(2269559, $ds);
                 $didSyncToPersonio = $response['success'];
-                if (!$didSyncToPersonio) {
-
-                    $this->logger->error(sprintf('Could not sync attendances to Persoio with message: %s', $response['error']['message']));
+                if (!$didSyncToPersonio && $response['error']['code'] === 400 && $response['error']['message'] === 'Existing overlapping attendances periods') {
+                    $this->logger->error(sprintf('Could not sync attendances to Personio with message: %s', $response['error']['message']));
+                    $personioErrorMsg = sprintf('Could not sync attendances to Personio as you have already added an attendance in Personio for today');
                 }
             } catch (\Exception $e) {
                 $didSyncToPersonio = false;
@@ -210,14 +210,14 @@ class DailySummaryHandler
             $ds->setIsSyncedToPersonio($didSyncToPersonio);
         }
 
-        $m = $this->getDailySummaryAddSlackMessage($timeOnWork, $timeOnBreak, $punchTimerStatus->getActionStatus(), $doSendMail, $ds->getIsSyncedToPersonio(), $didSyncToPersonio ?? false);
+        $m = $this->getDailySummaryAddSlackMessage($timeOnWork, $timeOnBreak, $punchTimerStatusDto->getActionStatus(), $doSendMail, $ds->getIsSyncedToPersonio(), $personioErrorMsg ?? '');
 
         $this->databaseHelper->flushAndPersist($ds);
 
         return new ModalSubmissionDto(ModalSubmissionDto::STATUS_SUCCESS, $m->getBlockText(0), 'Jabadabadingboombang!');
     }
 
-    private function getDailySummaryAddSlackMessage(int $timeOnWork, int $timeOnBreak, bool $didPunchOut, bool $doSendMail, bool $alreadySynchedToPersonio, bool $didSyncToPersonio): SlackMessage
+    private function getDailySummaryAddSlackMessage(int $timeOnWork, int $timeOnBreak, bool $didPunchOut, bool $doSendMail, bool $alreadySynchedToPersonio, ?string $personioErrorMsg): SlackMessage
     {
         $formattedTimeOnBreak = $this->time->formatSecondsAsHoursAndMinutes($timeOnBreak);
         $formattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($timeOnWork - $timeOnBreak);
@@ -226,22 +226,22 @@ class DailySummaryHandler
         if ($didPunchOut) {
             $breakText = $formattedTimeOnBreak === '0h 0min' ? '' : sprintf(' and *%s* on break', $formattedTimeOnBreak);
             $msg = sprintf(':heavy_check_mark: Signed you out for the day%s :call_me_hand:. You spent *%s* on work%s.', $doSendMail ? ' and sent your summary via mail' : '', $formattedTimeOnWork, $breakText);
-            $msg .= $this->getPersonioSyncStatusMessage($didSyncToPersonio, $alreadySynchedToPersonio);
+            $msg .= $this->getPersonioSyncStatusMessage($personioErrorMsg, $alreadySynchedToPersonio);
             $this->slackMessageHelper->addTextSection($msg, $m);
             return $m;
         }
 
         $msg = $doSendMail ? 'Summary sent :slightly_smiling_face:' : 'Summary saved :slightly_smiling_face:';
-        $msg .= $this->getPersonioSyncStatusMessage($didSyncToPersonio, $alreadySynchedToPersonio);
+        $msg .= $this->getPersonioSyncStatusMessage($personioErrorMsg, $alreadySynchedToPersonio);
         $this->slackMessageHelper->addTextSection($msg, $m);
         return $m;
     }
 
-    private function getPersonioSyncStatusMessage(bool $didSyncToPersonio, bool $alreadySyncedToPersonio)
+    private function getPersonioSyncStatusMessage(?string $personioErrorMsg, bool $alreadySyncedToPersonio)
     {
         if (!$alreadySyncedToPersonio) {
-            if (!$didSyncToPersonio) {
-                return PHP_EOL . PHP_EOL . ':x: Error syncing your attendance to Personio.';
+            if ($personioErrorMsg) {
+                return PHP_EOL . PHP_EOL . ':x:' . $personioErrorMsg;
             }
             return PHP_EOL . PHP_EOL . ':heavy_check_mark: Synced your attendance to Personio.';
         }

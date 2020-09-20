@@ -141,7 +141,7 @@ class TimerRepository extends ServiceEntityRepository
                     ->setParameter('user', $user)
                     ->setParameter('timerType', TimerType::PUNCH)
                     ->getQuery()
-                    ->getResult()
+                    ->getOneOrNullResult()
             ;
     }
 

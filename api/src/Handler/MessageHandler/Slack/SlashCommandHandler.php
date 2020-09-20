@@ -80,7 +80,7 @@ class SlashCommandHandler {
 
             case '/late_break':
                 $timer = $this->time->addFinishedTimer($user, TimerType::BREAK, $commandText);
-                $message->addTextSection('Break successfully added');
+                $message->addTextSection(':sleeping: Break added');
                 $this->databaseHelper->flushAndPersist($timer);
                 $this->sendSlackMessage($responseUrl, $message);
                 break;
@@ -98,14 +98,14 @@ class SlashCommandHandler {
                 $this->sendSlackMessage($responseUrl, $message);
                 break;
 
-            case '/dailysummary':
             case '/ds':
                 $modal = $this->dailySummaryHandler->getDailySummarySubmitView($command->getTriggerId());
                 $this->slackClient->slackApiCall('POST', 'views.open', $modal);
                 break;
 
-            case '/help':
+            case '/help_me':
                 $message = $this->userHelpHandler->showUserHelp($command);
+                $this->sendSlackMessage($responseUrl, $message);
                 break;
 
             default:

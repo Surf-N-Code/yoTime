@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ApiResource(
+ *     messenger=true,
  *     collectionOperations={
  *         "post"={
  *              "method"="POST",
@@ -26,17 +27,17 @@ class SlackBotMessage extends AbstractSlack
     private $event;
 
     /**
-     * @return \App\Entity\Slack\SlackBotEvent
+     * @return SlackBotEvent
      */
-    public function getEvent(): \App\Entity\Slack\SlackBotEvent
+    public function getEvent(): SlackBotEvent
     {
         return $this->event;
     }
 
     /**
-     * @param \App\Entity\Slack\SlackBotEvent $event
+     * @param SlackBotEvent $event
      */
-    public function setEvent(\App\Entity\Slack\SlackBotEvent $event): void
+    public function setEvent(SlackBotEvent $event): void
     {
         $this->event = $event;
     }

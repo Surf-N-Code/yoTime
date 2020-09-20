@@ -43,7 +43,7 @@ class BotMessageHandler
 
         $m = new SlackMessage();
         switch ($command) {
-            case strpos($command, '/hi') !== false:
+            case strpos($command, 'hi') !== false:
                 try {
                     $this->punchTimerHandler->punchIn($user);
                 } catch (MessageHandlerException $e) {
@@ -53,31 +53,25 @@ class BotMessageHandler
                 $m->addTextSection('Happy working :rocket:');
                 break;
 
-            case strpos($command, '/bye') !== false:
+            case strpos($command, 'bye') !== false:
                 try {
-                   [$didPunchOut] = $this->punchTimerHandler->punchOut($user);
-                    if (!$didPunchOut) {
+                   $punchTimerStatusDto = $this->punchTimerHandler->punchOut($user);
+                    if (!$punchTimerStatusDto->getActionStatus()) {
                         $m->addTextSection('You have already punched out for today.');
                         break;
                     }
+
+                    $m->addTextSection('Signed you out for today. :call_me_hand:');
                 } catch (MessageHandlerException $e) {
                     $m->addTextSection($e->getMessage());
                     break;
                 }
-                $timeOnWork = $this->time->getTimeSpentOnTypeByPeriod(
-                    $user,
-                    'day',
-                    TimerType::PUNCH
-                );
+                $timeOnWork = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::PUNCH);
+                $timeOnBreak = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::BREAK);
 
-                $timeOnBreak = $this->time->getTimeSpentOnTypeByPeriod(
-                    $user,
-                    'day',
-                    TimerType::BREAK
-                );
                 $formattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($timeOnWork - $timeOnBreak);
                 $formattedTimeOnBreak = $this->time->formatSecondsAsHoursAndMinutes($timeOnBreak);
-                $m->addTextSection(sprintf('spent `%s` on work and `%s` on break.', $formattedTimeOnWork, $formattedTimeOnBreak));
+                $m->addTextSection(sprintf('You spent `%s` on work and `%s` on break.', $formattedTimeOnWork, $formattedTimeOnBreak));
                 break;
             default:
                 throw new MessageHandlerException('You pinged me, however I do not recognise your command. Try `/help` to get a list of available commands', 412);

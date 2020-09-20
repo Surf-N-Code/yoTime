@@ -118,41 +118,43 @@ class DailySummary
         $this->user = $user;
     }
 
-    public  function getIsEmailSent(){
+    public  function getIsEmailSent(): bool
+    {
         return $this->isEmailSent;
     }
 
-    public function setIsEmailSent($isEmailSent){
+    public function setIsEmailSent(bool $isEmailSent)
+    {
         $this->isEmailSent = $isEmailSent;
         return $this;
     }
 
-    public function getStartTime()
+    public function getStartTime(): \DateTimeInterface
     {
         return $this->startTime;
     }
 
-    public function setStartTime($startTime): void
+    public function setStartTime(\DateTimeInterface $startTime): void
     {
         $this->startTime = $startTime;
     }
 
-    public function getEndTime()
+    public function getEndTime(): \DateTimeInterface
     {
         return $this->endTime;
     }
 
-    public function setEndTime($endTime): void
+    public function setEndTime(\DateTimeInterface $endTime): void
     {
         $this->endTime = $endTime;
     }
 
-    public function getIsSyncedToPersonio()
+    public function getIsSyncedToPersonio(): ?bool
     {
         return $this->isSyncedToPersonio;
     }
 
-    public function setIsSyncedToPersonio($isSyncedToPersonio): void
+    public function setIsSyncedToPersonio(bool $isSyncedToPersonio): void
     {
         $this->isSyncedToPersonio = $isSyncedToPersonio;
     }
