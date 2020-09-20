@@ -7,8 +7,8 @@ use App\Entity\Timer;
 use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
-use App\Tests\Handler\MessageHandler\Slack\BotMessageHandler;
-use App\Tests\Handler\MessageHandler\Slack\PunchTimerHandler;
+use App\Handler\MessageHandler\Slack\BotMessageHandler;
+use App\Handler\MessageHandler\Slack\PunchTimerHandler;
 use App\Repository\TimerRepository;
 use App\Repository\UserRepository;
 use App\Services\Time;
@@ -105,8 +105,7 @@ class BotMessageHandlerTest extends TestCase
                            ->shouldBeCalled()
                            ->willReturn($user);
         $this->punchTimerHandler->punchIn($user)
-            ->shouldBeCalled()
-            ->willReturn($this->timer->reveal());
+            ->shouldBeCalled();
 
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
@@ -215,8 +214,7 @@ class BotMessageHandlerTest extends TestCase
             ->willReturn($this->slackMessage->reveal());
 
         $this->punchTimerHandler->punchIn($user)
-            ->shouldNotBeCalled()
-            ->willReturn($this->slackMessage->reveal());
+            ->shouldNotBeCalled();
 
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),

@@ -41,5 +41,10 @@ services:
         arguments:
             $slackSignSecret: '%env(SLACK_SIGN_SECRET)%'
             $slackApiAppId: '%env(SLACK_API_APP_ID)%'
-#        tags:
-#            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+    App\HrTools\Personio\HttpClient:
+        arguments:
+            $personioClientId: '%env(PERSONIO_CLIENT_ID)%'
+            $personioClientSecret: '%env(PERSONIO_CLIENT_SECRET)%'

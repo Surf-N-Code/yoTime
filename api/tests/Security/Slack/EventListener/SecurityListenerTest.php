@@ -19,6 +19,7 @@ class SecurityListenerTest extends ApiTestCase
 {
     public function testWorkSlashCommandEvent()
     {
+//        self::markTestSkipped();
         $response = static::createClient()->request(
             'POST',
             '/slack/slashcommand',
@@ -44,6 +45,14 @@ class SecurityListenerTest extends ApiTestCase
                 'base_uri' => 'https://localhost:8443'
             ]
         );
-        $this->assertEquals(202, $response->getStatusCode());
+//        $this->assertEquals(202, $response->getStatusCode());
+
+
+//        $response = static::createClient()->request(
+//            'GET',
+//            '/tasks',
+//            ['base_uri' => 'https://localhost:8443']
+//        );
+        $this->assertEquals(200, $response->getStatusCode());
     }
 }

@@ -9,6 +9,7 @@ class SlashCommandMessageControllerTest extends ApiTestCase
 {
     public function testWorkSlashCommandEvent()
     {
+        self::markTestSkipped();
         $sc = new SlashCommand();
         $sc->setChannelId('654654');
         $sc->setChannelName('channelname');
@@ -72,9 +73,10 @@ class SlashCommandMessageControllerTest extends ApiTestCase
         $payload = json_encode($data);
         $client = static::createClient();
         $client->enableProfiler();
-        $client->request('POST', '/slack/bot/message', [], [], ['CONTENT_TYPE' => 'application/json'], $payload);
-        $response = $client->getResponse();
-        dump($response);
+        $response = static::createClient()->request('POST', '/slack/bot/message', [
+            'json' => $payload
+        ]);
+        dd($response);
         self::assertEquals(200, $response->getStatusCode());
     }
 }

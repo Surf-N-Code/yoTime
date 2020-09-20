@@ -35,7 +35,6 @@ class TimerHandler
     {
         $this->time->stopNonPunchTimers($user);
         $timerType = str_replace('/', '', $commandStr);
-        dump($timerType);
         return $this->time->startTimer($user, $timerType);
     }
 

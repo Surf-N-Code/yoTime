@@ -20,6 +20,5 @@ framework:
             slack.client:
                 auth_bearer: '%env(SLACK_BOT_TOKEN)%'
                 base_uri: 'https://slack.com/api/'
-            hr.personio:
-                auth_bearer: '%env(PERSONIO_API_KEY)%'
-                base_uri: 'https://api.personio.de/v1/company/'
+            personio.client:
+                base_uri: 'https://api.personio.de/v1/'

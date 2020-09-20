@@ -24,7 +24,7 @@ class DailySummary
     private $dailySummary;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=false)
      */
     private $date;
 
@@ -37,6 +37,16 @@ class DailySummary
      * @ORM\Column(type="float", nullable=true)
      */
     private $timeBreakInS;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    private $startTime;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     */
+    private $endTime;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="dailySummary")
@@ -111,4 +121,25 @@ class DailySummary
         $this->isEmailSent = $isEmailSent;
         return $this;
     }
+
+    public function getStartTime()
+    {
+        return $this->startTime;
+    }
+
+    public function setStartTime($startTime): void
+    {
+        $this->startTime = $startTime;
+    }
+
+    public function getEndTime()
+    {
+        return $this->endTime;
+    }
+
+    public function setEndTime($endTime): void
+    {
+        $this->endTime = $endTime;
+    }
+
 }

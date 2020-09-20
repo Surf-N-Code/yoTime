@@ -55,8 +55,8 @@ class BotMessageHandler
 
             case strpos($command, '/bye') !== false:
                 try {
-                    $isPunchedIn = $this->punchTimerHandler->punchOut($user);
-                    if (!$isPunchedIn) {
+                   [$didPunchOut] = $this->punchTimerHandler->punchOut($user);
+                    if (!$didPunchOut) {
                         $m->addTextSection('You have already punched out for today.');
                         break;
                     }

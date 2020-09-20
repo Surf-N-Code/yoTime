@@ -12,6 +12,7 @@ class BotMessageControllerTest extends ApiTestCase
 
     public function testHiBotMention()
     {
+        self::markTestSkipped();
         $data = [
             "event" => [
                 "client_msg_id" => "a696521b-dab6-42ea-af69-9f904854c181",
@@ -40,7 +41,7 @@ class BotMessageControllerTest extends ApiTestCase
 
     public function testSlackBotVerification()
     {
-        self::markTestIncomplete();
+        self::markTestSkipped();
         $data = [
             "event" => [
                 "type" => "url_verification",
