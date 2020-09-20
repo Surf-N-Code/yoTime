@@ -44,7 +44,7 @@ class UserProvider
         return $dbUser;
     }
 
-    public function getSlackUserInfo($slackUserId): SlackUserW
+    public function getSlackUserInfo($slackUserId): SlackUser
     {
         try {
             $response = $this->client->getSlackUserProfile($slackUserId);

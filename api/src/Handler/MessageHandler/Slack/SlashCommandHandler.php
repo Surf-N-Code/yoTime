@@ -66,14 +66,14 @@ class SlashCommandHandler {
             case '/'.TimerType::WORK:
             case '/'.TimerType::BREAK:
                 $timer = $this->timerHandler->startTimer($user, $commandStr);
-                $message = $message->addTextSection(sprintf('%s timer started', ucfirst($timer->getTimerType())));
+                $message = $message->addTextSection(sprintf(':clock9: %s timer started', ucfirst($timer->getTimerType())));
                 $this->databaseHelper->flushAndPersist($timer);
                 $this->sendSlackMessage($responseUrl, $message);
                 break;
 
             case '/late_hi':
                 $timer = $this->timerHandler->lateSignIn($user, $commandText);
-                $message->addTextSection(sprintf('Checked you in at %s :rocket:', $timer->getDateStart()->format('d.m.Y H:i:s')));
+                $message->addTextSection(sprintf('Checked you in at `%s` :rocket:', $timer->getDateStart()->format('d.m.Y H:i:s')));
                 $this->databaseHelper->flushAndPersist($timer);
                 $this->sendSlackMessage($responseUrl, $message);
                 break;
