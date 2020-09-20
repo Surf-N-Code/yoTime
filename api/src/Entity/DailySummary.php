@@ -54,9 +54,14 @@ class DailySummary
     private $user;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $isEmailSent;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isSyncedToPersonio;
 
     public function getId(): ?int
     {
@@ -140,6 +145,16 @@ class DailySummary
     public function setEndTime($endTime): void
     {
         $this->endTime = $endTime;
+    }
+
+    public function getIsSyncedToPersonio()
+    {
+        return $this->isSyncedToPersonio;
+    }
+
+    public function setIsSyncedToPersonio($isSyncedToPersonio): void
+    {
+        $this->isSyncedToPersonio = $isSyncedToPersonio;
     }
 
 }
