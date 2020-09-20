@@ -2,12 +2,15 @@
 
 namespace App\Tests\Handler\MessageHandler\Slack;
 
-use App\Entity\DailySummary;
 use App\Entity\Slack\SlackMessage;
 use App\Entity\Slack\SlashCommand;
 use App\Entity\Timer;
 use App\Entity\TimerType;
 use App\Entity\User;
+use App\Handler\MessageHandler\Slack\DailySummaryHandler;
+use App\Handler\MessageHandler\Slack\SlashCommandHandler;
+use App\Handler\MessageHandler\Slack\TimerHandler;
+use App\Handler\MessageHandler\Slack\UserHelpHandler;
 use App\Mail\Mailer;
 use App\Repository\TimerRepository;
 use App\Services\DatabaseHelper;

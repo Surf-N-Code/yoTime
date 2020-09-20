@@ -43,7 +43,6 @@ final class InteractionEventController implements MessageHandlerInterface
             if (!empty($payload['view']['state']['values']['daily_summary_block'] && $payload['type'] === 'view_submission')) {
                 $modalStatus = $this->dailySummaryHandler->handleModalSubmission($payload, $user);
                 $confirmView = $this->dailySummaryHandler->getDailySummaryConfirmView($modalStatus);
-                dump($confirmView);
                 return new JsonResponse($confirmView, 200);
             }
 

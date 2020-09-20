@@ -64,7 +64,7 @@ services:
       MYSQL_USER: api-platform
       MYSQL_ROOT_PASSWORD: api-platform
       MYSQL_PASSWORD: api-platform
-      MYSQL_DATABASE: yoTime
+      MYSQL_DATABASE: yotime
     ports:
       - target: 3306
         published: 3308
