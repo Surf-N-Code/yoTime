@@ -4,6 +4,7 @@
 namespace App\Handler\MessageHandler\Slack;
 
 
+use App\Entity\Slack\PunchTimerStatusDto;
 use App\Entity\Slack\SlackMessage;
 use App\Entity\Timer;use App\Entity\TimerType;
 use App\Entity\User;
@@ -38,7 +39,7 @@ class PunchTimerHandler
         $this->databaseHelper->flushAndPersist($timer);
     }
 
-    public function punchOut(User $user): array
+    public function punchOut(User $user): PunchTimerStatusDto
     {
         $signInOutTimer = $this->timeEntryRepo->findPunchTimer($user);
 
@@ -47,12 +48,12 @@ class PunchTimerHandler
         }
 
         if ($signInOutTimer->getDateEnd()) {
-            return ['didPunchOut' => false, 'timer' => $signInOutTimer];
+            return new PunchTimerStatusDto(false, $signInOutTimer);
         }
 
-        $timeEntry = $this->time->stopTimer($user, $signInOutTimer);
-        $this->databaseHelper->flushAndPersist($timeEntry);
-        return ['didPunchOut' => true, 'timer' => $signInOutTimer];
+        $timer = $this->time->stopTimer($user, $signInOutTimer);
+        $this->databaseHelper->flushAndPersist($timer);
+        return new PunchTimerStatusDto(true, $signInOutTimer);
     }
 
     public function punchInAtTime(User $user, string $timeStr): Timer
