@@ -30,7 +30,6 @@ class DailySummaryFactory {
 
         $dailySummary->setDailySummary($summary);
         $dailySummary->setUser($user);
-        $dailySummary->setIsEmailSent(new \DateTime('now'));
         return $dailySummary;
     }
 }
