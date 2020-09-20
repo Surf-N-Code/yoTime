@@ -77,7 +77,13 @@ class Time
             return $this->startTimer($user, $timerType, $startDate);
         }
 
-        throw new MessageHandlerException(sprintf('The time you entered: %s is not valid. Please enter your time in the form `hh:mm`, e.g.: `14:21`', $timeString), 412);
+        dump($timeString);
+        $msg = sprintf('The time you entered: %s is not valid. Please enter your time in the form `hh:mm`, e.g.: `14:21`', $timeString);
+        if ($timeString === '') {
+            $msg = 'Please provide the time you started work this morning in the format: `hh:mm`, e.g.: `14:21`';
+        }
+
+        throw new MessageHandlerException($msg, 412);
     }
 
     public function addFinishedTimer(User $user, string $timerType, string $timeString): Timer
