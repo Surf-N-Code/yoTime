@@ -17,19 +17,19 @@ final class BotMessageController implements MessageHandlerInterface
     private JsonBodyTransform $jsonBodyTransform;
     private RequestStack $requestStack;
     private BotMessageHandler $botMessageHandler;
-    private SlackClient $client;
+    private SlackClient $slackClient;
 
     public function __construct(
         JsonBodyTransform $jsonBodyTransform,
         RequestStack $requestStack,
         BotMessageHandler $botMessageHandler,
-        SlackClient $client
+        SlackClient $slackClient
     )
     {
         $this->jsonBodyTransform = $jsonBodyTransform;
         $this->requestStack = $requestStack;
         $this->botMessageHandler = $botMessageHandler;
-        $this->client = $client;
+        $this->slackClient = $slackClient;
     }
 
     public function __invoke(SlackBotMessage $slackBotMessage)
@@ -45,7 +45,7 @@ final class BotMessageController implements MessageHandlerInterface
                 return new Response($challenge, 200);
             }
         } catch (\Exception $e) {
-            $this->client->slackEphemeral([
+            $this->slackClient->slackApiCall('POST', 'chat.postEphemeral', [
                 'channel' => $slackBotMessage->getChannelId(),
                 'user' => $slackBotMessage->getUserId(),
                 'text' => $slackBotMessage->getText()
@@ -62,9 +62,10 @@ final class BotMessageController implements MessageHandlerInterface
             $m->addTextSection($e->getMessage());
         }
 
-        $this->client->slackWebhook([
+        $this->slackClient->slackApiCall('POST', 'chat.postEphemeral', [
             'channel' => $slackBotMessage->getEvent()->getChannel(),
             'text' => $m->getBlockText(0),
+            'blocks' => $m->getBlocks(),
             'user' => $slackUserId
         ]);
 

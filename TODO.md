@@ -6,6 +6,14 @@
 * Add /task endpoint to add tasks done in a day
     * Generate DS from tasks
     
+MVP:
+* timereports (admin), users - maybe
+* help text überarbeiten
+* app installation
+* app name
+
+* Integrationstests
+* deployment
     
 Tests:
 * Mailer
