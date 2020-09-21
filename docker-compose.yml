@@ -60,6 +60,7 @@ services:
     command: mysqld --default-authentication-plugin=mysql_native_password
     volumes:
       - db-data:/var/lib/mysql
+      - ./api/docker/db:/docker-entrypoint-initdb.d
     environment:
       MYSQL_USER: api-platform
       MYSQL_ROOT_PASSWORD: api-platform
