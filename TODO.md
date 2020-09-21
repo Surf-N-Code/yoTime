@@ -8,12 +8,11 @@
     
 MVP:
 * timereports (admin), users - maybe
-* help text überarbeiten
-* app installation
-* app name
-
 * Integrationstests
+
 * deployment
+* App logo
+* app installation
     
 Tests:
 * Mailer

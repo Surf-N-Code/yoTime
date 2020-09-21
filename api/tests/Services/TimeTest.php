@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\tests;
+namespace App\Tests;
 
 
 use App\Entity\Task;
@@ -96,7 +96,7 @@ class TimeTest extends TestCase
         );
     }
 
-    public function testStopNonPunchTimer()
+    public function testStopMultipleNonPunchTimers()
     {
         $date = new \DateTime('now');
         $this->timeEntryRepository->findNonPunchTimers($this->user->reveal())

@@ -9,3 +9,19 @@ if (file_exists(dirname(__DIR__).'/config/bootstrap.php')) {
 } elseif (method_exists(Dotenv::class, 'bootEnv')) {
     (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
 }
+
+$dbh = new PDO('mysql:host=db', 'api-platform', 'api-platform');
+$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$dbh->exec('CREATE DATABASE IF NOT EXISTS yotime_test');
+$dbh->exec('GRANT ALL ON yotime_test.* to api-platform');
+$dbh->exec('FLUSH PRIVILEGES');
+
+passthru(sprintf(
+    'php "%s/bin/console" doctrine:migrations:migrate --env=test --no-interaction',
+    __DIR__
+));
+
+passthru(sprintf(
+    'php "%s/bin/console" doctrine:fixtures:load --env=test --no-interaction',
+    __DIR__
+));

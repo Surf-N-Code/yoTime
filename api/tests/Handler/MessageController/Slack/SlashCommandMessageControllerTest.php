@@ -3,61 +3,40 @@
 namespace App\Tests\Handler\MessageController\Slack;
 
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
-use App\Entity\Slack\SlashCommand;
 
 class SlashCommandMessageControllerTest extends ApiTestCase
 {
-    public function testWorkSlashCommandEvent()
+    public function testWorkCommandSc()
     {
-        self::markTestSkipped();
-        $sc = new SlashCommand();
-        $sc->setChannelId('654654');
-        $sc->setChannelName('channelname');
-        $sc->setCommand('work');
-        $sc->setResponseUrl('https://hooks.slack.com/commands/1234/5678');
-        $sc->setTeamId('team123');
-        $sc->setText('text');
-        $sc->setUserId('user123');
-        $sc->setUserName('Norman');
-
         $data = [
-            "token" => "QbBtIJowqMvCl1NcYexCG7rN",
+            "team_id" => "THW253RMX",
             "team_domain" => "diltheymedia",
-            "channmel_id" => "GLH77MXNX",
-            "channel_nanme" => "privategroup",
+            "channel_id" => "GLH77MXNX",
+            "channel_name" => "privategroup",
             "user_id" => "UHW253RU1",
             "user_name" => "ndilthey",
-            "team_id" => "THW253RMX",
-            "ts" => "1571559946.000600",
             "command" => "/work",
-            "trigger_id" => "1274946476807.608073127745.5d3143756558cfeeb528ccbb7dad531e",
-            "response_url" => ""
+            "text" => "",
+            "api_app_id" => "ALTNUDXE0",
+            "response_url" => "",
+            "trigger_id" => "1376434055859.608073127745.6b6bf1eec2610d38762c05c6f1decc7e",
         ];
 
-        $timeEntry = [
-            "date_start" => "2020-08-15T08:01:00+00:00",
-            "task" => "tasks/1",
-            "user" => "users/1",
-            "timer_type" => "work"
-        ];
-
-//        $payload = http_build_query($data);
-//        dump($payload);
-//        $response = $this->request('GET', '/timers');
-//        $response = $this->request('GET', '/time_entries.json');
-//        dump($response->getStatusCode());
-//        dd($response->getContent());
-//        $data = json_decode($response->getContent(), true);
-//        dd($data);
-
-//        dd($response);
-//        self::assertEquals(200, $response->getStatusCode());
-
-        // The client implements Symfony HttpClient's `HttpClientInterface`, and the response `ResponseInterface`
-        $response = static::createClient()->request('GET', '/slack/slashcommand');
-
-        dump($response);
-        $this->assertResponseIsSuccessful();
+        $response = static::createClient()->request(
+            'POST',
+            '/slack/slashcommand',
+                [
+                'json' => $data,
+                'headers' => [
+                    'x-slack-request-timestamp' => 1600676620,
+                    'x-slack-signature' => 'v0=27e5426d075e6d68333fb2aaae9794310a2bde8eee2c551a16828b7eadb3da10',
+                    'content-type' => 'application/x-www-form-urlencoded',
+                    'accept' => 'application/json'
+                ],
+                'base_uri' => 'https://localhost:8443'
+            ]
+        );
+        $this->assertEquals(202, $response->getStatusCode());
     }
 
     public function testSlackBotVerification()
@@ -76,7 +55,6 @@ class SlashCommandMessageControllerTest extends ApiTestCase
         $response = static::createClient()->request('POST', '/slack/bot/message', [
             'json' => $payload
         ]);
-        dd($response);
         self::assertEquals(200, $response->getStatusCode());
     }
 }
