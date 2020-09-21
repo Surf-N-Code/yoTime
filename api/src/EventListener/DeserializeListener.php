@@ -30,7 +30,6 @@ final class DeserializeListener
             return;
         }
 
-        $cnt = $request->getContentType();
         if ('form' === $request->getContentType()) {
             $this->denormalizeFormRequest($request);
         } else {
@@ -51,6 +50,9 @@ final class DeserializeListener
         }
 
         $data = $request->request->all();
+        if (empty($data)) {
+            $data = json_decode($request->getContent(), true);
+        }
         $object = $this->denormalizer->denormalize($data, $attributes['resource_class'], null, $context);
         $request->attributes->set('data', $object);
     }

@@ -16,12 +16,9 @@ class SecurityListener
 
     private string $slackSignSecret;
 
-    private string $slackApiAppId;
-
-    public function __construct($slackSignSecret, $slackApiAppId)
+    public function __construct($slackSignSecret)
     {
         $this->slackSignSecret = $slackSignSecret;
-        $this->slackApiAppId = $slackApiAppId;
     }
 
     public function onKernelRequest(RequestEvent $event): void
@@ -32,6 +29,8 @@ class SecurityListener
             $string = sprintf('v0:%s:%s', $slackTimestamp, $request->getContent());
             $mySig = 'v0='.hash_hmac('sha256', $string, $this->slackSignSecret);
             $slackSig = $request->headers->get('X-Slack-Signature');
+//            dd($mySig, $slackSig);
+
             if (!hash_equals((string)$slackSig, $mySig)) {
                 $response = new Response();
                 $response->setStatusCode(401);
