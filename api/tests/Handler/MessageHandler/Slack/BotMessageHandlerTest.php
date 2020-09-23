@@ -2,6 +2,7 @@
 
 namespace App\Tests\Handler\MessageHandler\Slack;
 
+use App\Entity\Slack\PunchTimerStatusDto;
 use App\Entity\Slack\SlackMessage;
 use App\Entity\Timer;
 use App\Entity\TimerType;
@@ -13,6 +14,7 @@ use App\Repository\TimerRepository;
 use App\Repository\UserRepository;
 use App\Services\Time;
 use App\Services\UserProvider;
+use App\Slack\SlackClient;
 use App\Slack\SlackMessageHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
@@ -37,6 +39,7 @@ class BotMessageHandlerTest extends TestCase
     private $slackMessage;
     private $slackMessageHelper;
     private $timer;
+    private $slackClient;
 
     protected function setUp(): void
     {
@@ -53,6 +56,7 @@ class BotMessageHandlerTest extends TestCase
         $this->punchTimerHandler = $this->prophesize(PunchTimerHandler::class);
         $this->slackMessage = $this->prophesize(SlackMessage::class);
         $this->slackMessageHelper = $this->prophesize(SlackMessageHelper::class);
+        $this->slackClient = $this->prophesize(SlackClient::class);
     }
 
     private function buildEvent($type, $text)
@@ -81,7 +85,8 @@ class BotMessageHandlerTest extends TestCase
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
             $this->punchTimerHandler->reveal(),
-            $this->time->reveal()
+            $this->time->reveal(),
+            $this->slackClient->reveal()
         );
         $this->expectException(MessageHandlerException::class);
         $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/hi'));
@@ -92,7 +97,8 @@ class BotMessageHandlerTest extends TestCase
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
             $this->punchTimerHandler->reveal(),
-            $this->time->reveal()
+            $this->time->reveal(),
+            $this->slackClient->reveal()
         );
         $this->expectException(MessageHandlerException::class);
         $botMessageHandler->parseEventType($this->buildEvent('unsupported_event', '/hi'));
@@ -110,9 +116,10 @@ class BotMessageHandlerTest extends TestCase
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
             $this->punchTimerHandler->reveal(),
-            $this->time->reveal()
+            $this->time->reveal(),
+            $this->slackClient->reveal()
         );
-        $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/hi'));
+        $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/hey'));
     }
 
     public function testByeEvent()
@@ -123,7 +130,7 @@ class BotMessageHandlerTest extends TestCase
                            ->willReturn($user);
         $this->punchTimerHandler->punchOut($user)
                                 ->shouldBeCalled()
-                                ->willReturn(true);
+                                ->willReturn(new PunchTimerStatusDto(true, $this->timer->reveal()));
 
         $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::PUNCH)
             ->shouldBeCalled()
@@ -144,7 +151,8 @@ class BotMessageHandlerTest extends TestCase
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
             $this->punchTimerHandler->reveal(),
-            $this->time->reveal()
+            $this->time->reveal(),
+            $this->slackClient->reveal()
         );
         $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/bye'));
     }
@@ -162,8 +170,10 @@ class BotMessageHandlerTest extends TestCase
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
             $this->punchTimerHandler->reveal(),
-            $this->time->reveal()
+            $this->time->reveal(),
+            $this->slackClient->reveal()
         );
+        $this->expectException(MessageHandlerException::class);
         $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/bye'));
     }
 
@@ -175,12 +185,13 @@ class BotMessageHandlerTest extends TestCase
                            ->willReturn($user);
         $this->punchTimerHandler->punchOut($user)
                                 ->shouldBeCalled()
-                                ->willReturn(false);
+                                ->willReturn(new PunchTimerStatusDto(false, $this->timer->reveal()));
 
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
             $this->punchTimerHandler->reveal(),
-            $this->time->reveal()
+            $this->time->reveal(),
+            $this->slackClient->reveal()
         );
         $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/bye'));
     }
@@ -198,9 +209,11 @@ class BotMessageHandlerTest extends TestCase
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
             $this->punchTimerHandler->reveal(),
-            $this->time->reveal()
+            $this->time->reveal(),
+            $this->slackClient->reveal()
         );
-        $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/hi'));
+        $this->expectException(MessageHandlerException::class);
+        $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/hey'));
     }
 
     public function testUnsupportedEvent()
@@ -219,7 +232,8 @@ class BotMessageHandlerTest extends TestCase
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
             $this->punchTimerHandler->reveal(),
-            $this->time->reveal()
+            $this->time->reveal(),
+            $this->slackClient->reveal()
         );
         $this->expectException(MessageHandlerException::class);
         $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/unsupported'));

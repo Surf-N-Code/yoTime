@@ -4,20 +4,19 @@ namespace App\Entity\Slack;
 
 class SlackBotEvent
 {
-    //@TODO phpdoc anpassen für alle private properties
     private string $type;
 
     private string $text;
 
     private string $user;
 
-    private $ts;
+    private string $ts;
 
-    private $channel;
+    private string $channel;
 
-    private $eventTs;
+    private string $eventTs;
 
-    private $clientMsgId;
+    private string $clientMsgId;
 
     /**
      * @return string

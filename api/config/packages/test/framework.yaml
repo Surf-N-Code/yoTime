@@ -2,3 +2,10 @@ framework:
     test: true
     session:
         storage_id: session.storage.mock_file
+    http_client:
+        scoped_clients:
+            slack.client:
+                auth_bearer: ''
+                base_uri: 'https://slack.com/api/'
+            personio.client:
+                base_uri: 'https://api.personio.de/v1/'

@@ -205,6 +205,7 @@ class DailySummaryHandler
                     $personioErrorMsg = sprintf('Could not sync attendances to Personio as you have already added an attendance in Personio for today');
                 }
             } catch (\Exception $e) {
+                $personioErrorMsg = sprintf('Ups.. Something went wrong while syncing your attendances to Personio. Please sync your time manually for today.');
                 $didSyncToPersonio = false;
             }
             $ds->setIsSyncedToPersonio($didSyncToPersonio);
@@ -241,7 +242,7 @@ class DailySummaryHandler
     {
         if (!$alreadySyncedToPersonio) {
             if ($personioErrorMsg) {
-                return PHP_EOL . PHP_EOL . ':x:' . $personioErrorMsg;
+                return PHP_EOL . PHP_EOL . ':x: ' . $personioErrorMsg;
             }
             return PHP_EOL . PHP_EOL . ':heavy_check_mark: Synced your attendance to Personio.';
         }

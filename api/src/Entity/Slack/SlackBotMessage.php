@@ -10,7 +10,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *     collectionOperations={
  *         "post"={
  *              "method"="POST",
- *              "path"="/slack/bot/message",
+ *              "path"="/slack/event/bot",
+ *              "status"=202
  *          },
  *     },
  *     itemOperations={},
@@ -19,7 +20,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  */
 class SlackBotMessage extends AbstractSlack
 {
-    const ENDPOINT_PATH = '/slack/bot/message';
+    const ENDPOINT_PATH = '/slack/event/bot';
 
     /**
      * @var SlackBotEvent

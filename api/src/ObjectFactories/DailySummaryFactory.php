@@ -30,6 +30,9 @@ class DailySummaryFactory {
 
         $dailySummary->setDailySummary($summary);
         $dailySummary->setUser($user);
+        $dailySummary->setIsSyncedToPersonio(false);
+        $dailySummary->setIsEmailSent(false);
+        $dailySummary->setUser($user);
         return $dailySummary;
     }
 }

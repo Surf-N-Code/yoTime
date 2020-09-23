@@ -18,6 +18,7 @@ use App\Services\DateTimeProvider;
 use App\Services\Time;
 use App\Services\UserProvider;
 use App\Slack\SlackClient;
+use App\Slack\SlackClientMock;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 

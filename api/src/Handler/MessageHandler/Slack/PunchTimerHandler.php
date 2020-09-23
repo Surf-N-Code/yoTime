@@ -33,7 +33,7 @@ class PunchTimerHandler
 
     public function punchIn(User $user): void
     {
-        $this->throwOnRunningPunchTimer($user);
+        $this->throwOnExistingPunchTimerFromToday($user);
         $this->time->stopNonPunchTimers($user);
         $timer = $this->time->startTimer($user, TimerType::PUNCH);
         $this->databaseHelper->flushAndPersist($timer);
@@ -58,21 +58,21 @@ class PunchTimerHandler
 
     public function punchInAtTime(User $user, string $timeStr): Timer
     {
-        $this->throwOnRunningPunchTimer($user);
+        $this->throwOnExistingPunchTimerFromToday($user);
         $this->time->stopNonPunchTimers($user);
         $timer = $this->time->startTimerFromTimeString($user, $timeStr, TimerType::PUNCH);
         $this->databaseHelper->flushAndPersist($timer);
         return $timer;
     }
 
-    private function throwOnRunningPunchTimer(User $user)
+    private function throwOnExistingPunchTimerFromToday(User $user)
     {
         $signInOutTimer = $this->timeEntryRepo->findPunchTimer($user);
 
         if ($signInOutTimer) {
             throw new MessageHandlerException(sprintf('Seems like you have already signed in for today. The timer was started on `%s`.',
                 $signInOutTimer->getDateStart()->format('d.m.Y H:i:s')
-            ));
+            ), 412);
         }
         return $signInOutTimer;
     }

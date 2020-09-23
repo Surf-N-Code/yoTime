@@ -47,11 +47,9 @@ class Time
 
     public function stopNonPunchTimers(User $user): void
     {
-        $allRunningTimers = $this->timeEntryRepository->findNonPunchTimers($user);
-        if ($allRunningTimers) {
-            foreach ($allRunningTimers as $timeEntry) {
-                $this->stopTimer($user, $timeEntry);
-            }
+        $timer = $this->timeEntryRepository->findNonPunchTimer($user);
+        if ($timer) {
+            $this->stopTimer($user, $timer);
         }
     }
 
@@ -82,17 +80,17 @@ class Time
             $msg = 'Please provide the time you started work this morning in the form: `hh:mm`';
         }
 
-        throw new MessageHandlerException($msg, 412);
+        throw new MessageHandlerException($msg, 400);
     }
 
     public function addFinishedTimer(User $user, string $timerType, string $timeString): Timer
     {
         preg_match('/^([01]?\d|2[0-3]):([0-5]\d)/', $timeString, $durationMatch);
         if ($timeString === '') {
-            throw new MessageHandlerException('Please provide the amount of time you spent on break in the form: `hh:mm`');
+            throw new MessageHandlerException('Please provide the amount of time you spent on break in the form: `hh:mm`', 400);
         }
         if (empty($durationMatch)) {
-            throw new MessageHandlerException(sprintf('The time you entered: %s is not valid. Please enter your time in the form `hh:mm`', $timeString), 412);
+            throw new MessageHandlerException(sprintf('The time you entered: %s is not valid. Please enter your time in the form `hh:mm`', $timeString), 400);
         }
         $timeParts = explode(':', $timeString);
 
@@ -125,7 +123,7 @@ class Time
         ];
 
         if (!array_key_exists(trim($period), $timeConstraintsFormat)) {
-            throw new MessageHandlerException(sprintf('The time period you entered: `%s` is not valid', $period), 412);
+            throw new MessageHandlerException(sprintf('The time period you entered: `%s` is not valid', $period), 400);
         }
 
         if ($slackUserId) {
@@ -143,7 +141,7 @@ class Time
                 $timerType
             );
         } catch (\Exception $e) {
-            throw new MessageHandlerException('An error occured, please contact support', 412);
+            throw new MessageHandlerException('An error occured, please contact support', 400);
         }
 
         $s = 0;

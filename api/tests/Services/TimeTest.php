@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Tests;
+namespace App\Tests\Services;
 
 
 use App\Entity\Task;
@@ -96,12 +96,11 @@ class TimeTest extends TestCase
         );
     }
 
-    public function testStopMultipleNonPunchTimers()
+    public function testStopNonPunchTimers()
     {
-        $date = new \DateTime('now');
-        $this->timeEntryRepository->findNonPunchTimers($this->user->reveal())
+        $this->timeEntryRepository->findNonPunchTimer($this->user->reveal())
             ->shouldBeCalled()
-            ->willReturn([$this->timer->reveal(), $this->timer->reveal()]);
+            ->willReturn($this->timer->reveal());
 
         $date = new \DateTime('now');
         $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
@@ -133,10 +132,11 @@ class TimeTest extends TestCase
         $this->time->startTimerFromTimeString($this->user->reveal(), $timeString, TimerType::PUNCH);
     }
 
-    /** @dataProvider invalidTimesProvider */
+    /** @
+     * @dataProvider invalidTimesProvider
+     */
     public function testStartTimerFromInvalidTimeString($timeString)
     {
-        preg_match('/^([01]?\d|2[0-3]):?([0-5]\d)/', $timeString, $militaryTime);
         $this->expectException(MessageHandlerException::class);
 
         $this->time->startTimerFromTimeString($this->user->reveal(), $timeString, TimerType::PUNCH);
@@ -172,58 +172,49 @@ class TimeTest extends TestCase
     public function validTimesProvider()
     {
         return [
-            [
-                '13:30',
-                '1:30',
-                '07:35 PM',
-                '11:35 am',
-                '0834',
-                '23:33'
-            ]
+                ['13:30'],
+                ['1:30'],
+                ['07:35 PM'],
+                ['11:35 am'],
+                ['0834'],
+                ['23:33']
         ];
     }
 
     public function invalidTimesProvider()
     {
         return [
-            [
-                '25:30' => '25:30',
-                'a:30' => 'a:30',
-                '0735 PM',
-                '1335 PM',
-                '1135 p.m.',
-                '1135 p.m',
-                '1175 p.m',
-                '083',
-                '83',
-            ],
+            ['13'],
+            ['25:30'],
+            ['2x:30'],
+            ['24:30'],
+            ['11:77'],
+            ['1a:77'],
+            ['33:33'],
+            ['0 sm'],
         ];
     }
 
     public function validBreakTimesProvider()
     {
         return [
-            [
-                '13:30',
-                '1:30',
-                '07:35',
-                '11:35',
-                '08:34',
-                '23:33',
-            ]
+                ['13:30'],
+                ['1:30'],
+                ['07:35'],
+                ['11:35'],
+                ['08:34'],
+                ['23:33'],
         ];
     }
 
     public function invalidBreakTimesProvider()
     {
         return [
-            [
-                '130',
-                '24:30',
-                '11:77',
-                '1a:77',
-                '33:33',
-            ]
+                ['130'],
+                ['24:30'],
+                ['11:77'],
+                ['1a:77'],
+                ['33:33'],
         ];
     }
 }

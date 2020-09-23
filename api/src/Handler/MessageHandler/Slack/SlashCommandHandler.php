@@ -109,7 +109,7 @@ class SlashCommandHandler {
                 break;
 
             default:
-                $message->addTextSection(sprintf('Command `%s` is not supported. Try `/help` for a list of available commands',$command->getCommand()));
+                $message->addTextSection(sprintf('Command `%s` is not supported. Try `/help_me` for a list of available commands',$command->getCommand()));
         }
     }
 
@@ -120,7 +120,7 @@ class SlashCommandHandler {
         try {
             $user = $this->userProvider->getDbUserBySlackId($slackUserId);
         } catch (NotFoundHttpException $e) {
-            throw new SlashCommandException($message, 412);
+            throw new SlashCommandException($message, 400);
         }
 
         return $user;

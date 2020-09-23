@@ -1,20 +1,21 @@
 <?php
 
 
-namespace App\HrTools\Personio;
+namespace App\Tests\Mocks;
 
 
+use App\HrTools\Personio\HttpClient;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class HttpClient
+class PersonioHttpClient extends HttpClient
 {
 
     private HttpClientInterface $personioClient;
 
-    private string $personioClientId;
+    private $personioClientId;
 
-    private string $personioClientSecret;
+    private $personioClientSecret;
 
     public function __construct(HttpClientInterface $personioClient, $personioClientId, $personioClientSecret)
     {
@@ -43,15 +44,10 @@ class HttpClient
             ]
         ]);
 
-        $response = json_decode(
-            $response->getContent(false),
-            true,
-            512,
-            JSON_THROW_ON_ERROR
-        );
+        $response = json_decode($response->getContent(false), true);
         if (isset($response['success'], $response['data']['token']) && $response['success'] === true) {
             return $response['data']['token'];
         }
-        throw new AuthenticationException(sprintf('Personio API Token could not be retrieved with object: %s', json_encode($response)), 400);
+        throw new AuthenticationException(sprintf('Personio API Token could not be retrieved with object: %s', json_encode($response)));
     }
 }

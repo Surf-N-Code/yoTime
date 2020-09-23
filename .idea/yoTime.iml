@@ -16,6 +16,7 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/cache" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/collections" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/common" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/data-fixtures" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/dbal" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/doctrine-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/doctrine/doctrine-migrations-bundle" />
@@ -32,6 +33,8 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/egulias/email-validator" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/fig/link-util" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/friendsofphp/php-cs-fixer" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/fzaninotto/faker" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/hautelook/alice-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/justinrainbow/json-schema" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/laminas/laminas-code" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/laminas/laminas-eventmanager" />
@@ -40,6 +43,7 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/liip/functional-test-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/nelmio/alice" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/nelmio/cors-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/ocramius/package-versions" />
@@ -141,6 +145,7 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/web-link" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/web-profiler-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/theofidry/alice-data-fixtures" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/twig/twig" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/webimpress/safe-writer" />

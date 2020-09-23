@@ -10,6 +10,7 @@ use App\Exceptions\SlashCommandException;
 use App\Exceptions\MessageHandlerException;
 use App\Handler\MessageHandler\Slack\SlashCommandHandler;
 use App\Slack\SlackClient;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
 final class SlashCommandController implements MessageHandlerInterface
@@ -25,18 +26,22 @@ final class SlashCommandController implements MessageHandlerInterface
         $this->slackClient = $slackClient;
     }
 
-    public function __invoke(SlashCommand $command): void
+    public function __invoke(SlashCommand $command): Response
     {
         try {
             $this->slashCommandHandler->getSlashCommandToExecute($command);
+            return new Response('', 201);
         } catch (SlashCommandException | MessageHandlerException | DatabaseException $e) {
             $m = new SlackMessage();
             $m->addTextSection($e->getMessage());
 
-            $this->slackClient->slackWebhook([
-                'response_url' => $command->getResponseUrl(),
+            $this->slackClient->slackApiCall('POST', 'chat.postEphemeral', [
+                'channel' => $command->getChannelId(),
+                'user' => $command->getUserId(),
+                'text' => $m->getBlockText(0),
                 'blocks' => $m->getBlocks()
             ]);
+            return new Response($e->getMessage(), $e->getCode());
         }
     }
 }

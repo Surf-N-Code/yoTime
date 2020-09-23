@@ -52,7 +52,7 @@ class UserProvider
             return $this->serializer->denormalize($data['user'], SlackUser::class, null);
         } catch (\Exception $e) {
             $msg = sprintf('That slack ID seems to be incorrect. Could not find slack user with slack ID: %s', $slackUserId);
-            throw new NotFoundHttpException($msg);
+            throw new NotFoundHttpException($msg, 400);
         }
     }
 
@@ -62,7 +62,7 @@ class UserProvider
         if (!$user) {
             $msg = sprintf('Could not find user with slack ID: %s in our database. The user in question should use the `/register` command', $slackUserId);
             $this->logger->error($msg);
-            throw new NotFoundHttpException($msg);
+            throw new NotFoundHttpException($msg, 400);
         }
 
         return $user;

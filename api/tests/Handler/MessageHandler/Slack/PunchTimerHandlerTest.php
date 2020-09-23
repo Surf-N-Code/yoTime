@@ -101,8 +101,7 @@ class PunchTimerHandlerTest extends TestCase
 
         $this->time->stopTimer($this->user->reveal(), $this->timeEntryProphecy->reveal())
                    ->shouldNotBeCalled();
-        $ret = $this->punchTimerHandler->punchOut($this->user->reveal());
-        $this->assertFalse($ret);
+        $this->punchTimerHandler->punchOut($this->user->reveal());
     }
 
     public function testPunchOutMissingPunchIn()
