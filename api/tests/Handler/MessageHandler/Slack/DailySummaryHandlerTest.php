@@ -460,7 +460,7 @@ class DailySummaryHandlerTest extends TestCase
 
         $this->personio->postAttendanceForEmployee(2269559, $this->dailySummaryProphecy->reveal())
                        ->shouldBeCalled()
-                        ->willReturn(['success' => false, 'error' => ['message' => 'Existing overlapping attendances periods']]);
+                        ->willReturn(['success' => false, 'error' => ['message' => 'Existing overlapping attendances periods', 'code' => 400]]);
 
         $this->logger->error(Argument::type('string'))
             ->shouldBeCalled();
@@ -468,9 +468,9 @@ class DailySummaryHandlerTest extends TestCase
         $evt['view']['state']['values']['daily_summary_block']['summary_block_input']['value'] = 'Daily summary notes';
         $evt['view']['state']['values']['mail_block']['mail_choice']['selected_option']['value'] = 'false';
 
-        $this->slackMessage->getBlockText(0)->shouldBeCalled()->willReturn(':heavy_check_mark: Signed you out for the day :call_me_hand:. You spent *0h 30min* on work.' . PHP_EOL . ':x: Error synching your attendance to Personio.');
+        $this->slackMessage->getBlockText(0)->shouldBeCalled()->willReturn(':heavy_check_mark: Signed you out for the day :call_me_hand:. You spent *0h 30min* on work.' . PHP_EOL  . PHP_EOL . ':x: Could not sync attendances to Personio as you have already added an attendance in Personio for today');
         $this->slackMessageHelper->createSlackMessage()->shouldBeCalled()->willReturn($this->slackMessage->reveal());
-        $this->slackMessageHelper->addTextSection(':heavy_check_mark: Signed you out for the day :call_me_hand:. You spent *0h 30min* on work.' . PHP_EOL . PHP_EOL . ':x: Error syncing your attendance to Personio.', $this->slackMessage->reveal())
+        $this->slackMessageHelper->addTextSection(':heavy_check_mark: Signed you out for the day :call_me_hand:. You spent *0h 30min* on work.' . PHP_EOL . PHP_EOL . ':x: Could not sync attendances to Personio as you have already added an attendance in Personio for today', $this->slackMessage->reveal())
                                  ->shouldBeCalled()
                                  ->willReturn($this->slackMessage->reveal());
 

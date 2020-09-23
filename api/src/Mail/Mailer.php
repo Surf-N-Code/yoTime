@@ -41,7 +41,7 @@ class Mailer {
             $this->mailer->send($email);
         } catch(TransportExceptionInterface $e) {
             $this->logger->error('Error sending daily summary email with message: '.$e->getMessage());
-            throw new MessageHandlerException('Ups an error occured sending your daily saummary via email to your boss. Please try again through the web frontend.');
+            throw new MessageHandlerException('Ups an error occured sending your daily saummary via email to your boss. Please try again through the web frontend.', 400);
         }
     }
 

@@ -10,7 +10,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *     collectionOperations={
  *         "post"={
  *              "method"="POST",
- *              "path"="/slack/interaction",
+ *              "path"="/slack/event/interaction",
  *              "status"=202
  *          },
  *     },
@@ -20,7 +20,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  */
 class SlackInteractionEvent
 {
-    const ENDPOINT_PATH = '/slack/interaction';
+    const ENDPOINT_PATH = '/slack/event/interaction';
 
     public $payload;
 

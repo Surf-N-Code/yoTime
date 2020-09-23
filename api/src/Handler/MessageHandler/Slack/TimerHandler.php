@@ -40,14 +40,14 @@ class TimerHandler
 
     public function stopTimer(User $user, string $taskDescription = null): Timer
     {
-        $timeEntry = $this->timeEntryRepo->findNonPunchTimers($user);
-        $this->throwWhenMissingTimer($timeEntry);
+        $timer = $this->timeEntryRepo->findNonPunchTimer($user);
+        $this->throwWhenMissingTimer($timer);
 
         if ($taskDescription) {
-            $timeEntry = $this->time->addTaskToTimer($timeEntry, $taskDescription);
+            $timer = $this->time->addTaskToTimer($timer, $taskDescription);
         }
 
-        return $this->time->stopTimer($user, $timeEntry);
+        return $this->time->stopTimer($user, $timer);
     }
 
     public function lateSignIn(User $user, string $timeStr): Timer
@@ -65,7 +65,8 @@ class TimerHandler
                     'No timer is running at the moment. Please start one using `/%s` or `/%s`',
                     TimerType::WORK,
                     TimerType::BREAK
-                )
+                ),
+                412
             );
         }
     }
@@ -77,7 +78,8 @@ class TimerHandler
                 sprintf(
                     'You are already checked in for today since: `%s` :slightly_smiling_face:',
                     $runningTimer->getDateStart()->format('Y-m-d H:i:s')
-                )
+                ),
+                412
             );
         }
     }

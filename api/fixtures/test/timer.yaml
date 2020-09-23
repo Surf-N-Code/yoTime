@@ -1,0 +1,16 @@
+App\Entity\Timer:
+  timer_{1}:
+    user: '@user_1'
+    dateStart: <dateTimeBetween("-60 minutes", "now")>
+    dateEnd: <dateTimeBetween("-1 minutes", "now")>
+    timerType: work
+
+  timer_{2}:
+    user: '@user_1'
+    dateStart: <dateTimeBetween("-60 minutes", "now")>
+    timerType: break
+
+  timer_{3}:
+    user: '@user_1'
+    dateStart: <dateTimeBetween("-300 minutes", "now")>
+    timerType: punch

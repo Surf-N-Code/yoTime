@@ -52,7 +52,7 @@ final class InteractionEventController implements MessageHandlerInterface
 
             return new Response(sprintf('Unsupported event detected in payload: %s', json_encode($payload)), 400);
         } catch (\Exception $e) {
-            return new Response($e->getMessage(), 400);
+            return new Response($e->getMessage(), 412);
         }
     }
 }

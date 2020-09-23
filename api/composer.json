@@ -28,6 +28,7 @@
     },
     "require-dev": {
         "api-platform/schema-generator": "^2.1",
+        "hautelook/alice-bundle": "^2.7",
         "justinrainbow/json-schema": "^5.2",
         "liip/functional-test-bundle": "^4.2",
         "phpspec/prophecy": "^1.11",

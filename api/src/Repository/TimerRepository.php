@@ -131,7 +131,7 @@ class TimerRepository extends ServiceEntityRepository
      *
      * @return \App\Entity\Timer|null
      */
-    public function findNonPunchTimers(User $user)
+    public function findNonPunchTimer(User $user)
     {
         return $this->createQueryBuilder('t')
                     ->andWhere('t.user = :user')
@@ -141,7 +141,7 @@ class TimerRepository extends ServiceEntityRepository
                     ->setParameter('user', $user)
                     ->setParameter('timerType', TimerType::PUNCH)
                     ->getQuery()
-                    ->getResult()
+                    ->getOneOrNullResult()
             ;
     }
 

@@ -1,0 +1,24 @@
+services:
+    App\Slack\SlackClient:
+        class: App\Tests\Mocks\SlackClientMock
+        arguments:
+            - '@http_client'
+
+    App\HrTools\Personio\HttpClient:
+        class: App\Tests\Mocks\PersonioHttpClient
+        arguments:
+            - '@http_client'
+            - '%env(PERSONIO_CLIENT_ID)%'
+            - '%env(PERSONIO_CLIENT_SECRET)%'
+
+    App\HrTools\Personio\Gateway:
+        class: App\Tests\Mocks\PersonioGateway
+        arguments:
+            - '@App\HrTools\Personio\HttpClient'
+
+    App\Mailer\Mailer:
+        class: App\Tests\Mocks\MailerMock
+        arguments:
+            - '@mailer.mailer'
+            - '@logger'
+            - '@App\Services\Time'

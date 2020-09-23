@@ -47,7 +47,7 @@ class SecurityListenerTest extends ApiTestCase
                 'base_uri' => 'https://localhost:8443'
             ]
         );
-        self::assertEquals(202, $response->getStatusCode());
+        self::assertEquals(201, $response->getStatusCode());
     }
 
     public function testSecurityListenerSlashCommandInvalidSignature()
@@ -83,7 +83,7 @@ class SecurityListenerTest extends ApiTestCase
 
         $response = static::createClient()->request(
             'POST',
-            '/slack/bot/message',
+            '/slack/event/bot',
             [
                 'json' => $data,
                 'headers' => [
@@ -107,7 +107,7 @@ class SecurityListenerTest extends ApiTestCase
 
         $response = static::createClient()->request(
             'POST',
-            '/slack/bot/message',
+            '/slack/event/bot',
             [
                 'json' => $data,
                 'headers' => [
@@ -126,7 +126,7 @@ class SecurityListenerTest extends ApiTestCase
     {
         $response = static::createClient()->request(
             'POST',
-            '/slack/interaction',
+            '/slack/event/interaction',
             [
                 'json' => ['payload' => '{"type":"view_submission","team":{"id":"THW253RMX","domain":"diltheymedia"},"user":{"id":"UHW253RU1","username":"ndilthey","name":"ndilthey","team_id":"THW253RMX"},"api_app_id":"ALTNUDXE0","token":"QbBtIJowqMvCl1NcYexCG7rN","trigger_id":"1359827201715.608073127745.2f087f09e939a0cc814be02608b7dc6c","view":{"id":"V01AKJ7HBSN","team_id":"THW253RMX","type":"modal","blocks":[{"type":"input","block_id":"daily_summary_block","label":{"type":"plain_text","text":"Tasks","emoji":true},"optional":false,"element":{"type":"plain_text_input","action_id":"summary_block_input","placeholder":{"type":"plain_text","text":"Add the tasks your completed here...","emoji":true},"multiline":true}},{"type":"input","block_id":"mail_block","label":{"type":"plain_text","text":"Send E-Mail?","emoji":true},"optional":false,"element":{"type":"static_select","action_id":"mail_choice","placeholder":{"type":"plain_text","text":"Send E-Mail?","emoji":true},"initial_option":{"text":{"type":"plain_text","text":":heavy_check_mark: yes","emoji":true},"value":"true"},"options":[{"text":{"type":"plain_text","text":":heavy_check_mark: yes","emoji":true},"value":"true"},{"text":{"type":"plain_text","text":":x: no","emoji":true},"value":"false"}]}}],"private_metadata":"","callback_id":"ml_ds","state":{"values":{"daily_summary_block":{"summary_block_input":{"type":"plain_text_input","value":"sdf"}},"mail_block":{"mail_choice":{"type":"static_select","selected_option":{"text":{"type":"plain_text","text":":heavy_check_mark: yes","emoji":true},"value":"true"}}}}},"hash":"1599938164.Fi7N1PWX","title":{"type":"plain_text","text":"Daily Summary","emoji":true},"clear_on_close":false,"notify_on_close":false,"close":null,"submit":{"type":"plain_text","text":"Send","emoji":true},"previous_view_id":null,"root_view_id":"V01AKJ7HBSN","app_id":"ALTNUDXE0","external_id":"","app_installed_team_id":"THW253RMX","bot_id":"BLU73PDGQ"},"response_urls":[]}'],
                 'headers' => [
@@ -145,7 +145,7 @@ class SecurityListenerTest extends ApiTestCase
     {
         $response = static::createClient()->request(
             'POST',
-            '/slack/interaction',
+            '/slack/event/interaction',
             [
                 'json' => ['payload' => '{"type":"view_submission","team":{"id":"lkj","domain":"diltheymedia"},"user":{"id":"UHW253RU1","username":"ndilthey","name":"ndilthey","team_id":"THW253RMX"},"api_app_id":"ALTNUDXE0","token":"QbBtIJowqMvCl1NcYexCG7rN","trigger_id":"1359827201715.608073127745.2f087f09e939a0cc814be02608b7dc6c","view":{"id":"V01AKJ7HBSN","team_id":"THW253RMX","type":"modal","blocks":[{"type":"input","block_id":"daily_summary_block","label":{"type":"plain_text","text":"Tasks","emoji":true},"optional":false,"element":{"type":"plain_text_input","action_id":"summary_block_input","placeholder":{"type":"plain_text","text":"Add the tasks your completed here...","emoji":true},"multiline":true}},{"type":"input","block_id":"mail_block","label":{"type":"plain_text","text":"Send E-Mail?","emoji":true},"optional":false,"element":{"type":"static_select","action_id":"mail_choice","placeholder":{"type":"plain_text","text":"Send E-Mail?","emoji":true},"initial_option":{"text":{"type":"plain_text","text":":heavy_check_mark: yes","emoji":true},"value":"true"},"options":[{"text":{"type":"plain_text","text":":heavy_check_mark: yes","emoji":true},"value":"true"},{"text":{"type":"plain_text","text":":x: no","emoji":true},"value":"false"}]}}],"private_metadata":"","callback_id":"ml_ds","state":{"values":{"daily_summary_block":{"summary_block_input":{"type":"plain_text_input","value":"sdf"}},"mail_block":{"mail_choice":{"type":"static_select","selected_option":{"text":{"type":"plain_text","text":":heavy_check_mark: yes","emoji":true},"value":"true"}}}}},"hash":"1599938164.Fi7N1PWX","title":{"type":"plain_text","text":"Daily Summary","emoji":true},"clear_on_close":false,"notify_on_close":false,"close":null,"submit":{"type":"plain_text","text":"Send","emoji":true},"previous_view_id":null,"root_view_id":"V01AKJ7HBSN","app_id":"ALTNUDXE0","external_id":"","app_installed_team_id":"THW253RMX","bot_id":"BLU73PDGQ"},"response_urls":[]}'],
                 'headers' => [

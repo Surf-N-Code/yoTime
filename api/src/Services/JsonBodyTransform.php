@@ -13,7 +13,7 @@ class JsonBodyTransform
         $data = json_decode($request->getContent(), true);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new \Exception(sprintf("Error parsing JSON: %s", json_last_error()));
+            throw new \Exception(sprintf("Error parsing JSON: %s", json_last_error()), 400);
         }
 
         if ($data === null) {
