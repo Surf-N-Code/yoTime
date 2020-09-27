@@ -19,40 +19,71 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add nginx to heroku">
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Slack/SlackInteractionEvent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Slack/SlackSecurityVoter.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Handler/MessageController/Slack/InteractionEventController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/InteractionEventHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Security/Slack/EventListener/SecurityListener.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTestTemp.php" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Finish tests">
+      <change afterPath="$PROJECT_DIR$/client/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/attributions.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/colors.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/loading.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/menu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/pages/dailies.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/pages/dashboard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/pages/personio.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/pages/posts/[id].tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/pages/settings.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/fonts/Roboto-Black.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/fonts/Roboto-BlackItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/fonts/Roboto-Bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/fonts/Roboto-BoldItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/fonts/Roboto-Italic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/fonts/Roboto-Light.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/fonts/Roboto-LightItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/fonts/Roboto-Medium.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/fonts/Roboto-MediumItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/fonts/Roboto-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/fonts/Roboto-Thin.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/fonts/Roboto-ThinItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/icons/close.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/icons/close_2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/icons/hamburger.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/icons/icons8-timer-100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/icons/mail-outstanding.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/icons/mail-sent.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/norman.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/personio-fail.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/personio-success.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/yoTime.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yoTime.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.env" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/framework.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Project.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/Slack/SlackBotMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Slack/SlackBotMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/Slack/SlashCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Slack/SlashCommand.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/Entity/Timer.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Timer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/EventListener/DeserializeListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/EventListener/DeserializeListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageController/Slack/BotMessageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageController/Slack/BotMessageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageController/Slack/SlashCommandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageController/Slack/SlashCommandController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/TimerHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/TimerHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Mail/Mailer.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Mail/Mailer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/ObjectFactories/DailySummaryFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/ObjectFactories/DailySummaryFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Repository/TimerRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Repository/TimerRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Services/DatabaseHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Services/DatabaseHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Services/Time.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Services/Time.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Services/UserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Services/UserProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Slack/SlackClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Slack/SlackClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.dockerignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/docker/nginx/conf.d/default.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Welcome.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Welcome.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config/entrypoint.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/serviceWorker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/welcome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" />
+    </list>
+    <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +97,87 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="21" end1="29" start2="21" end2="57" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="30" end1="30" start2="58" end2="59" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="31" end1="39" start2="60" end2="60" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="40" end1="55" start2="61" end2="86" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="68" end1="68" start2="99" end2="175" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="70" end1="71" start2="177" end2="178" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="72" end1="73" start2="179" end2="180" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="90" end1="91" start2="197" end2="197" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="157" end1="158" start2="263" end2="263" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="184" end1="187" start2="289" end2="289" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="222" end1="222" start2="324" end2="330" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="235" end1="235" start2="343" end2="344" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="236" end1="237" start2="345" end2="346" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="240" end1="240" start2="349" end2="350" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="244" end1="245" start2="354" end2="355" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="246" end1="246" start2="356" end2="358" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="249" end1="254" start2="361" end2="366" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="256" end1="259" start2="368" end2="371" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="261" end1="263" start2="373" end2="375" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="265" end1="267" start2="377" end2="379" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="269" end1="271" start2="381" end2="383" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="273" end1="275" start2="385" end2="387" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="277" end1="277" start2="389" end2="396" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="279" end1="284" start2="398" end2="403" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="294" end1="294" start2="413" end2="414" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="312" end1="312" start2="432" end2="444" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="397" end1="398" start2="529" end2="656" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="403" end1="403" start2="661" end2="671" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="420" end1="425" start2="688" end2="688" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="432" end1="433" start2="695" end2="714" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="435" end1="436" start2="716" end2="717" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="438" end1="440" start2="719" end2="721" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="442" end1="444" start2="723" end2="725" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="446" end1="448" start2="727" end2="729" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="450" end1="452" start2="731" end2="733" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="454" end1="456" start2="735" end2="737" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="458" end1="459" start2="739" end2="752" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="463" end1="464" start2="756" end2="757" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="466" end1="467" start2="759" end2="760" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="471" end1="472" start2="764" end2="765" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="474" end1="476" start2="767" end2="769" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="478" end1="480" start2="771" end2="773" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="482" end1="484" start2="775" end2="777" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="486" end1="488" start2="779" end2="781" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="490" end1="492" start2="783" end2="785" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="494" end1="496" start2="787" end2="789" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="498" end1="500" start2="791" end2="793" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="502" end1="504" start2="795" end2="797" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="506" end1="508" start2="799" end2="801" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="510" end1="512" start2="803" end2="805" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="514" end1="516" start2="807" end2="809" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="518" end1="520" start2="811" end2="813" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="522" end1="524" start2="815" end2="817" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="526" end1="528" start2="819" end2="821" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="530" end1="532" start2="823" end2="825" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="534" end1="536" start2="827" end2="829" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="538" end1="540" start2="831" end2="833" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="542" end1="544" start2="835" end2="837" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="546" end1="548" start2="839" end2="841" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="550" end1="552" start2="843" end2="845" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="554" end1="556" start2="847" end2="849" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="558" end1="560" start2="851" end2="853" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="562" end1="563" start2="855" end2="892" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="568" end1="571" start2="897" end2="900" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="573" end1="576" start2="902" end2="905" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="578" end1="581" start2="907" end2="915" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="584" end1="584" start2="918" end2="923" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="586" end1="586" start2="925" end2="927" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="587" end1="587" start2="928" end2="930" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+      </ranges>
+    </file>
+  </component>
+  <component name="PhpDebugGeneral" xdebug_debug_port="9001" />
   <component name="PhpServers">
     <servers>
-      <server host="api-platform" id="e32424dd-4548-41dc-9a97-80939239a3f6" name="Unnamed" use_path_mappings="true">
+      <server host="localhost" id="e32424dd-4548-41dc-9a97-80939239a3f6" name="api-platform" port="8443" use_path_mappings="true">
         <path_mappings>
-          <mapping local-root="$PROJECT_DIR$" remote-root="/api" />
+          <mapping local-root="$PROJECT_DIR$/api" remote-root="/srv/api" />
         </path_mappings>
       </server>
     </servers>
@@ -88,7 +195,6 @@
       <path value="$PROJECT_DIR$/api/vendor/doctrine/migrations" />
       <path value="$PROJECT_DIR$/api/vendor/psr/link" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/var-dumper" />
-      <path value="$PROJECT_DIR$/api/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/api/vendor/easyrdf/easyrdf" />
       <path value="$PROJECT_DIR$/api/vendor/psr/container" />
       <path value="$PROJECT_DIR$/api/vendor/psr/cache" />
@@ -155,7 +261,6 @@
       <path value="$PROJECT_DIR$/api/vendor/symfony/mailer" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/config" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/property-access" />
-      <path value="$PROJECT_DIR$/api/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/stopwatch" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/twig-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-php73" />
@@ -182,9 +287,6 @@
       <path value="$PROJECT_DIR$/api/vendor/symfony/property-info" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/security-guard" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/yaml" />
-      <path value="$PROJECT_DIR$/api/vendor/guzzlehttp/psr7" />
-      <path value="$PROJECT_DIR$/api/vendor/guzzlehttp/promises" />
-      <path value="$PROJECT_DIR$/api/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/annotations" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/common" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/collections" />
@@ -220,6 +322,12 @@
       <path value="$PROJECT_DIR$/api/vendor/php-cs-fixer/diff" />
       <path value="$PROJECT_DIR$/api/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/api/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/api/vendor/bin/.phpunit" />
+      <path value="$PROJECT_DIR$/api/vendor/hautelook/alice-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/api/vendor/theofidry/alice-data-fixtures" />
+      <path value="$PROJECT_DIR$/api/vendor/nelmio/alice" />
     </include_path>
   </component>
   <component name="ProjectId" id="1gExsM8FIq0lHaxkXe1QEYFbYHZ" />
@@ -233,55 +341,66 @@
     <property name="DatabaseDriversLRU" value="postgresql&#10;mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/public/images" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/api/src" />
+      <recent name="$PROJECT_DIR$/api/fixtures/test" />
       <recent name="$PROJECT_DIR$/api/src/Handler/MessageController" />
+      <recent name="$PROJECT_DIR$/api/src/Handler/MessageController/Slack" />
+      <recent name="$PROJECT_DIR$/api/src" />
       <recent name="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack" />
-      <recent name="$PROJECT_DIR$/api/src/Handler/MessageController/Slack" />
-      <recent name="$PROJECT_DIR$/api/src/Entity/Slack" />
-      <recent name="$PROJECT_DIR$/api" />
-      <recent name="$PROJECT_DIR$/api/tests/Security/Slack/EventListener" />
+      <recent name="$PROJECT_DIR$/client/public/images" />
+      <recent name="$PROJECT_DIR$/client/public/images/icons" />
+      <recent name="$PROJECT_DIR$/client/pages" />
+      <recent name="$PROJECT_DIR$/client/public/fonts" />
+      <recent name="$PROJECT_DIR$/api/tests/Mocks" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.SecurityListenerTestTemp.testWorkSlashCommandEvent">
-    <configuration name="SecurityListenerTest2.testWorkSlashCommandEvent" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Security\Slack\EventListener\SecurityListenerTest2" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTestTemp.php" method="testWorkSlashCommandEvent" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.InteractionEventControllerIntegrationTest.testDailySummaryInteraction">
+    <configuration name="BotMessageHandlerTest.testByeEventAlreadyPunchedOut" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\BotMessageHandlerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/BotMessageHandlerTest.php" method="testByeEventAlreadyPunchedOut" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="SecurityListenerTestTemp.testWorkSlashCommandEvent" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Security\Slack\EventListener\SecurityListenerTestTemp" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTestTemp.php" method="testWorkSlashCommandEvent" scope="Method" />
+    <configuration name="DailySummaryHandlerTest.testHandleModalSubmissionFailedPersonioSync" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\DailySummaryHandlerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" method="testHandleModalSubmissionFailedPersonioSync" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="SecurityListenerTest.testWorkSlashCommandEvent (1)" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Security\Slack\EventListener\SecurityListenerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTestTemp.php" method="testWorkSlashCommandEvent" scope="Method" />
+    <configuration name="InteractionEventControllerIntegrationTest.testDailySummaryInteraction" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageController\Slack\InteractionEventControllerIntegrationTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/InteractionEventControllerIntegrationTest.php" method="testDailySummaryInteraction" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="SecurityListenerTest.testWorkSlashCommandEvent" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Security\Slack\EventListener\SecurityListenerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTest.php" method="testWorkSlashCommandEvent" scope="Method" />
+    <configuration name="Slack" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner directory="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack" />
       <method v="2" />
     </configuration>
-    <configuration name="SlashCommandMessageControllerTest.testWorkSlashCommandEvent" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Handler\MessageController\Slack\SlashCommandMessageControllerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" method="testWorkSlashCommandEvent" scope="Method" />
+    <configuration name="TimeTest.testStopNonPunchTimers" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Services\TimeTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Services/TimeTest.php" method="testStopNonPunchTimers" scope="Method" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="PHPUnit.Slack" />
+      <item itemvalue="PHPUnit.BotMessageHandlerTest.testByeEventAlreadyPunchedOut" />
+      <item itemvalue="PHPUnit.DailySummaryHandlerTest.testHandleModalSubmissionFailedPersonioSync" />
+      <item itemvalue="PHPUnit.TimeTest.testStopNonPunchTimers" />
+      <item itemvalue="PHPUnit.InteractionEventControllerIntegrationTest.testDailySummaryInteraction" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.SecurityListenerTestTemp.testWorkSlashCommandEvent" />
-        <item itemvalue="PHPUnit.SecurityListenerTest2.testWorkSlashCommandEvent" />
-        <item itemvalue="PHPUnit.SecurityListenerTest.testWorkSlashCommandEvent (1)" />
-        <item itemvalue="PHPUnit.SecurityListenerTest.testWorkSlashCommandEvent" />
-        <item itemvalue="PHPUnit.SlashCommandMessageControllerTest.testWorkSlashCommandEvent" />
+        <item itemvalue="PHPUnit.InteractionEventControllerIntegrationTest.testDailySummaryInteraction" />
+        <item itemvalue="PHPUnit.TimeTest.testStopNonPunchTimers" />
+        <item itemvalue="PHPUnit.DailySummaryHandlerTest.testHandleModalSubmissionFailedPersonioSync" />
+        <item itemvalue="PHPUnit.BotMessageHandlerTest.testByeEventAlreadyPunchedOut" />
+        <item itemvalue="PHPUnit.Slack" />
       </list>
     </recent_temporary>
   </component>
@@ -292,6 +411,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="" />
+      <changelist id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
       <created>1597693758753</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -310,6 +430,18 @@
       <workItem from="1599543987784" duration="6000" />
       <workItem from="1599583672818" duration="11344000" />
       <workItem from="1599596586761" duration="3471000" />
+      <workItem from="1599632287266" duration="623000" />
+      <workItem from="1599759000968" duration="3707000" />
+      <workItem from="1599826706674" duration="60000" />
+      <workItem from="1599861364228" duration="52593000" />
+      <workItem from="1600106020396" duration="3373000" />
+      <workItem from="1600165759764" duration="2519000" />
+      <workItem from="1600422403016" duration="69480000" />
+      <workItem from="1600688160916" duration="62613000" />
+      <workItem from="1600958176877" duration="5341000" />
+      <workItem from="1601049253682" duration="99000" />
+      <workItem from="1601049887625" duration="4738000" />
+      <workItem from="1601060171355" duration="61886000" />
     </task>
     <task id="LOCAL-00001" summary="Add php command to docker entrypoint">
       <created>1597775564461</created>
@@ -395,11 +527,147 @@
       <option name="project" value="LOCAL" />
       <updated>1598116829652</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Add dropdown to daily summary modal">
+      <created>1599871982367</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1599871982367</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Only send ds email when user selects that option">
+      <created>1599872724856</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1599872724856</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Update and extend tests">
+      <created>1600024712594</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1600024712594</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Extend tests">
+      <created>1600027430811</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1600027430811</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Return timer on punchinattime and try fixing integration tests">
+      <created>1600506991653</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1600506991653</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Add personio http client">
+      <created>1600508079989</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1600508079989</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Add personio time sync">
+      <created>1600599858606</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1600599858606</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Improve error message on late hi command">
+      <created>1600630718084</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1600630718084</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Add is synced to personio field to daily summary. Extend tests to cover syncing and not syncing to personio">
+      <created>1600630810589</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1600630810589</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Add punchtimerstatusdto">
+      <created>1600630838964</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1600630838964</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Fix typo and improve message on start timer">
+      <created>1600630880283</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1600630880283</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Make timezone and timezone offset non-nullable">
+      <created>1600630899043</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1600630899043</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Add yotime benefit file">
+      <created>1600630914208</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1600630914208</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Fix bot messages and improve personio error message">
+      <created>1600639235724</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1600639235724</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Get integrations tests working">
+      <created>1600699582330</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1600699582331</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Add test database">
+      <created>1600716507487</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1600716507487</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Finish tests">
+      <created>1600887542062</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1600887542062</updated>
+    </task>
+    <task id="LOCAL-00030" summary="ADd order capability to timers">
+      <created>1601232183234</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1601232183235</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -418,11 +686,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Add php command to docker entrypoint" />
-    <MESSAGE value="Add mysql database" />
-    <MESSAGE value="Remove timer_entry add timer" />
-    <MESSAGE value="Add timer entity" />
-    <MESSAGE value="Fix issues related to timer_entry entity" />
     <MESSAGE value="Add migration" />
     <MESSAGE value="Add env prod in .env" />
     <MESSAGE value="Switch to new Responseevent" />
@@ -430,137 +693,203 @@
     <MESSAGE value="Remove client and admin containers" />
     <MESSAGE value="Add idea folder to gitignore" />
     <MESSAGE value="Add nginx to heroku" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add nginx to heroku" />
+    <MESSAGE value="Add dropdown to daily summary modal" />
+    <MESSAGE value="Only send ds email when user selects that option" />
+    <MESSAGE value="Update and extend tests" />
+    <MESSAGE value="Extend tests" />
+    <MESSAGE value="Return timer on punchinattime and try fixing integration tests" />
+    <MESSAGE value="Add personio http client" />
+    <MESSAGE value="Add personio time sync" />
+    <MESSAGE value="Improve error message on late hi command" />
+    <MESSAGE value="Add is synced to personio field to daily summary. Extend tests to cover syncing and not syncing to personio" />
+    <MESSAGE value="Add punchtimerstatusdto" />
+    <MESSAGE value="Fix typo and improve message on start timer" />
+    <MESSAGE value="Make timezone and timezone offset non-nullable" />
+    <MESSAGE value="Add yotime benefit file" />
+    <MESSAGE value="Fix bot messages and improve personio error message" />
+    <MESSAGE value="Get integrations tests working" />
+    <MESSAGE value="Add test database" />
+    <MESSAGE value="Finish tests" />
+    <MESSAGE value="ADd order capability to timers" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADd order capability to timers" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="534" y="135" width="822" height="674" key="#CLI_Interpreters" timestamp="1597783630954">
+    <state x="531" y="108" width="792" height="674" key="#CLI_Interpreters" timestamp="1600717350355">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="534" y="135" width="822" height="674" key="#CLI_Interpreters/0.0.1920.1080@0.0.1920.1080" timestamp="1597783630954" />
-    <state x="713" y="290" width="454" height="317" key="#Docker2" timestamp="1597783550185">
+    <state x="531" y="108" width="792" height="674" key="#CLI_Interpreters/0.0.1920.1080@0.0.1920.1080" timestamp="1600717350355" />
+    <state x="709" y="254" width="454" height="317" key="#Docker2" timestamp="1600685537746">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="713" y="290" width="454" height="317" key="#Docker2/0.0.1920.1080@0.0.1920.1080" timestamp="1597783550185" />
-    <state x="615" y="64" width="804" height="667" key="#Servers" timestamp="1599344354582">
+    <state x="709" y="254" width="454" height="317" key="#Docker2/0.0.1920.1080@0.0.1920.1080" timestamp="1600685537746" />
+    <state x="613" y="46" width="804" height="667" key="#Servers" timestamp="1600510681641">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="615" y="64" width="804" height="667" key="#Servers/0.0.1920.1080@0.0.1920.1080" timestamp="1599344354582" />
-    <state x="688" y="-66" width="804" height="667" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599399360279">
+    <state x="613" y="46" width="804" height="667" key="#Servers/0.0.1920.1080@0.0.1920.1080" timestamp="1600510681641" />
+    <state x="541" y="215" width="828" height="674" key="#Test_Frameworks" timestamp="1600517259413">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="688" y="-66" width="804" height="667" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599399360279" />
-    <state x="86" y="-36" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1599585568423">
+    <state x="541" y="215" width="828" height="674" key="#Test_Frameworks/0.0.1920.1080@0.0.1920.1080" timestamp="1600517259413" />
+    <state x="707" y="29" width="871" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600781605362">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="86" y="-36" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599585568423" />
-    <state x="687" y="253" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599308227346">
+    <state x="707" y="29" width="871" height="739" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600781605362" />
+    <state x="653" y="371" width="603" height="380" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600715364278">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="687" y="253" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599308227346" />
+    <state x="653" y="371" width="603" height="380" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1600715364278" />
+    <state x="762" y="240" width="390" height="552" key="#com.intellij.ide.util.MemberChooser" timestamp="1600543240963">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="762" y="240" width="390" height="552" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1600543240963" />
+    <state x="76" y="-126" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600876178723">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="76" y="-126" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600876178723" />
+    <state x="669" y="91" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600883721017">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="669" y="91" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600883721017" />
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog" timestamp="1599332894112">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="156" y="-79" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1599589389971">
+    <state x="72" y="-15" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1601232183120">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="156" y="-79" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1599589389971" />
+    <state x="72" y="-15" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1601232183120" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="516" height="465" key="DebuggerActiveHint/0.0.1920.1080@0.0.1920.1080" timestamp="1599333625815" />
-    <state x="29" y="100" width="1862" height="951" key="DiffContextDialog" timestamp="1599390510154">
+    <state x="15" y="10" width="1862" height="915" key="DiffContextDialog" timestamp="1600639200103">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="29" y="100" width="1862" height="951" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599390510154" />
-    <state x="741" y="315" width="428" height="474" key="FileChooserDialogImpl" timestamp="1597785370806">
+    <state x="15" y="10" width="1862" height="915" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600639200103" />
+    <state x="710" y="383" width="446" height="222" key="DockerComposeFileDialog" timestamp="1600685473350">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="741" y="315" width="428" height="474" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1597785370806" />
-    <state width="1816" height="253" key="GridCell.Tab.0.bottom" timestamp="1599590962820">
+    <state x="710" y="383" width="446" height="222" key="DockerComposeFileDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600685473350" />
+    <state x="729" y="207" width="428" height="474" key="FileChooserDialogImpl" timestamp="1601060160576">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="253" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962820" />
-    <state width="1816" height="253" key="GridCell.Tab.0.center" timestamp="1599590962819">
+    <state x="729" y="207" width="428" height="474" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1601060160576" />
+    <state x="691" y="454" key="GitCloneDialog" timestamp="1599927280951">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="253" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962819" />
-    <state width="1816" height="253" key="GridCell.Tab.0.left" timestamp="1599590962819">
+    <state x="691" y="454" key="GitCloneDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599927280951" />
+    <state width="1816" height="225" key="GridCell.Tab.0.bottom" timestamp="1600958164695">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="253" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962819" />
-    <state width="1816" height="253" key="GridCell.Tab.0.right" timestamp="1599590962820">
+    <state width="1816" height="225" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1600958164695" />
+    <state width="1816" height="225" key="GridCell.Tab.0.center" timestamp="1600958164695">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="253" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962820" />
-    <state width="1816" height="253" key="GridCell.Tab.1.bottom" timestamp="1599590962860">
+    <state width="1816" height="225" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1600958164695" />
+    <state width="1816" height="225" key="GridCell.Tab.0.left" timestamp="1600958164694">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="253" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962860" />
-    <state width="1816" height="253" key="GridCell.Tab.1.center" timestamp="1599590962860">
+    <state width="1816" height="225" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1600958164694" />
+    <state width="1816" height="225" key="GridCell.Tab.0.right" timestamp="1600958164695">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="253" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962860" />
-    <state width="1816" height="253" key="GridCell.Tab.1.left" timestamp="1599590962860">
+    <state width="1816" height="225" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1600958164695" />
+    <state width="1816" height="225" key="GridCell.Tab.1.bottom" timestamp="1600958164694">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="253" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962860" />
-    <state width="1816" height="253" key="GridCell.Tab.1.right" timestamp="1599590962860">
+    <state width="1816" height="225" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1600958164694" />
+    <state width="1816" height="225" key="GridCell.Tab.1.center" timestamp="1600958164694">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="253" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962860" />
-    <state width="1816" height="253" key="GridCell.Tab.2.bottom" timestamp="1599590962821">
+    <state width="1816" height="225" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1600958164694" />
+    <state width="1816" height="225" key="GridCell.Tab.1.left" timestamp="1600958164694">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="253" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962821" />
-    <state width="1816" height="253" key="GridCell.Tab.2.center" timestamp="1599590962820">
+    <state width="1816" height="225" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1600958164694" />
+    <state width="1816" height="225" key="GridCell.Tab.1.right" timestamp="1600958164694">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="253" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962820" />
-    <state width="1816" height="253" key="GridCell.Tab.2.left" timestamp="1599590962820">
+    <state width="1816" height="225" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1600958164694" />
+    <state width="1816" height="225" key="GridCell.Tab.2.bottom" timestamp="1600958164692">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="253" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962820" />
-    <state width="1816" height="253" key="GridCell.Tab.2.right" timestamp="1599590962820">
+    <state width="1816" height="225" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1600958164692" />
+    <state width="1816" height="225" key="GridCell.Tab.2.center" timestamp="1600958164691">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="253" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1599590962820" />
-    <state width="227" height="471" key="HiddenNamespacesPopup" timestamp="1598113578403">
+    <state width="1816" height="225" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1600958164691" />
+    <state width="1816" height="225" key="GridCell.Tab.2.left" timestamp="1600958164691">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="227" height="471" key="HiddenNamespacesPopup/0.0.1920.1080@0.0.1920.1080" timestamp="1598113578403" />
-    <state x="629" y="242" width="648" height="532" key="NewPhpClassDialog" timestamp="1599304354262">
+    <state width="1816" height="225" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1600958164691" />
+    <state width="1816" height="225" key="GridCell.Tab.2.right" timestamp="1600958164692">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="629" y="242" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599304354262" />
-    <state x="799" y="152" width="389" height="578" key="RollbackChangesDialog" timestamp="1597945426096">
+    <state width="1816" height="225" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1600958164692" />
+    <state width="227" height="471" key="HiddenNamespacesPopup" timestamp="1600781587609">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="799" y="152" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597945426096" />
-    <state x="454" y="183" key="SettingsEditor" timestamp="1599588458437">
+    <state width="227" height="471" key="HiddenNamespacesPopup/0.0.1920.1080@0.0.1920.1080" timestamp="1600781587609" />
+    <state x="623" y="188" width="648" height="532" key="NewPhpClassDialog" timestamp="1601231781467">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="454" y="183" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1599588458437" />
-    <state x="549" y="231" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1598116833523">
+    <state x="623" y="188" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1601231781467" />
+    <state x="787" y="44" width="389" height="578" key="RollbackChangesDialog" timestamp="1600639179325">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="549" y="231" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1598116833523" />
-    <state x="620" y="327" width="666" height="362" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1599305736194">
+    <state x="787" y="44" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600639179325" />
+    <state x="430" y="-15" key="SettingsEditor" timestamp="1601230539514">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="620" y="327" width="666" height="362" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599305736194" />
-    <state x="666" y="156" width="722" height="560" key="find.popup" timestamp="1599348264878">
+    <state x="430" y="-15" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1601230539514" />
+    <state x="801" y="337" width="297" height="157" key="VCS.ChangelistChooser" timestamp="1599871952996">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="666" y="156" width="722" height="560" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1599348264878" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1599507438241">
+    <state x="801" y="337" width="297" height="157" key="VCS.ChangelistChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1599871952996" />
+    <state x="29" y="136" width="1862" height="915" key="VCS.FileHistoryDialog" timestamp="1600631868850">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1599507438241" />
-    <state x="675" y="374" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1597949521867">
+    <state x="29" y="136" width="1862" height="915" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600631868850" />
+    <state x="547" y="213" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1600024714235">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="675" y="374" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1597949521867" />
+    <state x="547" y="213" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1600024714235" />
+    <state x="841" y="382" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1600713699290">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="841" y="382" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1080@0.0.1920.1080" timestamp="1600713699290" />
+    <state x="501" y="299" width="907" height="525" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1600600369717">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="501" y="299" width="907" height="525" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1080@0.0.1920.1080" timestamp="1600600369717" />
+    <state x="612" y="255" width="687" height="362" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1600781271092">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="612" y="255" width="687" height="362" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600781271092" />
+    <state x="387" y="318" width="398" height="251" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1600517401768">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="387" y="318" width="398" height="251" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration/0.0.1920.1080@0.0.1920.1080" timestamp="1600517401768" />
+    <state x="29" y="136" width="1862" height="915" key="dock-window-1" timestamp="1600868478697">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="29" y="136" width="1862" height="915" key="dock-window-1/0.0.1920.1080@0.0.1920.1080" timestamp="1600868478697" />
+    <state x="29" y="136" width="1862" height="915" key="dock-window-2" timestamp="1600868604122">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="29" y="136" width="1862" height="915" key="dock-window-2/0.0.1920.1080@0.0.1920.1080" timestamp="1600868604122" />
+    <state x="897" y="466" width="722" height="560" key="find.popup" timestamp="1600888334604">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="897" y="466" width="722" height="560" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1600888334604" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1601231959558">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1601231959558" />
+    <state x="661" y="248" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1600868768809">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="661" y="248" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600868768809" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

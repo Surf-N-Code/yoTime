@@ -127,6 +127,11 @@ class Timer
     {
         $this->timerType = $timerType;
 
+//         $timers['heute'] = [
+//             0 => 'timer1',
+//             1 => 'timer2'
+//         ];
+
         return $this;
     }
 }

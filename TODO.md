@@ -6,10 +6,9 @@
 * Add /task endpoint to add tasks done in a day
     * Generate DS from tasks
 * translations
-    
+
 MVP:
 * timereports (admin), users - maybe
-* Integrationstests
 
 * deployment
 * App logo
