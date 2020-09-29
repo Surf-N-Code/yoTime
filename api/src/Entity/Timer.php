@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource()
- * @ApiFilter(OrderFilter::class, properties={"dateEnd": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }})
+ * @ApiFilter(OrderFilter::class, properties={"dateEnd": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }, "dateStart": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }})
  * @ORM\Entity(repositoryClass=TimerRepository::class)
  */
 class Timer
@@ -126,11 +126,6 @@ class Timer
     public function setTimerType(string $timerType): self
     {
         $this->timerType = $timerType;
-
-//         $timers['heute'] = [
-//             0 => 'timer1',
-//             1 => 'timer2'
-//         ];
 
         return $this;
     }

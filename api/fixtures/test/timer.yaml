@@ -14,3 +14,13 @@ App\Entity\Timer:
     user: '@user_1'
     dateStart: <dateTimeBetween("-300 minutes", "now")>
     timerType: punch
+
+  timer_{4..400}:
+    user: '@user_1'
+#    dateStart: <dateTimeThisMonth()>
+#    dateStart: <(new DateTime("2020-09-10 19:33:19"))>
+#    dateEnd: <dateTimeBetween("+60 minutes", @self->getDateStart()))>
+#    dateEnd: '@self->getDateStart()'
+    dateStart: <getDateStart()>
+    dateEnd: <getDateEnd($dateStart)>
+    timerType: punch

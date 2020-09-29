@@ -47,3 +47,6 @@ services:
         arguments:
             $personioClientId: '%env(PERSONIO_CLIENT_ID)%'
             $personioClientSecret: '%env(PERSONIO_CLIENT_SECRET)%'
+
+    App\Fixtures\TimerProvider: ~
+
