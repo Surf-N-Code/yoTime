@@ -19,18 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add timer fixtures and continue on timers client view">
-      <change afterPath="$PROJECT_DIR$/client/components/notification.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/pagination.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/images/icons/icons8-pause-100-white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/images/icons/icons8-pause-100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/images/icons/icons8-pause-30.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/images/icons/icons8-pause-60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/images/icons/icons8-play-100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/images/icons/icons8-stop-48.png" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/api/fixtures/test/dailies.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/icons/icons8-plus-math-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/utilities/lib.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/dailies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dailies.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/personio-fail.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/images/icons/personio-fail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/personio-success.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/images/icons/personio-success.png" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
@@ -51,26 +50,32 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/.idea/workspace.xml">
       <ranges>
-        <range start1="21" end1="24" start2="21" end2="30" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="25" end1="28" start2="31" end2="32" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="49" end1="75" start2="53" end2="73" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="249" end1="250" start2="247" end2="248" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="258" end1="258" start2="256" end2="257" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="260" end1="261" start2="259" end2="259" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="348" end1="349" start2="346" end2="347" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="567" end1="568" start2="565" end2="573" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="600" end1="601" start2="605" end2="605" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="625" end1="626" start2="629" end2="631" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="668" end1="669" start2="673" end2="674" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="671" end1="672" start2="676" end2="677" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="752" end1="753" start2="757" end2="758" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="755" end1="756" start2="760" end2="761" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="809" end1="812" start2="814" end2="822" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
-        <range start1="814" end1="817" start2="824" end2="827" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
-        <range start1="819" end1="822" start2="829" end2="832" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
-        <range start1="825" end1="825" start2="835" end2="840" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
-        <range start1="827" end1="827" start2="842" end2="844" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
-        <range start1="828" end1="828" start2="845" end2="847" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="21" end1="30" start2="21" end2="25" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="31" end1="32" start2="26" end2="29" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="33" end1="33" start2="30" end2="32" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="53" end1="73" start2="52" end2="78" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="250" end1="251" start2="255" end2="256" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="255" end1="256" start2="260" end2="261" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="257" end1="263" start2="262" end2="262" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="267" end1="268" start2="266" end2="273" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="346" end1="347" start2="351" end2="353" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="572" end1="573" start2="578" end2="586" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="605" end1="606" start2="618" end2="618" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="630" end1="631" start2="642" end2="644" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="673" end1="674" start2="686" end2="687" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="676" end1="677" start2="689" end2="690" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="757" end1="758" start2="770" end2="771" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="760" end1="761" start2="773" end2="774" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="769" end1="770" start2="782" end2="783" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="772" end1="773" start2="785" end2="786" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="801" end1="802" start2="814" end2="815" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="804" end1="805" start2="817" end2="818" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="814" end1="817" start2="827" end2="830" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="819" end1="822" start2="832" end2="835" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="824" end1="827" start2="837" end2="845" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="830" end1="830" start2="848" end2="853" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="832" end1="832" start2="855" end2="857" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="833" end1="833" start2="858" end2="860" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
       </ranges>
     </file>
   </component>
@@ -248,24 +253,24 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/client/public/images/icons" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/client/public/images/icons" />
-      <recent name="$PROJECT_DIR$/api/src/Fixtures" />
-      <recent name="$PROJECT_DIR$/client/public/images" />
-      <recent name="$PROJECT_DIR$/client/pages" />
-      <recent name="$PROJECT_DIR$/client/public/fonts" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/public/images/icons" />
       <recent name="$PROJECT_DIR$/api/fixtures/test" />
       <recent name="$PROJECT_DIR$/api/src/Handler/MessageController" />
       <recent name="$PROJECT_DIR$/api/src/Handler/MessageController/Slack" />
       <recent name="$PROJECT_DIR$/api/src" />
-      <recent name="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/public/images/icons" />
+      <recent name="$PROJECT_DIR$/client/pages" />
+      <recent name="$PROJECT_DIR$/api/fixtures/test" />
+      <recent name="$PROJECT_DIR$/api/src/Fixtures" />
+      <recent name="$PROJECT_DIR$/client/public/images" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.InteractionEventControllerIntegrationTest.testDailySummaryInteraction">
@@ -344,7 +349,8 @@
       <workItem from="1601049253682" duration="99000" />
       <workItem from="1601049887625" duration="4738000" />
       <workItem from="1601060171355" duration="71906000" />
-      <workItem from="1601311288542" duration="41658000" />
+      <workItem from="1601311288542" duration="41764000" />
+      <workItem from="1601742178046" duration="9666000" />
     </task>
     <task id="LOCAL-00001" summary="Add php command to docker entrypoint">
       <created>1597775564461</created>
@@ -570,7 +576,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601340687595</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Add button to start / stop a running timer">
+      <created>1601423897416</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1601423897416</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -603,7 +616,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Switch to new Responseevent" />
     <MESSAGE value="Switch to new RequestEvent" />
     <MESSAGE value="Remove client and admin containers" />
     <MESSAGE value="Add idea folder to gitignore" />
@@ -628,7 +640,8 @@
     <MESSAGE value="ADd order capability to timers" />
     <MESSAGE value="Start adding client" />
     <MESSAGE value="Add timer fixtures and continue on timers client view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add timer fixtures and continue on timers client view" />
+    <MESSAGE value="Add button to start / stop a running timer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add button to start / stop a running timer" />
   </component>
   <component name="WindowStateProjectService">
     <state x="531" y="108" width="792" height="674" key="#CLI_Interpreters" timestamp="1600717350355">
@@ -671,10 +684,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="66" y="-69" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1601378847824">
+    <state x="64" y="-87" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1601423897301">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="66" y="-69" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1601378847824" />
+    <state x="64" y="-87" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1601423897301" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -755,10 +768,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="787" y="44" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600639179325" />
-    <state x="173" y="147" key="SettingsEditor" timestamp="1601378850014">
+    <state x="171" y="129" key="SettingsEditor" timestamp="1601742198178">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="173" y="147" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1601378850014" />
+    <state x="171" y="129" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1601742198178" />
     <state x="801" y="337" width="297" height="157" key="VCS.ChangelistChooser" timestamp="1599871952996">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -767,10 +780,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="29" y="136" width="1862" height="915" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600631868850" />
-    <state x="547" y="213" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1600024714235">
+    <state x="545" y="195" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1601423901450">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="547" y="213" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1600024714235" />
+    <state x="545" y="195" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1601423901450" />
     <state x="841" y="382" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1600713699290">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -799,10 +812,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="897" y="466" width="722" height="560" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1600888334604" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1601325815553">
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1601744876498">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1601325815553" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1601744876498" />
     <state x="661" y="248" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1600868768809">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

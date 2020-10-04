@@ -44,7 +44,7 @@ export const Timers = () => {
 
                         const formattedDiffInMinPerDay = toHHMMSS(totalSecondsPerDay[dateStartString]);
                         return (
-                            <div key={dateStartString} className="bg-white p-2 mb-1 border-gray-300 border-l-4 hover:border-teal-600">
+                            <div key={dateStartString} className="bg-white p-3 mb-1 border-gray-300 border-l-4 hover:border-teal-600">
                                 <>
                                     <div className="text-xs text-gray-500">{format(dateStart, 'dd LLLL uuuu' )}</div>
                                     <div className="flex flex-row items-center">
@@ -77,7 +77,7 @@ export const Timers = () => {
                     </div>
                     :
                     <div
-                        className="fixed bottom-0 notification bottom bg-teal-500 rounded-full p-4 border-teal-400 border-2 shadow-md cursor-pointer"
+                        className="fixed bottom-0 notification bottom bg-teal-500 rounded-full p-4 border-teal-700 border-2 shadow-md cursor-pointer"
                         onClick={() => startTimer(forceUpdate)}>
                         <img src="../images/icons/icons8-play-100.png" width="30" height="30" alt="Start Timer"/>
                     </div>
@@ -153,7 +153,6 @@ const startTimer = async (forceUpdate) => {
         console.error(json.errors)
         throw new Error('Failed to fetch API')
     }
-    console.log(json);
     forceUpdate();
 }
 

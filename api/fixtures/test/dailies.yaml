@@ -1,0 +1,11 @@
+App\Entity\DailySummary:
+  ds_{1..15}:
+    user: '@user_1'
+    dailySummary: <realText(50)>
+    timeWorkedInS: <randomNumber(5)>
+    timeBreakInS: <randomNumber(3)>
+    startTime: <getDateStart()>
+    endTime: <getDateEnd($startTime)>
+    date: $startTime
+    isEmailSent: <boolean()>
+    isSyncedToPersonio: <boolean()>
