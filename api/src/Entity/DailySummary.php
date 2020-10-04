@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 
 /**
  * @ApiResource()
+ * @ApiFilter(OrderFilter::class, properties={"date": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }})
  * @ORM\Entity(repositoryClass="App\Repository\DailySummaryRepository")
  */
 class DailySummary
@@ -49,7 +52,7 @@ class DailySummary
     private $endTime;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="dailySummary")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="dailySummary")
      */
     private $user;
 

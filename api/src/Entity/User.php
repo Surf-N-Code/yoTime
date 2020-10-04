@@ -90,6 +90,7 @@ class User
     private $contractWorkHours;
 
     /**
+     * @ApiSubresource()
      * @ORM\OneToMany(targetEntity="App\Entity\DailySummary", mappedBy="user")
      */
     private $dailySummary;
