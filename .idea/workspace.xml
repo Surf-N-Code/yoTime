@@ -19,17 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/fixtures/test/dailies.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/images/icons/icons8-plus-math-60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/utilities/lib.tsx" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Pre react class for dailies">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/Timer.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Timer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/pagination.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/dailies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dailies.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/images/personio-fail.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/images/icons/personio-fail.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/images/personio-success.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/images/icons/personio-success.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/utilities/lib.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/utilities/lib.tsx" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
@@ -47,35 +43,32 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/.idea/workspace.xml">
       <ranges>
-        <range start1="21" end1="30" start2="21" end2="25" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="31" end1="32" start2="26" end2="29" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="33" end1="33" start2="30" end2="32" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="53" end1="73" start2="52" end2="78" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="250" end1="251" start2="255" end2="256" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="255" end1="256" start2="260" end2="261" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="257" end1="263" start2="262" end2="262" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="267" end1="268" start2="266" end2="273" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="346" end1="347" start2="351" end2="353" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="572" end1="573" start2="578" end2="586" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="605" end1="606" start2="618" end2="618" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="630" end1="631" start2="642" end2="644" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="673" end1="674" start2="686" end2="687" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="676" end1="677" start2="689" end2="690" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="757" end1="758" start2="770" end2="771" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="760" end1="761" start2="773" end2="774" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="769" end1="770" start2="782" end2="783" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="772" end1="773" start2="785" end2="786" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="801" end1="802" start2="814" end2="815" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="804" end1="805" start2="817" end2="818" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="814" end1="817" start2="827" end2="830" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
-        <range start1="819" end1="822" start2="832" end2="835" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
-        <range start1="824" end1="827" start2="837" end2="845" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
-        <range start1="830" end1="830" start2="848" end2="853" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
-        <range start1="832" end1="832" start2="855" end2="857" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
-        <range start1="833" end1="833" start2="858" end2="860" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="21" end1="25" start2="21" end2="22" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="26" end1="28" start2="23" end2="25" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="29" end1="32" start2="26" end2="27" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="49" end1="49" start2="44" end2="50" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="52" end1="78" start2="53" end2="70" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="352" end1="353" start2="344" end2="346" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="585" end1="586" start2="578" end2="593" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="618" end1="620" start2="625" end2="625" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="643" end1="644" start2="648" end2="651" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="686" end1="687" start2="693" end2="694" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="689" end1="690" start2="696" end2="697" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
+        <range start1="827" end1="830" start2="834" end2="842" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="832" end1="835" start2="844" end2="847" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="837" end1="840" start2="849" end2="852" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="843" end1="843" start2="855" end2="860" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="845" end1="845" start2="862" end2="864" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
+        <range start1="846" end1="846" start2="865" end2="867" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
       </ranges>
     </file>
   </component>
@@ -350,7 +343,8 @@
       <workItem from="1601049887625" duration="4738000" />
       <workItem from="1601060171355" duration="71906000" />
       <workItem from="1601311288542" duration="41764000" />
-      <workItem from="1601742178046" duration="9666000" />
+      <workItem from="1601742178046" duration="27741000" />
+      <workItem from="1602274265512" duration="1805000" />
     </task>
     <task id="LOCAL-00001" summary="Add php command to docker entrypoint">
       <created>1597775564461</created>
@@ -583,7 +577,21 @@
       <option name="project" value="LOCAL" />
       <updated>1601423897416</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Pre react class for dailies">
+      <created>1601836755101</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1601836755101</updated>
+    </task>
+    <task id="LOCAL-00035" summary="React class component for dailies test">
+      <created>1601837020959</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1601837020959</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,8 +624,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Switch to new RequestEvent" />
-    <MESSAGE value="Remove client and admin containers" />
     <MESSAGE value="Add idea folder to gitignore" />
     <MESSAGE value="Add nginx to heroku" />
     <MESSAGE value="Add dropdown to daily summary modal" />
@@ -641,7 +647,9 @@
     <MESSAGE value="Start adding client" />
     <MESSAGE value="Add timer fixtures and continue on timers client view" />
     <MESSAGE value="Add button to start / stop a running timer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add button to start / stop a running timer" />
+    <MESSAGE value="Pre react class for dailies" />
+    <MESSAGE value="React class component for dailies test" />
+    <option name="LAST_COMMIT_MESSAGE" value="React class component for dailies test" />
   </component>
   <component name="WindowStateProjectService">
     <state x="531" y="108" width="792" height="674" key="#CLI_Interpreters" timestamp="1600717350355">
@@ -684,10 +692,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="64" y="-87" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1601423897301">
+    <state x="58" y="-141" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1601837020964">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="64" y="-87" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1601423897301" />
+    <state x="58" y="-141" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1601837020964" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
