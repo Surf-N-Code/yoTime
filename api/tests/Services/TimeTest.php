@@ -68,7 +68,7 @@ class TimeTest extends TestCase
             ->shouldBeCalled()
             ->willReturn((new \DateTime()));
 
-        $this->timerFactory->createTimerObject('work', $this->user->reveal(), $date)
+        $this->timerFactory->createTimerObject(TimerType::WORK, $this->user->reveal(), $date)
             ->shouldBeCalled()
             ->willReturn($this->timer->reveal());
 
@@ -98,7 +98,7 @@ class TimeTest extends TestCase
 
     public function testStopNonPunchTimers()
     {
-        $this->timeEntryRepository->findNonPunchTimer($this->user->reveal())
+        $this->timeEntryRepository->findRunningTimer($this->user->reveal())
             ->shouldBeCalled()
             ->willReturn($this->timer->reveal());
 
@@ -111,7 +111,7 @@ class TimeTest extends TestCase
                     ->shouldBeCalled()
                     ->willReturn($this->timer->reveal());
 
-        $this->time->stopNonPunchTimers(
+        $this->time->stopTimer(
             $this->user->reveal()
         );
     }

@@ -9,6 +9,7 @@ use App\Entity\Timer;use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
 use App\Repository\TimerRepository;
+use App\Services\DatabaseHelper;
 use App\Services\Time;
 
 class TimerHandler
@@ -18,32 +19,39 @@ class TimerHandler
 
     private Time $time;
 
-    private PunchTimerHandler $punchTimerHandler;
+    private DatabaseHelper $databaseHelper;
+
+    private TimerRepository $timerRepository;
 
     public function __construct(
         Time $time,
         TimerRepository $timeEntryRepo,
-        PunchTimerHandler $punchTimerHandler
+        DatabaseHelper $databaseHelper,
+        TimerRepository $timerRepository
     )
     {
         $this->timeEntryRepo = $timeEntryRepo;
         $this->time = $time;
-        $this->punchTimerHandler = $punchTimerHandler;
+        $this->databaseHelper = $databaseHelper;
+        $this->timerRepository = $timerRepository;
     }
 
     public function startTimer(User $user, string $commandStr): Timer
     {
-        $this->time->stopNonPunchTimers($user);
+        $timer = $this->timerRepository->findRunningTimer($user);
+        if ($timer) {
+            $this->time->stopTimer($user, $timer);
+        }
         $timerType = str_replace('/', '', $commandStr);
         return $this->time->startTimer($user, $timerType);
     }
 
     public function stopTimer(User $user, string $taskDescription = null): Timer
     {
-        $timer = $this->timeEntryRepo->findNonPunchTimer($user);
+        $timer = $this->timeEntryRepo->findRunningTimer($user);
         $this->throwWhenMissingTimer($timer);
 
-        if ($taskDescription) {
+        if ($taskDescription && $timer) {
             $timer = $this->time->addTaskToTimer($timer, $taskDescription);
         }
 
@@ -52,9 +60,10 @@ class TimerHandler
 
     public function lateSignIn(User $user, string $timeStr): Timer
     {
-        $runningTimer = $this->timeEntryRepo->findPunchTimer($user);
-        $this->throwWhenAlreadyPunchedIn($runningTimer);
-        return $this->punchTimerHandler->punchInAtTime($user, $timeStr);
+        $this->throwOnExistingTimerFromToday($user);
+        $timer = $this->time->startTimerFromTimeString($user, $timeStr, TimerType::WORK);
+        $this->databaseHelper->flushAndPersist($timer);
+        return $timer;
     }
 
     private function throwWhenMissingTimer(?Timer $timeEntry)
@@ -71,16 +80,14 @@ class TimerHandler
         }
     }
 
-    private function throwWhenAlreadyPunchedIn(?Timer $runningTimer)
+    private function throwOnExistingTimerFromToday(User $user): void
     {
-        if ($runningTimer) {
-            throw new MessageHandlerException(
-                sprintf(
-                    'You are already checked in for today since: `%s` :slightly_smiling_face:',
-                    $runningTimer->getDateStart()->format('Y-m-d H:i:s')
-                ),
-                412
-            );
+        $timers = $this->timeEntryRepo->findTimersFromToday($user);
+
+        if (!empty($timers)) {
+            throw new MessageHandlerException(sprintf('Seems like you have already signed in for today. The timer was started on `%s`.',
+                $timers[0]->getDateStart()->format('d.m.Y H:i:s')
+            ), 412);
         }
     }
 }

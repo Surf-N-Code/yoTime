@@ -7,10 +7,8 @@ class TimerType
     const TYPES = [
         0 => self::WORK,
         1 => self::BREAK,
-        2 => self::PUNCH
     ];
 
-    const PUNCH = 'punch';
     const WORK = 'work';
     const BREAK = 'break';
 

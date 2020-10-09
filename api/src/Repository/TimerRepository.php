@@ -131,15 +131,13 @@ class TimerRepository extends ServiceEntityRepository
      *
      * @return \App\Entity\Timer|null
      */
-    public function findNonPunchTimer(User $user)
+    public function findRunningTimer(User $user)
     {
         return $this->createQueryBuilder('t')
                     ->andWhere('t.user = :user')
-                    ->andWhere('t.timerType <> :timerType')
                     ->andWhere('t.dateEnd is NULL')
                     ->orderBy('t.dateStart', 'DESC')
                     ->setParameter('user', $user)
-                    ->setParameter('timerType', TimerType::PUNCH)
                     ->getQuery()
                     ->getOneOrNullResult()
             ;
@@ -149,9 +147,9 @@ class TimerRepository extends ServiceEntityRepository
      * @param \App\Entity\User $user
      * @param \DateTime        $startDayTime
      *
-     * @return Timer|null
+     * @return Timer[]
      */
-    public function findPunchTimer(User $user)
+    public function findTimersFromToday(User $user)
     {
         $startDayTime = $this->dateTimeProvider->getLocalUserTime($user);
         $startDayTime->setTime(0,0,0);
@@ -160,15 +158,13 @@ class TimerRepository extends ServiceEntityRepository
 
         return $this->createQueryBuilder('t')
                     ->andWhere('t.user = :user')
-                    ->andWhere('t.timerType = :timerType')
                     ->andWhere('t.dateStart between :dayStart and :dayEnd')
-                    ->orderBy('t.dateStart', 'DESC')
+                    ->orderBy('t.dateStart', 'ASC')
                     ->setParameter('user', $user)
-                    ->setParameter('timerType', TimerType::PUNCH)
                     ->setParameter('dayStart', $startDayTime)
                     ->setParameter('dayEnd', $endDayTime)
                     ->getQuery()
-                    ->getOneOrNullResult()
+                    ->getResult()
             ;
     }
 

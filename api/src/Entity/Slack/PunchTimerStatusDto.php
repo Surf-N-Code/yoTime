@@ -12,9 +12,9 @@ class PunchTimerStatusDto
     private Timer $timer;
 
 
-    public function __construct($actionStatus, Timer $timer)
+    public function __construct($didSignOut, Timer $timer)
     {
-        $this->actionStatus = $actionStatus;
+        $this->actionStatus = $didSignOut;
         $this->timer = $timer;
     }
 
@@ -33,9 +33,9 @@ class PunchTimerStatusDto
         return $this->actionStatus;
     }
 
-    public function setActionStatus(string $actionStatus): void
+    public function setActionStatus(string $didSignOut): void
     {
-        $this->actionStatus = $actionStatus;
+        $this->actionStatus = $didSignOut;
     }
 
 }

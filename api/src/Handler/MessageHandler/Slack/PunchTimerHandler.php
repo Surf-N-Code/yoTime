@@ -33,47 +33,38 @@ class PunchTimerHandler
 
     public function punchIn(User $user): void
     {
-        $this->throwOnExistingPunchTimerFromToday($user);
-        $this->time->stopNonPunchTimers($user);
-        $timer = $this->time->startTimer($user, TimerType::PUNCH);
+        $this->throwOnExistingTimerFromToday($user);
+        $timer = $this->time->startTimer($user, TimerType::WORK);
         $this->databaseHelper->flushAndPersist($timer);
     }
 
     public function punchOut(User $user): PunchTimerStatusDto
     {
-        $signInOutTimer = $this->timeEntryRepo->findPunchTimer($user);
+        $timers = $this->timeEntryRepo->findTimersFromToday($user);
 
-        if (!$signInOutTimer) {
+        if (empty($timers)) {
             throw new MessageHandlerException('Seems like you didn\'t sign in this morning. You can travel back in time to check yourself in for today by using the `/late_hi` command.', 412);
         }
 
-        if ($signInOutTimer->getDateEnd()) {
-            return new PunchTimerStatusDto(false, $signInOutTimer);
+        $latestTimer = $timers[count($timers)-1];
+        if ($latestTimer->getDateEnd()) {
+            return new PunchTimerStatusDto(false, $latestTimer);
         }
 
-        $timer = $this->time->stopTimer($user, $signInOutTimer);
+        $timer = $this->time->stopTimer($user, $latestTimer);
         $this->databaseHelper->flushAndPersist($timer);
-        return new PunchTimerStatusDto(true, $signInOutTimer);
+        return new PunchTimerStatusDto(true, $latestTimer);
     }
 
-    public function punchInAtTime(User $user, string $timeStr): Timer
-    {
-        $this->throwOnExistingPunchTimerFromToday($user);
-        $this->time->stopNonPunchTimers($user);
-        $timer = $this->time->startTimerFromTimeString($user, $timeStr, TimerType::PUNCH);
-        $this->databaseHelper->flushAndPersist($timer);
-        return $timer;
-    }
 
-    private function throwOnExistingPunchTimerFromToday(User $user)
+    private function throwOnExistingTimerFromToday(User $user): void
     {
-        $signInOutTimer = $this->timeEntryRepo->findPunchTimer($user);
+        $timers = $this->timeEntryRepo->findTimersFromToday($user);
 
-        if ($signInOutTimer) {
+        if (!empty($timers)) {
             throw new MessageHandlerException(sprintf('Seems like you have already signed in for today. The timer was started on `%s`.',
-                $signInOutTimer->getDateStart()->format('d.m.Y H:i:s')
+                $timers[0]->getDateStart()->format('d.m.Y H:i:s')
             ), 412);
         }
-        return $signInOutTimer;
     }
 }
