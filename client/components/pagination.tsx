@@ -72,12 +72,12 @@ const generatePagination = (totalPages: Number, currentPage: Number) => {
 
             return (
                 page === 1 || page === totalPages || page === currentPage || page === currentPage-1 || page === currentPage+1 ?
-                    <Link href={`http://localhost:3000/timers?page=${page}`}>
+                    <Link key={`page_${page}`} href={`http://localhost:3000/timers?page=${page}`}>
                         <a className={`w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in hover:bg-white rounded-full${cn({' bg-teal-600 text-white hover:text-gray-700': currentPage === page})}`}>{page}</a>
                     </Link>
                     :
                     (pageIndicatorLow === 1 && pageIndicatorHigh === 0) || pageIndicatorHigh === 1?
-                        <div className={`w-12 md:flex justify-center items-center hidden cursor-default leading-5 transition duration-150 ease-in rounded-full`}>...</div>
+                        <div key={`page_${page}`} className={`w-12 md:flex justify-center items-center hidden cursor-default leading-5 transition duration-150 ease-in rounded-full`}>...</div>
                         :
                         null
             )
