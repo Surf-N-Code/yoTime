@@ -45,14 +45,6 @@ class Time
         return $timer->setDateEnd($currentUserTime);
     }
 
-    public function stopNonPunchTimers(User $user): void
-    {
-        $timer = $this->timeEntryRepository->findNonPunchTimer($user);
-        if ($timer) {
-            $this->stopTimer($user, $timer);
-        }
-    }
-
     public function addTaskToTimer(Timer $timeEntry, string $taskDescription): Timer
     {
         $task = new Task();

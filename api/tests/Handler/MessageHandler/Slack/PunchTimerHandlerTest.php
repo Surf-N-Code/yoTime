@@ -55,7 +55,7 @@ class PunchTimerHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn(null);
 
-        $this->time->stopNonPunchTimers($this->user->reveal())->shouldBeCalled();
+        $this->time->stopTimer($this->user->reveal())->shouldBeCalled();
         $this->time->startTimer($this->user->reveal(), TimerType::PUNCH)
                    ->shouldBeCalled()
                    ->willReturn($this->timeEntryProphecy->reveal());
@@ -120,7 +120,7 @@ class PunchTimerHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn(null);
 
-        $this->time->stopNonPunchTimers($this->user->reveal())
+        $this->time->stopTimer($this->user->reveal())
             ->shouldBeCalled();
         $this->time->startTimerFromTimeString($this->user->reveal(), '08:30', TimerType::PUNCH)
                    ->shouldBeCalled()
@@ -128,7 +128,7 @@ class PunchTimerHandlerTest extends TestCase
         $this->databaseHelper->flushAndPersist($this->timeEntryProphecy->reveal())
             ->shouldBecalled();
 
-        $timer = $this->punchTimerHandler->punchInAtTime($this->user->reveal(), '08:30');
+        $timer = $this->punchTimerHandler->startTimerAtTime($this->user->reveal(), '08:30');
         $this->assertEquals($timer, $this->timeEntryProphecy->reveal());
     }
 }
