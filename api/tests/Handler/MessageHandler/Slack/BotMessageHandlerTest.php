@@ -9,9 +9,10 @@ use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
 use App\Handler\MessageHandler\Slack\BotMessageHandler;
-use App\Handler\MessageHandler\Slack\PunchTimerHandler;
+use App\Handler\MessageHandler\Slack\TimerHandler;
 use App\Repository\TimerRepository;
 use App\Repository\UserRepository;
+use App\Services\DatabaseHelper;
 use App\Services\Time;
 use App\Services\UserProvider;
 use App\Slack\SlackClient;
@@ -35,10 +36,11 @@ class BotMessageHandlerTest extends TestCase
     private $time;
     private $timerType;
     private $user;
-    private $punchTimerHandler;
+    private $timerHandler;
     private $slackMessage;
     private $slackMessageHelper;
     private $timer;
+    private $databaseHelper;
     private $slackClient;
 
     protected function setUp(): void
@@ -53,10 +55,11 @@ class BotMessageHandlerTest extends TestCase
         $this->user = $this->prophesize(User::class);
         $this->time = $this->prophesize(Time::class);
         $this->userRepository = $this->prophesize(UserRepository::class);
-        $this->punchTimerHandler = $this->prophesize(PunchTimerHandler::class);
+        $this->timerHandler = $this->prophesize(TimerHandler::class);
         $this->slackMessage = $this->prophesize(SlackMessage::class);
         $this->slackMessageHelper = $this->prophesize(SlackMessageHelper::class);
         $this->slackClient = $this->prophesize(SlackClient::class);
+        $this->databaseHelper = $this->prophesize(DatabaseHelper::class);
     }
 
     private function buildEvent($type, $text)
@@ -84,24 +87,26 @@ class BotMessageHandlerTest extends TestCase
 
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
-            $this->punchTimerHandler->reveal(),
+            $this->timerHandler->reveal(),
             $this->time->reveal(),
-            $this->slackClient->reveal()
+            $this->slackClient->reveal(),
+            $this->databaseHelper->reveal()
         );
         $this->expectException(MessageHandlerException::class);
-        $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/hi'));
+        $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/hey'));
     }
 
     public function testUnsupportedEventType()
     {
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
-            $this->punchTimerHandler->reveal(),
+            $this->timerHandler->reveal(),
             $this->time->reveal(),
-            $this->slackClient->reveal()
+            $this->slackClient->reveal(),
+            $this->databaseHelper->reveal()
         );
         $this->expectException(MessageHandlerException::class);
-        $botMessageHandler->parseEventType($this->buildEvent('unsupported_event', '/hi'));
+        $botMessageHandler->parseEventType($this->buildEvent('unsupported_event', '/hey'));
     }
 
     public function testHiEvent()
@@ -110,14 +115,16 @@ class BotMessageHandlerTest extends TestCase
         $this->userProvider->getDbUserBySlackId($user->getSlackUserId())
                            ->shouldBeCalled()
                            ->willReturn($user);
-        $this->punchTimerHandler->punchIn($user)
-            ->shouldBeCalled();
+        $this->timerHandler->startTimer($user, TimerType::WORK)
+            ->shouldBeCalled()
+            ->willReturn($this->timer->reveal());
 
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
-            $this->punchTimerHandler->reveal(),
+            $this->timerHandler->reveal(),
             $this->time->reveal(),
-            $this->slackClient->reveal()
+            $this->slackClient->reveal(),
+            $this->databaseHelper->reveal()
         );
         $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/hey'));
     }
@@ -128,11 +135,11 @@ class BotMessageHandlerTest extends TestCase
         $this->userProvider->getDbUserBySlackId($user->getSlackUserId())
                            ->shouldBeCalled()
                            ->willReturn($user);
-        $this->punchTimerHandler->punchOut($user)
+        $this->timerHandler->punchOut($user)
                                 ->shouldBeCalled()
                                 ->willReturn(new PunchTimerStatusDto(true, $this->timer->reveal()));
 
-        $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::PUNCH)
+        $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::WORK)
             ->shouldBeCalled()
             ->willReturn(3600);
 
@@ -150,9 +157,10 @@ class BotMessageHandlerTest extends TestCase
 
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
-            $this->punchTimerHandler->reveal(),
+            $this->timerHandler->reveal(),
             $this->time->reveal(),
-            $this->slackClient->reveal()
+            $this->slackClient->reveal(),
+            $this->databaseHelper->reveal()
         );
         $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/bye'));
     }
@@ -163,15 +171,16 @@ class BotMessageHandlerTest extends TestCase
         $this->userProvider->getDbUserBySlackId($user->getSlackUserId())
                            ->shouldBeCalled()
                            ->willReturn($user);
-        $this->punchTimerHandler->punchOut($user)
+        $this->timerHandler->punchOut($user)
                                 ->shouldBeCalled()
                                 ->willThrow(MessageHandlerException::class);
 
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
-            $this->punchTimerHandler->reveal(),
+            $this->timerHandler->reveal(),
             $this->time->reveal(),
-            $this->slackClient->reveal()
+            $this->slackClient->reveal(),
+            $this->databaseHelper->reveal()
         );
         $this->expectException(MessageHandlerException::class);
         $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/bye'));
@@ -183,15 +192,16 @@ class BotMessageHandlerTest extends TestCase
         $this->userProvider->getDbUserBySlackId($user->getSlackUserId())
                            ->shouldBeCalled()
                            ->willReturn($user);
-        $this->punchTimerHandler->punchOut($user)
+        $this->timerHandler->punchOut($user)
                                 ->shouldBeCalled()
                                 ->willReturn(new PunchTimerStatusDto(false, $this->timer->reveal()));
 
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
-            $this->punchTimerHandler->reveal(),
+            $this->timerHandler->reveal(),
             $this->time->reveal(),
-            $this->slackClient->reveal()
+            $this->slackClient->reveal(),
+            $this->databaseHelper->reveal()
         );
         $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/bye'));
     }
@@ -202,15 +212,16 @@ class BotMessageHandlerTest extends TestCase
         $this->userProvider->getDbUserBySlackId($user->getSlackUserId())
                            ->shouldBeCalled()
                            ->willReturn($user);
-        $this->punchTimerHandler->punchIn($user)
+        $this->timerHandler->startTimer($user, TimerType::WORK)
                                 ->shouldBeCalled()
                                 ->willThrow(MessageHandlerException::class);
 
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
-            $this->punchTimerHandler->reveal(),
+            $this->timerHandler->reveal(),
             $this->time->reveal(),
-            $this->slackClient->reveal()
+            $this->slackClient->reveal(),
+            $this->databaseHelper->reveal()
         );
         $this->expectException(MessageHandlerException::class);
         $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/hey'));
@@ -222,18 +233,19 @@ class BotMessageHandlerTest extends TestCase
         $this->userProvider->getDbUserBySlackId($user->getSlackUserId())
                            ->shouldBeCalled()
                            ->willReturn($user);
-        $this->punchTimerHandler->punchOut($user)
+        $this->timerHandler->punchOut($user)
             ->shouldNotBeCalled()
             ->willReturn($this->slackMessage->reveal());
 
-        $this->punchTimerHandler->punchIn($user)
+        $this->timerHandler->startTimer($user, TimerType::WORK)
             ->shouldNotBeCalled();
 
         $botMessageHandler = new BotMessageHandler(
             $this->userProvider->reveal(),
-            $this->punchTimerHandler->reveal(),
+            $this->timerHandler->reveal(),
             $this->time->reveal(),
-            $this->slackClient->reveal()
+            $this->slackClient->reveal(),
+            $this->databaseHelper->reveal()
         );
         $this->expectException(MessageHandlerException::class);
         $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/unsupported'));

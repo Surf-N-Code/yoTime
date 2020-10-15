@@ -7,14 +7,14 @@ use App\Entity\Timer;
 class PunchTimerStatusDto
 {
 
-    private string $actionStatus;
+    private string $didSignOut;
 
     private Timer $timer;
 
 
     public function __construct($didSignOut, Timer $timer)
     {
-        $this->actionStatus = $didSignOut;
+        $this->didSignOut = $didSignOut;
         $this->timer = $timer;
     }
 
@@ -28,14 +28,14 @@ class PunchTimerStatusDto
         $this->timer = $timer;
     }
 
-    public function getActionStatus(): string
+    public function didSignOut(): bool
     {
-        return $this->actionStatus;
+        return $this->didSignOut;
     }
 
-    public function setActionStatus(string $didSignOut): void
+    public function setDidSignOut(bool $didSignOut): void
     {
-        $this->actionStatus = $didSignOut;
+        $this->didSignOut = $didSignOut;
     }
 
 }

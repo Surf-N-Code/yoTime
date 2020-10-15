@@ -12,13 +12,10 @@ use App\Handler\MessageHandler\Slack\SlashCommandHandler;
 use App\Handler\MessageHandler\Slack\TimerHandler;
 use App\Handler\MessageHandler\Slack\UserHelpHandler;
 use App\Mail\Mailer;
-use App\Repository\TimerRepository;
 use App\Services\DatabaseHelper;
-use App\Services\DateTimeProvider;
 use App\Services\Time;
 use App\Services\UserProvider;
 use App\Slack\SlackClient;
-use App\Slack\SlackClientMock;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
