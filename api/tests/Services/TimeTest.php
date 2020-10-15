@@ -96,25 +96,6 @@ class TimeTest extends TestCase
         );
     }
 
-    public function testStopNonPunchTimers()
-    {
-        $this->timeEntryRepository->findRunningTimer($this->user->reveal())
-            ->shouldBeCalled()
-            ->willReturn($this->timer->reveal());
-
-        $date = new \DateTime('now');
-        $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
-                               ->shouldBeCalled()
-                               ->willReturn($date);
-
-        $this->timer->setDateEnd($date)
-                    ->shouldBeCalled()
-                    ->willReturn($this->timer->reveal());
-
-        $this->time->stopTimer(
-            $this->user->reveal()
-        );
-    }
 
     /** @dataProvider validTimesProvider */
     public function testStartTimerFromValidTimeString($timeString)
@@ -125,11 +106,11 @@ class TimeTest extends TestCase
                                ->shouldBeCalled()
                                ->willReturn($date);
 
-        $this->timerFactory->createTimerObject(TimerType::PUNCH, $this->user->reveal(), $date)
+        $this->timerFactory->createTimerObject(TimerType::WORK, $this->user->reveal(), $date)
                            ->shouldBeCalled()
                            ->willReturn($this->timer->reveal());
 
-        $this->time->startTimerFromTimeString($this->user->reveal(), $timeString, TimerType::PUNCH);
+        $this->time->startTimerFromTimeString($this->user->reveal(), $timeString, TimerType::WORK);
     }
 
     /** @
@@ -139,7 +120,7 @@ class TimeTest extends TestCase
     {
         $this->expectException(MessageHandlerException::class);
 
-        $this->time->startTimerFromTimeString($this->user->reveal(), $timeString, TimerType::PUNCH);
+        $this->time->startTimerFromTimeString($this->user->reveal(), $timeString, TimerType::WORK);
     }
 
     /**

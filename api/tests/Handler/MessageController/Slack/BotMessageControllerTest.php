@@ -3,6 +3,7 @@
 namespace App\Tests\Handler\MessageController\Slack;
 
 use App\Entity\Timer;
+use App\Entity\TimerType;
 use App\Tests\IntegrationTestCase;
 use Hautelook\AliceBundle\PhpUnit\ReloadDatabaseTrait;
 
@@ -32,9 +33,6 @@ class BotMessageControllerTest extends IntegrationTestCase
         $client = static::createClient();
 
         $em = self::$container->get('doctrine')->getManager();
-        $punchInTimer = $em->getRepository(Timer::class)->findBy(['dateEnd' => null, 'timerType' => 'punch']);
-        $em->remove($punchInTimer[0]);
-        $em->flush();
 
         $response = $client->request(
             'POST',
@@ -46,10 +44,9 @@ class BotMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        $runningTimers = $em->getRepository(Timer::class)->findBy(['dateEnd' => null, 'timerType' => 'punch']);
+        $runningTimers = $em->getRepository(Timer::class)->findBy(['dateEnd' => null, 'timerType' => TimerType::WORK]);
         self::assertEquals(201, $response->getStatusCode());
         self::assertCount(1, $runningTimers);
-        self::assertEquals('punch', $runningTimers[0]->getTimerType());
     }
 
     public function testHiBotEventAlreadyPunchedIn()
@@ -67,7 +64,10 @@ class BotMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        self::assertEquals(412, $response->getStatusCode());
+        $em = self::$container->get('doctrine')->getManager();
+        $runningTimers = $em->getRepository(Timer::class)->findBy(['dateEnd' => null, 'timerType' => TimerType::WORK]);
+        self::assertCount(1, $runningTimers);
+        self::assertEquals(201, $response->getStatusCode());
     }
 
     public function testByeBotEvent()
@@ -87,20 +87,19 @@ class BotMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        $runningTimers = $em->getRepository(Timer::class)->findBy(['timerType' => 'punch']);
+        $runningTimers = $em->getRepository(Timer::class)->findBy(['timerType' => TimerType::WORK]);
         self::assertEquals(201, $response->getStatusCode());
         self::assertCount(1, $runningTimers);
-        self::assertEquals('punch', $runningTimers[0]->getTimerType());
+        self::assertEquals(TimerType::WORK, $runningTimers[0]->getTimerType());
     }
 
     public function testByeBotEventMissingTimer()
     {
         $byeData = $this->generateCommandData('bye');
         $client = static::createClient();
-
         $em = self::$container->get('doctrine')->getManager();
-        $punchInTimer = $em->getRepository(Timer::class)->findBy(['dateEnd' => null, 'timerType' => 'punch']);
-        $em->remove($punchInTimer[0]);
+        $runningTimer = $em->getRepository(Timer::class)->findBy(['timerType' => TimerType::WORK]);
+        $em->remove($runningTimer[0]);
         $em->flush();
 
         $response = $client->request(

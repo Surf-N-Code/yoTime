@@ -11,7 +11,7 @@ use App\Entity\Timer;use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
 use App\Handler\MessageHandler\Slack\DailySummaryHandler;
-use App\Handler\MessageHandler\Slack\PunchTimerHandler;
+use App\Handler\MessageHandler\Slack\TimerHandler;
 use App\HrTools\Personio\Gateway;
 use App\ObjectFactories\DailySummaryFactory;
 use App\Repository\DailySummaryRepository;
@@ -32,7 +32,7 @@ class DailySummaryHandlerTest extends TestCase
     private $user;
     private $dailySummaryRepo;
     private DailySummaryHandler $dailySummaryHandler;
-    private $punchTimerHandler;
+    private $timerHandler;
     private $slackMessageHelper;
     private $timeEntryProphecy;
     private $dailySummaryProphecy;
@@ -50,7 +50,7 @@ class DailySummaryHandlerTest extends TestCase
         $this->user = $this->prophesize(User::class);
         $this->dailySummaryRepo = $this->prophesize(DailySummaryRepository::class);
         $this->time = $this->prophesize(Time::class);
-        $this->punchTimerHandler = $this->prophesize(PunchTimerHandler::class);
+        $this->timerHandler = $this->prophesize(TimerHandler::class);
         $this->slackMessageHelper = $this->prophesize(SlackMessageHelper::class);
         $this->dailySummaryProphecy = $this->prophesize(DailySummary::class);
         $this->dailySummaryFactory = $this->prophesize(DailySummaryFactory::class);
@@ -62,7 +62,7 @@ class DailySummaryHandlerTest extends TestCase
         $this->punchTimerStatusDto = $this->prophesize(PunchTimerStatusDto::class);
 
         $this->dailySummaryHandler = new DailySummaryHandler(
-            $this->punchTimerHandler->reveal(),
+            $this->timerHandler->reveal(),
             $this->dailySummaryRepo->reveal(),
             $this->time->reveal(),
             $this->dailySummaryFactory->reveal(),
@@ -76,7 +76,7 @@ class DailySummaryHandlerTest extends TestCase
 
     public function testHandleModalSubmissionWithPunchoutAndEmail()
     {
-        $this->punchTimerHandler->punchOut($this->user->reveal())
+        $this->timerHandler->punchOut($this->user->reveal())
                                 ->shouldBeCalled()
                                 ->willReturn($this->punchTimerStatusDto->reveal());
 
@@ -84,11 +84,11 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn($this->timeEntryProphecy->reveal());
 
-        $this->punchTimerStatusDto->getActionStatus()
+        $this->punchTimerStatusDto->didSignOut()
                                   ->shouldBeCalled()
                                   ->willReturn(true);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::PUNCH)
+        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
                    ->shouldBeCalled()->willReturn(3600);
 
         $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
@@ -144,7 +144,7 @@ class DailySummaryHandlerTest extends TestCase
 
     public function testHandleModalSubmissionWithPunchoutNoAndEmail()
     {
-        $this->punchTimerHandler->punchOut($this->user->reveal())
+        $this->timerHandler->punchOut($this->user->reveal())
                                 ->shouldBeCalled()
                                 ->willReturn($this->punchTimerStatusDto->reveal());
 
@@ -152,11 +152,11 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn($this->timeEntryProphecy->reveal());
 
-        $this->punchTimerStatusDto->getActionStatus()
+        $this->punchTimerStatusDto->didSignOut()
                                   ->shouldBeCalled()
                                   ->willReturn(true);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::PUNCH)
+        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
                    ->shouldBeCalled()->willReturn(3600);
 
         $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
@@ -210,7 +210,7 @@ class DailySummaryHandlerTest extends TestCase
 
     public function testHandleModalSubmissionWithoutPunchoutNoAndEmail()
     {
-        $this->punchTimerHandler->punchOut($this->user->reveal())
+        $this->timerHandler->punchOut($this->user->reveal())
                                 ->shouldBeCalled()
                                 ->willReturn($this->punchTimerStatusDto->reveal());
 
@@ -218,11 +218,11 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn($this->timeEntryProphecy->reveal());
 
-        $this->punchTimerStatusDto->getActionStatus()
+        $this->punchTimerStatusDto->didSignOut()
                                   ->shouldBeCalled()
                                   ->willReturn(false);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::PUNCH)
+        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
                    ->shouldBeCalled()->willReturn(3600);
 
         $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
@@ -276,7 +276,7 @@ class DailySummaryHandlerTest extends TestCase
 
     public function testHandleModalSubmissionWithoutPunchoutAndEmail()
     {
-        $this->punchTimerHandler->punchOut($this->user->reveal())
+        $this->timerHandler->punchOut($this->user->reveal())
                                 ->shouldBeCalled()
                                 ->willReturn($this->punchTimerStatusDto->reveal());
 
@@ -284,11 +284,11 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn($this->timeEntryProphecy->reveal());
 
-        $this->punchTimerStatusDto->getActionStatus()
+        $this->punchTimerStatusDto->didSignOut()
                                   ->shouldBeCalled()
                                   ->willReturn(false);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::PUNCH)
+        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
                    ->shouldBeCalled()->willReturn(3600);
 
         $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
@@ -344,7 +344,7 @@ class DailySummaryHandlerTest extends TestCase
 
     public function testHandleModalSubmissionWithPunchoutWorkTimeOnly()
     {
-        $this->punchTimerHandler->punchOut($this->user->reveal())
+        $this->timerHandler->punchOut($this->user->reveal())
                                 ->shouldBeCalled()
                                 ->willReturn($this->punchTimerStatusDto->reveal());
 
@@ -352,11 +352,11 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn($this->timeEntryProphecy->reveal());
 
-        $this->punchTimerStatusDto->getActionStatus()
+        $this->punchTimerStatusDto->didSignOut()
                                   ->shouldBeCalled()
                                   ->willReturn(true);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::PUNCH)
+        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
                    ->shouldBeCalled()->willReturn(3600);
 
         $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
@@ -410,7 +410,7 @@ class DailySummaryHandlerTest extends TestCase
 
     public function testHandleModalSubmissionFailedPersonioSync()
     {
-        $this->punchTimerHandler->punchOut($this->user->reveal())
+        $this->timerHandler->punchOut($this->user->reveal())
                                 ->shouldBeCalled()
                                 ->willReturn($this->punchTimerStatusDto->reveal());
 
@@ -418,11 +418,11 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn($this->timeEntryProphecy->reveal());
 
-        $this->punchTimerStatusDto->getActionStatus()
+        $this->punchTimerStatusDto->didSignOut()
                                   ->shouldBeCalled()
                                   ->willReturn(true);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::PUNCH)
+        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
                    ->shouldBeCalled()->willReturn(3600);
 
         $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
@@ -479,11 +479,11 @@ class DailySummaryHandlerTest extends TestCase
 
     public function testHandleModalSubmissionFailedPunchout()
     {
-        $this->punchTimerHandler->punchOut($this->user->reveal())
+        $this->timerHandler->punchOut($this->user->reveal())
                                 ->shouldBeCalled()
                                 ->willThrow(MessageHandlerException::class);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::PUNCH)
+        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
                    ->shouldNotBeCalled()->willReturn(3600);
 
         $evt['view']['state']['values']['daily_summary_block']['summary_block_input']['value'] = 'Daily summary notes';
@@ -494,7 +494,7 @@ class DailySummaryHandlerTest extends TestCase
 
     public function testHandleModalSubmissionFailedEmail()
     {
-        $this->punchTimerHandler->punchOut($this->user->reveal())
+        $this->timerHandler->punchOut($this->user->reveal())
                                 ->shouldBeCalled()
                                 ->willReturn($this->punchTimerStatusDto->reveal());
 
@@ -502,11 +502,11 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn($this->timeEntryProphecy->reveal());
 
-        $this->punchTimerStatusDto->getActionStatus()
+        $this->punchTimerStatusDto->didSignOut()
                                   ->shouldBeCalled()
                                   ->willReturn(false);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::PUNCH)
+        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
                    ->shouldBeCalled()->willReturn(3600);
 
         $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
@@ -563,7 +563,7 @@ class DailySummaryHandlerTest extends TestCase
 
     public function testHandleModalSubmissionPersonioAlreadySynced()
     {
-        $this->punchTimerHandler->punchOut($this->user->reveal())
+        $this->timerHandler->punchOut($this->user->reveal())
                                 ->shouldBeCalled()
                                 ->willReturn($this->punchTimerStatusDto->reveal());
 
@@ -571,11 +571,11 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn($this->timeEntryProphecy->reveal());
 
-        $this->punchTimerStatusDto->getActionStatus()
+        $this->punchTimerStatusDto->didSignOut()
                                   ->shouldBeCalled()
                                   ->willReturn(false);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::PUNCH)
+        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
                    ->shouldBeCalled()->willReturn(3600);
 
         $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)

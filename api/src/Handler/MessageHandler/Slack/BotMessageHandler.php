@@ -5,6 +5,7 @@ namespace App\Handler\MessageHandler\Slack;
 
 use App\Entity\Slack\SlackMessage;
 use App\Entity\TimerType;use App\Entity\User;use App\Exceptions\MessageHandlerException;
+use App\Services\DatabaseHelper;
 use App\Services\Time;
 use App\Services\UserProvider;
 use App\Slack\SlackClient;
@@ -13,23 +14,28 @@ use App\Slack\SlackMessageHelper;
 class BotMessageHandler
 {
     private UserProvider $userProvider;
-    private PunchTimerHandler $punchTimerHandler;
+
+    private TimerHandler $timerHandler;
 
     private Time $time;
 
     private SlackClient $slackClient;
 
+    private DatabaseHelper $databaseHelper;
+
     public function __construct(
         UserProvider $userProvider,
-        PunchTimerHandler $punchTimerHandler,
+        TimerHandler $timerHandler,
         Time $time,
-        SlackClient $slackClient
+        SlackClient $slackClient,
+        DatabaseHelper $databaseHelper
     )
     {
         $this->userProvider = $userProvider;
-        $this->punchTimerHandler = $punchTimerHandler;
+        $this->timerHandler = $timerHandler;
         $this->time = $time;
         $this->slackClient = $slackClient;
+        $this->databaseHelper = $databaseHelper;
     }
 
     public function parseEventType($evt): SlackMessage
@@ -51,25 +57,28 @@ class BotMessageHandler
         $m = new SlackMessage();
         switch ($command) {
             case strpos($command, 'hey') !== false:
-                $this->punchTimerHandler->punchIn($user);
+                $timer = $this->timerHandler->startTimer($user, TimerType::WORK);
                 $m->addTextSection('Happy working :rocket:');
+                $this->databaseHelper->flushAndPersist($timer);
                 break;
 
             case strpos($command, 'bye') !== false:
-               $punchTimerStatusDto = $this->punchTimerHandler->punchOut($user);
-                if (!$punchTimerStatusDto->getActionStatus()) {
+               $punchTimerStatusDto = $this->timerHandler->punchOut($user);
+                if (!$punchTimerStatusDto->didSignOut()) {
                     $m->addTextSection('You have already punched out for today.');
                     break;
                 }
 
+
                 $m->addTextSection('Signed you out for today. :call_me_hand:');
 
-                $timeOnWork = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::PUNCH);
+                $timeOnWork = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::WORK);
                 $timeOnBreak = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::BREAK);
 
                 $formattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($timeOnWork - $timeOnBreak);
                 $formattedTimeOnBreak = $this->time->formatSecondsAsHoursAndMinutes($timeOnBreak);
                 $m->addTextSection(sprintf('You spent `%s` on work and `%s` on break.', $formattedTimeOnWork, $formattedTimeOnBreak));
+                $this->databaseHelper->flushAndPersist($punchTimerStatusDto->getTimer());
                 break;
             default:
                 throw new MessageHandlerException('You pinged me, however I do not recognise your command. Try `/help` to get a list of available commands', 400);

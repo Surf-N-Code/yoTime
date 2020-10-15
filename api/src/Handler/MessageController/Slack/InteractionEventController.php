@@ -4,7 +4,6 @@
 namespace App\Handler\MessageController\Slack;
 
 use App\Entity\Slack\SlackInteractionEvent;
-use App\Entity\Slack\SlackMessage;
 use App\Exceptions\MessageHandlerException;
 use App\Handler\MessageHandler\Slack\DailySummaryHandler;
 use App\Services\UserProvider;
@@ -15,8 +14,6 @@ use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
 final class InteractionEventController implements MessageHandlerInterface
 {
-    private RequestStack $requestStack;
-
     private DailySummaryHandler $dailySummaryHandler;
 
     private UserProvider $userProvider;

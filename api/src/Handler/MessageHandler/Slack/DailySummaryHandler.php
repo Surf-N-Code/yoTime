@@ -25,7 +25,7 @@ class DailySummaryHandler
 
     private Time $time;
 
-    private PunchTimerHandler $punchTimerHandler;
+    private TimerHandler $timerHandler;
 
     private DailySummaryFactory $dailySummaryFactory;
 
@@ -40,7 +40,7 @@ class DailySummaryHandler
     private LoggerInterface $logger;
 
     public function __construct(
-        PunchTimerHandler $punchTimerHandler,
+        TimerHandler $timerHandler,
         DailySummaryRepository $dailySummaryRepo,
         Time $time,
         DailySummaryFactory $dailySummaryFactory,
@@ -53,7 +53,7 @@ class DailySummaryHandler
     {
         $this->dailySummaryRepo = $dailySummaryRepo;
         $this->time = $time;
-        $this->punchTimerHandler = $punchTimerHandler;
+        $this->timerHandler = $timerHandler;
         $this->dailySummaryFactory = $dailySummaryFactory;
         $this->databaseHelper = $databaseHelper;
         $this->mailer = $mailer;
@@ -176,12 +176,12 @@ class DailySummaryHandler
         $doSendMail = $evt['view']['state']['values']['mail_block']['mail_choice']['selected_option']['value'] === 'true';
 
         try {
-            $punchTimerStatusDto = $this->punchTimerHandler->punchOut($user);
+            $punchTimerStatusDto = $this->timerHandler->punchOut($user);
         } catch (MessageHandlerException $e) {
             return new ModalSubmissionDto(ModalSubmissionDto::STATUS_ERROR, ':heavy_exclamation_mark: '.$e->getMessage(), 'Something is wrong :(');
         }
 
-        $timeOnWork = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::PUNCH);
+        $timeOnWork = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::WORK);
         $timeOnBreak = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::BREAK);
 
         $dailySummaryEntity = $this->dailySummaryRepo->findOneBy(['date' => new \DateTime('now')]);
@@ -211,7 +211,7 @@ class DailySummaryHandler
             $ds->setIsSyncedToPersonio($didSyncToPersonio);
         }
 
-        $m = $this->getDailySummaryAddSlackMessage($timeOnWork, $timeOnBreak, $punchTimerStatusDto->getActionStatus(), $doSendMail, $ds->getIsSyncedToPersonio(), $personioErrorMsg ?? '');
+        $m = $this->getDailySummaryAddSlackMessage($timeOnWork, $timeOnBreak, $punchTimerStatusDto->didSignOut(), $doSendMail, $ds->getIsSyncedToPersonio(), $personioErrorMsg ?? '');
 
         $this->databaseHelper->flushAndPersist($ds);
 

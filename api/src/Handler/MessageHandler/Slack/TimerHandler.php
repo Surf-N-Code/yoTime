@@ -4,7 +4,7 @@
 namespace App\Handler\MessageHandler\Slack;
 
 
-use App\Entity\Slack\SlashCommand;
+use App\Entity\Slack\PunchTimerStatusDto;
 use App\Entity\Timer;use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
@@ -15,24 +15,16 @@ use App\Services\Time;
 class TimerHandler
 {
 
-    private TimerRepository $timeEntryRepo;
-
     private Time $time;
-
-    private DatabaseHelper $databaseHelper;
 
     private TimerRepository $timerRepository;
 
     public function __construct(
         Time $time,
-        TimerRepository $timeEntryRepo,
-        DatabaseHelper $databaseHelper,
         TimerRepository $timerRepository
     )
     {
-        $this->timeEntryRepo = $timeEntryRepo;
         $this->time = $time;
-        $this->databaseHelper = $databaseHelper;
         $this->timerRepository = $timerRepository;
     }
 
@@ -48,7 +40,7 @@ class TimerHandler
 
     public function stopTimer(User $user, string $taskDescription = null): Timer
     {
-        $timer = $this->timeEntryRepo->findRunningTimer($user);
+        $timer = $this->timerRepository->findRunningTimer($user);
         $this->throwWhenMissingTimer($timer);
 
         if ($taskDescription && $timer) {
@@ -61,9 +53,32 @@ class TimerHandler
     public function lateSignIn(User $user, string $timeStr): Timer
     {
         $this->throwOnExistingTimerFromToday($user);
-        $timer = $this->time->startTimerFromTimeString($user, $timeStr, TimerType::WORK);
-        $this->databaseHelper->flushAndPersist($timer);
-        return $timer;
+        return $this->time->startTimerFromTimeString($user, $timeStr, TimerType::WORK);
+    }
+
+    public function punchOut(User $user): PunchTimerStatusDto
+    {
+        $timers = $this->timerRepository->findTimersFromToday($user);
+
+        if (empty($timers)) {
+            throw new MessageHandlerException('Seems like you didn\'t sign in this morning. You can travel back in time to check yourself in for today by using the `/late_hi` command.', 412);
+        }
+
+        $latestTimer = $timers[count($timers)-1];
+
+        $punchedOut = false;
+        foreach ($timers as $timer) {
+            if (!$timer->getDateEnd()) {
+                $punchedOut = true;
+            }
+        }
+
+        if (!$punchedOut) {
+            return new PunchTimerStatusDto(false, $latestTimer);
+        }
+
+        $this->time->stopTimer($user, $latestTimer);
+        return new PunchTimerStatusDto(true, $latestTimer);
     }
 
     private function throwWhenMissingTimer(?Timer $timeEntry)
@@ -82,7 +97,7 @@ class TimerHandler
 
     private function throwOnExistingTimerFromToday(User $user): void
     {
-        $timers = $this->timeEntryRepo->findTimersFromToday($user);
+        $timers = $this->timerRepository->findTimersFromToday($user);
 
         if (!empty($timers)) {
             throw new MessageHandlerException(sprintf('Seems like you have already signed in for today. The timer was started on `%s`.',
