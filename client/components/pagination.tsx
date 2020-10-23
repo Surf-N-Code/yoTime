@@ -8,6 +8,9 @@ type PaginationProps = {
 }
 
 export const Pagination = ({currentPage, totalPages}: PaginationProps) => {
+    if (totalPages === 1) {
+        return ('');
+    }
     return (
         <div className="flex flex-col items-center my-12">
         <div className="flex text-gray-700">
