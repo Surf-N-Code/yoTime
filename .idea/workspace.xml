@@ -8,6 +8,11 @@
       </path>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
       <path>
@@ -16,26 +21,26 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:feature/general-timers-without-punch" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Pre react class for dailies">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/fixtures/test/timer.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/test/timer.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/Slack/PunchTimerStatusDto.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Slack/PunchTimerStatusDto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/TimerType.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/TimerType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/PunchTimerHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/PunchTimerHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/TimerHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/TimerHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Repository/TimerRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Repository/TimerRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Services/Time.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Services/Time.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/PunchTimerHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/PunchTimerHandlerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Services/TimeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Services/TimeTest.php" afterDir="false" />
-    </list>
-    <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="">
+      <change afterPath="$PROJECT_DIR$/client/components/dailyEditView.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/dailyTableRow.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/toggle.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/dailies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dailies.tsx" afterDir="false" />
     </list>
+    <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,6 +51,11 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsFlowSettings">
@@ -53,47 +63,6 @@
     <exe-path />
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/.idea/workspace.xml">
-      <ranges>
-        <range start1="23" end1="28" start2="23" end2="33" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="54" end1="71" start2="59" end2="94" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="248" end1="249" start2="271" end2="272" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="268" end1="269" start2="291" end2="292" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="281" end1="283" start2="304" end2="306" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="290" end1="291" start2="313" end2="313" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="295" end1="295" start2="317" end2="318" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="298" end1="298" start2="321" end2="322" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="302" end1="303" start2="326" end2="326" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="346" end1="347" start2="369" end2="370" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="593" end1="594" start2="616" end2="624" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="626" end1="627" start2="656" end2="656" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="651" end1="652" start2="680" end2="682" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="690" end1="690" start2="720" end2="724" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="694" end1="695" start2="728" end2="729" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="697" end1="698" start2="731" end2="732" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="702" end1="703" start2="736" end2="737" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="705" end1="706" start2="739" end2="740" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="718" end1="719" start2="752" end2="753" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="721" end1="723" start2="755" end2="757" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="725" end1="727" start2="759" end2="761" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="729" end1="731" start2="763" end2="765" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="733" end1="734" start2="767" end2="768" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="774" end1="775" start2="808" end2="809" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="777" end1="779" start2="811" end2="813" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="781" end1="782" start2="815" end2="816" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="818" end1="819" start2="852" end2="853" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="821" end1="823" start2="855" end2="857" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="825" end1="826" start2="859" end2="860" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="835" end1="838" start2="869" end2="872" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="840" end1="843" start2="874" end2="882" changelist="2df92827-2dcb-4f20-8586-3c37d7affe23" />
-        <range start1="845" end1="848" start2="884" end2="887" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
-        <range start1="851" end1="851" start2="890" end2="895" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
-        <range start1="853" end1="853" start2="897" end2="899" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
-        <range start1="854" end1="854" start2="900" end2="902" changelist="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" />
-      </ranges>
-    </file>
   </component>
   <component name="PhpDebugGeneral" xdebug_debug_port="9001" />
   <component name="PhpServers">
@@ -118,6 +87,7 @@
       <path value="$PROJECT_DIR$/api/vendor/doctrine/migrations" />
       <path value="$PROJECT_DIR$/api/vendor/psr/link" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/api/vendor/easyrdf/easyrdf" />
       <path value="$PROJECT_DIR$/api/vendor/psr/container" />
       <path value="$PROJECT_DIR$/api/vendor/psr/cache" />
@@ -184,6 +154,7 @@
       <path value="$PROJECT_DIR$/api/vendor/symfony/mailer" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/config" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/api/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/stopwatch" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/twig-bundle" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-php73" />
@@ -210,6 +181,9 @@
       <path value="$PROJECT_DIR$/api/vendor/symfony/property-info" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/security-guard" />
       <path value="$PROJECT_DIR$/api/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/api/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/api/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/api/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/annotations" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/common" />
       <path value="$PROJECT_DIR$/api/vendor/doctrine/collections" />
@@ -266,7 +240,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/public/images/icons" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/components" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
@@ -274,6 +248,13 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/components" />
+      <recent name="$PROJECT_DIR$/client/public/images/icons" />
+      <recent name="$PROJECT_DIR$/client/pages" />
+      <recent name="$PROJECT_DIR$/api/fixtures/test" />
+      <recent name="$PROJECT_DIR$/api/src/Fixtures" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/client/public/images/icons" />
       <recent name="$PROJECT_DIR$/api/fixtures/test" />
@@ -281,49 +262,42 @@
       <recent name="$PROJECT_DIR$/api/src/Handler/MessageController/Slack" />
       <recent name="$PROJECT_DIR$/api/src" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/client/public/images/icons" />
-      <recent name="$PROJECT_DIR$/client/pages" />
-      <recent name="$PROJECT_DIR$/api/fixtures/test" />
-      <recent name="$PROJECT_DIR$/api/src/Fixtures" />
-      <recent name="$PROJECT_DIR$/client/public/images" />
-    </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.SlashCommandMessageControllerTest.testWorkCommand">
-    <configuration name="BotMessageHandlerTest.testByeEventAlreadyPunchedOut" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\BotMessageHandlerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/BotMessageHandlerTest.php" method="testByeEventAlreadyPunchedOut" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.TimeTest.testStartTimerFromInvalidTimeString">
+    <configuration name="DailySummaryHandlerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\DailySummaryHandlerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="DailySummaryHandlerTest.testHandleModalSubmissionFailedPersonioSync" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\DailySummaryHandlerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" method="testHandleModalSubmissionFailedPersonioSync" scope="Method" />
+    <configuration name="SlashCommandHandlerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\SlashCommandHandlerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="InteractionEventControllerIntegrationTest.testDailySummaryInteraction" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Handler\MessageController\Slack\InteractionEventControllerIntegrationTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/InteractionEventControllerIntegrationTest.php" method="testDailySummaryInteraction" scope="Method" />
+    <configuration name="TimeTest.testStartTimerFromInvalidTimeString" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Services\TimeTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Services/TimeTest.php" method="testStartTimerFromInvalidTimeString" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="SlashCommandMessageControllerTest.testWorkCommand" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Handler\MessageController\Slack\SlashCommandMessageControllerTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" method="testWorkCommand" scope="Method" />
+    <configuration name="TimeTest.testStartTimerFromValidTimeString" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Services\TimeTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Services/TimeTest.php" method="testStartTimerFromValidTimeString" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="TimeTest.testStopNonPunchTimers" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Services\TimeTest" configuration_file="/opt/project/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Services/TimeTest.php" method="testStopNonPunchTimers" scope="Method" />
+    <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner configuration_file="/opt/project/api/phpunit.xml" directory="$PROJECT_DIR$/api/tests" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="PHPUnit.BotMessageHandlerTest.testByeEventAlreadyPunchedOut" />
-      <item itemvalue="PHPUnit.DailySummaryHandlerTest.testHandleModalSubmissionFailedPersonioSync" />
-      <item itemvalue="PHPUnit.TimeTest.testStopNonPunchTimers" />
-      <item itemvalue="PHPUnit.InteractionEventControllerIntegrationTest.testDailySummaryInteraction" />
-      <item itemvalue="PHPUnit.SlashCommandMessageControllerTest.testWorkCommand" />
+      <item itemvalue="PHPUnit.SlashCommandHandlerTest" />
+      <item itemvalue="PHPUnit.DailySummaryHandlerTest" />
+      <item itemvalue="PHPUnit.tests" />
+      <item itemvalue="PHPUnit.TimeTest.testStartTimerFromValidTimeString" />
+      <item itemvalue="PHPUnit.TimeTest.testStartTimerFromInvalidTimeString" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.SlashCommandMessageControllerTest.testWorkCommand" />
-        <item itemvalue="PHPUnit.InteractionEventControllerIntegrationTest.testDailySummaryInteraction" />
-        <item itemvalue="PHPUnit.TimeTest.testStopNonPunchTimers" />
-        <item itemvalue="PHPUnit.DailySummaryHandlerTest.testHandleModalSubmissionFailedPersonioSync" />
-        <item itemvalue="PHPUnit.BotMessageHandlerTest.testByeEventAlreadyPunchedOut" />
+        <item itemvalue="PHPUnit.TimeTest.testStartTimerFromInvalidTimeString" />
+        <item itemvalue="PHPUnit.TimeTest.testStartTimerFromValidTimeString" />
+        <item itemvalue="PHPUnit.tests" />
+        <item itemvalue="PHPUnit.DailySummaryHandlerTest" />
+        <item itemvalue="PHPUnit.SlashCommandHandlerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -642,7 +616,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="feature/general-timers-without-punch" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -877,19 +863,24 @@
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/PunchTimerHandler.php</url>
-          <line>42</line>
-          <option name="timeStamp" value="97" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php</url>
-          <line>124</line>
-          <option name="timeStamp" value="25" />
+          <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/BotMessageHandler.php</url>
+          <line>57</line>
+          <option name="timeStamp" value="110" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PHPUnitRunConfigurationType">
+        <watch expression="$msg" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/yoTime@DailySummaryHandlerTest.xml" NAME="DailySummaryHandlerTest Coverage Results" MODIFIED="1600629596029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/yoTime@tests.xml" NAME="tests Coverage Results" MODIFIED="1600009358856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/yoTime@TimerHandlerTest.xml" NAME="TimerHandlerTest Coverage Results" MODIFIED="1602324601715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@SlashCommandHandlerTest.xml" NAME="SlashCommandHandlerTest Coverage Results" MODIFIED="1597698388851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/yoTime@DailySummaryHandlerTest_testHandleModalSubmissionFailedPersonioSync.xml" NAME="DailySummaryHandlerTest.testHandleModalSubmissionFailedPersonioSync Coverage Results" MODIFIED="1600593206568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/yoTime@TimerHandlerTest_testStartWorkTimer.xml" NAME="TimerHandlerTest.testStartWorkTimer Coverage Results" MODIFIED="1602322847941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
