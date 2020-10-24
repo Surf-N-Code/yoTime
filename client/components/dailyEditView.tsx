@@ -1,5 +1,5 @@
-import {differenceInSeconds} from "date-fns";
-import React from "react";
+import {differenceInSeconds, format} from "date-fns";
+import React, {useState} from "react";
 import cn from 'classnames';
 import {toHHMM} from "../utilities/lib";
 import de from "date-fns/locale/de";
@@ -7,11 +7,11 @@ import Toggle from 'react-toggle'
 import DatePicker, { registerLocale, setDefaultLocale } from  "react-datepicker";
 
 export const DailyEditView = ({startDate, endDate, setStartDate, setEndDate, setSendMail, sendMail, isEditViewVisible, onClick}) => {
+    const [dailySummaryText, setDailySummaryText] = useState('');
+    const forceUpdate = useForceUpdate();
 
-    console.log(startDate, endDate);
     const TimeInput = ({ value, onClick }) => {
         let date = value.split(' ');
-        console.log(date, value);
         return (
             <button className="py-5 p-3" onClick={onClick}>
                 {date[0]}<br />{date[1]}
@@ -73,8 +73,8 @@ export const DailyEditView = ({startDate, endDate, setStartDate, setEndDate, set
                             </div>
                         </div>
                         <textarea
-                            // value={this.state.textAreaValue}
-                            // onChange={this.handleChange}
+                            // value={setDailySummary}
+                            // onChange={() => setDailySummaryText()}
                             rows={5}
                             placeholder="Put the description of your day here..."
                             // cols={}
@@ -93,7 +93,7 @@ export const DailyEditView = ({startDate, endDate, setStartDate, setEndDate, set
                         <div className="w-full mt-4">
                             <button
                                 className="bg-gradient-to-br from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-white py-2 px-4 w-full rounded"
-                                onClick={() => onClick()}
+                                onClick={() => syncDaily(startDate, endDate, dailySummaryText, onClick, forceUpdate)}
                             >
                                 Save
                             </button>
@@ -103,4 +103,42 @@ export const DailyEditView = ({startDate, endDate, setStartDate, setEndDate, set
             </div>
         </div>
     )
+}
+
+const syncDaily = async (startDate, endDate, text, onClick, forceUpdate) => {
+    console.log(text);
+    const daily = {
+        user: '/users/1',
+        date: format(new Date(), 'dd-MM-uuuu' ),
+        daily_summary: text,
+        is_email_sent: false,
+        is_synced_to_personio: false,
+        start_time: format(new Date(startDate), 'dd-MM-uuuu' ),
+        end_time: format(new Date(endDate), 'dd-MM-uuuu' ),
+        time_break_in_s: 300,
+        time_worked_in_s: 34340
+    }
+    console.log(daily);
+    const res = await fetch('https://localhost:8443/daily_summaries', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/ld+json',
+            'Accept': 'application/json',
+        },
+        body: JSON.stringify(daily),
+    })
+
+    const json = await res.json()
+    if (json.errors) {
+        console.error(json.errors)
+        throw new Error('Failed to fetch API')
+    }
+
+    forceUpdate();
+    onClick();
+}
+
+const useForceUpdate = () => {
+    const [value, setValue] = useState(0); // integer state
+    return () => setValue(value => ++value); // update the state to force render
 }

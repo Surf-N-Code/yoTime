@@ -95,6 +95,7 @@ export const Timers = () => {
  * running timer - update minutes and seconds
  * jump to first page when adding timer
  * add timer and refresh directly to show new timer
+ * dynamic user id when generating a timer
  */
 
 //DONE
@@ -126,7 +127,6 @@ const stopTimer = async (forceUpdate, timer) => {
 
     const json = await res.json()
     if (json.errors) {
-        console.error(json.errors)
         throw new Error('Failed to fetch API')
     }
     forceUpdate();

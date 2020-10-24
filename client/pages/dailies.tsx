@@ -94,8 +94,11 @@ export const Dailies = () => {
 }
 
 /**
+ * mutate SWR cache: https://levelup.gitconnected.com/data-fetching-in-react-and-next-js-with-useswr-to-impress-your-friends-at-parties-ec2db732ca6b
+ * daily summary löschen
+ * show break time in daily
+ * delete ds function
  * use proper icons for mail and personio
- * time picking in datetime picker not showing minutes
  * show right timepicker to the left
  * add mail functionality
  * add save functionality
