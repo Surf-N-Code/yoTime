@@ -11,13 +11,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ApiResource(
  *     itemOperations={
- *          "put"={"access_control"="is_granted('ROLE_USER') and object.getOwner() == user" or is_granted('ROLE_ADMIN')},
- *          "delete"={"access_control"="is_granted('ROLE_USER') and object.getOwner() == user" or is_granted('ROLE_ADMIN')},
- *          "get"={"access_control"="is_granted('ROLE_USER') and object.getOwner() == user" or is_granted('ROLE_ADMIN')},
+ *          "put"={"security"="is_granted('ROLE_ADMIN') or object.owner == user"},
+ *          "delete"={"security"="is_granted('ROLE_ADMIN') or object.owner == user"},
+ *          "get"={"security"="is_granted('ROLE_ADMIN') or object.owner == user"},
  *     },
  *     collectionOperations={
- *          "get"={"access_control"="is_granted('ROLE_USER') and object.getOwner() == user" or is_granted('ROLE_ADMIN')},
- *          "post"={"access_control"="is_granted('ROLE_USER') and object.getOwner() == user" or is_granted('ROLE_ADMIN')},
+ *          "get"={"security"="is_granted('ROLE_ADMIN') or object.owner == user"},
+ *          "post"={"security"="is_granted('ROLE_ADMIN') or object.owner == user"},
  *     }
  * )
  * @ApiFilter(OrderFilter::class, properties={"dateEnd": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }, "dateStart": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }})
