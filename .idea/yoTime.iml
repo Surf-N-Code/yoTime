@@ -7,6 +7,11 @@
       <sourceFolder url="file://$MODULE_DIR$/api/src" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/api/tests" isTestSource="true" packagePrefix="App\Tests\" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/api/bin/.phpunit" />
+      <excludeFolder url="file://$MODULE_DIR$/api/helm/api/charts" />
+      <excludeFolder url="file://$MODULE_DIR$/api/public/bundles" />
+      <excludeFolder url="file://$MODULE_DIR$/api/var" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/api-platform/api-pack" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/api-platform/core" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/api-platform/schema-generator" />
