@@ -31,14 +31,17 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Pre react class for dailies">
-      <change afterPath="$PROJECT_DIR$/client/components/dailyEditView.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/dailyTableRow.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/toggle.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/pagination.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/dailies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dailies.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/yoTime.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yoTime.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.env" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/api/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/symfony.lock" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -225,6 +228,9 @@
       <path value="$PROJECT_DIR$/api/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/api/vendor/theofidry/alice-data-fixtures" />
       <path value="$PROJECT_DIR$/api/vendor/nelmio/alice" />
+      <path value="$PROJECT_DIR$/api/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/api/vendor/lexik/jwt-authentication-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/lcobucci/jwt" />
     </include_path>
   </component>
   <component name="ProjectId" id="1gExsM8FIq0lHaxkXe1QEYFbYHZ" />
@@ -243,7 +249,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/client/components" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -595,7 +601,21 @@
       <option name="project" value="LOCAL" />
       <updated>1602276114418</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Create components for daily table rows and daily edit view. Add new switch for send mail">
+      <created>1603478031002</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1603478031002</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Add sync daily summary command">
+      <created>1603528755268</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1603528755268</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -640,8 +660,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Add nginx to heroku" />
-    <MESSAGE value="Add dropdown to daily summary modal" />
     <MESSAGE value="Only send ds email when user selects that option" />
     <MESSAGE value="Update and extend tests" />
     <MESSAGE value="Extend tests" />
@@ -665,7 +683,9 @@
     <MESSAGE value="Pre react class for dailies" />
     <MESSAGE value="React class component for dailies test" />
     <MESSAGE value="Add daily summary add view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add daily summary add view" />
+    <MESSAGE value="Create components for daily table rows and daily edit view. Add new switch for send mail" />
+    <MESSAGE value="Add sync daily summary command" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add sync daily summary command" />
   </component>
   <component name="WindowStateProjectService">
     <state x="531" y="108" width="792" height="674" key="#CLI_Interpreters" timestamp="1600717350355">
@@ -712,10 +732,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="50" y="-63" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1602278149277">
+    <state x="206" y="-38" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1603528762627">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="50" y="-63" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1602278149277" />
+    <state x="206" y="-38" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1603528762627" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -792,14 +812,14 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="621" y="170" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1601322576928" />
-    <state x="783" y="8" width="389" height="578" key="RollbackChangesDialog" timestamp="1602276232163">
+    <state x="781" y="-10" width="389" height="578" key="RollbackChangesDialog" timestamp="1603528689818">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="783" y="8" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1602276232163" />
-    <state x="169" y="111" key="SettingsEditor" timestamp="1602278773187">
+    <state x="781" y="-10" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603528689818" />
+    <state x="163" y="57" key="SettingsEditor" timestamp="1603528718208">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="169" y="111" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1602278773187" />
+    <state x="163" y="57" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1603528718208" />
     <state x="801" y="337" width="297" height="157" key="VCS.ChangelistChooser" timestamp="1599871952996">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -816,6 +836,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="841" y="382" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1080@0.0.1920.1080" timestamp="1600713699290" />
+    <state x="666" y="140" width="364" height="515" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1603477999945">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="666" y="140" width="364" height="515" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603477999945" />
     <state x="501" y="299" width="907" height="525" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1600600369717">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -844,10 +868,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1602278439686" />
-    <state x="661" y="248" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1600868768809">
+    <state x="657" y="212" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603528181079">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="661" y="248" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600868768809" />
+    <state x="657" y="212" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603528181079" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
