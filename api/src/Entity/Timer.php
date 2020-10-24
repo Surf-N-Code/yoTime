@@ -9,7 +9,17 @@ use App\Repository\TimerRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     itemOperations={
+ *          "put"={"access_control"="is_granted('ROLE_USER') and object.getOwner() == user" or is_granted('ROLE_ADMIN')},
+ *          "delete"={"access_control"="is_granted('ROLE_USER') and object.getOwner() == user" or is_granted('ROLE_ADMIN')},
+ *          "get"={"access_control"="is_granted('ROLE_USER') and object.getOwner() == user" or is_granted('ROLE_ADMIN')},
+ *     },
+ *     collectionOperations={
+ *          "get"={"access_control"="is_granted('ROLE_USER') and object.getOwner() == user" or is_granted('ROLE_ADMIN')},
+ *          "post"={"access_control"="is_granted('ROLE_USER') and object.getOwner() == user" or is_granted('ROLE_ADMIN')},
+ *     }
+ * )
  * @ApiFilter(OrderFilter::class, properties={"dateEnd": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }, "dateStart": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }})
  * @ORM\Entity(repositoryClass=TimerRepository::class)
  */
