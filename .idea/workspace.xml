@@ -31,10 +31,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Update gitignore">
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/api/.gitignore" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -643,7 +641,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603617970547</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Update gitignore">
+      <created>1603618468958</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1603618468958</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -760,10 +765,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="182" y="-44" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1603618367757">
+    <state x="180" y="-62" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1603618468859">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="182" y="-44" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1603618367757" />
+    <state x="180" y="-62" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1603618468859" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
