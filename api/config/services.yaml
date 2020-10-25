@@ -37,6 +37,11 @@ services:
         arguments:
             $decorated: '@App\EventListener\DeserializeListener.inner'
 
+#    App\EventListener\AuthenticationSuccessListener:
+#        arguments: [ '%lexik_jwt_authentication.token_ttl%' ]
+#        tags:
+#            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccess, priority: -2 }
+
     App\Security\Slack\EventListener\SecurityListener:
         arguments:
             $slackSignSecret: '%env(SLACK_SIGN_SECRET)%'

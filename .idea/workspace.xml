@@ -31,17 +31,18 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add">
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add jwt bundle">
+      <change afterPath="$PROJECT_DIR$/api/src/EventListener/AuthenticationSuccessListener.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/EventListener/JwtSubscriber.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/yoTime.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yoTime.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/.env" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/api/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/Timer.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Timer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Repository/UserRepository.php" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -249,7 +250,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/client/components" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -615,7 +616,28 @@
       <option name="project" value="LOCAL" />
       <updated>1603528755268</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Add jwt bundle">
+      <created>1603528846465</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1603528846465</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Add access control directives to timers to limit access to logged in users">
+      <created>1603567215757</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1603567215757</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Refine security on timers">
+      <created>1603567379486</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1603567379486</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -660,9 +682,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Only send ds email when user selects that option" />
-    <MESSAGE value="Update and extend tests" />
-    <MESSAGE value="Extend tests" />
     <MESSAGE value="Return timer on punchinattime and try fixing integration tests" />
     <MESSAGE value="Add personio http client" />
     <MESSAGE value="Add personio time sync" />
@@ -685,7 +704,10 @@
     <MESSAGE value="Add daily summary add view" />
     <MESSAGE value="Create components for daily table rows and daily edit view. Add new switch for send mail" />
     <MESSAGE value="Add sync daily summary command" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add sync daily summary command" />
+    <MESSAGE value="Add jwt bundle" />
+    <MESSAGE value="Add access control directives to timers to limit access to logged in users" />
+    <MESSAGE value="Refine security on timers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refine security on timers" />
   </component>
   <component name="WindowStateProjectService">
     <state x="531" y="108" width="792" height="674" key="#CLI_Interpreters" timestamp="1600717350355">
@@ -720,10 +742,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="76" y="-126" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600876178723" />
-    <state x="669" y="91" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600883721017">
+    <state x="667" y="73" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603532413269">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="669" y="91" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600883721017" />
+    <state x="667" y="73" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603532413269" />
     <state x="667" y="363" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#" timestamp="1602277418370">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -732,10 +754,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="206" y="-38" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1603528762627">
+    <state x="194" y="-56" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1603567379392">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="206" y="-38" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1603528762627" />
+    <state x="194" y="-56" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1603567379392" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -808,18 +830,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="227" height="471" key="HiddenNamespacesPopup/0.0.1920.1080@0.0.1920.1080" timestamp="1600781587609" />
-    <state x="621" y="170" width="648" height="532" key="NewPhpClassDialog" timestamp="1601322576928">
+    <state x="617" y="134" width="648" height="532" key="NewPhpClassDialog" timestamp="1603574080876">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="621" y="170" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1601322576928" />
+    <state x="617" y="134" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603574080876" />
     <state x="781" y="-10" width="389" height="578" key="RollbackChangesDialog" timestamp="1603528689818">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="781" y="-10" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603528689818" />
-    <state x="163" y="57" key="SettingsEditor" timestamp="1603528718208">
+    <state x="159" y="21" key="SettingsEditor" timestamp="1603614396181">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="163" y="57" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1603528718208" />
+    <state x="159" y="21" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1603614396181" />
     <state x="801" y="337" width="297" height="157" key="VCS.ChangelistChooser" timestamp="1599871952996">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -860,18 +882,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="29" y="136" width="1862" height="915" key="dock-window-2/0.0.1920.1080@0.0.1920.1080" timestamp="1600868604122" />
-    <state x="897" y="466" width="722" height="560" key="find.popup" timestamp="1602278180371">
+    <state x="897" y="466" width="722" height="560" key="find.popup" timestamp="1603574367545">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="897" y="466" width="722" height="560" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1602278180371" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1602278439686">
+    <state x="897" y="466" width="722" height="560" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1603574367545" />
+    <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog" timestamp="1603533059617">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1602278439686" />
-    <state x="657" y="212" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603528181079">
+    <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603533059617" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1603574395766">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="657" y="212" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603528181079" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1603574395766" />
+    <state x="653" y="176" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603570103467">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="653" y="176" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603570103467" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

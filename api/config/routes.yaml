@@ -1,3 +1,12 @@
 authentication_token:
-  path: /authentication_token
+  path: /token
   methods: ['POST']
+
+register:
+  path: /register
+  controller: App\Controller\AuthController::register
+  methods: POST
+
+api:
+  path: /api
+  controller: App\Controller\AuthController::api
