@@ -11,13 +11,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ApiResource(
  *     itemOperations={
- *          "put"={"security"="is_granted('ROLE_ADMIN') or object.owner == user"},
- *          "delete"={"security"="is_granted('ROLE_ADMIN') or object.owner == user"},
- *          "get"={"security"="is_granted('ROLE_ADMIN') or object.owner == user"},
+ *          "put"={"security"="is_granted('ROLE_ADMIN') or object.user == user"},
+ *          "delete"={"security"="is_granted('ROLE_ADMIN') or object.user == user"},
+ *          "get"={"security"="is_granted('ROLE_ADMIN') or object.user == user"},
  *     },
  *     collectionOperations={
- *          "get"={"security"="is_granted('ROLE_ADMIN') or object.owner == user"},
- *          "post"={"security"="is_granted('ROLE_ADMIN') or object.owner == user"},
+ *          "get"={"security"="is_granted('ROLE_ADMIN') or object.user == user"},
+ *          "post"={"security"="is_granted('ROLE_ADMIN') or object.user == user"},
  *     }
  * )
  * @ApiFilter(OrderFilter::class, properties={"dateEnd": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }, "dateStart": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }})
