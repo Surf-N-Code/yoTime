@@ -2,6 +2,7 @@
 /helm/api/charts
 /helm/api/Chart.lock
 /.idea/
+/node_modules/
 
 ###> symfony/framework-bundle ###
 /.env.local
