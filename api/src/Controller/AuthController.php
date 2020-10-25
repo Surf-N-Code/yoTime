@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\User;
@@ -25,7 +26,7 @@ class AuthController extends AbstractController
         $user->setIsActive(1);
         $user->setTz($tz);
         $user->setTzOffset($tzOffset);
-        $user->setPassword($encoder->encodePassword($user, $password));
+        $user->setPassword($encoder->encodePasswrouteord($user, $password));
 
         try {
             $em->persist($user);
@@ -35,6 +36,15 @@ class AuthController extends AbstractController
         }
 
         return new Response(sprintf('User %s successfully created', $user->getUsername()));
+    }
+
+    public function validateToken(Request $request)
+    {
+        $params = json_decode($request->getContent(), true);
+        if (isset($params['authToken']) && !empty($params['authToken'])) {
+            return true;
+        }
+        return false;
     }
 
     public function api()

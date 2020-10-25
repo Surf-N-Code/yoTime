@@ -2,15 +2,20 @@ import Head from 'next/head';
 import React, { Component } from "react";
 import Link from 'next/link';
 import { Menu } from './menu';
+import {Login} from "../pages/login";
 
 export const siteTitle = 'YoTime - your timetracker for Slack'
 
 type LayoutState = {
     menuIsOpen: boolean;
+    isLoggedIn: boolean;
 }
 
 class Layout extends Component<{children}, LayoutState> {
-    readonly state = { menuIsOpen: false };
+    readonly state = {
+        menuIsOpen: false,
+        isLoggedIn: false
+    };
 
     toggleMenu = () => {
         this.setState({menuIsOpen: !this.state.menuIsOpen})
@@ -45,7 +50,9 @@ class Layout extends Component<{children}, LayoutState> {
                     menuIsOpen={this.state.menuIsOpen}
                     onClick={() => this.toggleMenu()}
                 />
-                <main className={`pt-20 pl-3 pr-3`}>{this.props.children}</main>
+                <main className={`pt-20 pl-3 pr-3`}>
+                    {this.state.isLoggedIn ? this.props.children : <Login/>}
+                </main>
             </div>
         )
     }

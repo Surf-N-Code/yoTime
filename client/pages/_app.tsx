@@ -1,13 +1,16 @@
 import '../styles/global.css'
 import "react-datepicker/dist/react-datepicker.css";
 import "react-toggle/style.css";
-import { Provider } from 'next-auth/client'
+import { AuthProvider } from '../services/Auth.context';
+import { GlobalMessagingProvider } from '../services/GlobalMessaging.context';
+import { AppProps } from 'next/app';
 
-export default function App({ Component, pageProps }) {
-    const { session } = pageProps
+export default function App ({ Component, pageProps }: AppProps) {
     return (
-        <Provider session={session}>
-            <Component {...pageProps} />
-        </Provider>
-    )
+        <AuthProvider>
+            <GlobalMessagingProvider>
+                <Component {...pageProps} />
+            </GlobalMessagingProvider>
+        </AuthProvider>
+    );
 }
