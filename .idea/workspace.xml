@@ -662,7 +662,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603618549623</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Update gitignore">
+      <created>1603618596271</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1603618596271</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -732,9 +739,9 @@
     <MESSAGE value="Add access control directives to timers to limit access to logged in users" />
     <MESSAGE value="Refine security on timers" />
     <MESSAGE value="Remove authenticationsuccess handler and implement jwt subscriber" />
-    <MESSAGE value="Update gitignore" />
     <MESSAGE value="Add all files to git" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add all files to git" />
+    <MESSAGE value="Update gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update gitignore" />
   </component>
   <component name="WindowStateProjectService">
     <state x="531" y="108" width="792" height="674" key="#CLI_Interpreters" timestamp="1600717350355">
@@ -781,10 +788,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="176" y="-18" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1603618549574">
+    <state x="174" y="-36" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1603618596165">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="176" y="-18" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1603618549574" />
+    <state x="174" y="-36" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1603618596165" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
