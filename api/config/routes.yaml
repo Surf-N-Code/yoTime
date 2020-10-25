@@ -10,3 +10,8 @@ register:
 api:
   path: /api
   controller: App\Controller\AuthController::api
+
+authentication_validate:
+  path: /authentication_validate
+  controller: App\Controller\AuthController::validateToken
+  methods: POST
