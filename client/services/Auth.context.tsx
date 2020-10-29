@@ -4,7 +4,7 @@ import { IAuthInfo } from '../types/auth.types';
 
 export const AuthStateContext = React.createContext({});
 
-const initialState: IAuthInfo = { email: '' };
+const initialState: IAuthInfo = { email: null };
 
 enum ActionType {
 	SetDetails = 'setAuthDetails',
@@ -24,6 +24,7 @@ const reducer: React.Reducer<{}, IAction> = (state, action) => {
 				email: action.payload.email
 			};
 		case ActionType.RemoveDetails:
+			console.log('setting to initialState', initialState);
 			return {
 				email: initialState.email
 			};
@@ -36,8 +37,8 @@ export const AuthProvider = ({ children }: any) => {
 	let localState = null;
 	if (typeof localStorage !== 'undefined' && localStorage.getItem('userInfo')) {
 		localState = JSON.parse(localStorage.getItem('userInfo') || '');
-		console.log('localState', localState);
 	}
+	console.log('local state',localState, initialState);
 	const [state, dispatch] = useReducer(reducer, localState || initialState);
 
 	if (typeof localStorage !== 'undefined') {
