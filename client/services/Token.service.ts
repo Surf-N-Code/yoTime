@@ -16,34 +16,34 @@ class TokenService {
     return;
   }
 
-  public checkAuthToken(token: string): Promise<any> {
-    const loginAsync = async (token) => {
-      const response = await fetch('authentication_validate', {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-        body: JSON.stringify({token}),
-      });
-
-      if (!response.ok) {
-        const message = `An error has occured: ${response.status}`;
-        throw new Error(message);
-      }
-
-      return await response;
-    };
+  public checkAuthToken(token: string): Boolean {
+    // const loginAsync = async (token) => {
+    //   const response = await fetch('authentication_validate', {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-type": "application/json; charset=UTF-8",
+    //     },
+    //     body: JSON.stringify({token}),
+    //   });
+    //
+    //   if (!response.ok) {
+    //     const message = `An error has occured: ${response.status}`;
+    //     throw new Error(message);
+    //   }
+    //
+    //   return await response;
+    // };
+    return true;
   }
 
-  public async authenticateTokenSsr(ctx: NextPageContext) {
+  public async authenticateTokenSsr() {
     // const router = useRouter();
-    console.log(ctx);
-    // const cookies = new Cookies(ctx.req.headers.cookie);
-    // const token = cookies.get('token');
-    // console.log(ctx);
+    const cookies = new Cookies(null);
+    const token = cookies.get('token');
+    console.log('token in cookie', token);
 
-    // const response = await this.checkAuthToken(token);
-    // console.log('response',response)
+    const response = this.checkAuthToken(token);
+    console.log('response',response)
     // if (!response.success) {
     //   this.deleteToken();
     //   router.push('/logout');

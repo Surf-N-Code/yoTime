@@ -2,10 +2,8 @@ import React from 'react';
 import Layout from '../components/layout';
 import { NextPageContext } from 'next';
 import TokenService from "../services/Token.service";
-import {useAuth} from "../services/Auth.context";
 
 export const Home = (props) => {
-    console.log('home props',props);
     return (
         <Layout>
             <h1>Home</h1>
@@ -13,10 +11,9 @@ export const Home = (props) => {
     )
 }
 
-Home.getInitialProps = async (ctx: NextPageContext) => {
-    console.log('in initial props', ctx)
+Home.getInitialProps = async () => {
     const tokenService = new TokenService();
-    await tokenService.authenticateTokenSsr(ctx);
+    console.log('awaited authenticateTokenSSR', await tokenService.authenticateTokenSsr());
 
     return {};
 };

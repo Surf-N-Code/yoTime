@@ -34,33 +34,17 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/pages/login.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/services/Auth.context.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/services/GlobalMessaging.context.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/services/Token.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/types/auth.types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/types/global.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/pages/home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/pages/home/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/pages/register/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/pages/register/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/services/Auth.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/services/Auth.context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/types/auth.types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add authentication (wip)">
+      <change afterPath="$PROJECT_DIR$/client/pages/logout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/api/.env.sample" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/pages/dashboard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/pages/dashboard/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/services/Token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/services/Token.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/yoTime.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yoTime.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/packages/lexik_jwt_authentication.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/lexik_jwt_authentication.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/packages/nelmio_cors.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/nelmio_cors.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Controller/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Controller/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/_app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/services/Auth.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Auth.context.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/services/Token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Token.service.ts" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -265,7 +249,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/services" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/pages" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -281,11 +265,11 @@
       <recent name="$PROJECT_DIR$/api/src/Handler/MessageController" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/pages" />
       <recent name="$PROJECT_DIR$/client/services" />
       <recent name="$PROJECT_DIR$/client/types" />
       <recent name="$PROJECT_DIR$/client/components" />
       <recent name="$PROJECT_DIR$/api" />
-      <recent name="$PROJECT_DIR$/client/public/images/icons" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.TimeTest.testStartTimerFromInvalidTimeString">
@@ -367,14 +351,8 @@
       <workItem from="1601311288542" duration="41764000" />
       <workItem from="1601742178046" duration="27741000" />
       <workItem from="1602274265512" duration="6629000" />
-      <workItem from="1603624551391" duration="13813000" />
-    </task>
-    <task id="LOCAL-00001" summary="Add php command to docker entrypoint">
-      <created>1597775564461</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1597775564461</updated>
+      <workItem from="1603624551391" duration="20244000" />
+      <workItem from="1603819190057" duration="2020000" />
     </task>
     <task id="LOCAL-00002" summary="Add mysql database">
       <created>1597782421694</created>
@@ -705,7 +683,21 @@
       <option name="project" value="LOCAL" />
       <updated>1603618615237</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Add authentication (wip)">
+      <created>1603647757997</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1603647757997</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Add authentication (wip)">
+      <created>1603647792347</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1603647792347</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -752,7 +744,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Improve error message on late hi command" />
     <MESSAGE value="Add is synced to personio field to daily summary. Extend tests to cover syncing and not syncing to personio" />
     <MESSAGE value="Add punchtimerstatusdto" />
     <MESSAGE value="Fix typo and improve message on start timer" />
@@ -777,7 +768,8 @@
     <MESSAGE value="Remove authenticationsuccess handler and implement jwt subscriber" />
     <MESSAGE value="Add all files to git" />
     <MESSAGE value="Update gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update gitignore" />
+    <MESSAGE value="Add authentication (wip)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add authentication (wip)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="531" y="108" width="792" height="674" key="#CLI_Interpreters" timestamp="1600717350355">
@@ -824,10 +816,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="172" y="-54" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1603618615078">
+    <state x="162" y="-14" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1603647801844">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="172" y="-54" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1603618615078" />
+    <state x="162" y="-14" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1603647801844" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -952,18 +944,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="29" y="136" width="1862" height="915" key="dock-window-2/0.0.1920.1080@0.0.1920.1080" timestamp="1600868604122" />
-    <state x="897" y="466" width="722" height="560" key="find.popup" timestamp="1603640446943">
+    <state x="897" y="466" width="722" height="560" key="find.popup" timestamp="1603652256444">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="897" y="466" width="722" height="560" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1603640446943" />
+    <state x="897" y="466" width="722" height="560" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1603652256444" />
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog" timestamp="1603533059617">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603533059617" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1603647150721">
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1603868145433">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1603647150721" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1603868145433" />
     <state x="653" y="176" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603570103467">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
