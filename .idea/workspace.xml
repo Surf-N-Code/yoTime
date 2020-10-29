@@ -34,17 +34,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add authentication (wip)">
-      <change afterPath="$PROJECT_DIR$/client/pages/logout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/api/.env.sample" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/pages/dashboard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/pages/dashboard/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/services/Token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/services/Token.service.ts" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/menu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/services/Auth.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Auth.context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/services/Token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Token.service.ts" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -294,11 +287,11 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="PHPUnit.SlashCommandHandlerTest" />
       <item itemvalue="PHPUnit.DailySummaryHandlerTest" />
-      <item itemvalue="PHPUnit.tests" />
-      <item itemvalue="PHPUnit.TimeTest.testStartTimerFromValidTimeString" />
+      <item itemvalue="PHPUnit.SlashCommandHandlerTest" />
       <item itemvalue="PHPUnit.TimeTest.testStartTimerFromInvalidTimeString" />
+      <item itemvalue="PHPUnit.TimeTest.testStartTimerFromValidTimeString" />
+      <item itemvalue="PHPUnit.tests" />
     </list>
     <recent_temporary>
       <list>
@@ -353,13 +346,7 @@
       <workItem from="1602274265512" duration="6629000" />
       <workItem from="1603624551391" duration="20244000" />
       <workItem from="1603819190057" duration="2020000" />
-    </task>
-    <task id="LOCAL-00002" summary="Add mysql database">
-      <created>1597782421694</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1597782421694</updated>
+      <workItem from="1603991754667" duration="350000" />
     </task>
     <task id="LOCAL-00003" summary="Remove timer_entry add timer">
       <created>1597949346050</created>
@@ -697,7 +684,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603647792347</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Add authentication (wip)">
+      <created>1603991822281</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1603991822282</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -816,18 +810,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="162" y="-14" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1603647801844">
+    <state x="158" y="-50" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1603991822088">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="162" y="-14" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1603647801844" />
+    <state x="158" y="-50" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1603991822088" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="516" height="465" key="DebuggerActiveHint/0.0.1920.1080@0.0.1920.1080" timestamp="1599333625815" />
-    <state x="-1" y="-24" width="1862" height="915" key="DiffContextDialog" timestamp="1602278137526">
+    <state x="-3" y="-42" width="1862" height="915" key="DiffContextDialog" timestamp="1603991803208">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="-1" y="-24" width="1862" height="915" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1602278137526" />
+    <state x="-3" y="-42" width="1862" height="915" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603991803208" />
     <state x="710" y="383" width="446" height="222" key="DockerComposeFileDialog" timestamp="1600685473350">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -912,10 +906,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="29" y="136" width="1862" height="915" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600631868850" />
-    <state x="545" y="195" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1601423901450">
+    <state x="543" y="177" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1603991834383">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="545" y="195" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1601423901450" />
+    <state x="543" y="177" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1603991834383" />
     <state x="841" y="382" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1600713699290">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -952,10 +946,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603533059617" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1603868145433">
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1603991973865">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1603868145433" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1603991973865" />
     <state x="653" y="176" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603570103467">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
