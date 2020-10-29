@@ -92,7 +92,7 @@ export const Login = (props: IProps) => {
                             <div className="w-full xl:w-3/4 lg:w-11/12 flex">
                                 <div
                                     className="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
-                                    style={{ "background-image": "url('https://source.unsplash.com/K4mSJ7kc0As/600x800')" }}
+                                    style={{ "backgroundImage": "url('https://source.unsplash.com/K4mSJ7kc0As/600x800')" }}
                                 ></div>
                                 <div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
                                     <h3 className="pt-4 text-2xl text-center">Welcome Back!</h3>
