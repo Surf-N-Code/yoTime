@@ -37,7 +37,6 @@
     <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/login.tsx" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -287,11 +286,11 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="PHPUnit.DailySummaryHandlerTest" />
       <item itemvalue="PHPUnit.SlashCommandHandlerTest" />
-      <item itemvalue="PHPUnit.TimeTest.testStartTimerFromInvalidTimeString" />
-      <item itemvalue="PHPUnit.TimeTest.testStartTimerFromValidTimeString" />
+      <item itemvalue="PHPUnit.DailySummaryHandlerTest" />
       <item itemvalue="PHPUnit.tests" />
+      <item itemvalue="PHPUnit.TimeTest.testStartTimerFromValidTimeString" />
+      <item itemvalue="PHPUnit.TimeTest.testStartTimerFromInvalidTimeString" />
     </list>
     <recent_temporary>
       <list>
@@ -346,14 +345,7 @@
       <workItem from="1602274265512" duration="6629000" />
       <workItem from="1603624551391" duration="20244000" />
       <workItem from="1603819190057" duration="2020000" />
-      <workItem from="1603991754667" duration="350000" />
-    </task>
-    <task id="LOCAL-00003" summary="Remove timer_entry add timer">
-      <created>1597949346050</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1597949346050</updated>
+      <workItem from="1603991754667" duration="587000" />
     </task>
     <task id="LOCAL-00004" summary="Add timer entity">
       <created>1597949363546</created>
@@ -691,7 +683,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603991822282</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Add close function when clicking somewhere when menu is open">
+      <created>1603992131271</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1603992131271</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -738,7 +737,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Add is synced to personio field to daily summary. Extend tests to cover syncing and not syncing to personio" />
     <MESSAGE value="Add punchtimerstatusdto" />
     <MESSAGE value="Fix typo and improve message on start timer" />
     <MESSAGE value="Make timezone and timezone offset non-nullable" />
@@ -763,7 +761,8 @@
     <MESSAGE value="Add all files to git" />
     <MESSAGE value="Update gitignore" />
     <MESSAGE value="Add authentication (wip)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add authentication (wip)" />
+    <MESSAGE value="Add close function when clicking somewhere when menu is open" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add close function when clicking somewhere when menu is open" />
   </component>
   <component name="WindowStateProjectService">
     <state x="531" y="108" width="792" height="674" key="#CLI_Interpreters" timestamp="1600717350355">
@@ -810,10 +809,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="158" y="-50" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1603991822088">
+    <state x="156" y="-68" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1603992131230">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="158" y="-50" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1603991822088" />
+    <state x="156" y="-68" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1603992131230" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
