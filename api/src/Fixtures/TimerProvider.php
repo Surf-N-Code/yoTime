@@ -17,11 +17,13 @@ class TimerProvider extends Base
 
     public static function getDateStart()
     {
-        $d = rand(1,28);
         $h = rand(5,9);
         $m = rand(10,59);
         $s = rand(10,59);
-        $month = rand(1,12);
+        $curMonth = date('m');
+        $month = rand(1,$curMonth);
+        $curDayMaxed = min(date('d'), 27);
+        $d = rand(1,$curDayMaxed);
         if ($month < 10) {
             str_pad($month,2,'0',STR_PAD_LEFT);
         }
