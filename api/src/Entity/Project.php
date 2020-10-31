@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
+ * @ORM\EntityListeners({"App\Doctrine\SetUserListener"})
  */
 class Project
 {

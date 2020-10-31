@@ -11,6 +11,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
  * @ApiResource()
  * @ApiFilter(OrderFilter::class, properties={"date": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }})
  * @ORM\Entity(repositoryClass="App\Repository\DailySummaryRepository")
+ * @ORM\EntityListeners({"App\Doctrine\SetUserListener"})
  */
 class DailySummary
 {

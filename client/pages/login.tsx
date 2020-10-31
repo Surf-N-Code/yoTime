@@ -6,11 +6,6 @@ import { useGlobalMessaging } from '../services/GlobalMessaging.context';
 import {useRouter} from "next/router";
 import cn from 'classnames';
 import TokenService from "../services/Token.service";
-import {NextPageContext} from "next";
-
-interface IProps {
-    action: string;
-}
 
 const loginEndpint = 'https://localhost:8443/token';
 const loginAsync = async (email, password) => {
@@ -30,26 +25,12 @@ const loginAsync = async (email, password) => {
     return await response.json();
 };
 
-export const Login = (props: IProps) => {
+export const Login = () => {
     const tokenService = new TokenService();
     const [messageState, messageDispatch] = useGlobalMessaging();
     const [authState, authDispatch] = useAuth();
     const router = useRouter();
     const [invalidForm, setInvalidForm] = useState(false);
-
-    // Log user out when they are directed to the /l=t URL - caught in the getInitialProps at the
-    // bottom of the page
-    React.useEffect(() => {
-        if (props.action && props.action == 'logout') {
-            authDispatch({
-                type: 'removeAuthDetails'
-            });
-
-            tokenService.deleteToken();
-
-            router.push('/');
-        }
-    }, []);
 
     return (
         <Formik
@@ -151,10 +132,3 @@ export const Login = (props: IProps) => {
         />
     )
 }
-
-Login.getInitialProps = async (ctx: NextPageContext) => {
-    if (ctx.query && ctx.query.l == 't') {
-        return { action: 'logout' };
-    }
-    return {};
-};
