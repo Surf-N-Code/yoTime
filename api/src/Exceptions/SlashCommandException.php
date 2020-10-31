@@ -4,6 +4,7 @@
 namespace App\Exceptions;
 
 
+use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 class SlashCommandException extends \Exception
@@ -13,7 +14,6 @@ class SlashCommandException extends \Exception
         $code = 0,
         Throwable $previous = null
     ) {
-        $this->code = 412;
-        parent::__construct($message, $code, $previous);
+        parent::__construct($message, Response::HTTP_PRECONDITION_FAILED, $previous);
     }
 }

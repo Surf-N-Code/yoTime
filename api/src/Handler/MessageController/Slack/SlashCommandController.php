@@ -29,8 +29,8 @@ final class SlashCommandController implements MessageHandlerInterface
     public function __invoke(SlashCommand $command): Response
     {
         try {
-            $this->slashCommandHandler->getSlashCommandToExecute($command);
-            return new Response('', 201);
+            $statusCode = $this->slashCommandHandler->getSlashCommandToExecute($command);
+            return new Response('', $statusCode);
         } catch (SlashCommandException | MessageHandlerException | DatabaseException $e) {
             $m = new SlackMessage();
             $m->addTextSection($e->getMessage());
