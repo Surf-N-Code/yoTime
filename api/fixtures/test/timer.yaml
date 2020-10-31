@@ -5,8 +5,8 @@ App\Entity\Timer:
     dateEnd: <dateTimeBetween("-1 minutes", "now")>
     timerType: work
 
-#  timer_{4..400}:
-#    user: '@user_1'
-#    dateStart: <getDateStart()>
-#    dateEnd: <getDateEnd($dateStart)>
-#    timerType: punch
+  timer_{2..10}:
+    user: '@user_*'
+    dateStart: <getDateStart()>
+    dateEnd: <getDateEnd($dateStart)>
+    timerType: punch
