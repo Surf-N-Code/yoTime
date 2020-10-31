@@ -34,7 +34,8 @@ security:
 
     access_control:
       - { path: ^/docs, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/authentication_token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/_profiler, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/authentication_validate, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
