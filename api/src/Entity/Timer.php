@@ -7,20 +7,12 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TimerRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource(
- *     itemOperations={
- *          "put"={"security"="is_granted('ROLE_ADMIN') or object.user == user"},
- *          "delete"={"security"="is_granted('ROLE_ADMIN') or object.user == user"},
- *          "get"={"security"="is_granted('ROLE_ADMIN') or object.user == user"},
- *     },
- *     collectionOperations={
- *          "get"={"security"="is_granted('ROLE_ADMIN') or object.user == user"},
- *          "post"={"security"="is_granted('ROLE_ADMIN') or object.user == user"},
- *     }
- * )
+ * @ApiResource()
  * @ApiFilter(OrderFilter::class, properties={"dateEnd": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }, "dateStart": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }})
+ * @ORM\EntityListeners({"App\Doctrine\SetUserListener"})
  * @ORM\Entity(repositoryClass=TimerRepository::class)
  */
 class Timer
@@ -54,6 +46,7 @@ class Timer
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="timers")
+     * @Groups({"timer:collection:post"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

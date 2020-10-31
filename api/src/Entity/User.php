@@ -107,13 +107,11 @@ class User implements UserInterface
     private $contractWorkHours;
 
     /**
-     * @ApiSubresource()
      * @ORM\OneToMany(targetEntity="App\Entity\DailySummary", mappedBy="user")
      */
     private $dailySummary;
 
     /**
-     * @ApiSubresource()
      * @ORM\OneToMany(targetEntity=Timer::class, mappedBy="user", orphanRemoval=true)
      */
     private $timers;

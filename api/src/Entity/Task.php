@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
+ * @ORM\EntityListeners({"App\Doctrine\SetUserListener"})
  */
 class Task
 {

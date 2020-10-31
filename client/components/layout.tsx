@@ -41,7 +41,7 @@ export const Layout = ({children}) => {
             />
             <main className={`pt-20 pl-3 pr-3`}>
                 {console.log('authed value', auth)}
-                {auth.email ? children : <Login/>}
+                {auth.email ? children : <Login />}
             </main>
         </div>
     )
