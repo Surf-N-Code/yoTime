@@ -7,6 +7,7 @@ use App\Entity\TimerType;
 use App\Entity\User;
 use App\Tests\IntegrationTestCase;
 use Hautelook\AliceBundle\PhpUnit\ReloadDatabaseTrait;
+use Symfony\Component\HttpFoundation\Response;
 
 class SlashCommandMessageControllerTest extends IntegrationTestCase
 {
@@ -30,11 +31,9 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
 
     public function testWorkCommand()
     {
-        $data = $this->generateCommandData('work');
-        $kernel = static::bootKernel();
-        $container = $kernel->getContainer();
-
-        $response = static::createClient()->request(
+        $data = $this->generateCommandData(TimerType::WORK);
+        $client = $this->createAuthenticatedClient();
+        $response = $client->request(
             'POST',
             '/slack/slashcommand',
                 [
@@ -44,22 +43,14 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        $entityManager = $container->get('doctrine')->getManager();
-        $runningTimers = $entityManager->getRepository(Timer::class)->findBy(['dateEnd' => null, 'timerType' => TimerType::WORK]);
-
-        self::assertCount(1, $runningTimers);
-        self::assertEquals(TimerType::WORK, $runningTimers[0]->getTimerType());
-        self::assertEquals(201, $response->getStatusCode());
+        self::assertEquals(Response::HTTP_CREATED, $response->getStatusCode());
     }
 
     public function testBreakCommand()
     {
-        $data = $this->generateCommandData('break');
-        $kernel = static::bootKernel();
-        $container = $kernel->getContainer();
-        $entityManager = $container->get('doctrine')->getManager();
-
-        $response = static::createClient()->request(
+        $data = $this->generateCommandData(TimerType::BREAK);
+        $client = $this->createAuthenticatedClient();
+        $response = $client->request(
             'POST',
             '/slack/slashcommand',
             [
@@ -69,26 +60,14 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        $runningTimers = $entityManager->getRepository(Timer::class)->findBy(['dateEnd' => null, 'timerType' => TimerType::BREAK]);
-
-        self::assertCount(1, $runningTimers);
-        self::assertEquals(TimerType::BREAK, $runningTimers[0]->getTimerType());
-        self::assertEquals(201, $response->getStatusCode());
+        self::assertEquals(Response::HTTP_CREATED, $response->getStatusCode());
     }
 
     public function testLateHiCommandInvalid()
     {
         $data = $this->generateCommandData('late_hi', '25:32');
 
-        $client = self::createClient();
-
-        $em = self::$container->get('doctrine')->getManager();
-//        $punchInTime = (new \DateTime())->modify('-600 minutes');
-//        $punchInTimer = $em->getRepository(Timer::class)->findBy(['dateEnd' => null, 'timerType' => TimerType::WORK]);
-//        $punchInTimer[0]->setDateEnd($punchInTime);
-//        $em->persist($punchInTimer[0]);
-//        $em->flush();
-
+        $client = $this->createAuthenticatedClient();
         $response = $client->request(
             'POST',
             '/slack/slashcommand',
@@ -99,21 +78,15 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        $runningTimers = $em->getRepository(Timer::class)->findBy(['dateEnd' => null, 'timerType' => 'punch']);
-
-        self::assertCount(0, $runningTimers);
-        self::assertEquals(412, $response->getStatusCode());
+        self::assertEquals(Response::HTTP_PRECONDITION_FAILED, $response->getStatusCode());
     }
 
     public function testLateHiCommand()
     {
         $data = $this->generateCommandData('late_hi', '07:33');
-        $client = self::createClient();
+        $client = $this->createAuthenticatedClient();
 
-        $em = self::$container->get('doctrine')->getManager();
-        $punchInTimer = $em->getRepository(Timer::class)->findBy(['timerType' => TimerType::WORK]);
-        $em->remove($punchInTimer[0]);
-        $em->flush();
+        $this->truncateTableForClass(Timer::class);
 
         $response = $client->request(
             'POST',
@@ -125,21 +98,14 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        $runningTimers = $em->getRepository(Timer::class)->findBy(['dateEnd' => null, 'timerType' => TimerType::WORK]);
-
-        self::assertCount(1, $runningTimers);
-        self::assertEquals(201, $response->getStatusCode());
+        self::assertEquals(Response::HTTP_CREATED, $response->getStatusCode());
     }
 
     public function testLateBreakCommandInvalid()
     {
         $data = $this->generateCommandData('late_break', '25:32');
-        $kernel = static::bootKernel();
-        $container = $kernel->getContainer();
-        $entityManager = $container->get('doctrine')->getManager();
-        $runningTimersBefore = count($entityManager->getRepository(Timer::class)->findBy(['timerType' => TimerType::BREAK]));
-
-        $response = static::createClient()->request(
+        $client = $this->createAuthenticatedClient();
+        $response = $client->request(
             'POST',
             '/slack/slashcommand',
             [
@@ -149,19 +115,14 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        $runningTimersAfter = count($entityManager->getRepository(Timer::class)->findBy(['timerType' => TimerType::BREAK]));
-        self::assertEquals($runningTimersBefore, $runningTimersAfter);
-        self::assertEquals(400, $response->getStatusCode());
+        self::assertEquals(Response::HTTP_PRECONDITION_FAILED, $response->getStatusCode());
     }
 
     public function testLateBreakCommand()
     {
         $data = $this->generateCommandData('late_break', '01:33');
-        $kernel = static::bootKernel();
-        $container = $kernel->getContainer();
-        $entityManager = $container->get('doctrine')->getManager();
-
-        $response = static::createClient()->request(
+        $client = $this->createAuthenticatedClient();
+        $response = $client->request(
             'POST',
             '/slack/slashcommand',
             [
@@ -171,24 +132,13 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        $runningTimers = $entityManager->getRepository(Timer::class)->findBy(['timerType' => TimerType::BREAK]);
-
-        $createdTimer = null;
-        foreach ($runningTimers as $index => $runningTimer) {
-            if ($runningTimer->getDateEnd() !== null && $runningTimer->getDateEnd() == (new \DateTime('now'))->setTime(02,33,0)) {
-                $createdTimer = $runningTimer;
-            }
-        }
-        self::assertEquals(TimerType::BREAK, $createdTimer->getTimerType());
-        self::assertEquals((new \DateTime('now'))->setTime(01,0,0), $createdTimer->getDateStart());
-        self::assertNotnUll($createdTimer->getDateEnd());
-        self::assertEquals(201, $response->getStatusCode());
+        self::assertEquals(Response::HTTP_CREATED, $response->getStatusCode());
     }
 
     public function testEndBreakCommand()
     {
         $data = $this->generateCommandData('end_break');
-        $client = self::createClient();
+        $client = $this->createAuthenticatedClient();
 
         $em = self::$container->get('doctrine')->getManager();
         $start = (new \DateTime())->modify('-600 minutes');
@@ -210,16 +160,13 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        $runningTimer = $em->getRepository(Timer::class)->findBy(['timerType' => TimerType::BREAK]);
-        self::assertEquals(TimerType::BREAK, $runningTimer[0]->getTimerType());
-        self::assertNotnUll($runningTimer[0]->getDateEnd());
-        self::assertEquals(201, $response->getStatusCode());
+        self::assertEquals(Response::HTTP_OK, $response->getStatusCode());
     }
 
     public function testEndWorkCommand()
     {
         $data = $this->generateCommandData('end_work');
-        $client = self::createClient();
+        $client = $this->createAuthenticatedClient();
 
         $em = self::$container->get('doctrine')->getManager();
         $start = (new \DateTime())->modify('-600 minutes');
@@ -241,17 +188,15 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        $runningTimer = $em->getRepository(Timer::class)->findBy(['timerType' => TimerType::WORK]);
-        self::assertEquals(TimerType::WORK, $runningTimer[0]->getTimerType());
-        self::assertNotnUll($runningTimer[0]->getDateEnd());
-        self::assertEquals(201, $response->getStatusCode());
+        self::assertEquals(Response::HTTP_OK, $response->getStatusCode());
     }
 
     public function testUnrecognizedCommand()
     {
         $data = $this->generateCommandData('some_command');
 
-        $response = static::createClient()->request(
+        $client = $this->createAuthenticatedClient();
+        $response = $client->request(
             'POST',
             '/slack/slashcommand',
             [
@@ -260,14 +205,15 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
                 'base_uri' => 'https://localhost:8443'
             ]
         );
-        self::assertEquals(201, $response->getStatusCode());
+        self::assertEquals(Response::HTTP_OK, $response->getStatusCode());
     }
 
     public function testDsCommand()
     {
         $data = $this->generateCommandData('ds');
 
-        $response = static::createClient()->request(
+        $client = $this->createAuthenticatedClient();
+        $response = $client->request(
             'POST',
             '/slack/slashcommand',
             [
@@ -276,6 +222,6 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
                 'base_uri' => 'https://localhost:8443'
             ]
         );
-        self::assertEquals(201, $response->getStatusCode());
+        self::assertEquals(Response::HTTP_CREATED, $response->getStatusCode());
     }
 }
