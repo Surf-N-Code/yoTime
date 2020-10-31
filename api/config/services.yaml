@@ -55,3 +55,17 @@ services:
 
     App\Fixtures\TimerProvider: ~
 
+    App\Swagger\SwaggerDecorator:
+        decorates: 'api_platform.swagger.normalizer.documentation'
+        arguments: [ '@App\Swagger\SwaggerDecorator.inner' ]
+        autoconfigure: false
+
+    App\Fixtures\UserProvider:
+        calls:
+            - method: 'setPasswordEncoder'
+              arguments:
+                  - "@security.user_password_encoder.generic"
+
+    App\Doctrine\SetUserListener:
+        tags: [ doctrine.orm.entity_listener ]
+
