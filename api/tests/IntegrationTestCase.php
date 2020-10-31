@@ -23,4 +23,44 @@ class IntegrationTestCase extends ApiTestCase
             'accept' => 'application/json'
         ];
     }
+
+    protected function createAuthenticatedClient()
+    {
+        $user = [
+            'email' => 'norman@yazio.com',
+            'password' => 'trustno1'
+        ];
+
+        $client = static::createClient();
+        $response = $client->request(
+            'POST',
+            '/token',
+            [
+                'json' => $user,
+                'base_uri' => 'https://localhost:8443'
+            ]
+        );
+
+        $data = json_decode($response->getContent(), true);
+        $client = static::createClient([],['auth_bearer' => $data['token']]);
+
+        return $client;
+    }
+
+    public function truncateTableForClass($class)
+    {
+        $kernel = static::bootKernel();
+        $container = $kernel->getContainer();
+        $em = $container->get('doctrine')->getManager();
+
+        $classMetaData = $em->getClassMetadata($class);
+        $connection = $em->getConnection();
+        $dbPlatform = $connection->getDatabasePlatform();
+        $connection->beginTransaction();
+        $connection->query('SET FOREIGN_KEY_CHECKS=0');
+        $q = $dbPlatform->getTruncateTableSql($classMetaData->getTableName());
+        $connection->executeUpdate($q);
+        $connection->query('SET FOREIGN_KEY_CHECKS=1');
+        $connection->commit();
+    }
 }

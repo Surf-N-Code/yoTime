@@ -12,6 +12,7 @@ use App\Services\UserProvider;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Response;
 
 class InteractionEventControllerUnitTest extends TestCase
 {
@@ -117,7 +118,7 @@ class InteractionEventControllerUnitTest extends TestCase
                            ->willReturn($this->user->reveal());
 
         $response = $interactionEventController($this->interactionEvent->reveal());
-        $this->assertEquals(412, $response->getStatusCode());
+        $this->assertEquals(Response::HTTP_PRECONDITION_FAILED, $response->getStatusCode());
     }
 
     public function testUnregisteredUser()
@@ -135,6 +136,6 @@ class InteractionEventControllerUnitTest extends TestCase
                            ->willThrow(MessageHandlerException::class);
 
         $response = $interactionEventController($this->interactionEvent->reveal());
-        $this->assertEquals(412, $response->getStatusCode());
+        $this->assertEquals(Response::HTTP_PRECONDITION_FAILED, $response->getStatusCode());
     }
 }

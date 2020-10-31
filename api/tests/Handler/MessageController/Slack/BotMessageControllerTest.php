@@ -6,6 +6,7 @@ use App\Entity\Timer;
 use App\Entity\TimerType;
 use App\Tests\IntegrationTestCase;
 use Hautelook\AliceBundle\PhpUnit\ReloadDatabaseTrait;
+use Symfony\Component\HttpFoundation\Response;
 
 class BotMessageControllerTest extends IntegrationTestCase
 {
@@ -30,7 +31,7 @@ class BotMessageControllerTest extends IntegrationTestCase
     public function testHiBotEvent()
     {
         $data = $this->generateCommandData('hey');
-        $client = static::createClient();
+        $client = $this->createAuthenticatedClient();
 
         $em = self::$container->get('doctrine')->getManager();
 
@@ -52,7 +53,7 @@ class BotMessageControllerTest extends IntegrationTestCase
     public function testHiBotEventAlreadyPunchedIn()
     {
         $data = $this->generateCommandData('hey');
-        $client = static::createClient();
+        $client = $this->createAuthenticatedClient();
 
         $response = $client->request(
             'POST',
@@ -73,7 +74,7 @@ class BotMessageControllerTest extends IntegrationTestCase
     public function testByeBotEvent()
     {
         $data = $this->generateCommandData('bye');
-        $client = static::createClient();
+        $client = $this->createAuthenticatedClient();
 
         $em = self::$container->get('doctrine')->getManager();
 
@@ -96,7 +97,7 @@ class BotMessageControllerTest extends IntegrationTestCase
     public function testByeBotEventMissingTimer()
     {
         $byeData = $this->generateCommandData('bye');
-        $client = static::createClient();
+        $client = $this->createAuthenticatedClient();
         $em = self::$container->get('doctrine')->getManager();
         $runningTimer = $em->getRepository(Timer::class)->findBy(['timerType' => TimerType::WORK]);
         $em->remove($runningTimer[0]);
@@ -112,7 +113,7 @@ class BotMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        self::assertEquals(412, $response->getStatusCode());
+        self::assertEquals(Response::HTTP_PRECONDITION_FAILED, $response->getStatusCode());
     }
 
     public function testSlackBotVerification()
@@ -123,7 +124,7 @@ class BotMessageControllerTest extends IntegrationTestCase
             "challenge" => "DxUwifpaOL5VikG3y0eFOr9k3fHj0A7cKNR7eguIrd8KIM9oVzsP"
         ];
 
-        $response = static::createClient()->request(
+        $response = $this->createAuthenticatedClient()->request(
             'POST',
             '/slack/event/bot',
             [

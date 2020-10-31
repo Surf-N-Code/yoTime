@@ -6,6 +6,7 @@ use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
 use App\Entity\Slack\SlashCommand;
 use App\Kernel;
 use App\Security\Slack\EventListener\SecurityListener;
+use App\Tests\IntegrationTestCase;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +16,7 @@ use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\Event\KernelEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
-class SecurityListenerTest extends ApiTestCase
+class SecurityListenerTest extends IntegrationTestCase
 {
     public function testSecurityListenerSlashCommand()
     {
@@ -33,7 +34,7 @@ class SecurityListenerTest extends ApiTestCase
             "trigger_id" => "1376434055859.608073127745.6b6bf1eec2610d38762c05c6f1decc7e",
         ];
 
-        $response = static::createClient()->request(
+        $response = $this->createAuthenticatedClient()->request(
             'POST',
             '/slack/slashcommand',
             [
@@ -56,7 +57,7 @@ class SecurityListenerTest extends ApiTestCase
             "team_id" => "something",
         ];
 
-        $response = static::createClient()->request(
+        $response = $this->createAuthenticatedClient()->request(
             'POST',
             '/slack/slashcommand',
             [
@@ -81,7 +82,7 @@ class SecurityListenerTest extends ApiTestCase
             "challenge" => "DxUwifpaOL5VikG3y0eFOr9k3fHj0A7cKNR7eguIrd8KIM9oVzsP"
         ];
 
-        $response = static::createClient()->request(
+        $response = $this->createAuthenticatedClient()->request(
             'POST',
             '/slack/event/bot',
             [
@@ -105,7 +106,7 @@ class SecurityListenerTest extends ApiTestCase
             "challenge" => "DxUwifpaOL5VikG3y0eFOr9k3fHj0A7cKNR7eguIrd8KIM9oVzsP"
         ];
 
-        $response = static::createClient()->request(
+        $response = $this->createAuthenticatedClient()->request(
             'POST',
             '/slack/event/bot',
             [
@@ -124,7 +125,7 @@ class SecurityListenerTest extends ApiTestCase
 
     public function testSecurityListenerInteractionEvent()
     {
-        $response = static::createClient()->request(
+        $response = $this->createAuthenticatedClient()->request(
             'POST',
             '/slack/event/interaction',
             [
@@ -143,7 +144,7 @@ class SecurityListenerTest extends ApiTestCase
 
     public function testSecurityListenerInteractionEventInvalidSignature()
     {
-        $response = static::createClient()->request(
+        $response = $this->createAuthenticatedClient()->request(
             'POST',
             '/slack/event/interaction',
             [
