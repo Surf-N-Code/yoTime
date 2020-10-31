@@ -13,7 +13,7 @@ use App\Entity\Timer;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Security\Core\Security;
 
-class UserFilterQueryExtension implements QueryCollectionExtensionInterface, QueryItemExtensionInterface
+class UserDataFilterQueryExtension implements QueryCollectionExtensionInterface, QueryItemExtensionInterface
 {
     private $security;
     public function __construct(Security $security)
