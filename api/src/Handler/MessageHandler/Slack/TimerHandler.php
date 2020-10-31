@@ -11,6 +11,7 @@ use App\Exceptions\MessageHandlerException;
 use App\Repository\TimerRepository;
 use App\Services\DatabaseHelper;
 use App\Services\Time;
+use Symfony\Component\HttpFoundation\Response;
 
 class TimerHandler
 {
@@ -61,7 +62,7 @@ class TimerHandler
         $timers = $this->timerRepository->findTimersFromToday($user);
 
         if (empty($timers)) {
-            throw new MessageHandlerException('Seems like you didn\'t sign in this morning. You can travel back in time to check yourself in for today by using the `/late_hi` command.', 412);
+            throw new MessageHandlerException('Seems like you didn\'t sign in this morning. You can travel back in time to check yourself in for today by using the `/late_hi` command.', Response::HTTP_PRECONDITION_FAILED);
         }
 
         $latestTimer = $timers[count($timers)-1];
@@ -90,7 +91,7 @@ class TimerHandler
                     TimerType::WORK,
                     TimerType::BREAK
                 ),
-                412
+                Response::HTTP_PRECONDITION_FAILED
             );
         }
     }
@@ -102,7 +103,7 @@ class TimerHandler
         if (!empty($timers)) {
             throw new MessageHandlerException(sprintf('Seems like you have already signed in for today. The timer was started on `%s`.',
                 $timers[0]->getDateStart()->format('d.m.Y H:i:s')
-            ), 412);
+            ), Response::HTTP_PRECONDITION_FAILED);
         }
     }
 }

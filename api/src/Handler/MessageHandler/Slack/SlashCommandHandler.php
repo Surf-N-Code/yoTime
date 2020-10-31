@@ -28,8 +28,6 @@ class SlashCommandHandler {
 
     private DailySummaryHandler $dailySummaryHandler;
 
-    private SlackMessageHelper $slackMessageHelper;
-
     private DatabaseHelper $databaseHelper;
 
     private Time $time;
@@ -55,7 +53,7 @@ class SlashCommandHandler {
         $this->slackClient = $slackClient;
     }
 
-    public function getSlashCommandToExecute(SlashCommand $command)
+    public function getSlashCommandToExecute(SlashCommand $command): int
     {
         $message = new SlackMessage();
         $user = $this->getUser($command->getUserId());
@@ -69,21 +67,21 @@ class SlashCommandHandler {
                 $message = $message->addTextSection(sprintf(':clock9: %s timer started', ucfirst($timer->getTimerType())));
                 $this->databaseHelper->flushAndPersist($timer);
                 $this->sendSlackMessage($responseUrl, $message);
-                break;
+                return Response::HTTP_CREATED;
 
             case '/late_hi':
                 $timer = $this->timerHandler->lateSignIn($user, $commandText);
                 $message->addTextSection(sprintf('Checked you in at `%s` :rocket:', $timer->getDateStart()->format('d.m.Y H:i:s')));
                 $this->databaseHelper->flushAndPersist($timer);
                 $this->sendSlackMessage($responseUrl, $message);
-                break;
+                return Response::HTTP_CREATED;
 
             case '/late_break':
                 $timer = $this->time->addFinishedTimer($user, TimerType::BREAK, $commandText);
                 $message->addTextSection(':sleeping: Break added');
                 $this->databaseHelper->flushAndPersist($timer);
                 $this->sendSlackMessage($responseUrl, $message);
-                break;
+                return Response::HTTP_CREATED;
 
             case '/end_break':
             case '/end_work':
@@ -96,20 +94,21 @@ class SlashCommandHandler {
                 $message->addTextSection(sprintf('Timer stopped. %s', $msg));
                 $this->databaseHelper->flushAndPersist($timer);
                 $this->sendSlackMessage($responseUrl, $message);
-                break;
+                return Response::HTTP_OK;
 
             case '/ds':
                 $modal = $this->dailySummaryHandler->getDailySummarySubmitView($command->getTriggerId());
                 $this->slackClient->slackApiCall('POST', 'views.open', $modal);
-                break;
+                return Response::HTTP_CREATED;
 
             case '/help_me':
                 $message = $this->userHelpHandler->showUserHelp($command);
                 $this->sendSlackMessage($responseUrl, $message);
-                break;
+                return Response::HTTP_OK;
 
             default:
                 $message->addTextSection(sprintf('Command `%s` is not supported. Try `/help_me` for a list of available commands',$command->getCommand()));
+                return Response::HTTP_OK;
         }
     }
 

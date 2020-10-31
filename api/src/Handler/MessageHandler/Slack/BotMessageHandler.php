@@ -4,12 +4,13 @@
 namespace App\Handler\MessageHandler\Slack;
 
 use App\Entity\Slack\SlackMessage;
-use App\Entity\TimerType;use App\Entity\User;use App\Exceptions\MessageHandlerException;
+use App\Entity\TimerType;
+use App\Exceptions\MessageHandlerException;
 use App\Services\DatabaseHelper;
 use App\Services\Time;
 use App\Services\UserProvider;
 use App\Slack\SlackClient;
-use App\Slack\SlackMessageHelper;
+use Symfony\Component\HttpFoundation\Response;
 
 class BotMessageHandler
 {
@@ -51,7 +52,7 @@ class BotMessageHandler
         try {
             $user = $this->userProvider->getDbUserBySlackId($slackUserId);
         } catch (\Exception $e) {
-            throw new MessageHandlerException('Seems like you have not registered an account with YoTime yet. Please contact the admin of your slack workspace to add you to the service.', 412,);
+            throw new MessageHandlerException('Seems like you have not registered an account with YoTime yet. Please contact the admin of your slack workspace to add you to the service.', Response::HTTP_PRECONDITION_FAILED,);
         }
 
         $m = new SlackMessage();

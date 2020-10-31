@@ -9,6 +9,7 @@ use App\Exceptions\MessageHandlerException;
 use App\Repository\TimerRepository;
 use App\Repository\UserRepository;
 use App\ObjectFactories\TimerFactory;
+use Symfony\Component\HttpFoundation\Response;
 
 class Time
 {
@@ -79,10 +80,10 @@ class Time
     {
         preg_match('/^([01]?\d|2[0-3]):([0-5]\d)/', $timeString, $durationMatch);
         if ($timeString === '') {
-            throw new MessageHandlerException('Please provide the amount of time you spent on break in the form: `hh:mm`', 400);
+            throw new MessageHandlerException('Please provide the amount of time you spent on break in the form: `hh:mm`', Response::HTTP_PRECONDITION_FAILED);
         }
         if (empty($durationMatch)) {
-            throw new MessageHandlerException(sprintf('The time you entered: %s is not valid. Please enter your time in the form `hh:mm`', $timeString), 400);
+            throw new MessageHandlerException(sprintf('The time you entered: %s is not valid. Please enter your time in the form `hh:mm`', $timeString), Response::HTTP_PRECONDITION_FAILED);
         }
         $timeParts = explode(':', $timeString);
 

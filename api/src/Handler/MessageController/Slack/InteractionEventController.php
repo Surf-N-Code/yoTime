@@ -34,7 +34,7 @@ final class InteractionEventController implements MessageHandlerInterface
             try {
                 $user = $this->userProvider->getDbUserBySlackId($payload['user']['id']);
             } catch (\Exception $e) {
-                throw new MessageHandlerException('Seems like you have not registered an account with YoTime yet. Please contact the admin of your slack workspace to add you to the service.', 412,);
+                throw new MessageHandlerException('Seems like you have not registered an account with YoTime yet. Please contact the admin of your slack workspace to add you to the service.', Response::HTTP_PRECONDITION_FAILED,);
             }
 
             if (!empty($payload['view']['state']['values']['daily_summary_block'] && $payload['type'] === 'view_submission')) {
@@ -49,7 +49,7 @@ final class InteractionEventController implements MessageHandlerInterface
 
             return new Response(sprintf('Unsupported event detected in payload: %s', json_encode($payload)), 400);
         } catch (\Exception $e) {
-            return new Response($e->getMessage(), 412);
+            return new Response($e->getMessage(), Response::HTTP_PRECONDITION_FAILED);
         }
     }
 }

@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\User;
@@ -26,7 +25,7 @@ class AuthController extends AbstractController
         $user->setIsActive(1);
         $user->setTz($tz);
         $user->setTzOffset($tzOffset);
-        $user->setPassword($encoder->encodePasswrouteord($user, $password));
+        $user->setPassword($encoder->encodePassword($user, $password));
 
         try {
             $em->persist($user);
