@@ -10,4 +10,5 @@ export interface ILoginIn {
 }
 export interface IAuthInfo {
   email: string;
+  jwt: string;
 }

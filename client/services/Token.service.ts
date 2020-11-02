@@ -36,6 +36,10 @@ class TokenService {
     return true;
   }
 
+  public getTokenFromCookie() {
+
+  }
+
   public async authenticateTokenSsr() {
     // const router = useRouter();
     const cookies = new Cookies(null);
