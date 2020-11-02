@@ -40,7 +40,6 @@ export const Layout = ({children}) => {
                 onClick={() => setMenuIsOpen((prevMenuIsOpen) => !prevMenuIsOpen)}
             />
             <main className={`pt-20 pl-3 pr-3`}>
-                {console.log('authed value', auth)}
                 {auth.email ? children : <Login />}
             </main>
         </div>

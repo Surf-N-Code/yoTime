@@ -1,39 +1,102 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Layout from '../components/layout';
-import useSWR from "swr";
+import useSWR from 'swr';
 import {differenceInDays, differenceInSeconds, format} from 'date-fns';
 import isToday from 'date-fns/isToday';
 import cn from 'classnames';
-import { useRouter } from 'next/router';
-import { Pagination } from '../components/pagination';
+import {useRouter} from 'next/router';
+import {Pagination} from '../components/pagination';
+import {fetcherFunc} from '../services/Fetcher.service';
+import {useAuth} from "../services/Auth.context";
+import {v4} from 'uuid'; //Use for setting id of timer kacheln instead of datestart
 
 export const Timers = () => {
     const forceUpdate = useForceUpdate();
 
     const router = useRouter();
+    const [auth, setAuth] = useAuth();
     const currentPage = Number(typeof router.query.page !== 'undefined' ? router.query.page : 1);
-    const url = 'https://localhost:8443/users/1/timers?order[dateStart]&page='+currentPage;
-    const fetcher = (...args) => fetch(...args).then(res => res.json());
-
-    const { data, error } = useSWR(url, fetcher)
+    const url = `timers?order[dateStart]&page=${currentPage}`;
+    const { data, error, isValidating, mutate: mutateTimers } = useSWR([url, auth.jwt, 'GET'], fetcherFunc)
 
     if (error) {
         const content = <div>failed to load</div>;
+        console.log('error', error);
+        console.log('error in data', data);
+        return content;
     }
-
-    if (!data) {
-        const content = <div>loading...</div>;
-    }
-
 
     let timersNormalized = {};
     let totalSecondsPerDay = {};
     let runningTimer = false;
-    console.log(data);
+    console.log('----DATA:----', data);
+
+
+    const startTimer = async () => {
+        let id = v4();
+        const timer = {
+            date_start: format(new Date(), 'u-MM-dd'),
+            date_end: null,
+            timer_type: 'work'
+        }
+
+        // console.group('before and after state update')
+        // console.log(data);
+        // const newHydraMembers = [{id, ...timer}, ...data['hydra:member']];
+        // const newData = {...data, [...data['hydra:member'], timer]};
+        // data['hydra:member'] = newHydraMembers;
+        // const newData = {...data};
+        // console.log(data);
+        // console.log(newHydraMembers);
+        // console.groupEnd()
+        console.log('new data', {...data, "hydra:member": [data["hydra:member"], {id, ...timer}]});
+        await mutateTimers((data) => {
+            const hydraMember = data['hydra:member'];
+            return {...data, "hydra:member": [{id, ...timer}, ...hydraMember]};
+
+            // const newData = {...data, [...data['hydra:member'], timer]};
+            // data['hydra:member'] = [{id, ...timer}, ...data['hydra:member']];
+            // return {...data};
+        }, false);
+
+        // const res = await fetcherFunc('timers', auth.jwt, 'POST', timer);
+        // forceUpdate();
+    }
+
+    // const startTimer = async () => {
+    //     let id = v4();
+    //     const timer = {
+    //         date_start: new Date(),
+    //         date_end: null,
+    //         timer_type: 'work'
+    //     }
+    //
+    //     console.log('adding timer to data array', [timer, ...data])
+    //     await mutateTimers((data) => {
+    //         return [{id, ...timer}, ...data];
+    //     }, false);
+    //     const res = await fetcherFunc('timers', auth.jwt, 'POST', timer);
+    //
+    //     // forceUpdate();
+    // }
+
     return (
         <Layout>
-            {error ? <div>failed to load</div> :
-            !data ? <div>loading...</div> :
+            {error ? <div>Ups... there was an error fetching your timers</div> :
+                !data ? <div>no data yet...</div> :
+                    // isValidating ? <div className={"text-red-600 text-6xl"}>VALIDATING</div> :
+                    // <div>
+                    //     {data.map((e) => {
+                    //         return (
+                    //             <div key={e.id}>{e.id}</div>
+                    //         )
+                    //     })}
+                    //     <div
+                    //         className="red fixed bottom-0 right-0 notification bottom bg-teal-500 rounded-full p-4 border-teal-700 border-2 shadow-md cursor-pointer"
+                    //         onClick={() => startTimer()}>
+                    //         <img src="../images/icons/icons8-play-100.png" width="30" height="30" alt="Start Timer"/>
+                    //     </div>
+                    // </div>
             typeof data['hydra:member'] === 'undefined' || data['hydra:member'].length === 0 ? <div>no data yet...</div> :
             <div className="mt-6">
                 <div>
@@ -44,7 +107,7 @@ export const Timers = () => {
 
                         const formattedDiffInMinPerDay = toHHMMSS(totalSecondsPerDay[dateStartString]);
                         return (
-                            <div key={dateStartString} className="bg-white p-3 mb-1 border-gray-300 border-l-4 hover:border-teal-600">
+                            <div key={timers.id} className="bg-white p-3 mb-1 border-gray-300 border-l-4 hover:border-teal-600">
                                 <>
                                     <div className="text-xs text-gray-500">{format(dateStart, 'dd LLLL uuuu' )}</div>
                                     <div className="flex flex-row items-center">
@@ -72,13 +135,13 @@ export const Timers = () => {
                 {runningTimer ?
                     <div
                         className="fixed bottom-0 notification bottom bg-red-500 rounded-full p-4 border-teal-400 border-2 shadow-md cursor-pointer"
-                        onClick={() => stopTimer(forceUpdate, runningTimer)}>
+                        onClick={() => stopTimer(forceUpdate, runningTimer, auth.jwt)}>
                         <img src="../images/icons/icons8-stop-48.png" width="30" height="30" alt="Stop Timer"/>
                     </div>
                     :
                     <div
                         className="fixed bottom-0 notification bottom bg-teal-500 rounded-full p-4 border-teal-700 border-2 shadow-md cursor-pointer"
-                        onClick={() => startTimer(forceUpdate)}>
+                        onClick={() => startTimer()}>
                         <img src="../images/icons/icons8-play-100.png" width="30" height="30" alt="Start Timer"/>
                     </div>
                 }
@@ -114,47 +177,28 @@ export const Timers = () => {
  * stop timer on icon click and refresh view
  */
 
-const stopTimer = async (forceUpdate, timer) => {
+const stopTimer = async (forceUpdate, timer, jwt) => {
     timer.date_end = new Date();
-    const res = await fetch('https://localhost:8443/timers/'+timer.id, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/merge-patch+json',
-            'Accept': 'application/json',
-        },
-        body: JSON.stringify(timer),
-    })
-
-    const json = await res.json()
-    if (json.errors) {
-        throw new Error('Failed to fetch API')
-    }
-    forceUpdate();
+    const res = await fetcherFunc(`timers/${timer.id}`, jwt, 'PATCH', timer, 'application/merge-patch+json');
+    // forceUpdate();
 }
-
-const startTimer = async (forceUpdate) => {
-    const timer = {
-        user: '/users/1',
-        date_start: new Date(),
-        date_end: null,
-        timerType: 'punch'
-    }
-    const res = await fetch('https://localhost:8443/timers', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/ld+json',
-            'Accept': 'application/json',
-        },
-        body: JSON.stringify(timer),
-    })
-
-    const json = await res.json()
-    if (json.errors) {
-        console.error(json.errors)
-        throw new Error('Failed to fetch API')
-    }
-    forceUpdate();
-}
+//
+// const startTimer = async (forceUpdate, jwt, data, currentPage) => {
+//     const timer = {
+//         date_start: new Date(),
+//         date_end: null,
+//         timerType: 'work'
+//     }
+//
+//     console.log(data);
+//     const newData = {...data, timer: timer};
+//     // data.TEST = 'HIER';
+//     console.log(data);
+//     await mutate(`https://localhost:8443/timers?order[dateStart]&page=${currentPage}`, {...data, timer: timer});
+//
+//     const res = await fetcherFunc('timers', jwt, 'POST', timer);
+//     // forceUpdate();
+// }
 
 function useForceUpdate(){
     const [value, setValue] = useState(0); // integer state
@@ -180,6 +224,7 @@ const generateSubTimerHtml = (timer, formattedDiffInMinPerTimer: string) => {
 }
 
 const prepareTimerData = (data, totalSecondsPerDay, timersNormalized) => {
+
     {data['hydra:member'].map((value, key) => {
         typeof value.date_end !== 'undefined' ? value.isRunning = false : value.isRunning = true;
         const dateStartStr = format(new Date(value.date_start), 'u-MM-dd');

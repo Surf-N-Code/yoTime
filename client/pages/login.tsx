@@ -46,12 +46,18 @@ export const Login = () => {
                         console.log(res);
                         tokenService.saveToken(res.token);
 
+                        const data = {
+                            email: values.email,
+                            jwt: res.token
+                        }
                         authDispatch({
                             type: 'setAuthDetails',
 
                             payload: {
-                                email: values.email
+                                email: values.email,
+                                jwt: res.token
                             }
+
                         });
                         setInvalidForm(false);
                         router.push('/')

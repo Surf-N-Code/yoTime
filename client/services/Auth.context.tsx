@@ -4,7 +4,7 @@ import { IAuthInfo } from '../types/auth.types';
 
 export const AuthStateContext = React.createContext({});
 
-const initialState: IAuthInfo = { email: null };
+const initialState: IAuthInfo = { email: null, jwt: null };
 
 enum ActionType {
 	SetDetails = 'setAuthDetails',
@@ -21,12 +21,14 @@ const reducer: React.Reducer<{}, IAction> = (state, action) => {
 	switch (action.type) {
 		case ActionType.SetDetails:
 			return {
-				email: action.payload.email
+				email: action.payload.email,
+				jwt: action.payload.jwt
 			};
 		case ActionType.RemoveDetails:
 			console.log('setting to initialState', initialState);
 			return {
-				email: initialState.email
+				email: initialState.email,
+				jwt: initialState.jwt
 			};
 		default:
 			throw new Error(`Unhandled action type: ${action.type}`);
