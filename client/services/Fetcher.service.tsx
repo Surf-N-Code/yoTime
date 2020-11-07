@@ -1,11 +1,10 @@
 export const fetcherFunc = (...args) => {
     const [url, token, type, body, contentType] = args;
-    console.log("fetching: " + url);
-    return fetch(`https://localhost:8443/${url}`, {
+    const prefixedUrl = [...url][0] !== '/' ? `/${url}`: url;
+    return fetch(`https://localhost:8443${prefixedUrl}`, {
         method: type,
         headers: {
             Accept: 'application/ld+json',
-            // Accept: 'application/json',
             'Content-Type': contentType ? contentType : 'application/json',
             Authorization: 'Bearer ' + token
         },
