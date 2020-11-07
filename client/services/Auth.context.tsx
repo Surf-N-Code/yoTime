@@ -20,6 +20,7 @@ const reducer: React.Reducer<{}, IAction> = (state, action) => {
 	console.log('reducer action',action);
 	switch (action.type) {
 		case ActionType.SetDetails:
+			console.log(action.payload);
 			return {
 				email: action.payload.email,
 				jwt: action.payload.jwt

@@ -34,36 +34,21 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Update fixtures for dev env">
-      <change afterPath="$PROJECT_DIR$/api/config/packages/dev/lexik_jwt_authentication.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/services/Fetcher.service.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/services/Auth.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/client/src/services/Auth.context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/components/interfaces/client.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/interfaces/dailysummary.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/interfaces/project.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/interfaces/slackbotmessage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/interfaces/slackinteractionevent.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/interfaces/slashcommand.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/interfaces/task.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/interfaces/user.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/types/timer.types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/.dockerignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/admin/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/docker/nginx/conf.d/default.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/admin/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/admin/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/admin/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/App.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/serviceWorker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/src/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/src/setupTests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/admin/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/pagination.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/services/Auth.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Auth.context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/services/Token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Token.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/auth.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/auth.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/services/Fetcher.service.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Fetcher.service.tsx" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -274,28 +259,28 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/config/packages/dev" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/components" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
+    <property name="settings.editor.selected.configurable" value="settings.php.debug.servers" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/auto-client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/api/tests/Doctrine" />
-      <recent name="$PROJECT_DIR$/client/types" />
-      <recent name="$PROJECT_DIR$/client/pages" />
-      <recent name="$PROJECT_DIR$/client/public/images/icons" />
-      <recent name="$PROJECT_DIR$/api/fixtures/test" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/components" />
       <recent name="$PROJECT_DIR$/api/config/packages/dev" />
       <recent name="$PROJECT_DIR$/api/fixtures" />
       <recent name="$PROJECT_DIR$/api/tests/Doctrine" />
       <recent name="$PROJECT_DIR$/api/tests/Entity" />
-      <recent name="$PROJECT_DIR$/api/src/Doctrine" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/types" />
+      <recent name="$PROJECT_DIR$/api/tests/Doctrine" />
+      <recent name="$PROJECT_DIR$/client/pages" />
+      <recent name="$PROJECT_DIR$/client/public/images/icons" />
+      <recent name="$PROJECT_DIR$/api/fixtures/test" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.SecurityListenerTest">
@@ -375,14 +360,13 @@
       <workItem from="1603991754667" duration="1552000" />
       <workItem from="1604038455742" duration="6000" />
       <workItem from="1604081780830" duration="4580000" />
-      <workItem from="1604086394161" duration="59740000" />
-    </task>
-    <task id="LOCAL-00013" summary="Add dropdown to daily summary modal">
-      <created>1599871982367</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1599871982367</updated>
+      <workItem from="1604086394161" duration="60779000" />
+      <workItem from="1604299932928" duration="19000" />
+      <workItem from="1604341529291" duration="7455000" />
+      <workItem from="1604428041183" duration="2818000" />
+      <workItem from="1604513822730" duration="7621000" />
+      <workItem from="1604555415496" duration="1939000" />
+      <workItem from="1604688868060" duration="2886000" />
     </task>
     <task id="LOCAL-00014" summary="Only send ds email when user selects that option">
       <created>1599872724856</created>
@@ -720,7 +704,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604171536744</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Working adding new timer and optimistically updating the ui">
+      <created>1604298386250</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1604298386250</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -767,7 +758,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Finish tests" />
     <MESSAGE value="ADd order capability to timers" />
     <MESSAGE value="Start adding client" />
     <MESSAGE value="Add timer fixtures and continue on timers client view" />
@@ -792,7 +782,8 @@
     <MESSAGE value="Use Response constants for http code responses" />
     <MESSAGE value="Add and update tests" />
     <MESSAGE value="Update fixtures for dev env" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update fixtures for dev env" />
+    <MESSAGE value="Working adding new timer and optimistically updating the ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working adding new timer and optimistically updating the ui" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="4" width="756" height="674" key="#CLI_Interpreters" timestamp="1604086486755">
@@ -843,10 +834,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="134" y="-76" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1604241653088">
+    <state x="130" y="-42" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1604298386092">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="134" y="-76" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1604241653088" />
+    <state x="130" y="-42" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1604298386092" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -867,54 +858,54 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="691" y="454" key="GitCloneDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599927280951" />
-    <state width="1070" height="308" key="GridCell.Tab.0.bottom" timestamp="1604250444778">
+    <state width="1070" height="308" key="GridCell.Tab.0.bottom" timestamp="1604299904424">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604250444778" />
-    <state width="1070" height="308" key="GridCell.Tab.0.center" timestamp="1604250444777">
+    <state width="1070" height="308" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
+    <state width="1070" height="308" key="GridCell.Tab.0.center" timestamp="1604299904424">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604250444777" />
-    <state width="1070" height="308" key="GridCell.Tab.0.left" timestamp="1604250444777">
+    <state width="1070" height="308" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
+    <state width="1070" height="308" key="GridCell.Tab.0.left" timestamp="1604299904423">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604250444777" />
-    <state width="1070" height="308" key="GridCell.Tab.0.right" timestamp="1604250444777">
+    <state width="1070" height="308" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904423" />
+    <state width="1070" height="308" key="GridCell.Tab.0.right" timestamp="1604299904424">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604250444777" />
-    <state width="1070" height="308" key="GridCell.Tab.1.bottom" timestamp="1604250444778">
+    <state width="1070" height="308" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
+    <state width="1070" height="308" key="GridCell.Tab.1.bottom" timestamp="1604299904424">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604250444778" />
-    <state width="1070" height="308" key="GridCell.Tab.1.center" timestamp="1604250444778">
+    <state width="1070" height="308" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
+    <state width="1070" height="308" key="GridCell.Tab.1.center" timestamp="1604299904424">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604250444778" />
-    <state width="1070" height="308" key="GridCell.Tab.1.left" timestamp="1604250444778">
+    <state width="1070" height="308" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
+    <state width="1070" height="308" key="GridCell.Tab.1.left" timestamp="1604299904424">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604250444778" />
-    <state width="1070" height="308" key="GridCell.Tab.1.right" timestamp="1604250444778">
+    <state width="1070" height="308" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
+    <state width="1070" height="308" key="GridCell.Tab.1.right" timestamp="1604299904424">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604250444778" />
-    <state width="1070" height="308" key="GridCell.Tab.2.bottom" timestamp="1604250444778">
+    <state width="1070" height="308" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
+    <state width="1070" height="308" key="GridCell.Tab.2.bottom" timestamp="1604299904425">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604250444778" />
-    <state width="1070" height="308" key="GridCell.Tab.2.center" timestamp="1604250444778">
+    <state width="1070" height="308" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904425" />
+    <state width="1070" height="308" key="GridCell.Tab.2.center" timestamp="1604299904424">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604250444778" />
-    <state width="1070" height="308" key="GridCell.Tab.2.left" timestamp="1604250444778">
+    <state width="1070" height="308" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
+    <state width="1070" height="308" key="GridCell.Tab.2.left" timestamp="1604299904424">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604250444778" />
-    <state width="1070" height="308" key="GridCell.Tab.2.right" timestamp="1604250444778">
+    <state width="1070" height="308" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
+    <state width="1070" height="308" key="GridCell.Tab.2.right" timestamp="1604299904425">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604250444778" />
+    <state width="1070" height="308" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904425" />
     <state width="227" height="471" key="HiddenNamespacesPopup" timestamp="1600781587609">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -923,22 +914,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="613" y="98" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604094778029" />
-    <state x="781" y="-10" width="389" height="578" key="RollbackChangesDialog" timestamp="1603528689818">
+    <state x="779" y="-28" width="389" height="578" key="RollbackChangesDialog" timestamp="1604298347251">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="781" y="-10" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603528689818" />
-    <state x="442" y="58" key="SettingsEditor" timestamp="1604086509691">
+    <state x="779" y="-28" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604298347251" />
+    <state x="440" y="40" key="SettingsEditor" timestamp="1604560698000">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="442" y="58" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1604086509691" />
+    <state x="440" y="40" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1604560698000" />
     <state x="801" y="337" width="297" height="157" key="VCS.ChangelistChooser" timestamp="1599871952996">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="801" y="337" width="297" height="157" key="VCS.ChangelistChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1599871952996" />
-    <state x="29" y="136" width="1862" height="915" key="VCS.FileHistoryDialog" timestamp="1600631868850">
+    <state x="29" y="100" width="1116" height="951" key="VCS.FileHistoryDialog" timestamp="1604346089253">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="29" y="136" width="1862" height="915" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600631868850" />
+    <state x="29" y="100" width="1116" height="951" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604346089253" />
     <state x="541" y="159" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1604162424678">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -979,10 +970,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603533059617" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1604259036401">
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1604743344705">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1604259036401" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1604743344705" />
     <state x="649" y="140" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604095844648">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
