@@ -34,21 +34,14 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Attempt to add timer to state">
-      <change afterPath="$PROJECT_DIR$/client/components/alert.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/images/icons/loading.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/styles/alert.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/types/apiResult.types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/types/optimisticTimer.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add pause timer and fix start stopping timer including counting up seconds properly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/yoTime.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yoTime.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/alert.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/menu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/timer.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/timer.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/utilities/lib.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/utilities/lib.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/types/apiResult.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/apiResult.types.ts" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -368,14 +361,7 @@
       <workItem from="1604555415496" duration="1939000" />
       <workItem from="1604688868060" duration="27044000" />
       <workItem from="1604825844441" duration="76000" />
-      <workItem from="1604825940648" duration="21011000" />
-    </task>
-    <task id="LOCAL-00015" summary="Update and extend tests">
-      <created>1600024712594</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1600024712594</updated>
+      <workItem from="1604825940648" duration="21844000" />
     </task>
     <task id="LOCAL-00016" summary="Extend tests">
       <created>1600027430811</created>
@@ -713,7 +699,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604751609094</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Add pause timer and fix start stopping timer including counting up seconds properly">
+      <created>1604856670012</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1604856670012</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -760,7 +753,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Start adding client" />
     <MESSAGE value="Add timer fixtures and continue on timers client view" />
     <MESSAGE value="Add button to start / stop a running timer" />
     <MESSAGE value="Pre react class for dailies" />
@@ -785,7 +777,8 @@
     <MESSAGE value="Update fixtures for dev env" />
     <MESSAGE value="Working adding new timer and optimistically updating the ui" />
     <MESSAGE value="Attempt to add timer to state" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempt to add timer to state" />
+    <MESSAGE value="Add pause timer and fix start stopping timer including counting up seconds properly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add pause timer and fix start stopping timer including counting up seconds properly" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="4" width="756" height="674" key="#CLI_Interpreters" timestamp="1604086486755">
@@ -836,10 +829,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="126" y="-78" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1604768863819">
+    <state x="122" y="-114" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1604857267965">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="126" y="-78" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1604768863819" />
+    <state x="122" y="-114" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1604857267965" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -932,10 +925,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="29" y="100" width="1116" height="951" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604346089253" />
-    <state x="541" y="159" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1604162424678">
+    <state x="537" y="123" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1604856719414">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="541" y="159" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1604162424678" />
+    <state x="537" y="123" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1604856719414" />
     <state x="841" y="382" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1600713699290">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -972,10 +965,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603533059617" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1604849350065">
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1604857105909">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1604849350065" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1604857105909" />
     <state x="649" y="140" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604095844648">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
