@@ -3,24 +3,24 @@ import Link from "next/link";
 import cn from 'classnames';
 
 type PaginationProps = {
-    currentPage: Number,
-    totalPages: Number
+    currentPage: number,
+    totalPages: number
 }
 
 export const Pagination = ({currentPage, totalPages}: PaginationProps) => {
-    if (totalPages === 1) {
+    if (totalPages === 0 || totalPages === 1) {
         return (<></>);
     }
     return (
         <div className="flex flex-col items-center my-12">
         <div className="flex text-gray-700">
-            {Number(currentPage) > 1 ?
-                <Link href={`http://localhost:3000/timers?page=${Number(currentPage)-1}`}>
+            {currentPage > 1 ?
+                <Link href={`http://localhost:3000/timers?page=${currentPage-1}`}>
                     <a className="h-12 w-12 mr-1 flex justify-center items-center rounded-full cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none"
                              viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
                              strokeLinejoin="round" className="feather feather-chevron-left w-6 h-6">
-                            <polyline points="15 18 9 12 15 6"></polyline>
+                            <polyline points="15 18 9 12 15 6"/>
                         </svg>
                     </a>
                 </Link>
@@ -29,7 +29,7 @@ export const Pagination = ({currentPage, totalPages}: PaginationProps) => {
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none"
                          viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
                          strokeLinejoin="round" className="feather feather-chevron-left w-6 h-6">
-                        <polyline points="15 18 9 12 15 6"></polyline>
+                        <polyline points="15 18 9 12 15 6"/>
                     </svg>
                 </div>
             }
@@ -37,13 +37,13 @@ export const Pagination = ({currentPage, totalPages}: PaginationProps) => {
                 {generatePagination(totalPages, currentPage)}
                 <div className="w-12 h-12 md:hidden flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-teal-600 text-white">{currentPage}</div>
             </div>
-            {Number(currentPage) <= totalPages - 1 ?
-                <Link href={`http://localhost:3000/timers?page=${Number(currentPage)+1}`}>
+            {currentPage <= totalPages - 1 ?
+                <Link href={`http://localhost:3000/timers?page=${currentPage+1}`}>
                     <a className="h-12 w-12 mr-1 flex justify-center items-center rounded-full cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none"
                              viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
                              strokeLinejoin="round" className="feather feather-chevron-right w-6 h-6">
-                            <polyline points="9 18 15 12 9 6"></polyline>
+                            <polyline points="9 18 15 12 9 6"/>
                         </svg>
                     </a>
                 </Link>
@@ -52,7 +52,7 @@ export const Pagination = ({currentPage, totalPages}: PaginationProps) => {
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none"
                          viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
                          strokeLinejoin="round" className="feather feather-chevron-right w-6 h-6">
-                        <polyline points="9 18 15 12 9 6"></polyline>
+                        <polyline points="9 18 15 12 9 6"/>
                     </svg>
                 </div>
             }
@@ -61,7 +61,7 @@ export const Pagination = ({currentPage, totalPages}: PaginationProps) => {
     )
 }
 
-const generatePagination = (totalPages: Number, currentPage: Number) => {
+const generatePagination = (totalPages: number, currentPage: number) => {
     let pageIndicatorLow = 0;
     let pageIndicatorHigh = 0;
     return (

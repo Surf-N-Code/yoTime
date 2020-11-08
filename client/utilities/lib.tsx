@@ -19,3 +19,18 @@ export const toHHMM = (seconds: number) => {
         .map(v => v < 10 ? "0" + v : v)
         .join(":")
 }
+
+export const sleep = (milliseconds: number) => {
+    return new Promise(res => setTimeout(res, milliseconds))
+}
+
+export const waitForSyncedTimer = async (condition, time) => {
+    return await new Promise(resolve => {
+        const interval = setInterval(() => {
+            if (condition) {
+                resolve();
+                clearInterval(interval);
+            }
+        }, time);
+    });
+}
