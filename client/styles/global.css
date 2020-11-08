@@ -39,3 +39,9 @@ body {
 .mail-toggle.react-toggle--checked .react-toggle-track {
     background-color: #319795;
 }
+
+.spin-360 {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
