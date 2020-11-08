@@ -28,7 +28,7 @@ export const Layout = ({children}) => {
                 <meta name="og:title" content={siteTitle} />
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
-            <header className="pr-3 z-10 fixed w-full bg-gradient-to-r to-blue-500 from-teal-400 h-20 shadow flex items-center">
+            <header className="pr-3 z-50 fixed w-full bg-gradient-to-r to-blue-500 from-teal-400 h-20 shadow flex items-center">
                 <Link href="/">
                     <img src="../images/icons/icons8-timer-100.png" width="90" className="pl-2 pr-2 border-r border-teal-500 cursor-pointer" alt="Home"/>
                 </Link>

@@ -1,4 +1,3 @@
-import {object} from "prop-types";
 import {ITimer} from './timer.types';
 
 export interface IApiResult {

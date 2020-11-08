@@ -211,12 +211,12 @@ export const Timers = () => {
                         <div className={`fixed bottom-0`}>
                             <div className="flex mb-3">
                                 <button
-                                    className={`bg-red-500 rounded-full p-4 border-white border-2 shadow-md cursor-pointer${cn({' bg-red-100':stopTimerCount > 0 && stopTimerCount <= STOP_TIMER_RETRIES})}`}
+                                    className={`bg-red-500 rounded-full p-4 border-white border-2 outline-none shadow-md cursor-pointer${cn({' bg-red-100':stopTimerCount > 0 && stopTimerCount <= STOP_TIMER_RETRIES})}`}
                                     onClick={() => stopTimer()}>
                                     <img src={`../images/icons/${cn({'loading.svg': stopTimerCount > 0 && stopTimerCount <= STOP_TIMER_RETRIES}, {'icons8-stop-48.png': stopTimerCount === 0})}`} width="30" height="30" alt="Stop Timer"/>
                                 </button>
                                 <button
-                                    className={`${cn({'spin-360 opacity-50 cursor-default ': runningTimer.timer_type  === 'break'}, {'cursor-pointer ': runningTimer.timer_type  === 'work'}, {})}ml-3 bg-yellow-500 rounded-full p-4 border-white border-2 shadow-md`}
+                                    className={`${cn({'spin-360 opacity-50 cursor-default ': runningTimer.timer_type  === 'break'}, {'cursor-pointer ': runningTimer.timer_type  === 'work'}, {})}ml-3 bg-yellow-500 rounded-full p-4 border-white border-2 outline-none shadow-md`}
                                     onClick={() => startTimer('break')}
                                     disabled={cn({true: runningTimer.timer_type  === 'break'})}>
                                     <img src="../images/icons/icons8-pause-60.png" width="30" height="30"
@@ -228,7 +228,7 @@ export const Timers = () => {
                         <div className={`fixed bottom-0`}>
                             <div className="flex mb-3">
                                 <button
-                                    className="bg-teal-500 rounded-full p-4 border-white border-2 shadow-md cursor-pointer"
+                                    className="bg-teal-500 rounded-full p-4 border-white border-2 outline-none shadow-md cursor-pointer"
                                     onClick={() => startTimer('work')}>
                                     <img src="../images/icons/icons8-play-100.png" width="30" height="30" alt="Start Timer"/>
                                 </button>

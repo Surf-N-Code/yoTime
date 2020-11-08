@@ -15,7 +15,7 @@ export const Menu = ({ menuIsOpen, onClick }: MenuProps ) => {
     }
 
     return (
-        <div className={`flex w-full h-full fixed top-0${cn({' hidden' : !menuIsOpen})}`}
+        <div className={`flex w-full h-full fixed top-0 z-10${cn({' hidden' : !menuIsOpen})}`}
              onClick={() => closeMenu()}>
             <aside
                 className={`flex flex-col transform fixed top-0 left-64 w-40 h-full bg-white h-full shadow-xl fixed overflow-auto ease-in-out transition-all duration-200 ${cn({'translate-x-0': menuIsOpen}, {'-translate-x-full': !menuIsOpen})}`}

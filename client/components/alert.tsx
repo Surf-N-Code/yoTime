@@ -1,6 +1,5 @@
 import React, {useRef} from 'react';
 import styles from '../styles/alert.module.css';
-import {ITimer} from "../types/timer.types";
 
 type PaginationProps = {
     message: string,

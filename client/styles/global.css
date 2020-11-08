@@ -11,6 +11,11 @@ body {
     box-sizing: inherit;
 }
 
+.outline-none {
+    outline: none !important;
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
