@@ -23,7 +23,7 @@ class UserProvider extends Base
         $user = new User();
         $user->setUsername($email);
         $user->setIsActive(1);
-        $user->setTz('Europe/Amsterdam');
+        $user->setTimezone('Europe/Amsterdam');
         $user->setTzOffset(120);
         return $this->passwordEncoder->encodePassword($user, $password);
     }

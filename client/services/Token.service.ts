@@ -1,7 +1,7 @@
-import { NextPageContext } from 'next/types';
-
+import {GetServerSidePropsContext, NextApiRequest, NextApiResponse, NextPageContext} from 'next/types';
+import {FetcherFunc} from '../services';
 import Cookies from 'universal-cookie';
-import {useRouter} from "next/router";
+import fetch from 'isomorphic-unfetch';
 
 class TokenService {
   public saveToken(token: string) {
@@ -16,7 +16,33 @@ class TokenService {
     return;
   }
 
-  public checkAuthToken(token: string): Boolean {
+  public handleErrors(response: string): string {
+    if (response === 'TypeError: Failed to fetch') {
+      throw Error('Server error.');
+    }
+    return response;
+  }
+
+  public async checkAuthToken(token: string): Promise<any> {
+    // return fetch(
+    //     'https://localhost:8443/users',
+    //     {
+    //       headers: {
+    //         Accept: 'application/json',
+    //         'Content-Type': 'application/json',
+    //         Authorization: 'Bearer ' + token
+    //       },
+    //       method: 'GET'
+    //     }
+    // )
+    //     .then((response: Response) => {
+    //       const res = response.json();
+    //       console.log(res);
+    //     })
+    //     .then(this.handleErrors)
+    //     .catch((error) => {
+    //       throw error;
+    //     });
     // const loginAsync = async (token) => {
     //   const response = await fetch('authentication_validate', {
     //     method: "POST",
@@ -33,25 +59,20 @@ class TokenService {
     //
     //   return await response;
     // };
-    return true;
+    return typeof token !== 'undefined';
   }
 
   public getTokenFromCookie() {
 
   }
 
-  public async authenticateTokenSsr() {
-    // const router = useRouter();
-    const cookies = new Cookies(null);
+  public async authenticateTokenSsr(ctx: GetServerSidePropsContext) {
+    const ssr = !!ctx.req;
+    console.log('context in auth',ctx);
+    const cookies = new Cookies(ssr ? ctx.req.headers.cookie : null);
     const token = cookies.get('token');
-    console.log('token in cookie', token);
-
-    const response = this.checkAuthToken(token);
-    console.log('response',response)
-    // if (!response.success) {
-    //   this.deleteToken();
-    //   router.push('/logout');
-    // }
+    console.log("token from cookie", token);
+    return this.checkAuthToken(token);
   }
 }
 

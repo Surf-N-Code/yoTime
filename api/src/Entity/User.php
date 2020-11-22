@@ -17,6 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity("email")
+ * @ORM\EntityListeners({"App\Doctrine\SetUserListener"})
  */
 class User implements UserInterface
 {
@@ -31,14 +32,15 @@ class User implements UserInterface
     /**
      * @Groups({"Timer"})
      * @ORM\Column(type="string", length=255, nullable=true, unique=true)
+     * @Assert\Unique(groups={"duplicate_check"})
      * @Assert\Email()
      */
-    private $email;
+    private ?string $email;
 
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private array $roles = [];
 
     /**
      * @var string The hashed password
@@ -50,7 +52,13 @@ class User implements UserInterface
      * @Groups({"Timer"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $fullName;
+    private $firstName;
+
+    /**
+     * @Groups({"Timer"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $lastName;
 
     /**
      * @Groups({"Timer"})
@@ -59,14 +67,19 @@ class User implements UserInterface
     private $slackUserId;
 
     /**
-     * @Groups({"Timer"})
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $tz;
+    private $personioEmployeeId;
 
     /**
      * @Groups({"Timer"})
      * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private $timezone;
+
+    /**
+     * @Groups({"Timer"})
+     * @ORM\Column(type="integer", length=255, nullable=false)
      */
     private $tzOffset;
 
@@ -172,14 +185,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getTz(): ?string
+    public function getTimezone(): ?string
     {
-        return $this->tz;
+        return $this->timezone;
     }
 
-    public function setTz(?string $tz): self
+    public function setTimezone(?string $timezone): self
     {
-        $this->tz = $tz;
+        $this->timezone = $timezone;
 
         return $this;
     }
@@ -357,14 +370,24 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getFullName()
+    public function getFirstName()
     {
-        return $this->fullName;
+        return $this->firstName;
     }
 
-    public function setFullName($fullName): void
+    public function setFirstName($firstName): void
     {
-        $this->fullName = $fullName;
+        $this->firstName = $firstName;
+    }
+
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName($lastName): void
+    {
+        $this->lastName = $lastName;
     }
 
     /**
@@ -437,7 +460,7 @@ class User implements UserInterface
      */
     public function getSalt()
     {
-        // not needed when using the "bcrypt" algorithm in security.yaml
+        return 'salt';
     }
 
     /**
@@ -457,5 +480,15 @@ class User implements UserInterface
     public function setIsActive($isActive): void
     {
         $this->isActive = $isActive;
+    }
+
+    public function getPersonioEmployeeId()
+    {
+        return $this->personioEmployeeId;
+    }
+
+    public function setPersonioEmployeeId($personioEmployeeId): void
+    {
+        $this->personioEmployeeId = $personioEmployeeId;
     }
 }

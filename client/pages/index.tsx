@@ -1,21 +1,20 @@
 import React from 'react';
-import Layout from '../components/layout';
-import { NextPageContext } from 'next';
-import TokenService from "../services/Token.service";
+import {Layout} from '../components';
+import {TokenService} from "../services";
+import {GetServerSideProps} from "next";
 
-export const Home = (props) => {
+export const Home = ({validToken}) => {
     return (
-        <Layout>
+        <Layout validToken={validToken}>
             <h1>Home</h1>
         </Layout>
     )
 }
 
-Home.getInitialProps = async () => {
-    const tokenService = new TokenService();
-    console.log('awaited authenticateTokenSSR', await tokenService.authenticateTokenSsr());
-
-    return {};
-};
-
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = (async (context) => {
+    const tokenService = new TokenService();
+    const validToken = await tokenService.authenticateTokenSsr(context)
+    return { props: { validToken } };
+});

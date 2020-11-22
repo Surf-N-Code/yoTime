@@ -1,7 +1,7 @@
 security:
     encoders:
         App\Entity\User:
-            algorithm: argon2i
+            algorithm: auto
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -11,13 +11,14 @@ security:
           class: App\Entity\User
           property: email
     firewalls:
+        register:
+          methods: [ POST ]
+          pattern: ^/users
+          anonymous: true
+          security: false
         dev:
           pattern: ^/(_(profiler|wdt)|css|images|js)/
           security: false
-        register:
-          pattern: ^/register
-          stateless: true
-          anonymous: true
         main:
           stateless: true
           anonymous: true
@@ -37,5 +38,4 @@ security:
       - { path: ^/_profiler, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/authentication_validate, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/, roles: IS_AUTHENTICATED_FULLY }

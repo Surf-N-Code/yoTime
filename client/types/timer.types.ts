@@ -1,6 +1,6 @@
 export interface ITimer {
   '@id'?: string;
-  '@type': string;
+  '@type'?: string;
   id: number;
   date_start: Date;
   date_end?: Date;

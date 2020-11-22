@@ -1,4 +1,4 @@
-export const fetcherFunc = (...args) => {
+export const FetcherFunc = (...args) => {
     const [url, token, type, body, contentType] = args;
     const prefixedUrl = [...url][0] !== '/' ? `/${url}`: url;
     return fetch(`https://localhost:8443${prefixedUrl}`, {
@@ -9,7 +9,12 @@ export const fetcherFunc = (...args) => {
             Authorization: 'Bearer ' + token
         },
         body: JSON.stringify(body),
-    }).then(response => response.json());
+    })
+        .then((response) => {
+            return response.json()
+        })
+        .catch((error) => {
+            console.log('fetcherfunc error', error.message);
+            throw new Error(error.message);
+        });
 }
-
-export default fetcherFunc;

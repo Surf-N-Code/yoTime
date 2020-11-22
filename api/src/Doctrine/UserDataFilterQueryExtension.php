@@ -10,6 +10,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
 use App\Entity\DailySummary;
 use App\Entity\Task;
 use App\Entity\Timer;
+use App\Entity\User;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Security\Core\Security;
 
@@ -38,15 +39,25 @@ class UserDataFilterQueryExtension implements QueryCollectionExtensionInterface,
     {
         if ($resourceClass !== Timer::class &&
             $resourceClass !== DailySummary::class &&
-            $resourceClass !== Task::class
+            $resourceClass !== Task::class &&
+            $resourceClass !== User::class
         ) {
             return;
         }
         if ($this->security->isGranted('ROLE_ADMIN')) {
             return;
         }
+        if (!$this->security->getUser()) {
+            return;
+        }
         $rootAlias = $queryBuilder->getRootAliases()[0];
-        $queryBuilder->andWhere(sprintf('%s.user = :user', $rootAlias))
-                     ->setParameter('user', $this->security->getUser());
+
+        if ($resourceClass === User::class) {
+            $queryBuilder->andWhere(sprintf('%s.email = :email', $rootAlias))
+                         ->setParameter('email', $this->security->getUser()->getUsername());
+        } else {
+            $queryBuilder->andWhere(sprintf('%s.user = :user', $rootAlias))
+                         ->setParameter('user', $this->security->getUser());
+        }
     }
 }

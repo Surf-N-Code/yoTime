@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useReducer } from 'react';
 
 import { IAuthInfo } from '../types/auth.types';
+import {GetServerSideProps} from "next";
+import {TokenService} from "../services";
 
 export const AuthStateContext = React.createContext({});
 
@@ -36,7 +38,8 @@ const reducer: React.Reducer<{}, IAction> = (state, action) => {
 	}
 };
 
-export const AuthProvider = ({ children }: any) => {
+export const AuthProvider = ({ children, test }: any) => {
+	console.log('children an dtest',children, test)
 	let localState = null;
 	if (typeof localStorage !== 'undefined' && localStorage.getItem('userInfo')) {
 		localState = JSON.parse(localStorage.getItem('userInfo') || '');
@@ -60,3 +63,18 @@ export const AuthProvider = ({ children }: any) => {
 // together in this file, allowing user info to be accessed and updated
 // in any functional component using the hook
 export const useAuth: any = () => useContext(AuthStateContext);
+
+
+export const getServerSideProps: GetServerSideProps = (async (context) => {
+	const tokenService = new TokenService();
+	const validToken = await tokenService.authenticateTokenSsr(context)
+	if (!validToken) {
+		return {
+			redirect: {
+				permanent: false,
+				destination: '/login',
+			},
+		}
+	}
+	return { props: { test: 'test' } };
+});

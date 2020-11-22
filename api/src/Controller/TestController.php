@@ -50,10 +50,10 @@ class TestController extends AbstractController
     public function generateUser(EntityManagerInterface $em)
     {
         $user = new User();
-        $user->setFullName('Norman');
+        $user->setFirstName('Norman');
         $user->setSlackUserId('wrsdf');
         $user->setEmail('ndfs@sadf.cde');
-        $user->setTz('europ');
+        $user->setTimezone('europ');
         $user->setTzOffset(200);
         $em->persist($user);
         $em->flush();

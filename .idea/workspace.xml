@@ -34,14 +34,76 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add pause timer and fix start stopping timer including counting up seconds properly">
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Remove button outline and handle z-index of menu and header properly">
+      <change afterPath="$PROJECT_DIR$/api/src/DataPersister/UserPersister.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/tests/Entity/UserTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/Form/AccountSettingsValidation.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/Form/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/Alert.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/FormField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/errors/AuuthorizationError.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/errors/ConflictError.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/errors/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/pages/register.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/services/Login.service.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/services/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/types/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/types/user.types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/utilities/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/alert.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/yoTime.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yoTime.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/fixtures/dev/users.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/dev/users.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/fixtures/test/users.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/test/users.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Controller/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Controller/TestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Doctrine/UserDataFilterQueryExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Doctrine/UserDataFilterQueryExtension.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/EventListener/UserCreateListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/EventListener/UserCreateListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Fixtures/UserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Fixtures/UserProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Mail/Mailer.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Mail/Mailer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Migrations/Version20201024093839.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Migrations/Version20201024094323.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Migrations/Version20201024095116.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Migrations/Version20201024100125.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Migrations/Version20201024145825.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Services/UserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Services/UserProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Mail/MailerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Mail/MailerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/alert.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/dailyEditView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyEditview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/dailyTableRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyTablerow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/loading.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/loading.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/notification.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/dailies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dailies.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/logout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/logout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/personio.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/personio.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/settings.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/services/Auth.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Auth.context.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/services/Fetcher.service.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Fetcher.service.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/services/GlobalMessaging.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/GlobalMessaging.context.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/services/Token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Token.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/styles/tailwind.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/tailwind.config.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/types/apiResult.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/apiResult.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/types/auth.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/auth.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/types/timer.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/timer.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +134,9 @@
     <exe-path />
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/client/package.json" />
   </component>
   <component name="PhpDebugGeneral" xdebug_debug_port="9001" />
   <component name="PhpServers">
@@ -252,35 +317,31 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/types" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="settings.php.debug.servers" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/auto-client/node_modules/typescript/lib" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/client/components" />
-      <recent name="$PROJECT_DIR$/client/public/images/icons" />
-      <recent name="$PROJECT_DIR$/client/types" />
-      <recent name="$PROJECT_DIR$/api/config/packages/dev" />
-      <recent name="$PROJECT_DIR$/api/fixtures" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/Errors" />
       <recent name="$PROJECT_DIR$/client/types" />
       <recent name="$PROJECT_DIR$/api/tests/Doctrine" />
       <recent name="$PROJECT_DIR$/client/pages" />
       <recent name="$PROJECT_DIR$/client/public/images/icons" />
-      <recent name="$PROJECT_DIR$/api/fixtures/test" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/types" />
+      <recent name="$PROJECT_DIR$/client/Form" />
+      <recent name="$PROJECT_DIR$/client/Errors" />
+      <recent name="$PROJECT_DIR$/client/utilities" />
+      <recent name="$PROJECT_DIR$/client/services" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.SecurityListenerTest">
-    <configuration name="BotMessageControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Handler\MessageController\Slack\BotMessageControllerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/BotMessageControllerTest.php" scope="Class" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="PHPUnit.UserTest.testCreateUser">
     <configuration name="InteractionEventControllerIntegrationTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="App\Tests\Handler\MessageController\Slack\InteractionEventControllerIntegrationTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/InteractionEventControllerIntegrationTest.php" scope="Class" />
       <method v="2" />
@@ -289,8 +350,12 @@
       <TestRunner class="App\Tests\Security\Slack\EventListener\SecurityListenerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="SlashCommandMessageControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Handler\MessageController\Slack\SlashCommandMessageControllerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" scope="Class" />
+    <configuration name="UserTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Entity\UserTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Entity/UserTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UserTest.testCreateUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Entity\UserTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Entity/UserTest.php" method="testCreateUser" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -299,11 +364,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.UserTest.testCreateUser" />
+        <item itemvalue="PHPUnit.UserTest" />
         <item itemvalue="PHPUnit.SecurityListenerTest" />
         <item itemvalue="PHPUnit.tests" />
         <item itemvalue="PHPUnit.InteractionEventControllerIntegrationTest" />
-        <item itemvalue="PHPUnit.BotMessageControllerTest" />
-        <item itemvalue="PHPUnit.SlashCommandMessageControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -361,21 +426,16 @@
       <workItem from="1604555415496" duration="1939000" />
       <workItem from="1604688868060" duration="27044000" />
       <workItem from="1604825844441" duration="76000" />
-      <workItem from="1604825940648" duration="21844000" />
-    </task>
-    <task id="LOCAL-00016" summary="Extend tests">
-      <created>1600027430811</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1600027430811</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Return timer on punchinattime and try fixing integration tests">
-      <created>1600506991653</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1600506991653</updated>
+      <workItem from="1604825940648" duration="23315000" />
+      <workItem from="1605013876714" duration="621000" />
+      <workItem from="1605380617356" duration="5903000" />
+      <workItem from="1605455286245" duration="8402000" />
+      <workItem from="1605549855074" duration="3817000" />
+      <workItem from="1605727582536" duration="2138000" />
+      <workItem from="1605808892887" duration="9623000" />
+      <workItem from="1605893311335" duration="6834000" />
+      <workItem from="1605952995935" duration="1385000" />
+      <workItem from="1605954395685" duration="36999000" />
     </task>
     <task id="LOCAL-00018" summary="Add personio http client">
       <created>1600508079989</created>
@@ -706,7 +766,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604856670012</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Remove button outline and handle z-index of menu and header properly">
+      <created>1604857466416</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1604857466416</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Create usercreatelistener to throw a 409 status code on duplicate email when registering">
+      <created>1605969554439</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1605969554440</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -753,8 +827,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Add timer fixtures and continue on timers client view" />
-    <MESSAGE value="Add button to start / stop a running timer" />
     <MESSAGE value="Pre react class for dailies" />
     <MESSAGE value="React class component for dailies test" />
     <MESSAGE value="Add daily summary add view" />
@@ -778,7 +850,9 @@
     <MESSAGE value="Working adding new timer and optimistically updating the ui" />
     <MESSAGE value="Attempt to add timer to state" />
     <MESSAGE value="Add pause timer and fix start stopping timer including counting up seconds properly" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add pause timer and fix start stopping timer including counting up seconds properly" />
+    <MESSAGE value="Remove button outline and handle z-index of menu and header properly" />
+    <MESSAGE value="Create usercreatelistener to throw a 409 status code on duplicate email when registering" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create usercreatelistener to throw a 409 status code on duplicate email when registering" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="4" width="756" height="674" key="#CLI_Interpreters" timestamp="1604086486755">
@@ -797,26 +871,26 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="535" y="161" width="828" height="674" key="#Test_Frameworks/0.0.1920.1080@0.0.1920.1080" timestamp="1604086474012" />
-    <state x="699" y="7" width="871" height="787" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604086294450">
+    <state x="677" y="-31" width="871" height="787" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605893775683">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="699" y="7" width="871" height="787" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604086294450" />
-    <state x="653" y="371" width="603" height="380" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600715364278">
+    <state x="677" y="-31" width="871" height="787" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605893775683" />
+    <state x="651" y="353" width="603" height="380" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605985268093">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="653" y="371" width="603" height="380" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1600715364278" />
+    <state x="651" y="353" width="603" height="380" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1605985268093" />
     <state x="774" y="359" width="357" height="298" key="#com.intellij.ide.actions.DebugLogConfigureAction" timestamp="1604086445887">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="774" y="359" width="357" height="298" key="#com.intellij.ide.actions.DebugLogConfigureAction/0.0.1920.1080@0.0.1920.1080" timestamp="1604086445887" />
-    <state x="758" y="204" width="390" height="552" key="#com.intellij.ide.util.MemberChooser" timestamp="1604097816367">
+    <state x="756" y="186" width="390" height="552" key="#com.intellij.ide.util.MemberChooser" timestamp="1605815569427">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="758" y="204" width="390" height="552" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1604097816367" />
-    <state x="68" y="-198" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604162370678">
+    <state x="756" y="186" width="390" height="552" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1605815569427" />
+    <state x="62" y="-252" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605993121469">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="68" y="-198" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604162370678" />
+    <state x="62" y="-252" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605993121469" />
     <state x="653" y="-53" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604161796597">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -829,18 +903,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="122" y="-114" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1604857267965">
+    <state x="104" y="-36" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1605969554060">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="122" y="-114" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1604857267965" />
+    <state x="104" y="-36" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1605969554060" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="516" height="465" key="DebuggerActiveHint/0.0.1920.1080@0.0.1920.1080" timestamp="1599333625815" />
-    <state x="-13" y="-132" width="1862" height="915" key="DiffContextDialog" timestamp="1604241652781">
+    <state x="29" y="154" width="1308" height="897" key="DiffContextDialog" timestamp="1605998274099">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="-13" y="-132" width="1862" height="915" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604241652781" />
+    <state x="29" y="154" width="1308" height="897" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605998274099" />
     <state x="706" y="347" width="446" height="222" key="DockerComposeFileDialog" timestamp="1604085577311">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -853,22 +927,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="691" y="454" key="GitCloneDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599927280951" />
-    <state width="1070" height="308" key="GridCell.Tab.0.bottom" timestamp="1604299904424">
+    <state width="1262" height="230" key="GridCell.Tab.0.bottom" timestamp="1606046881491">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
-    <state width="1070" height="308" key="GridCell.Tab.0.center" timestamp="1604299904424">
+    <state width="1262" height="230" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606046881491" />
+    <state width="1262" height="230" key="GridCell.Tab.0.center" timestamp="1606046881491">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
-    <state width="1070" height="308" key="GridCell.Tab.0.left" timestamp="1604299904423">
+    <state width="1262" height="230" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606046881491" />
+    <state width="1262" height="230" key="GridCell.Tab.0.left" timestamp="1606046881490">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904423" />
-    <state width="1070" height="308" key="GridCell.Tab.0.right" timestamp="1604299904424">
+    <state width="1262" height="230" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606046881490" />
+    <state width="1262" height="230" key="GridCell.Tab.0.right" timestamp="1606046881491">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
+    <state width="1262" height="230" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606046881491" />
     <state width="1070" height="308" key="GridCell.Tab.1.bottom" timestamp="1604299904424">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -901,22 +975,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1070" height="308" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904425" />
-    <state width="227" height="471" key="HiddenNamespacesPopup" timestamp="1600781587609">
+    <state width="227" height="471" key="HiddenNamespacesPopup" timestamp="1605851176956">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="227" height="471" key="HiddenNamespacesPopup/0.0.1920.1080@0.0.1920.1080" timestamp="1600781587609" />
-    <state x="613" y="98" width="648" height="532" key="NewPhpClassDialog" timestamp="1604094778029">
+    <state width="227" height="471" key="HiddenNamespacesPopup/0.0.1920.1080@0.0.1920.1080" timestamp="1605851176956" />
+    <state x="609" y="62" width="648" height="532" key="NewPhpClassDialog" timestamp="1605968418859">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="613" y="98" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604094778029" />
-    <state x="779" y="-28" width="389" height="578" key="RollbackChangesDialog" timestamp="1604298347251">
+    <state x="609" y="62" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605968418859" />
+    <state x="777" y="-46" width="389" height="578" key="RollbackChangesDialog" timestamp="1605554437610">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="779" y="-28" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604298347251" />
-    <state x="440" y="40" key="SettingsEditor" timestamp="1604560698000">
+    <state x="777" y="-46" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605554437610" />
+    <state x="436" y="4" key="SettingsEditor" timestamp="1605955388327">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="440" y="40" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1604560698000" />
+    <state x="436" y="4" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1605955388327" />
     <state x="801" y="337" width="297" height="157" key="VCS.ChangelistChooser" timestamp="1599871952996">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -925,14 +999,14 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="29" y="100" width="1116" height="951" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604346089253" />
-    <state x="537" y="123" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1604856719414">
+    <state x="535" y="105" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1604857515628">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="537" y="123" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1604856719414" />
-    <state x="841" y="382" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1600713699290">
+    <state x="535" y="105" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1604857515628" />
+    <state x="827" y="256" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1605893582609">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="841" y="382" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1080@0.0.1920.1080" timestamp="1600713699290" />
+    <state x="827" y="256" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1080@0.0.1920.1080" timestamp="1605893582609" />
     <state x="664" y="122" width="364" height="515" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1603618367322">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -957,18 +1031,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="29" y="136" width="1862" height="915" key="dock-window-2/0.0.1920.1080@0.0.1920.1080" timestamp="1600868604122" />
-    <state x="897" y="466" width="854" height="592" key="find.popup" timestamp="1604259055109">
+    <state x="897" y="466" width="854" height="592" key="find.popup" timestamp="1606000555018">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="897" y="466" width="854" height="592" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1604259055109" />
+    <state x="897" y="466" width="854" height="592" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1606000555018" />
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog" timestamp="1603533059617">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603533059617" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1604857105909">
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1606054281127">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1604857105909" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1606054281127" />
     <state x="649" y="140" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604095844648">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -1001,6 +1075,12 @@
           <url>file://$PROJECT_DIR$/api/src/Doctrine/SetUserListener.php</url>
           <line>21</line>
           <option name="timeStamp" value="115" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/client/tailwind.config.js</url>
+          <line>170</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="117" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

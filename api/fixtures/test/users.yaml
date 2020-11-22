@@ -1,17 +1,19 @@
 App\Entity\User:
   user_{1}:
     email: norman@yazio.com
-    fullName: Norman Dilthey
+    firstName: Norman
+    lastName: Dilthey
     slack_user_id: UHW253RU1
-    tz: Europe/Amsterdam
+    timezone: Europe/Amsterdam
     tzOffset: 100
     password: <getHashedPassword("norman@yazio.com", "trustno1")>
     is_active: 1
   user_{2..5}:
     email: <email()>
-    fullName: <name()>
+    firstName: <name()>
+    lastName: <name()>
     slack_user_id: UHW253RU1
-    tz: Europe/Amsterdam
+    timezone: Europe/Amsterdam
     tzOffset: 100
     password: <getHashedPassword($email, "trustno1")>
     is_active: 1

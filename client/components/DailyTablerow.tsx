@@ -3,7 +3,7 @@ import React from "react";
 import cn from 'classnames';
 import {toHHMMSS} from "../utilities/lib";
 
-export const DailyTableRow = ({daily, onClick}) => {
+export const DailyTablerow = ({daily, onClick}) => {
     const dateString = format(new Date(daily.date), 'dd LLLL uuuu' );
     const formattedDiffInMinPerDay = toHHMMSS(daily.time_worked_in_s - daily.time_break_in_s);
 
