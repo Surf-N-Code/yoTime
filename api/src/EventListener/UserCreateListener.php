@@ -50,8 +50,8 @@ final class UserCreateListener implements EventSubscriberInterface
         }
 
         $validationErrors = $this->validator->validate($obj);
-        if ($validationErrors) {
-            throw new UniqueConstraintViolationException(sprintf('User with email "%s" already exist.', $obj->getEmail()));
+        if (count($validationErrors) > 0) {
+            throw new UniqueConstraintViolationException(sprintf('User with email %s already exists.', $obj->getEmail()));
         }
     }
 }

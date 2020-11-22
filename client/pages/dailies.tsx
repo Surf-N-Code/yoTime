@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import Layout from '../components/layout';
-import { DailyTableRow } from '../components/dailyTableRow';
+import {Layout, DailyTablerow, DailyEditview, Pagination } from '../components';
 import useSWR from "swr";
 import {format} from 'date-fns';
 import { useRouter } from 'next/router';
-import { Pagination } from '../components/pagination';
-import {DailyEditView} from "../components/dailyEditView";
 
 export const Dailies = () => {
     const router = useRouter();
@@ -20,13 +17,13 @@ export const Dailies = () => {
     const [endDate, setEndDate] = useState(initialEndDate);
     const [sendMail, setSendMail] = useState(0);
 
-    const [isEditViewVisible, setIsEditViewVisible] = useState(0);
+    const [isEditViewVisible, setIsEditViewVisible] = useState(false);
 
     let dailiesNormalized = {};
     let totalSecondsPerDay = {};
 
     const toggleDsDetailView = (daily = null) => {
-        setIsEditViewVisible(!isEditViewVisible);
+        setIsEditViewVisible((prevVisible) => !prevVisible);
         if (daily !== null) {
             console.log("setting start time to: ", daily.start_time);
             setStartDate(new Date(daily.start_time));
@@ -59,7 +56,7 @@ export const Dailies = () => {
 
                     {Object.entries(dailiesNormalized).map(([_, daily]) => {
                         return (
-                            <DailyTableRow
+                            <DailyTablerow
                                 daily={daily}
                                 onClick={daily => toggleDsDetailView(daily)}
                             />
@@ -77,7 +74,7 @@ export const Dailies = () => {
                     onClick={() => toggleDsDetailView()}>
                     <img src="../images/icons/icons8-plus-math-60.png" width="25" height="25" alt="Start Timer"/>
                 </div>
-                <DailyEditView
+                <DailyEditview
                     startDate={startDate}
                     endDate={endDate}
                     setStartDate={(date) => setStartDate(date)}

@@ -52,7 +52,7 @@ class MailerTest extends TestCase
         $this->time->formatSecondsAsHoursAndMinutes(600)
             ->shouldBeCalledTimes(2)
             ->willReturn('0h 20min');
-        $this->user->getFullName()
+        $this->user->getFirstName()
             ->shouldBeCalledTimes(2)
             ->willReturn('Norman Dilthey');
 

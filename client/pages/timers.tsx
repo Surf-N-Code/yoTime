@@ -1,29 +1,28 @@
 import React, {useEffect, useState} from 'react';
 import useSWR from 'swr';
-import {useRouter} from 'next/router';
+import {Router, useRouter} from 'next/router';
 import {differenceInDays, differenceInSeconds, format} from 'date-fns';
 import isToday from 'date-fns/isToday';
 import cn from 'classnames';
 import {v4 as uuidv4} from 'uuid';
-import Layout from '../components/layout';
-import {Pagination} from '../components/pagination';
-import {Alert} from '../components/alert';
-import {fetcherFunc} from '../services/Fetcher.service';
-import {useAuth} from "../services/Auth.context";
-import TokenService from "../services/Token.service";
-import {sleep, toHHMMSS} from "../utilities/lib";
-import {ITimer} from '../types/timer.types';
-import {IApiResult} from '../types/apiResult.types';
 
-export const Timers = () => {
+import {Layout, Pagination, Alert} from '../components';
+import {FetcherFunc, useAuth, TokenService, useGlobalMessaging} from '../services';
+import {ITimer, IApiResult} from '../types';
+import {toHHMMSS, sleep} from "../utilities";
+
+import {GetServerSideProps} from "next";
+
+export const Timers = ({validToken}) => {
     const router = useRouter();
     const [auth, authDispatch] = useAuth();
-    const [appError, setAppError] = useState('');
-    const [stopTimerCount, setStopTimerCount] = useState(0);
+    const [stopTimerAttempts, setStopTimerAttempts] = useState(0);
     const [runningTimer, setRunningTimer] = useState<ITimer | null>(null);
+    const [messageState, messageDispatch] = useGlobalMessaging();
+    const tokenService = new TokenService();
     const currentPage = Number(typeof router.query.page !== 'undefined' ? router.query.page : 1);
     const url = `timers?order[dateStart]&page=${currentPage}`;
-    const { data, error, mutate: mutateTimers } = useSWR<IApiResult>([url, auth.jwt, 'GET'], fetcherFunc)
+    const { data, error, mutate: mutateTimers } = useSWR<IApiResult>([url, auth.jwt, 'GET'], FetcherFunc)
     const STOP_TIMER_RETRIES = 0;
 
     useEffect(() => {
@@ -55,14 +54,21 @@ export const Timers = () => {
             await stopTimer();
         }
 
-        if (stopTimerCount >= STOP_TIMER_RETRIES && typeof runningTimer.lastSyncAttempt === 'undefined') {
-            setStopTimerCount(0);
+        if (stopTimerAttempts >= STOP_TIMER_RETRIES && typeof runningTimer.lastSyncAttempt === 'undefined') {
+            console.log('stop timer attempt', stopTimerAttempts);
+            console.log('running timer in stop timer attempst', runningTimer);
+            setStopTimerAttempts(0);
             setRunningTimer({'lastSyncAttempt': new Date(), ...runningTimer});
-            setAppError('Ups, I couldn\'t stop your timer. Have a coffee, come back and please try again :)');
+            messageDispatch({
+                type: 'setMessage',
+                payload: {
+                    message: 'Ups, I couldn\'t stop your timer. Have a coffee, come back and please try again :)'
+                }
+            });
             return;
         }
         sleep();
-    }, [stopTimerCount])
+    }, [stopTimerAttempts])
 
     const updateTimerDurationUi = () => {
         if (typeof runningTimer === 'undefined' || runningTimer === null || runningTimer["@type"] !== 'Timer' ) return;
@@ -71,11 +77,6 @@ export const Timers = () => {
             setRunningTimer((prevVal) => {return {diffInSeconds, ...prevVal}})
         }, 1000);
         return () => clearInterval(timerSecondsUpdater);
-    }
-
-    const removeLatestErrorMessage = async () => {
-        await sleep(1000); //wait for the css transition to finish
-        setAppError('');
     }
 
     const generateSubTimerHtml = (timer: ITimer, formattedDiffInMinPerTimer: string) => {
@@ -104,20 +105,35 @@ export const Timers = () => {
     const stopTimer = async () => {
         if (!runningTimer) return;
         if (runningTimer.optimisticTimer === true && typeof runningTimer.lastSyncAttempt === 'undefined') {
-            setStopTimerCount(stopTimerCount+1);
+            setStopTimerAttempts(stopTimerAttempts+1);
             return;
         }
 
+        console.group('Stop Timer');
+        console.log('running timer', runningTimer);
+        console.log('data', data);
+
         let timer = {...runningTimer};
         timer.date_end = new Date();
+        let timersToStop = [];
         //@TODO hier muss ich den timer iwie verwenden, nicht die hydra members
         await mutateTimers((data) => {
             let newData = {...data};
-            newData['hydra:member'][0].date_end = new Date();
+            newData["hydra:member"].map((timer) => {
+                if (typeof timer.date_end === 'undefined' || timer.date_end === null) {
+                    timer.date_end = new Date();
+                    timersToStop.push(timer);
+                }
+            })
             return {...data, "hydra:member": [...newData['hydra:member']]};
         }, false);
-        await fetcherFunc(`/timers/${timer.id}`, auth.jwt, 'PATCH', timer, 'application/merge-patch+json');
-        console.log('setrunningtimer to null');
+        if (timersToStop.length > 1) {
+            timersToStop.map((timer) => {
+                FetcherFunc(`/timers/${timer.id}`, auth.jwt, 'PATCH', timer, 'application/merge-patch+json');
+            })
+        }
+        await FetcherFunc(`/timers/${timer.id}`, auth.jwt, 'PATCH', timer, 'application/merge-patch+json');
+        console.groupEnd();
         setRunningTimer(null);
     }
 
@@ -136,7 +152,7 @@ export const Timers = () => {
             return {...data, "hydra:member": [{id: tempId, ...timer}, ...data['hydra:member']]};
         }, false);
 
-        const result = await fetcherFunc('timers', auth.jwt, 'POST', timer);
+        const result = await FetcherFunc('timers', auth.jwt, 'POST', timer);
 
         await mutateTimers((data) => {
             return {...data, "hydra:member": data['hydra:member'].map((timer) => timer.id === tempId ? result : timer)};
@@ -148,12 +164,17 @@ export const Timers = () => {
     // console.log('---- DATA ---- ', data);
 
     if (data && data['@type'] === 'hydra:Error') {
-        console.error(data['hydra:description']);
+        messageDispatch({
+            type: 'setMessage',
+            payload: {
+                message: 'Ups... Something went wrong. Please try again.'
+            }
+        })
     }
 
     let daysRendered = [];
     return (
-        <Layout>
+        <Layout validToken>
             <div className="mt-6">
             {error || (data && data['@type'] === 'hydra:Error')? <div>Ups... there was an error fetching your timers</div> :
                 <>
@@ -190,7 +211,7 @@ export const Timers = () => {
                                                     className="text-xs text-gray-500">{format(new Date(timer.date_start), 'dd LLLL uuuu')}</div>
                                                 <div className="flex flex-row items-center">
                                                     <div
-                                                        className={`text-xl${cn({' text-yt_orange font-bold': todayTimer}, {' text-gray-900': !todayTimer})}`}>{todayTimer ? 'Today' : format(new Date(timer.date_start), 'iiii')}</div>
+                                                        className={`text-2xl${cn({' text-yellow-500 font-bold': todayTimer}, {' text-gray-900': !todayTimer})}`}>{todayTimer ? 'Today' : format(new Date(timer.date_start), 'iiii')}</div>
                                                     <div className="ml-auto"><span className="text-xs">({toHHMMSS(totalBreakDuration)})</span> {toHHMMSS(totalWorkDuration)}</div>
                                                 </div>
                                             </div>
@@ -211,12 +232,12 @@ export const Timers = () => {
                         <div className={`fixed bottom-0`}>
                             <div className="flex mb-3">
                                 <button
-                                    className={`bg-red-500 rounded-full p-4 border-white border-2 outline-none shadow-md cursor-pointer${cn({' bg-red-100':stopTimerCount > 0 && stopTimerCount <= STOP_TIMER_RETRIES})}`}
+                                    className={`bg-red-500 rounded-full p-4 border-white border-2 outline-none shadow-md cursor-pointer${cn({' bg-red-100':stopTimerAttempts > 0 && stopTimerAttempts <= STOP_TIMER_RETRIES})}`}
                                     onClick={() => stopTimer()}>
-                                    <img src={`../images/icons/${cn({'loading.svg': stopTimerCount > 0 && stopTimerCount <= STOP_TIMER_RETRIES}, {'icons8-stop-48.png': stopTimerCount === 0})}`} width="30" height="30" alt="Stop Timer"/>
+                                    <img src={`../images/icons/${cn({'loading.svg': stopTimerAttempts > 0 && stopTimerAttempts <= STOP_TIMER_RETRIES}, {'icons8-stop-48.png': stopTimerAttempts === 0})}`} width="30" height="30" alt="Stop Timer"/>
                                 </button>
                                 <button
-                                    className={`${cn({'spin-360 opacity-50 cursor-default ': runningTimer.timer_type  === 'break'}, {'cursor-pointer ': runningTimer.timer_type  === 'work'}, {})}ml-3 bg-yellow-500 rounded-full p-4 border-white border-2 outline-none shadow-md`}
+                                    className={`${cn({'spin-360 opacity-50 cursor-default ': runningTimer.timer_type  === 'break'}, {'cursor-pointer ': runningTimer.timer_type  === 'work'}, {})}ml-3 bg-yellow-400 rounded-full p-4 border-white border-2 outline-none shadow-md`}
                                     onClick={() => startTimer('break')}
                                     disabled={cn({true: runningTimer.timer_type  === 'break'})}>
                                     <img src="../images/icons/icons8-pause-60.png" width="30" height="30"
@@ -236,13 +257,27 @@ export const Timers = () => {
                         </div>
                     }
 
-                    {appError && appError.length > 0 ? <Alert message={appError} severity={'error'} onClick={() => removeLatestErrorMessage()}/> : ''}
+                    {messageState.message !== '' ? <Alert message={messageState.message} severity={'error'}/> : ''}
                 </>
             }
             </div>
         </Layout>
     );
 }
+
+export const getServerSideProps: GetServerSideProps = (async (context) => {
+    const tokenService = new TokenService();
+    const validToken = await tokenService.authenticateTokenSsr(context)
+    if (!validToken) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: '/login',
+            },
+        }
+    }
+    return { props: { validToken } };
+});
 
 //TO-DO
 /**

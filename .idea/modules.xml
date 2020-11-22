@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$USER_HOME$/Downloads/.idea/Downloads.iml" filepath="$USER_HOME$/Downloads/.idea/Downloads.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/.idea/nextjs-typescript-jwt-boilerplate.iml" filepath="$PROJECT_DIR$/../Tests/nextjs-typescript-jwt-boilerplate/.idea/nextjs-typescript-jwt-boilerplate.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/yoTime.iml" filepath="$PROJECT_DIR$/.idea/yoTime.iml" />
     </modules>
   </component>

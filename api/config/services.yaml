@@ -69,3 +69,6 @@ services:
     App\Doctrine\SetUserListener:
         tags: [ doctrine.orm.entity_listener ]
 
+    App\Doctrine\CreateUserListener:
+        tags: [ doctrine.orm.entity_listener ]
+

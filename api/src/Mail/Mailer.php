@@ -50,8 +50,8 @@ class Mailer {
         $formattedTimeOnBreak = $this->time->formatSecondsAsHoursAndMinutes($timeOnBreak);
         $ormattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($timeOnWork - $timeOnBreak);
 
-        $subject = sprintf('Daily Summary of %s', $user->getFullName());
-        $content = sprintf('<strong>%s</strong><br>Work: %s<br>Break: %s<br><pre>%s</pre>', $user->getFullName(), $ormattedTimeOnWork, $formattedTimeOnBreak, $summary);
+        $subject = sprintf('Daily Summary of %s', $user->getFirstName());
+        $content = sprintf('<strong>%s</strong><br>Work: %s<br>Break: %s<br><pre>%s</pre>', $user->getFirstName(), $ormattedTimeOnWork, $formattedTimeOnBreak, $summary);
         $this->send('mailer@yotime.com', 'ndilthey@gmail.com', $subject, $content);
     }
 }

@@ -1,6 +1,7 @@
 import React, { useContext, useReducer } from 'react';
 
 import { IGlobalStatus } from '../types/global.types';
+import {Alert} from "../components/Alert";
 
 export const GlobalMessagingContext = React.createContext({});
 
@@ -11,12 +12,16 @@ enum ActionType {
 	RemoveDetails = 'removeMessage'
 }
 
+interface IState {
+	message: string;
+}
+
 interface IAction {
 	type: ActionType;
 	payload: IGlobalStatus;
 }
 
-const reducer: React.Reducer<{}, IAction> = (state, action) => {
+const reducer = (state: IState, action: IAction) => {
 	switch (action.type) {
 		case ActionType.SetDetails:
 			return {
@@ -36,6 +41,9 @@ export const GlobalMessagingProvider = ({ children }: any) => {
 
 	return (
 		<GlobalMessagingContext.Provider value={[state, dispatch]}>
+			{state.message != '' ?
+				<Alert message={state.message} severity={'error'}/> : ''
+			}
 			{children}
 		</GlobalMessagingContext.Provider>
 	);

@@ -6,7 +6,7 @@ import de from "date-fns/locale/de";
 import Toggle from 'react-toggle'
 import DatePicker, { registerLocale, setDefaultLocale } from  "react-datepicker";
 
-export const DailyEditView = ({startDate, endDate, setStartDate, setEndDate, setSendMail, sendMail, isEditViewVisible, onClick}) => {
+export const DailyEditview = ({startDate, endDate, setStartDate, setEndDate, setSendMail, sendMail, isEditViewVisible, onClick}) => {
     const [dailySummaryText, setDailySummaryText] = useState('');
     const forceUpdate = useForceUpdate();
 

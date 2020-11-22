@@ -2,14 +2,19 @@ import cn from 'classnames';
 import React from 'react';
 import Link from 'next/link'
 import {useRouter} from "next/router";
+import {useAuth} from "../services/Auth.context";
+import TokenService from "../services/Token.service";
+import {GetServerSideProps} from "next";
 
 type MenuProps = {
-    menuIsOpen: boolean,
-    onClick: Function
+    menuIsOpen: boolean;
+    onClick: Function;
+    validToken: boolean;
 }
 
-export const Menu = ({ menuIsOpen, onClick }: MenuProps ) => {
+export const Menu = ({ menuIsOpen, onClick, validToken }: MenuProps ) => {
     const router = useRouter();
+    const [auth, setAuth] = useAuth();
     const closeMenu = () => {
         if (menuIsOpen) onClick();
     }
@@ -18,7 +23,7 @@ export const Menu = ({ menuIsOpen, onClick }: MenuProps ) => {
         <div className={`flex w-full h-full fixed top-0 z-10${cn({' hidden' : !menuIsOpen})}`}
              onClick={() => closeMenu()}>
             <aside
-                className={`flex flex-col transform fixed top-0 left-64 w-40 h-full bg-white h-full shadow-xl fixed overflow-auto ease-in-out transition-all duration-200 ${cn({'translate-x-0': menuIsOpen}, {'-translate-x-full': !menuIsOpen})}`}
+                className={`flex flex-col transform fixed top-0 left-0 w-40 h-full bg-white h-full shadow-xl fixed overflow-auto ease-in-out transition-all duration-200 ${cn({'translate-x-0': menuIsOpen}, {'-translate-x-full': !menuIsOpen})}`}
                 onClick={() => onClick()}
             >
                 <div className="pr-3 bg-white shadow flex items-center h-20">
@@ -33,7 +38,7 @@ export const Menu = ({ menuIsOpen, onClick }: MenuProps ) => {
                     {generateMainMenuItem('dailies', false, 'dailies', 'Dailies', router, false)}
                     {generateMainMenuItem('personio', false, 'personio', 'Personio', router, false)}
                     {generateMainMenuItem('settings', false, 'settings', 'Settings', router, true)}
-                    {generateMainMenuItem('logout', false, 'logout', 'Logout', router, false)}
+                    {generateMainMenuItem(validToken ? 'logout' : 'login', false, validToken ? 'logout' : 'login', validToken ? 'Logout' : 'Login', router, false)}
                 </ul>
             </aside>
         </div>

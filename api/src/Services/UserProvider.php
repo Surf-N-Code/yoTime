@@ -35,9 +35,9 @@ class UserProvider
         $dbUser = new User();
         $dbUser->setDisplayName($slackUser->getRealName());
         $dbUser->setEmail($slackUser->getProfile() ? $slackUser->getProfile()->getEmail() : null);
-        $dbUser->setFullName($slackUser->getRealName());
+        $dbUser->setFirstName($slackUser->getRealName());
         $dbUser->setSlackUserId($slackUser->getId());
-        $dbUser->setTz($slackUser->getTz());
+        $dbUser->setTimezone($slackUser->getTz());
         $dbUser->setTzOffset($slackUser->getTzOffset());
         $dbUser->addSlackTeam((new SlackTeam())->setTeamId($slackUser->getTeamId()));
 
