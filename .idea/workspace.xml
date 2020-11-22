@@ -34,76 +34,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Remove button outline and handle z-index of menu and header properly">
-      <change afterPath="$PROJECT_DIR$/api/src/DataPersister/UserPersister.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/Entity/UserTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/Form/AccountSettingsValidation.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/Form/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/Alert.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/FormField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/errors/AuuthorizationError.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/errors/ConflictError.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/errors/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/pages/register.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/services/Login.service.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/services/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/types/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/types/user.types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/utilities/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Pre removing stop timer attempts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/yoTime.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yoTime.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/fixtures/dev/users.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/dev/users.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/fixtures/test/users.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/test/users.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Controller/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Controller/TestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Doctrine/UserDataFilterQueryExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Doctrine/UserDataFilterQueryExtension.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/EventListener/UserCreateListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/EventListener/UserCreateListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Fixtures/UserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Fixtures/UserProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Mail/Mailer.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Mail/Mailer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Migrations/Version20201024093839.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Migrations/Version20201024094323.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Migrations/Version20201024095116.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Migrations/Version20201024100125.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Migrations/Version20201024145825.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Services/UserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Services/UserProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Mail/MailerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Mail/MailerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/alert.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/dailyEditView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyEditview.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/dailyTableRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyTablerow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/loading.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/loading.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/notification.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Pagination.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/dailies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dailies.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/logout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/logout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/personio.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/personio.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/settings.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/services/Auth.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Auth.context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/services/Fetcher.service.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Fetcher.service.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/services/GlobalMessaging.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/GlobalMessaging.context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/services/Token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Token.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/styles/tailwind.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/tailwind.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/apiResult.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/apiResult.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/auth.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/auth.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/timer.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/timer.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -435,14 +368,7 @@
       <workItem from="1605808892887" duration="9623000" />
       <workItem from="1605893311335" duration="6834000" />
       <workItem from="1605952995935" duration="1385000" />
-      <workItem from="1605954395685" duration="36999000" />
-    </task>
-    <task id="LOCAL-00018" summary="Add personio http client">
-      <created>1600508079989</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1600508079989</updated>
+      <workItem from="1605954395685" duration="42961000" />
     </task>
     <task id="LOCAL-00019" summary="Add personio time sync">
       <created>1600599858606</created>
@@ -780,7 +706,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605969554440</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Pre removing stop timer attempts">
+      <created>1606054346841</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1606054346841</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -827,7 +760,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Pre react class for dailies" />
     <MESSAGE value="React class component for dailies test" />
     <MESSAGE value="Add daily summary add view" />
     <MESSAGE value="Create components for daily table rows and daily edit view. Add new switch for send mail" />
@@ -852,7 +784,8 @@
     <MESSAGE value="Add pause timer and fix start stopping timer including counting up seconds properly" />
     <MESSAGE value="Remove button outline and handle z-index of menu and header properly" />
     <MESSAGE value="Create usercreatelistener to throw a 409 status code on duplicate email when registering" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create usercreatelistener to throw a 409 status code on duplicate email when registering" />
+    <MESSAGE value="Pre removing stop timer attempts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pre removing stop timer attempts" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="4" width="756" height="674" key="#CLI_Interpreters" timestamp="1604086486755">
@@ -903,10 +836,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="104" y="-36" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1605969554060">
+    <state x="98" y="-90" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1606059497000">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="104" y="-36" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1605969554060" />
+    <state x="98" y="-90" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1606059497000" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -983,10 +916,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="609" y="62" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605968418859" />
-    <state x="777" y="-46" width="389" height="578" key="RollbackChangesDialog" timestamp="1605554437610">
+    <state x="775" y="-64" width="389" height="578" key="RollbackChangesDialog" timestamp="1606055924334">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="777" y="-46" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605554437610" />
+    <state x="775" y="-64" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606055924334" />
     <state x="436" y="4" key="SettingsEditor" timestamp="1605955388327">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -1078,7 +1011,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/client/tailwind.config.js</url>
-          <line>170</line>
+          <line>173</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="117" />
         </line-breakpoint>

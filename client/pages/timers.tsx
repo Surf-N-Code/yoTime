@@ -16,7 +16,6 @@ import {GetServerSideProps} from "next";
 export const Timers = ({validToken}) => {
     const router = useRouter();
     const [auth, authDispatch] = useAuth();
-    const [stopTimerAttempts, setStopTimerAttempts] = useState(0);
     const [runningTimer, setRunningTimer] = useState<ITimer | null>(null);
     const [messageState, messageDispatch] = useGlobalMessaging();
     const tokenService = new TokenService();
@@ -28,7 +27,7 @@ export const Timers = ({validToken}) => {
     useEffect(() => {
         if (!data || typeof data["hydra:member"] === 'undefined') return;
         const timer = data["hydra:member"].filter((timer) => {return typeof timer.date_end === 'undefined' || timer.date_end === null});
-        if (timer[0]) setRunningTimer(timer[0]);
+        setRunningTimer((prevTimer) => timer[0]);
         return updateTimerDurationUi();
     }, [data])
 
@@ -44,38 +43,23 @@ export const Timers = ({validToken}) => {
     }, [data]);
 
     useEffect(() => {
-        return updateTimerDurationUi();
+        console.log('use effect running timer', runningTimer);
+        return updateTimerDurationUi(runningTimer);
     }, [runningTimer])
 
-    useEffect(() => {
-        if (typeof runningTimer === 'undefined' || runningTimer === null) return;
-        async function sleep() {
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            await stopTimer();
-        }
-
-        if (stopTimerAttempts >= STOP_TIMER_RETRIES && typeof runningTimer.lastSyncAttempt === 'undefined') {
-            console.log('stop timer attempt', stopTimerAttempts);
-            console.log('running timer in stop timer attempst', runningTimer);
-            setStopTimerAttempts(0);
-            setRunningTimer({'lastSyncAttempt': new Date(), ...runningTimer});
-            messageDispatch({
-                type: 'setMessage',
-                payload: {
-                    message: 'Ups, I couldn\'t stop your timer. Have a coffee, come back and please try again :)'
-                }
-            });
+    const updateTimerDurationUi = (runTimer) => {
+        if (typeof runTimer === 'undefined' || runTimer === null || typeof runTimer.timer_type === 'undefined' ) {
             return;
         }
-        sleep();
-    }, [stopTimerAttempts])
 
-    const updateTimerDurationUi = () => {
-        if (typeof runningTimer === 'undefined' || runningTimer === null || runningTimer["@type"] !== 'Timer' ) return;
         const timerSecondsUpdater = setInterval(() => {
-            let diffInSeconds = differenceInSeconds(new Date(), new Date(runningTimer.date_start));
-            setRunningTimer((prevVal) => {return {diffInSeconds, ...prevVal}})
+            setRunningTimer((prevTimer) => {return {...runTimer}})
         }, 1000);
+
+        if (typeof runningTimer.date_end !== 'undefined' && runningTimer.date_end !== null) {
+            console.error('clear interval');
+            clearInterval(timerSecondsUpdater);
+        }
         return () => clearInterval(timerSecondsUpdater);
     }
 
@@ -104,11 +88,6 @@ export const Timers = ({validToken}) => {
 
     const stopTimer = async () => {
         if (!runningTimer) return;
-        if (runningTimer.optimisticTimer === true && typeof runningTimer.lastSyncAttempt === 'undefined') {
-            setStopTimerAttempts(stopTimerAttempts+1);
-            return;
-        }
-
         console.group('Stop Timer');
         console.log('running timer', runningTimer);
         console.log('data', data);
@@ -133,20 +112,20 @@ export const Timers = ({validToken}) => {
             })
         }
         await FetcherFunc(`/timers/${timer.id}`, auth.jwt, 'PATCH', timer, 'application/merge-patch+json');
+        setRunningTimer((prevTimer) => null);
         console.groupEnd();
-        setRunningTimer(null);
     }
 
     const startTimer = async (timerType: string) => {
         await stopTimer();
-        console.group('start timer')
+        // console.group('start timer')
         let tempId = uuidv4();
         const timer = {
             date_start: new Date(),
             date_end: null,
             timer_type: timerType
         }
-        setRunningTimer({id: tempId, 'optimisticTimer': true, ...timer});
+        setRunningTimer((prevTimer) => {return {id: tempId, 'optimisticTimer': true, ...timer}});
 
         await mutateTimers((data) => {
             return {...data, "hydra:member": [{id: tempId, ...timer}, ...data['hydra:member']]};
@@ -157,8 +136,10 @@ export const Timers = ({validToken}) => {
         await mutateTimers((data) => {
             return {...data, "hydra:member": data['hydra:member'].map((timer) => timer.id === tempId ? result : timer)};
         }, false);
-        setRunningTimer(result);
-        console.groupEnd();
+
+        console.log('result timer from fetch', result);
+        setRunningTimer((prevTimer) => result);
+        // console.groupEnd();
     }
     // console.log('latest timer', runningTimer);
     // console.log('---- DATA ---- ', data);
@@ -187,7 +168,7 @@ export const Timers = ({validToken}) => {
                                 let totalWorkDuration = 0
                                 let totalBreakDuration = 0
                                 let subTimerHtml = data['hydra:member'].map((subTimer: ITimer) => {
-                                    if (timerDate === format(new Date(subTimer.date_start), 'u-MM-dd')) {
+                                    if (timerDate === format(new Date(subTimer.date_start), 'u-MM-dd') && !daysRendered.some((e) => { return e === timerDate })) {
                                         let isRunningTimer = typeof subTimer.date_end === 'undefined' || subTimer.date_end === null;
                                         let diffInSWork = 0;
                                         let diffInSBreak = 0;
@@ -198,7 +179,7 @@ export const Timers = ({validToken}) => {
                                         }
                                         totalWorkDuration += diffInSWork;
                                         totalBreakDuration += diffInSBreak;
-                                        return generateSubTimerHtml(subTimer, toHHMMSS(subTimer.timer_type === 'work' ? totalWorkDuration : totalBreakDuration));
+                                        return generateSubTimerHtml(subTimer, toHHMMSS(subTimer.timer_type === 'work' ? diffInSWork : diffInSBreak));
                                     }
                                 })
 
@@ -232,12 +213,12 @@ export const Timers = ({validToken}) => {
                         <div className={`fixed bottom-0`}>
                             <div className="flex mb-3">
                                 <button
-                                    className={`bg-red-500 rounded-full p-4 border-white border-2 outline-none shadow-md cursor-pointer${cn({' bg-red-100':stopTimerAttempts > 0 && stopTimerAttempts <= STOP_TIMER_RETRIES})}`}
+                                    className={`bg-red-500 rounded-full p-4 border-white border-2 outline-none shadow-md cursor-pointer`}
                                     onClick={() => stopTimer()}>
-                                    <img src={`../images/icons/${cn({'loading.svg': stopTimerAttempts > 0 && stopTimerAttempts <= STOP_TIMER_RETRIES}, {'icons8-stop-48.png': stopTimerAttempts === 0})}`} width="30" height="30" alt="Stop Timer"/>
+                                    <img src={`../images/icons/icons8-stop-48.png`} width="30" height="30" alt="Stop Timer"/>
                                 </button>
                                 <button
-                                    className={`${cn({'spin-360 opacity-50 cursor-default ': runningTimer.timer_type  === 'break'}, {'cursor-pointer ': runningTimer.timer_type  === 'work'}, {})}ml-3 bg-yellow-400 rounded-full p-4 border-white border-2 outline-none shadow-md`}
+                                    className={`${cn({'animate-spin-slow opacity-50 cursor-default ': runningTimer.timer_type  === 'break'}, {'cursor-pointer ': runningTimer.timer_type  === 'work'}, {})}ml-3 bg-yellow-400 rounded-full p-4 border-white border-2 outline-none shadow-md`}
                                     onClick={() => startTimer('break')}
                                     disabled={cn({true: runningTimer.timer_type  === 'break'})}>
                                     <img src="../images/icons/icons8-pause-60.png" width="30" height="30"
