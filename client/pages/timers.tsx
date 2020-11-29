@@ -202,8 +202,10 @@ export const Timers = ({validToken}) => {
     }
 
     const toggleAddTimerView = () => {
+        if (manualTimerModalVisible) {
+            setTimerToEdit(null);
+        }
         setManualTimerModalVisible((prevVal) => {return !prevVal});
-        setTimerToEdit(null);
     }
 
     const hasTimer = typeof data !== 'undefined' && typeof data['hydra:member'] !== 'undefined' && data['hydra:member'].length !== 0;
@@ -291,7 +293,7 @@ export const Timers = ({validToken}) => {
                             mutateTimers={mutateTimers}
                             toggleAddTimerView={toggleAddTimerView}
                             isVisible={manualTimerModalVisible}
-                            timer={timerToEdit}
+                            timerToEdit={timerToEdit}
                         />
                     </div>
                     <div>

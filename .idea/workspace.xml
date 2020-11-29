@@ -34,28 +34,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Counting up on timers works again">
-      <change afterPath="$PROJECT_DIR$/api/src/EventListener/JwtCreatedListener.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/ManualTimerview.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/images/icons/comic-arrow.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/images/icons/icons8-plus-math-30.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/yoTime.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yoTime.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Alert.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/settings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/services/Auth.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Auth.context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/styles/alert.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/alert.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/auth.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/auth.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/timer.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/timer.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -390,14 +372,7 @@
       <workItem from="1605954395685" duration="49006000" />
       <workItem from="1606241605572" duration="610000" />
       <workItem from="1606507119851" duration="2278000" />
-      <workItem from="1606509464141" duration="47006000" />
-    </task>
-    <task id="LOCAL-00020" summary="Improve error message on late hi command">
-      <created>1600630718084</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1600630718084</updated>
+      <workItem from="1606509464141" duration="48105000" />
     </task>
     <task id="LOCAL-00021" summary="Add is synced to personio field to daily summary. Extend tests to cover syncing and not syncing to personio">
       <created>1600630810589</created>
@@ -735,7 +710,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606060345417</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Working manual add, delete and edit timers">
+      <created>1606672983861</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1606672983861</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -782,7 +764,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Add daily summary add view" />
     <MESSAGE value="Create components for daily table rows and daily edit view. Add new switch for send mail" />
     <MESSAGE value="Add sync daily summary command" />
     <MESSAGE value="Add jwt bundle" />
@@ -807,7 +788,8 @@
     <MESSAGE value="Create usercreatelistener to throw a 409 status code on duplicate email when registering" />
     <MESSAGE value="Pre removing stop timer attempts" />
     <MESSAGE value="Counting up on timers works again" />
-    <option name="LAST_COMMIT_MESSAGE" value="Counting up on timers works again" />
+    <MESSAGE value="Working manual add, delete and edit timers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working manual add, delete and edit timers" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="4" width="756" height="674" key="#CLI_Interpreters" timestamp="1604086486755">
@@ -858,10 +840,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="88" y="-60" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1606653405784">
+    <state x="86" y="-78" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1606672983599">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="88" y="-60" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1606653405784" />
+    <state x="86" y="-78" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1606672983599" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

@@ -12,30 +12,31 @@ import {useAuth} from "../services/Auth.context";
 import cn from 'classnames';
 import {ITimer} from "../types/timer.types";
 
-export const ManualTimerview = ({mutateTimers, toggleAddTimerView, isVisible, timer}) => {
+export const ManualTimerview = ({mutateTimers, toggleAddTimerView, isVisible, timerToEdit}) => {
     const [isBreakTimer, setIsBreakTimer] = useState(false);
     const [startTimer, setStartTime] = useState('09:00');
     const [endTime, setEndTime] = useState('18:00');
     const [date, setDate] = useState(new Date());
     const [messageState, messageDispatch] = useGlobalMessaging();
     const [auth, authDispatch] = useAuth();
-    const [isEditTimer, setIsEditTimer] = useState(false);
-    const [timerToEdit, setTimerToEdit] = useState<ITimer>();
+    // const [isEditTimer, setIsEditTimer] = useState(false);
+    // const [timerToEdit, setTimerToEdit] = useState<ITimer>();
+    console.log('manual timer view', timerToEdit);
 
     useEffect(() => {
-        if (timer) {
-            console.log('use effect edit timer ', timer)
-            const startDate = new Date(timer.date_start);
-            const endDate = new Date(timer.date_end);
+        if (timerToEdit) {
+            console.log('use effect edit timerToEdit ', timerToEdit)
+            const startDate = new Date(timerToEdit.date_start);
+            const endDate = new Date(timerToEdit.date_end);
             setStartTime(startDate.toTimeString().substr(0,5));
             setEndTime(endDate.toTimeString().substr(0,5));
             setDate(startDate);
-            setIsEditTimer(true);
-            setTimerToEdit(timer);
+            // setIsEditTimer(true);
+            // setTimerToEdit(timerToEdit);
         }
-    }, [timer]);
+    }, [timerToEdit]);
 
-    const addTimerManually = async () => {
+    const addTimerManually = async (timerToEdit: ITimer) => {
         const hs = Number(startTimer.split(':')[0]);
         const ms = Number(startTimer.split(':')[1]);
         const he = Number(endTime.split(':')[0]);
@@ -59,6 +60,7 @@ export const ManualTimerview = ({mutateTimers, toggleAddTimerView, isVisible, ti
             timer_type: isBreakTimer ? 'break' : 'work'
         }
 
+        console.log('timer in add timer', timerToEdit);
         if (!timerToEdit) {
             console.log('adding timer');
             await mutateTimers((data) => {
@@ -69,23 +71,23 @@ export const ManualTimerview = ({mutateTimers, toggleAddTimerView, isVisible, ti
             }, false);
             await FetcherFunc(`/timers`, auth.jwt, 'POST', updatedTimer);
             toggleAddTimerView();
-            setIsEditTimer(false);
+            // setIsEditTimer(false);
             return;
         }
         await mutateTimers((data) => {
             let newData = {...data};
             newData["hydra:member"].map((timer) => {
                 if (timer.id === timerToEdit.id) {
-                    timer.date_start = updatedTimer.date_start;
-                    timer.date_end = updatedTimer.date_end;
-                    timer.timer_type = updatedTimer.timer_type;
+                    timer.date_start = startDate;
+                    timer.date_end = endDate;
+                    timer.timer_type = isBreakTimer ? 'break' : 'work';
                 }
             })
             return {...data, "hydra:member": [...newData['hydra:member']]};
         }, false);
         await FetcherFunc(`/timers/${timerToEdit.id}`, auth.jwt, 'PATCH', updatedTimer, 'application/merge-patch+json');
         toggleAddTimerView();
-        setIsEditTimer(false);
+        // setIsEditTimer(false);
     }
 
     return (
@@ -145,7 +147,7 @@ export const ManualTimerview = ({mutateTimers, toggleAddTimerView, isVisible, ti
                 </div>
                 <button className="ml-auto px-4 py-2 font-bold text-white border-gray-200 border-2 bg-gradient-to-br from-blue-500 to-blue-400 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                         type="submit"
-                        onClick={addTimerManually}
+                        onClick={() => addTimerManually(timerToEdit)}
                 >Add</button>
             </div>
         </div>
