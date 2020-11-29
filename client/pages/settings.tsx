@@ -197,7 +197,7 @@ export const Settings = (props) => {
                                     </div>
                                     <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <button
-                                            className="w-full mt-4 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                                            className="w-full mt-4 px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-400 focus:outline-none focus:shadow-outline"
                                             type="submit"
                                             disabled={isSubmitting}
                                         >{isSubmitting ? 'Loading ...' : 'Update'}</button>

@@ -29,10 +29,19 @@ export const Layout = (props) => {
             {/*<header className="pr-3 z-50 fixed w-full bg-gradient-to-r from-teal-400 to-blue-500 h-20 shadow flex items-center">*/}
             <header className="w-full bg-teal-500 bg-gradient-to-r from-teal-400 to-blue-500 h-20 shadow flex items-center">
                 <Link href="/">
-                    <img src="../images/icons/icons8-timer-100.png" width="90" className="pl-2 pr-2 border-r border-teal-500 cursor-pointer" alt="Home"/>
+                    <a>
+                        <img src="../images/icons/icons8-timer-100.png" width="90" className="pl-2 pr-2 border-r border-teal-500 cursor-pointer" alt="Home"/>
+                    </a>
                 </Link>
                 <img src="../images/icons/hamburger.svg" width="20" className="ml-3 cursor-pointer" alt="Menu" onClick={() => setMenuIsOpen((prevMenuIsOpen) => !prevMenuIsOpen)}/>
-                <img src="../images/norman.png" className="rounded-full ml-auto h-10 w-10 border-2 border-white shadow" alt="Avatar"/>
+                {/*{auth.initials ?*/}
+                {/*    <Link href={`/settings`}>*/}
+                {/*        <a className={"ml-auto"}>*/}
+                {/*            <div className="rounded-full mr-5 w-14 h-14 border-2 border-white bg-teal-400 text-2xl font-bold text-white flex items-center justify-center shadow">{auth.initials}</div>*/}
+                {/*        </a>*/}
+                {/*    </Link>*/}
+                {/*    : ''*/}
+                {/*}*/}
             </header>
             <Menu
                 menuIsOpen={menuIsOpen}

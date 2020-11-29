@@ -18,7 +18,7 @@ export const Alert = ({message, severity}: PaginationProps) => {
 
     return (
         <div>
-            <div className={`${styles.alert} fixed bottom-0 right-0 m-8 w-4/6 md:w-full max-w-sm z-10`}>
+            <div className={`${styles.alert} fixed bottom-0 right-0 m-8 w-4/6 md:w-full max-w-sm z-50`}>
                 <div className="close cursor-pointer flex items-start w-full p-4 bg-red-100 rounded shadow-lg text-red-600 text-m"
                      ref={alertRef}
                      title="close"

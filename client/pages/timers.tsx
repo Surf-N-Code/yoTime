@@ -1,34 +1,38 @@
 import React, {useEffect, useState} from 'react';
 import useSWR from 'swr';
-import {Router, useRouter} from 'next/router';
+import {useRouter} from 'next/router';
 import {differenceInDays, differenceInSeconds, format} from 'date-fns';
 import isToday from 'date-fns/isToday';
 import cn from 'classnames';
 import {v4 as uuidv4} from 'uuid';
+import {ActionAnimations, SwipeableList, SwipeableListItem} from '@sandstreamdev/react-swipeable-list';
+import '@sandstreamdev/react-swipeable-list/dist/styles.css';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Transition } from 'react-transition-group';
 
-import {Layout, Pagination, Alert} from '../components';
-import {FetcherFunc, useAuth, TokenService, useGlobalMessaging} from '../services';
-import {ITimer, IApiResult} from '../types';
-import {toHHMMSS, sleep} from "../utilities";
+import {Alert, Layout, Pagination, ManualTimerview} from '../components';
+import {FetcherFunc, TokenService, useAuth, useGlobalMessaging} from '../services';
+import {ITimer, ITimerApiResult} from '../types';
+import {toHHMMSS} from "../utilities";
 
 import {GetServerSideProps} from "next";
 
 export const Timers = ({validToken}) => {
     const router = useRouter();
     const [auth, authDispatch] = useAuth();
+    const [manualTimerModalVisible, setManualTimerModalVisible] = useState(false);
     const [runningTimer, setRunningTimer] = useState<ITimer | null>(null);
     const [messageState, messageDispatch] = useGlobalMessaging();
-    const tokenService = new TokenService();
+    const [timerToEdit, setTimerToEdit] = useState<ITimer|null>(null);
     const currentPage = Number(typeof router.query.page !== 'undefined' ? router.query.page : 1);
     const url = `timers?order[dateStart]&page=${currentPage}`;
-    const { data, error, mutate: mutateTimers } = useSWR<IApiResult>([url, auth.jwt, 'GET'], FetcherFunc)
-    const STOP_TIMER_RETRIES = 0;
+    const { data, error, mutate: mutateTimers } = useSWR<ITimerApiResult>([url, auth.jwt, 'GET'], FetcherFunc)
 
     useEffect(() => {
         if (!data || typeof data["hydra:member"] === 'undefined') return;
         const timer = data["hydra:member"].filter((timer) => {return typeof timer.date_end === 'undefined' || timer.date_end === null});
         setRunningTimer((prevTimer) => timer[0]);
-        return updateTimerDurationUi();
+        // return updateTimerDurationUi();
     }, [data])
 
     useEffect(() => {
@@ -77,25 +81,70 @@ export const Timers = ({validToken}) => {
         }
 
         return (
-            <div key={timer.id} className="flex flex-row items-center ml-2 mt-1" data-id={timer.id}>
-                <div className="text-sm">{timerStartString}  -  {timerEndString}{timer.timer_type === 'break' ? <span className="text-xs"> (b)</span>:''}</div>
-                <div className="text-sm ml-auto text-gray-600">{formattedDiffInMinPerTimer}</div>
-            </div>
+            <CSSTransition
+                classNames="my-node"
+                key={timer.id}
+                timeout={300}
+            >
+                <SwipeableListItem
+                    key={timer.id}
+                    swipeLeft={{
+                        content: <div className={`text-white bg-green-500 text-right p-3 w-full`}>Edit</div>,
+                        action: () => editTimer(timer),
+                        actionAnimation: ActionAnimations.RETURN
+                    }}
+                    swipeRight={{
+                        content: <div className={`text-white bg-red-500 p-3 w-full`}>Delete</div>,
+                        action: () => deleteTimer(timer.id),
+                        actionAnimation: ActionAnimations.REMOVE
+                    }}
+                    onSwipeProgress={progress => console.info(`Swipe progress: ${progress}%`)}
+                >
+                    <div className="flex flex-row items-center ml-3 mt-1 w-full" data-id={timer.id}>
+                        <div className="text-sm">{timerStartString}  -  {timerEndString}{timer.timer_type === 'break' ? <span className="text-xs"> (b)</span>:''}</div>
+                        <div className="text-sm text-gray-600 text-right ml-auto">{formattedDiffInMinPerTimer}</div>
+                    </div>
+                </SwipeableListItem>
+            </CSSTransition>
         )
     }
 
     if (error) return <div>failed to load</div>;
 
+    const editTimer = async (timer: ITimer) => {
+        console.log('timer to edit', timer);
+        setTimerToEdit(timer);
+        toggleAddTimerView();
+    }
+
+    const deleteTimer = async (timerId) => {
+        await mutateTimers((data) => {
+            let newData = {...data};
+            console.log()
+            return {...data, "hydra:member": [...newData["hydra:member"].filter(timer => timer.id !== timerId)]};
+        }, false);
+
+        fetch(`https://localhost:8443/timers/${timerId}`, {
+            method: "DELETE",
+            headers: {
+                "content-type": "application/json",
+                Authorization: 'Bearer ' + auth.jwt
+            }
+        })
+            .then(res => {
+                return true;
+            })
+            .catch(error => {
+               return false;
+            });
+        console.log(timerId);
+    }
+
     const stopTimer = async () => {
         if (!runningTimer) return;
-        console.group('Stop Timer');
-        console.log('running timer', runningTimer);
-        console.log('data', data);
-
         let timer = {...runningTimer};
         timer.date_end = new Date();
         let timersToStop = [];
-        //@TODO hier muss ich den timer iwie verwenden, nicht die hydra members
         await mutateTimers((data) => {
             let newData = {...data};
             newData["hydra:member"].map((timer) => {
@@ -113,7 +162,6 @@ export const Timers = ({validToken}) => {
         }
         await FetcherFunc(`/timers/${timer.id}`, auth.jwt, 'PATCH', timer, 'application/merge-patch+json');
         setRunningTimer((prevTimer) => null);
-        console.groupEnd();
     }
 
     const startTimer = async (timerType: string) => {
@@ -153,14 +201,27 @@ export const Timers = ({validToken}) => {
         })
     }
 
+    const toggleAddTimerView = () => {
+        setManualTimerModalVisible((prevVal) => {return !prevVal});
+        setTimerToEdit(null);
+    }
+
+    const hasTimer = typeof data !== 'undefined' && typeof data['hydra:member'] !== 'undefined' && data['hydra:member'].length !== 0;
+
     let daysRendered = [];
     return (
-        <Layout validToken>
-            <div className="mt-6">
+        <Layout validToken={validToken}>
+            <div className="mt-6 mb-24">
             {error || (data && data['@type'] === 'hydra:Error')? <div>Ups... there was an error fetching your timers</div> :
                 <>
                     <div>
-                        {typeof data === 'undefined' || typeof data['hydra:member'] === 'undefined' || data['hydra:member'].length === 0 ? <div>You have no timers yet</div> :
+                        {!hasTimer ?
+                            <div>
+                                <button className="fixed bottom-0 left-0 w-full h-full bg-black opacity-50"/>
+                                <div className="fixed bottom-52 text-white text-lg">Start or add your first timer!</div>
+                                <img src="../images/icons/comic-arrow.svg" width="220" className="fixed bottom-32 left-12 animate-bounce-little"/>
+                            </div>
+                            :
                             data['hydra:member'].map((timer: ITimer) => {
                                 const timerDate = format(new Date(timer.date_start), 'u-MM-dd');
                                 const todayTimer = isToday(new Date(timer.date_start));
@@ -196,12 +257,42 @@ export const Timers = ({validToken}) => {
                                                     <div className="ml-auto"><span className="text-xs">({toHHMMSS(totalBreakDuration)})</span> {toHHMMSS(totalWorkDuration)}</div>
                                                 </div>
                                             </div>
-                                            {subTimerHtml}
+                                            <SwipeableList threshold={300}>
+                                                {({
+                                                      className,
+                                                      scrollStartThreshold,
+                                                      swipeStartThreshold,
+                                                      threshold
+                                                  }) => (
+                                                    <TransitionGroup
+                                                        className={className}
+                                                    >
+                                                        {subTimerHtml}
+                                                    </TransitionGroup>
+                                                )}
+                                            </SwipeableList>
+                                            {/*<SwipeableList*/}
+                                            {/*    threshold={0.30}*/}
+                                            {/*>*/}
+                                            {/*    <TransitionGroup>*/}
+                                            {/*        {subTimerHtml}*/}
+                                            {/*    </TransitionGroup>*/}
+                                            {/*</SwipeableList>*/}
                                         </div>
                                     )
                                 }
                             })
                         }
+                        {manualTimerModalVisible ?
+                            <button className={`inset-0 fixed w-full h-full cursor-default bg-black opacity-50`} onClick={() => setManualTimerModalVisible(false)}/>
+                            : ''
+                        }
+                        <ManualTimerview
+                            mutateTimers={mutateTimers}
+                            toggleAddTimerView={toggleAddTimerView}
+                            isVisible={manualTimerModalVisible}
+                            timer={timerToEdit}
+                        />
                     </div>
                     <div>
                         <Pagination
@@ -210,7 +301,7 @@ export const Timers = ({validToken}) => {
                         />
                     </div>
                     {runningTimer !== null && typeof runningTimer !== 'undefined' ?
-                        <div className={`fixed bottom-0`}>
+                        <div className="fixed bottom-0 ml-3">
                             <div className="flex mb-3">
                                 <button
                                     className={`bg-red-500 rounded-full p-4 border-white border-2 outline-none shadow-md cursor-pointer`}
@@ -218,7 +309,7 @@ export const Timers = ({validToken}) => {
                                     <img src={`../images/icons/icons8-stop-48.png`} width="30" height="30" alt="Stop Timer"/>
                                 </button>
                                 <button
-                                    className={`${cn({'animate-spin-slow opacity-50 cursor-default ': runningTimer.timer_type  === 'break'}, {'cursor-pointer ': runningTimer.timer_type  === 'work'}, {})}ml-3 bg-yellow-400 rounded-full p-4 border-white border-2 outline-none shadow-md`}
+                                    className={`${cn({'animate-spin-slow cursor-default bg-yellow-200 ': runningTimer.timer_type  === 'break'}, {'cursor-pointer bg-yellow-400 ': runningTimer.timer_type  === 'work'}, {})}ml-3 rounded-full p-4 border-white border-2 outline-none shadow-md`}
                                     onClick={() => startTimer('break')}
                                     disabled={cn({true: runningTimer.timer_type  === 'break'})}>
                                     <img src="../images/icons/icons8-pause-60.png" width="30" height="30"
@@ -227,12 +318,18 @@ export const Timers = ({validToken}) => {
                             </div>
                         </div>
                         :
-                        <div className={`fixed bottom-0`}>
-                            <div className="flex mb-3">
+
+                        <div className={`fixed bottom-0 flex flex-col mb-3 ml-3${cn({' border-2 border-gray-300 p-3': !hasTimer})}`}>
+                            <div className="flex-row">
                                 <button
                                     className="bg-teal-500 rounded-full p-4 border-white border-2 outline-none shadow-md cursor-pointer"
                                     onClick={() => startTimer('work')}>
                                     <img src="../images/icons/icons8-play-100.png" width="30" height="30" alt="Start Timer"/>
+                                </button>
+                                <button
+                                    className="ml-3 bg-teal-500 rounded-full p-4 border-white border-2 outline-none shadow-md cursor-pointer"
+                                    onClick={() => toggleAddTimerView()}>
+                                    <img src="../images/icons/icons8-plus-math-30.png" width="30" height="30" alt="Start Timer"/>
                                 </button>
                             </div>
                         </div>

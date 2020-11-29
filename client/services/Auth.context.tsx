@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useReducer } from 'react';
 
-import { IAuthInfo } from '../types/auth.types';
+import {IAuthInfo, IJwt} from '../types/auth.types';
 import {GetServerSideProps} from "next";
 import {TokenService} from "../services";
+import jwt_decode from "jwt-decode";
 
 export const AuthStateContext = React.createContext({});
 
-const initialState: IAuthInfo = { email: null, jwt: null };
+const initialState: IAuthInfo = { email: null, jwt: null, initials: null };
 
 enum ActionType {
 	SetDetails = 'setAuthDetails',
@@ -19,27 +20,26 @@ interface IAction {
 }
 
 const reducer: React.Reducer<{}, IAction> = (state, action) => {
-	console.log('reducer action',action);
 	switch (action.type) {
 		case ActionType.SetDetails:
-			console.log(action.payload);
+			const decoded: IJwt = jwt_decode(action.payload.jwt);
 			return {
 				email: action.payload.email,
-				jwt: action.payload.jwt
+				jwt: action.payload.jwt,
+				initials: decoded.initials
 			};
 		case ActionType.RemoveDetails:
-			console.log('setting to initialState', initialState);
 			return {
 				email: initialState.email,
-				jwt: initialState.jwt
+				jwt: initialState.jwt,
+				initials: initialState.initials
 			};
 		default:
 			throw new Error(`Unhandled action type: ${action.type}`);
 	}
 };
 
-export const AuthProvider = ({ children, test }: any) => {
-	console.log('children an dtest',children, test)
+export const AuthProvider = ({ children }: any) => {
 	let localState = null;
 	if (typeof localStorage !== 'undefined' && localStorage.getItem('userInfo')) {
 		localState = JSON.parse(localStorage.getItem('userInfo') || '');
@@ -76,5 +76,5 @@ export const getServerSideProps: GetServerSideProps = (async (context) => {
 			},
 		}
 	}
-	return { props: { test: 'test' } };
+	return { props: { } };
 });

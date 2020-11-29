@@ -5,6 +5,7 @@ import {Layout} from './Layout';
 import {Menu} from './Menu';
 import {Pagination} from './Pagination';
 import {FormField} from './FormField';
+import {ManualTimerview} from './ManualTimerview';
 
 export {
     Alert,
@@ -13,5 +14,6 @@ export {
     Layout,
     Menu,
     Pagination,
-    FormField
+    FormField,
+    ManualTimerview
 };
