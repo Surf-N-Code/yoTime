@@ -161,5 +161,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="nextjs-typescript-jwt-boilerplate" />
+    <orderEntry type="module" module-name="Downloads" />
   </component>
 </module>
