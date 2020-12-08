@@ -46,5 +46,5 @@ export const Menu = ({ menuIsOpen, onClick, validToken }: MenuProps ) => {
 }
 
 const generateMainMenuItem = (key, isActive, href, linkText, router, doSeparateFromTop) => {
-    return <li key={key} className={`text-sm cursor-pointer text-gray-800 hover:bg-gray-100${cn({' border-l-4 border-blue-500 text-blue-500': router.pathname === '/'+href}, {' mt-auto': doSeparateFromTop})}`}><Link href={`/${href}`}><a className="w-full h-full py-2 pl-3 block">{linkText}</a></Link></li>
+    return <li key={key} className={`text-sm cursor-pointer text-gray-800 hover:bg-gray-100${cn({' border-l-4 border-teal-500 text-teal-600': router.pathname === '/'+href}, {' mt-auto': doSeparateFromTop})}`}><Link href={`/${href}`}><a className="w-full h-full py-2 pl-3 block">{linkText}</a></Link></li>
 }

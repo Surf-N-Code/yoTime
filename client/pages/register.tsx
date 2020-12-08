@@ -118,7 +118,7 @@ const Register = () => {
                                     />
                                     <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
                                         <h3 className="pt-4 text-2xl text-center">Create an Account!</h3>
-                                        <div className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+                                        <div className="px-3 pt-6 pb-8 mb-4 bg-white rounded">
                                             <div className="mb-4 md:flex md:justify-between">
                                                 <div className="mb-4 md:mr-2 md:mb-0">
                                                     <FormField label="First Name" id="firstname" name="firstName" type="text" placeholder="First Name" value={values.firstName}/>
@@ -140,7 +140,7 @@ const Register = () => {
                                             </div>
                                             <div className="mb-6 text-center">
                                                 <button
-                                                    className="w-full mt-4 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                                                    className="w-full mt-4 px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-400 focus:outline-none focus:shadow-outline"
                                                     type="submit"
                                                     disabled={isSubmitting}
                                                 >{isSubmitting ? 'Loading ...' : 'Sign Up'}</button>

@@ -1,67 +1,70 @@
-import React, { useState } from 'react';
-import {Layout, DailyTablerow, DailyEditview, Pagination } from '../components';
+import React, {useEffect, useState} from 'react';
 import useSWR from "swr";
-import {format} from 'date-fns';
 import { useRouter } from 'next/router';
+import {Layout, DailyTablerow, DailyEditview, Pagination } from '../components';
+import {useAuth, TokenService, FetcherFunc} from "../services";
+import {GetServerSideProps} from "next";
+import {IDaily, IDailiesApiResult} from "../types";
 
-export const Dailies = () => {
+export const Dailies = (props) => {
     const router = useRouter();
-    const currentPage = Number(typeof router.query.page !== 'undefined' ? router.query.page : 1);
-    const url = 'https://localhost:8443/users/1/daily_summaries?order[date]&page='+currentPage;
-    const fetcher = (...args) => fetch(...args).then(res => res.json());
-    const { data, error } = useSWR(url, fetcher)
-
-    let initialEndDate = new Date();
-    initialEndDate.setHours(initialEndDate.getHours() + 6);
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(initialEndDate);
-    const [sendMail, setSendMail] = useState(0);
-
+    const [auth, authDispatch] = useAuth();
+    const [dailyToEdit, setDailyToEdit] = useState<IDaily|null>(null);
     const [isEditViewVisible, setIsEditViewVisible] = useState(false);
+    const currentPage = Number(typeof router.query.page !== 'undefined' ? router.query.page : 1);
+    const url = `/daily_summaries?order[date]&page=${currentPage}`;
+    const { data, error, mutate: mutateDailies } = useSWR<IDailiesApiResult>([url, auth.jwt, 'GET'], FetcherFunc)
 
-    let dailiesNormalized = {};
-    let totalSecondsPerDay = {};
-
-    const toggleDsDetailView = (daily = null) => {
-        setIsEditViewVisible((prevVisible) => !prevVisible);
-        if (daily !== null) {
-            console.log("setting start time to: ", daily.start_time);
-            setStartDate(new Date(daily.start_time));
-            setEndDate(new Date(daily.end_time));
+    useEffect(() => {
+        if (data && typeof data.code !== 'undefined' && data.code === 401) {
+            const tokenService = new TokenService();
+            authDispatch({
+                type: 'removeAuthDetails'
+            });
+            tokenService.deleteToken();
+            router.push('/timers');
         }
-    }
-
-    const prepareData = (data, totalSecondsPerDay, timersNormalized) => {
-        {data['hydra:member'].map((value, key) => {
-            typeof value.date_end !== 'undefined' ? value.isRunning = false : value.isRunning = true;
-            const date = format(new Date(value.date), 'u-MM-dd');
-
-            if (typeof timersNormalized[date] === 'undefined') {
-                timersNormalized[date] = [];
-            }
-            timersNormalized[date] = value;
-        })}
-    }
+    }, [data]);
 
     if (error) return <div>failed to load</div>
     if (!data) return <div>loading...</div>
 
-    console.log(data);
-    return (
-        <Layout>
-            {typeof data['hydra:member'] === 'undefined' || data['hydra:member'].length === 0 ? <div>no data yet...</div> :
-            <div className={`mt-6`}>
-                <div>
-                    {prepareData(data, totalSecondsPerDay, dailiesNormalized)}
+    const toggleDailyEditView = () => {
+        if (isEditViewVisible) {
+            setDailyToEdit(null);
+        }
+        setIsEditViewVisible((prevVal) => {return !prevVal});
+    }
 
-                    {Object.entries(dailiesNormalized).map(([_, daily]) => {
-                        return (
-                            <DailyTablerow
-                                daily={daily}
-                                onClick={daily => toggleDsDetailView(daily)}
-                            />
-                        )
-                    })}
+    const addDaily = () => {
+        setDailyToEdit(null);
+        toggleDailyEditView();
+    }
+
+    const handleTableRowClick = daily => {
+        console.log('editing daily', daily)
+        setDailyToEdit(() => daily);
+        console.log('dialy to edit', dailyToEdit);
+        toggleDailyEditView();
+    }
+
+    return (
+        <Layout validToken={props.validToken}>
+            {typeof data['hydra:member'] === 'undefined' || data['hydra:member'].length === 0 ? <div>no data yet...</div> :
+            <div className="mt-6 mb-24">
+                <div>
+                    {isEditViewVisible ?
+                        <button className={`inset-0 fixed w-full h-full cursor-default bg-black opacity-50`} onClick={() => setIsEditViewVisible(false)}/>
+                        : ''
+                    }
+
+                    {data['hydra:member'].map((daily: IDaily) => (
+                        <DailyTablerow
+                            daily={daily}
+                            onClick={daily => handleTableRowClick(daily)}
+                        />
+                    ))}
+
                 </div>
                 <div>
                     <Pagination
@@ -70,19 +73,16 @@ export const Dailies = () => {
                     />
                 </div>
                 <div
-                    className="flex fixed bottom-0 notification bottom bg-teal-500 rounded-full p-6 border-teal-700 border-2 shadow-md cursor-pointer text-white text-lg"
-                    onClick={() => toggleDsDetailView()}>
-                    <img src="../images/icons/icons8-plus-math-60.png" width="25" height="25" alt="Start Timer"/>
+                    className="fixed bottom-0 mb-3 right-3 mr-3 bg-teal-500 rounded-full p-4 border-white border-2 outline-none shadow-md cursor-pointer"
+                    onClick={() => addDaily()}>
+                    <img src="../images/icons/icons8-plus-math-60.png" width="30" height="30" alt="Start Timer"/>
                 </div>
                 <DailyEditview
-                    startDate={startDate}
-                    endDate={endDate}
-                    setStartDate={(date) => setStartDate(date)}
-                    setEndDate={(date) => setEndDate(date)}
-                    setSendMail={(date) => setSendMail(date)}
-                    sendMail={sendMail}
+                    mutateDailies={mutateDailies}
+                    toggleDailyEditView={toggleDailyEditView}
                     isEditViewVisible={isEditViewVisible}
-                    onClick={() => toggleDsDetailView()}
+                    dailyToEdit={dailyToEdit}
+                    dailies={data['hydra:member']}
                 />
             </div>
             }
@@ -101,5 +101,18 @@ export const Dailies = () => {
  * add save functionality
  */
 
+export const getServerSideProps: GetServerSideProps = (async (context) => {
+    const tokenService = new TokenService();
+    const validToken = await tokenService.authenticateTokenSsr(context)
+    if (!validToken) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: '/login',
+            },
+        }
+    }
+    return { props: { validToken } };
+});
 
 export default Dailies;

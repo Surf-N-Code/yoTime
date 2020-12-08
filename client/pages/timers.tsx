@@ -32,7 +32,6 @@ export const Timers = ({validToken}) => {
         if (!data || typeof data["hydra:member"] === 'undefined') return;
         const timer = data["hydra:member"].filter((timer) => {return typeof timer.date_end === 'undefined' || timer.date_end === null});
         setRunningTimer((prevTimer) => timer[0]);
-        // return updateTimerDurationUi();
     }, [data])
 
     useEffect(() => {
@@ -100,9 +99,9 @@ export const Timers = ({validToken}) => {
                     }}
                     onSwipeProgress={progress => console.info(`Swipe progress: ${progress}%`)}
                 >
-                    <div className="flex flex-row items-center ml-3 mt-1 w-full" data-id={timer.id}>
-                        <div className="text-sm">{timerStartString}  -  {timerEndString}{timer.timer_type === 'break' ? <span className="text-xs"> (b)</span>:''}</div>
-                        <div className="text-sm text-gray-600 text-right ml-auto">{formattedDiffInMinPerTimer}</div>
+                    <div className="flex flex-row items-center ml-3 mt-1 w-full cursor-pointer" data-id={timer.id}>
+                        <div className="">{timerStartString}  -  {timerEndString}{timer.timer_type === 'break' ? <span className="text-xs"> (b)</span>:''}</div>
+                        <div className="text-right ml-auto">{formattedDiffInMinPerTimer}</div>
                     </div>
                 </SwipeableListItem>
             </CSSTransition>
@@ -175,18 +174,26 @@ export const Timers = ({validToken}) => {
         }
         setRunningTimer((prevTimer) => {return {id: tempId, 'optimisticTimer': true, ...timer}});
 
+        console.log('data.hydra', data["hydra:member"]);
+        let newHydra = [{id: tempId, ...timer}, ...data['hydra:member']];
+        console.log('new hydra', newHydra);
+        console.log('new hydra sorted', newHydra.sort((a,b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime()));
+            // console.log(a, b);
+            // console.log('b - a', new Date(b.date_start) - new Date(a.date_start));
+        // }));
+
         await mutateTimers((data) => {
-            return {...data, "hydra:member": [{id: tempId, ...timer}, ...data['hydra:member']]};
+            return {...data, "hydra:member": newHydra.sort((a,b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime())};
         }, false);
 
         const result = await FetcherFunc('timers', auth.jwt, 'POST', timer);
 
-        await mutateTimers((data) => {
-            return {...data, "hydra:member": data['hydra:member'].map((timer) => timer.id === tempId ? result : timer)};
-        }, false);
+        // await mutateTimers((data) => {
+        //     return {...data, "hydra:member": data['hydra:member'].map((timer) => timer.id === tempId ? result : timer)};
+        // }, false);
 
         console.log('result timer from fetch', result);
-        setRunningTimer((prevTimer) => result);
+        setRunningTimer(result);
         // console.groupEnd();
     }
     // console.log('latest timer', runningTimer);
@@ -249,14 +256,18 @@ export const Timers = ({validToken}) => {
                                 if (!daysRendered.some((e) => { return e === timerDate })) {
                                     daysRendered.push(timerDate);
                                     return (
-                                        <div key={timerDate} className="bg-white p-3 mb-1 border-gray-300 border-l-4 hover:border-teal-600">
+                                        <div key={timerDate} className="bg-white p-3 mb-1 border-gray-300 border-l-4 hover:border-teal-600 rounded-md">
                                             <div>
-                                                <div
-                                                    className="text-xs text-gray-500">{format(new Date(timer.date_start), 'dd LLLL uuuu')}</div>
-                                                <div className="flex flex-row items-center">
-                                                    <div
-                                                        className={`text-2xl${cn({' text-yellow-500 font-bold': todayTimer}, {' text-gray-900': !todayTimer})}`}>{todayTimer ? 'Today' : format(new Date(timer.date_start), 'iiii')}</div>
-                                                    <div className="ml-auto"><span className="text-xs">({toHHMMSS(totalBreakDuration)})</span> {toHHMMSS(totalWorkDuration)}</div>
+                                                <div className="flex">
+                                                    <div className="flex flex-col">
+                                                        <div className="text-xs text-gray-500">{format(new Date(timer.date_start), 'dd LLLL uuuu')}</div>
+                                                        <div className={`text-2xl${cn({' text-yellow-500 font-bold': todayTimer}, {' text-gray-900': !todayTimer})}`}>{todayTimer ? 'Today' : format(new Date(timer.date_start), 'iiii')}</div>
+                                                    </div>
+
+                                                    <div className="ml-auto text-xs text-gray-500">
+                                                        {totalBreakDuration > 0 ? <span className="text-xs mr-2">({toHHMMSS(totalBreakDuration)})</span> :''}
+                                                        {toHHMMSS(totalWorkDuration)}
+                                                    </div>
                                                 </div>
                                             </div>
                                             <SwipeableList threshold={300}>
@@ -331,7 +342,7 @@ export const Timers = ({validToken}) => {
                                 <button
                                     className="ml-3 bg-teal-500 rounded-full p-4 border-white border-2 outline-none shadow-md cursor-pointer"
                                     onClick={() => toggleAddTimerView()}>
-                                    <img src="../images/icons/icons8-plus-math-30.png" width="30" height="30" alt="Start Timer"/>
+                                    <img src="../images/icons/icons8-plus-math-60.png" width="30" height="22" alt="Start Timer"/>
                                 </button>
                             </div>
                         </div>
