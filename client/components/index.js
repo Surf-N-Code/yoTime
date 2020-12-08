@@ -15,5 +15,5 @@ export {
     Menu,
     Pagination,
     FormField,
-    ManualTimerview
+    ManualTimerview,
 };

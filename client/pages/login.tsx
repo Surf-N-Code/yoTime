@@ -65,20 +65,14 @@ export const Login = () => {
                                     />
                                     <div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
                                         <h3 className="pt-4 text-2xl text-center">Welcome Back!</h3>
-                                        <div className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+                                        <div className="px-3 pt-6 pb-8 mb-4 bg-white rounded">
                                             <div className="mb-4">
-                                                <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="username">
-                                                    Email
-                                                </label>
                                                 <Field id="email" name="email" placeholder="Email" type="text"
                                                        className={`w-full px-3 py-2 text-sm leading-tight text-gray-700 border ${cn({'border-red-500' : invalidForm})} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
                                                        onSelect={() => setInvalidForm(false)}
                                                 />
                                             </div>
                                             <div className="mb-4">
-                                                <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="password">
-                                                    Password
-                                                </label>
                                                 <Field id="password" name="password" placeholder="Password" type="password"
                                                        className={`w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border ${cn({'border-red-500' : invalidForm})} rounded shadow appearance-none focus:outline-none focus:shadow-outline`}
                                                        onSelect={() => setInvalidForm(false)}
@@ -87,7 +81,7 @@ export const Login = () => {
                                             </div>
                                             <div className="mb-6 text-center">
                                                 <button
-                                                    className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                                                    className="w-full px-4 py-2 font-bold text-white bg-teal-500 rounded-lg hover:bg-teal-700 focus:outline-none focus:shadow-outline"
                                                     type="submit"
                                                 >
                                                     Sign In
