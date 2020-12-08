@@ -6,11 +6,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ApiResource()
  * @ApiFilter(OrderFilter::class, properties={"date": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }})
  * @ORM\Entity(repositoryClass="App\Repository\DailySummaryRepository")
+ * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="IDX_USER_DATE", columns={"user_id", "date"})})
+ * @UniqueEntity(fields={"user", "date"})
  * @ORM\EntityListeners({"App\Doctrine\SetUserListener"})
  */
 class DailySummary
