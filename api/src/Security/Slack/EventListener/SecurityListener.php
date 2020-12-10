@@ -29,7 +29,6 @@ class SecurityListener
             $string = sprintf('v0:%s:%s', $slackTimestamp, $request->getContent());
             $mySig = 'v0='.hash_hmac('sha256', $string, $this->slackSignSecret);
             $slackSig = $request->headers->get('X-Slack-Signature');
-//            dd($mySig, $slackSig, $string);
 
             if (!hash_equals((string)$slackSig, $mySig)) {
                 $response = new Response();

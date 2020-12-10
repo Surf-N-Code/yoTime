@@ -34,18 +34,20 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Improve editing timers">
-      <change afterPath="$PROJECT_DIR$/api/src/DataPersister/DailySummaryPersister.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/Entity/DailySummaryTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Attempt to implement a unique validaton on daily summary dates">
+      <change afterPath="$PROJECT_DIR$/api/src/EventListener/DailySummaryListener.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisteIntegrationTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisterTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/.env" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/DataPersister/UserPersister.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/DataPersister/UserPersister.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/fixtures/dev/dailies.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/dev/dailies.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/fixtures/test/dailies.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/test/dailies.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/DataPersister/DailySummaryPersister.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/DataPersister/DailySummaryPersister.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Entity/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Entity/UserTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Security/Slack/EventListener/SecurityListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Security/Slack/EventListener/SecurityListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Entity/DailySummaryTest.php" beforeDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -260,7 +262,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/client/styles/tailwind.css&#10;/home/norman/Development/yoTime/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/tests/Entity" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/tests/DataPersister" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -269,49 +271,49 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/tests/DataPersister" />
+      <recent name="$PROJECT_DIR$/api/src/EventListener" />
+      <recent name="$PROJECT_DIR$/api/tests/Entity" />
+      <recent name="$PROJECT_DIR$/api/src/DataPersister" />
+      <recent name="$PROJECT_DIR$/client/pages" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/src/Validator/Constraints" />
       <recent name="$PROJECT_DIR$/client/styles" />
       <recent name="$PROJECT_DIR$/client/Errors" />
       <recent name="$PROJECT_DIR$/client/types" />
       <recent name="$PROJECT_DIR$/api/tests/Doctrine" />
-      <recent name="$PROJECT_DIR$/client/pages" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/api/tests/Entity" />
-      <recent name="$PROJECT_DIR$/api/src/DataPersister" />
-      <recent name="$PROJECT_DIR$/api/tests/DataPersister" />
-      <recent name="$PROJECT_DIR$/client/pages" />
-      <recent name="$PROJECT_DIR$/client/components" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.DailySummaryTest.testCreateUser">
-    <configuration name="DailySummaryTest.testCreateUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Entity\DailySummaryTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Entity/DailySummaryTest.php" method="testCreateUser" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.tests">
+    <configuration name="DailySummaryPersisteIntegrationTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\DataPersister\DailySummaryPersisteIntegrationTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisteIntegrationTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="SecurityListenerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Security\Slack\EventListener\SecurityListenerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTest.php" scope="Class" />
+    <configuration name="DailySummaryPersisteIntegrationTest.testAddDailySummary" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\DataPersister\DailySummaryPersisteIntegrationTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisteIntegrationTest.php" method="testAddDailySummary" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Entity\UserTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Entity/UserTest.php" scope="Class" />
+    <configuration name="DailySummaryPersisterTest.testPersist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\DataPersister\DailySummaryPersisterTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisterTest.php" method="testPersist" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.testCreateUser (1)" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Entity\UserTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Entity/DailySummaryTest.php" method="testCreateUser" scope="Method" />
+    <configuration name="DailySummaryPersisterTest.testPersistDsWithoutMail" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\DataPersister\DailySummaryPersisterTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisterTest.php" method="testPersistDsWithoutMail" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.testCreateUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Entity\UserTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Entity/UserTest.php" method="testCreateUser" scope="Method" />
+    <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner configuration_file="/srv/api/phpunit.xml" directory="$PROJECT_DIR$/api/tests" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.DailySummaryTest.testCreateUser" />
-        <item itemvalue="PHPUnit.UserTest.testCreateUser (1)" />
-        <item itemvalue="PHPUnit.UserTest.testCreateUser" />
-        <item itemvalue="PHPUnit.UserTest" />
-        <item itemvalue="PHPUnit.SecurityListenerTest" />
+        <item itemvalue="PHPUnit.tests" />
+        <item itemvalue="PHPUnit.DailySummaryPersisterTest.testPersistDsWithoutMail" />
+        <item itemvalue="PHPUnit.DailySummaryPersisterTest.testPersist" />
+        <item itemvalue="PHPUnit.DailySummaryPersisteIntegrationTest.testAddDailySummary" />
+        <item itemvalue="PHPUnit.DailySummaryPersisteIntegrationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -387,14 +389,9 @@
       <workItem from="1606999397991" duration="45277000" />
       <workItem from="1607355766083" duration="431000" />
       <workItem from="1607362028666" duration="3737000" />
-      <workItem from="1607450387678" duration="3353000" />
-    </task>
-    <task id="LOCAL-00023" summary="Fix typo and improve message on start timer">
-      <created>1600630880283</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1600630880283</updated>
+      <workItem from="1607450387678" duration="4424000" />
+      <workItem from="1607536341902" duration="3117000" />
+      <workItem from="1607613203946" duration="12675000" />
     </task>
     <task id="LOCAL-00024" summary="Make timezone and timezone offset non-nullable">
       <created>1600630899043</created>
@@ -732,7 +729,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607450431766</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Attempt to implement a unique validaton on daily summary dates">
+      <created>1607454048436</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1607454048436</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -779,7 +783,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Add jwt bundle" />
     <MESSAGE value="Add access control directives to timers to limit access to logged in users" />
     <MESSAGE value="Refine security on timers" />
     <MESSAGE value="Remove authenticationsuccess handler and implement jwt subscriber" />
@@ -804,7 +807,8 @@
     <MESSAGE value="Working manual add, delete and edit timers" />
     <MESSAGE value="Improve editing timers" />
     <MESSAGE value="Finish most of daily and timer views" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finish most of daily and timer views" />
+    <MESSAGE value="Attempt to implement a unique validaton on daily summary dates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Attempt to implement a unique validaton on daily summary dates" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="4" width="756" height="674" key="#CLI_Interpreters" timestamp="1604086486755">
@@ -835,18 +839,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="774" y="359" width="357" height="298" key="#com.intellij.ide.actions.DebugLogConfigureAction/0.0.1920.1080@0.0.1920.1080" timestamp="1604086445887" />
-    <state x="756" y="186" width="390" height="552" key="#com.intellij.ide.util.MemberChooser" timestamp="1605815569427">
+    <state x="754" y="168" width="390" height="552" key="#com.intellij.ide.util.MemberChooser" timestamp="1607622585559">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="756" y="186" width="390" height="552" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1605815569427" />
-    <state x="62" y="-252" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605993121469">
+    <state x="754" y="168" width="390" height="552" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1607622585559" />
+    <state x="58" y="-288" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607624798449">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="62" y="-252" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605993121469" />
-    <state x="653" y="-53" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604161796597">
+    <state x="58" y="-288" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607624798449" />
+    <state x="651" y="-71" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607622778650">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="653" y="-53" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604161796597" />
+    <state x="651" y="-71" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607622778650" />
     <state x="667" y="363" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#" timestamp="1602277418370">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -855,10 +859,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="68" y="-30" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1607450440191">
+    <state x="54" y="-96" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1607622970011">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="68" y="-30" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1607450440191" />
+    <state x="54" y="-96" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1607622970011" />
     <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -879,38 +883,38 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="691" y="454" key="GitCloneDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599927280951" />
-    <state width="1816" height="274" key="GridCell.Tab.0.bottom" timestamp="1607407306782">
+    <state width="1816" height="261" key="GridCell.Tab.0.bottom" timestamp="1607626543097">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="274" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1607407306782" />
-    <state width="1816" height="274" key="GridCell.Tab.0.center" timestamp="1607407306782">
+    <state width="1816" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1607626543097" />
+    <state width="1816" height="261" key="GridCell.Tab.0.center" timestamp="1607626543097">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="274" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1607407306782" />
-    <state width="1816" height="274" key="GridCell.Tab.0.left" timestamp="1607407306782">
+    <state width="1816" height="261" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1607626543097" />
+    <state width="1816" height="261" key="GridCell.Tab.0.left" timestamp="1607626543097">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="274" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1607407306782" />
-    <state width="1816" height="274" key="GridCell.Tab.0.right" timestamp="1607407306782">
+    <state width="1816" height="261" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1607626543097" />
+    <state width="1816" height="261" key="GridCell.Tab.0.right" timestamp="1607626543097">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="274" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1607407306782" />
-    <state width="1070" height="308" key="GridCell.Tab.1.bottom" timestamp="1604299904424">
+    <state width="1816" height="261" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1607626543097" />
+    <state width="1816" height="314" key="GridCell.Tab.1.bottom" timestamp="1607625958699">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
-    <state width="1070" height="308" key="GridCell.Tab.1.center" timestamp="1604299904424">
+    <state width="1816" height="314" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1607625958699" />
+    <state width="1816" height="314" key="GridCell.Tab.1.center" timestamp="1607625958698">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
-    <state width="1070" height="308" key="GridCell.Tab.1.left" timestamp="1604299904424">
+    <state width="1816" height="314" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1607625958698" />
+    <state width="1816" height="314" key="GridCell.Tab.1.left" timestamp="1607625958698">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
-    <state width="1070" height="308" key="GridCell.Tab.1.right" timestamp="1604299904424">
+    <state width="1816" height="314" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1607625958698" />
+    <state width="1816" height="314" key="GridCell.Tab.1.right" timestamp="1607625958699">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1070" height="308" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
+    <state width="1816" height="314" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1607625958699" />
     <state width="1070" height="308" key="GridCell.Tab.2.bottom" timestamp="1604299904425">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -931,14 +935,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="227" height="471" key="HiddenNamespacesPopup/0.0.1920.1080@0.0.1920.1080" timestamp="1605851176956" />
-    <state x="607" y="44" width="648" height="532" key="NewPhpClassDialog" timestamp="1606072327760">
+    <state x="601" y="-10" width="648" height="532" key="NewPhpClassDialog" timestamp="1607622465047">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="607" y="44" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606072327760" />
-    <state x="773" y="-82" width="389" height="578" key="RollbackChangesDialog" timestamp="1606761182210">
+    <state x="601" y="-10" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607622465047" />
+    <state x="500" y="493" width="356" height="137" key="NewPhpFileDialog" timestamp="1607622410779">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="773" y="-82" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606761182210" />
+    <state x="500" y="493" width="356" height="137" key="NewPhpFileDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607622410779" />
+    <state x="769" y="-118" width="389" height="578" key="RollbackChangesDialog" timestamp="1607619544369">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="769" y="-118" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607619544369" />
     <state x="436" y="4" key="SettingsEditor" timestamp="1605955388327">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -951,14 +959,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="29" y="100" width="1116" height="951" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604346089253" />
-    <state x="535" y="105" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1604857515628">
+    <state x="533" y="87" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1607622634973">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="535" y="105" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1604857515628" />
+    <state x="533" y="87" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1607622634973" />
     <state x="827" y="256" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1605893582609">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="827" y="256" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1080@0.0.1920.1080" timestamp="1605893582609" />
+    <state x="525" y="324" width="306" height="438" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1607623621759">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="525" y="324" width="306" height="438" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607623621759" />
     <state x="664" y="122" width="364" height="515" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1603618367322">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -967,10 +979,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="501" y="299" width="907" height="525" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1080@0.0.1920.1080" timestamp="1600600369717" />
-    <state x="612" y="255" width="687" height="362" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1600781271092">
+    <state x="610" y="237" width="687" height="362" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1607454200367">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="612" y="255" width="687" height="362" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1600781271092" />
+    <state x="610" y="237" width="687" height="362" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607454200367" />
     <state x="385" y="300" width="398" height="251" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1604084128452">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -983,18 +995,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="29" y="136" width="1862" height="915" key="dock-window-2/0.0.1920.1080@0.0.1920.1080" timestamp="1600868604122" />
-    <state x="897" y="466" width="854" height="592" key="find.popup" timestamp="1607405398118">
+    <state x="897" y="466" width="854" height="592" key="find.popup" timestamp="1607615426982">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="897" y="466" width="854" height="592" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1607405398118" />
+    <state x="897" y="466" width="854" height="592" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1607615426982" />
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog" timestamp="1603533059617">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603533059617" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1607453158547">
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1607626435566">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1607453158547" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1607626435566" />
     <state x="649" y="140" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604095844648">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -1004,29 +1016,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/api/vendor/api-platform/core/src/EventListener/DeserializeListener.php</url>
-          <line>70</line>
-          <option name="timeStamp" value="92" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php</url>
-          <line>123</line>
-          <option name="timeStamp" value="95" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/BotMessageHandler.php</url>
           <line>58</line>
           <option name="timeStamp" value="110" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/api/tests/IntegrationTestCase.php</url>
-          <line>44</line>
-          <option name="timeStamp" value="114" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/api/src/Doctrine/SetUserListener.php</url>
-          <line>21</line>
-          <option name="timeStamp" value="115" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1038,10 +1030,12 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/yoTime@DailySummaryHandlerTest.xml" NAME="DailySummaryHandlerTest Coverage Results" MODIFIED="1600629596029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/yoTime@tests.xml" NAME="tests Coverage Results" MODIFIED="1600009358856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/yoTime@tests.xml" NAME="tests Coverage Results" MODIFIED="1607626543090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@TimerHandlerTest.xml" NAME="TimerHandlerTest Coverage Results" MODIFIED="1602324601715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@SlashCommandHandlerTest.xml" NAME="SlashCommandHandlerTest Coverage Results" MODIFIED="1597698388851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/yoTime@DailySummaryPersisterTest.xml" NAME="DailySummaryPersisterTest Coverage Results" MODIFIED="1607542048692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@DailySummaryHandlerTest_testHandleModalSubmissionFailedPersonioSync.xml" NAME="DailySummaryHandlerTest.testHandleModalSubmissionFailedPersonioSync Coverage Results" MODIFIED="1600593206568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/yoTime@DailySummaryPersisteIntegrationTest_testAddDailySummary.xml" NAME="DailySummaryPersisteIntegrationTest.testAddDailySummary Coverage Results" MODIFIED="1607618898681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@TimerHandlerTest_testStartWorkTimer.xml" NAME="TimerHandlerTest.testStartWorkTimer Coverage Results" MODIFIED="1602322847941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

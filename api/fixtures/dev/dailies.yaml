@@ -1,5 +1,5 @@
 App\Entity\DailySummary:
-  ds_{1..50}:
+  ds_{1..5}:
     user: '@user_*'
     dailySummary: <realText(50)>
     timeWorkedInS: <randomNumber(5)>

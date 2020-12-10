@@ -77,3 +77,6 @@ services:
         arguments: [ '@request_stack' ]
         tags:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+
+    App\DataPersister\DailySummaryPersister:
+        decorates: 'api_platform.doctrine.orm.data_persister'
