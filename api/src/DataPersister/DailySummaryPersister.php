@@ -4,60 +4,72 @@
 namespace App\DataPersister;
 
 
-use ApiPlatform\Core\DataPersister\DataPersisterInterface;
+use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use App\Entity\DailySummary;
-use App\Entity\Task;
-use App\Entity\User;
 use App\Exceptions\UniqueConstraintViolationException;
 use App\Mail\Mailer;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class DailySummaryPersister implements DataPersisterInterface
+class DailySummaryPersister implements ContextAwareDataPersisterInterface
 {
 
-    private $entityManager;
+    private $decorated;
+    private $mailer;
 
-    private UserPasswordEncoderInterface $userPasswordEncoder;
-
-    private Mailer $mailer;
+    private EntityManagerInterface $em;
 
     public function __construct(
-        EntityManagerInterface $entityManager,
-        Mailer $mailer
+        ContextAwareDataPersisterInterface $decorated,
+        Mailer $mailer,
+        EntityManagerInterface $em
     )
     {
-        $this->entityManager = $entityManager;
+        $this->decorated = $decorated;
         $this->mailer = $mailer;
+        $this->em = $em;
     }
 
-    public function supports($data): bool
+    public function supports($data, array $context = []): bool
     {
-        return $data instanceof DailySummary;
+        return $this->decorated->supports($data, $context);
     }
 
-    public function persist($data)
+    public function persist($data, array $context = [])
     {
-//        $originalData = $this->entityManager->getUnitOfWork()->getOriginalEntityData($data);
-//        $hasSentMailAlready = $originalData['isEmailSent'] ?? false;
-//
-//        if (!$hasSentMailAlready) {
-//            $this->mailer->send('ndilthey@gmail.com', 'ndilthey@gmail.com', 'Daily Summary Mail', 'DS Mail');
-//        }
-
         try {
-            $this->entityManager->persist($data);
-            $this->entityManager->flush();
+            $result = $this->decorated->persist($data, $context);
         } catch (\Exception $e) {
-            if ($e instanceof UniqueConstraintViolationException) {
-                throw new UniqueConstraintViolationException(sprintf('A daily summary for this date: %s already exists.', $data->getDate()));
+            if ($e instanceof \Doctrine\DBAL\Exception\UniqueConstraintViolationException) {
+                throw new UniqueConstraintViolationException(sprintf('A daily summary for this date: %s already exists.', $data->getDate()->format('Y-m-d')));
             }
         }
-    }
-    public function remove($data)
-    {
-        $this->entityManager->remove($data);
-        $this->entityManager->flush();
+
+        if (
+            $data instanceof DailySummary && (
+                ($context['collection_operation_name'] ?? null) === 'post' ||
+                ($context['collection_operation_name'] ?? null) === 'patch'
+            )
+        ) {
+            $this->sendWelcomeEmail($data);
+        }
+
+        return $result;
     }
 
+    public function remove($data, array $context = [])
+    {
+        return $this->decorated->remove($data, $context);
+    }
+
+    private function sendWelcomeEmail(DailySummary $ds)
+    {
+        $originalData = $this->em->getUnitOfWork()->getOriginalEntityData($ds);
+        $isMailSent = $originalData['isEmailSent'] ?? false;
+
+        if (!$isMailSent) {
+            $user = $ds->getUser();
+            $mailSubject = 'Daily Summary - ' . $user->getFirstName() . ' ' . $user->getLastName();
+            $this->mailer->send($_ENV['MAIL_SENDER'], 'ndilthey@gmail.com', $mailSubject, $ds->getDailySummary());
+        }
+    }
 }

@@ -12,12 +12,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ApiResource()
  * @ApiFilter(OrderFilter::class, properties={"date": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }})
  * @ORM\Entity(repositoryClass="App\Repository\DailySummaryRepository")
- * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="IDX_USER_DATE", columns={"user_id", "date"})})
- * @UniqueEntity(fields={"user", "date"})
  * @ORM\EntityListeners({"App\Doctrine\SetUserListener"})
+ * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="IDX_USER_DATE", columns={"user_id", "date"})})
  */
 class DailySummary
 {
+    //* @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="IDX_USER_DATE", columns={"user_id", "date"})})
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -120,7 +121,7 @@ class DailySummary
         return $this->user;
     }
 
-    public function setUser(?User $user)
+    public function setUser(User $user)
     {
         $this->user = $user;
     }
