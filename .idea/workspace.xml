@@ -35,19 +35,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Attempt to implement a unique validaton on daily summary dates">
-      <change afterPath="$PROJECT_DIR$/api/src/EventListener/DailySummaryListener.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisteIntegrationTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisterTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/.env.local" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/services/IsoFetcher.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.env" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/fixtures/dev/dailies.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/dev/dailies.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/fixtures/test/dailies.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/test/dailies.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/DataPersister/DailySummaryPersister.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/DataPersister/DailySummaryPersister.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Security/Slack/EventListener/SecurityListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Security/Slack/EventListener/SecurityListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Entity/DailySummaryTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/DailyEditview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyEditview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/dailies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dailies.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/services/Token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Token.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/services/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/types/apiResult.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/apiResult.types.ts" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -262,7 +260,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/client/styles/tailwind.css&#10;/home/norman/Development/yoTime/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/tests/DataPersister" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -271,19 +269,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/api/tests/DataPersister" />
-      <recent name="$PROJECT_DIR$/api/src/EventListener" />
-      <recent name="$PROJECT_DIR$/api/tests/Entity" />
-      <recent name="$PROJECT_DIR$/api/src/DataPersister" />
-      <recent name="$PROJECT_DIR$/client/pages" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api/src/Validator/Constraints" />
       <recent name="$PROJECT_DIR$/client/styles" />
       <recent name="$PROJECT_DIR$/client/Errors" />
       <recent name="$PROJECT_DIR$/client/types" />
       <recent name="$PROJECT_DIR$/api/tests/Doctrine" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client" />
+      <recent name="$PROJECT_DIR$/client/services" />
+      <recent name="$PROJECT_DIR$/api/tests/DataPersister" />
+      <recent name="$PROJECT_DIR$/api/src/EventListener" />
+      <recent name="$PROJECT_DIR$/api/tests/Entity" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.tests">
@@ -392,6 +390,8 @@
       <workItem from="1607450387678" duration="4424000" />
       <workItem from="1607536341902" duration="3117000" />
       <workItem from="1607613203946" duration="12675000" />
+      <workItem from="1607668162100" duration="37000" />
+      <workItem from="1607698380139" duration="11925000" />
     </task>
     <task id="LOCAL-00024" summary="Make timezone and timezone offset non-nullable">
       <created>1600630899043</created>
@@ -995,18 +995,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="29" y="136" width="1862" height="915" key="dock-window-2/0.0.1920.1080@0.0.1920.1080" timestamp="1600868604122" />
-    <state x="897" y="466" width="854" height="592" key="find.popup" timestamp="1607615426982">
+    <state x="897" y="466" width="854" height="592" key="find.popup" timestamp="1607704967404">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="897" y="466" width="854" height="592" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1607615426982" />
+    <state x="897" y="466" width="854" height="592" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1607704967404" />
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog" timestamp="1603533059617">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603533059617" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1607626435566">
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1607710726334">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1607626435566" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1607710726334" />
     <state x="649" y="140" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604095844648">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

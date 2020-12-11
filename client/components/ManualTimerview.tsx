@@ -84,7 +84,7 @@ export const ManualTimerview = ({mutateTimers, toggleAddTimerView, isVisible, ti
     }
 
     return (
-        <div className={`${cn({'slide-in-bottom': isVisible}, {'slide-out-bottom': !isVisible})} z-10 fixed bottom-0 left-0 w-full pl-3 pr-3 border-t-2 border-white bg-gradient-to-br from-teal-400 to-teal-500 shadow-md text-white rounded-tr-lg rounded-tl-lg`}>
+        <div className={`${cn({'slide-in-bottom ': isVisible})} timer-edit-drawer z-10 fixed bottom-0 left-0 w-full pl-3 pr-3 border-t-2 border-white bg-gradient-to-br from-teal-400 to-teal-500 shadow-md text-white rounded-tr-lg rounded-tl-lg`}>
             <svg
                 className="ml-auto fill-current text-white w-6 h-6 cursor-pointer mt-3"
                 xmlns="http://www.w3.org/2000/svg"
