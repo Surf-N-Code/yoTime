@@ -14,16 +14,17 @@ import {FetcherFunc, useGlobalMessaging, useAuth} from "../services";
 import {IDaily} from "../types/daily.types";
 import {FormField} from "./FormField";
 import {create} from "domain";
+import {IDailiesApiResult} from "../types/apiResult.types";
 
 interface IProps {
     mutateDailies: Function;
     toggleDailyEditView: Function;
     isEditViewVisible: boolean;
     dailyToEdit: IDaily;
-    dailies: IDaily[];
+    data: IDailiesApiResult[];
 }
 
-export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVisible, dailyToEdit, dailies}: IProps) => {
+export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVisible, dailyToEdit, data}: IProps) => {
     const [dailySummaryText, setDailySummaryText] = useState('');
     const [startTime, setStartTime] = useState('09:00');
     const [endTime, setEndTime] = useState('18:00');
@@ -83,6 +84,7 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
     }
 
     const addOrUpdateDaily = async (dailyToEdit: IDaily) => {
+        toggleDailyEditView();
         const startDate = createDateFromString(startTime);
         const endDate = createDateFromString(endTime);
         const startBreak = createDateFromString('00:00');
@@ -110,7 +112,7 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
         }
 
         if (!dailyToEdit) {
-            if (dailies.some((daily) => isSameDay(new Date(daily.date), new Date(updatedDaily.date)))) {
+            if (data["hydra:member"].some((daily) => isSameDay(new Date(daily.date), new Date(updatedDaily.date)))) {
                 messageDispatch({
                     type: 'setMessage',
                     payload: {
@@ -134,7 +136,6 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
                 return {...data, "hydra:member": newHydra.sort((a,b) => new Date(b.start_time).getTime() - new Date(a.end_time).getTime())};
             }, false);
             await FetcherFunc(`/daily_summaries`, auth.jwt, 'POST', updatedDaily);
-            toggleDailyEditView();
             return;
         }
 
@@ -161,7 +162,7 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
 
     return (
         <div>
-            <div className={`${cn({'slide-in-bottom-daily': isEditViewVisible}, {'slide-out-bottom-daily': !isEditViewVisible})} z-10 fixed bottom-0 left-0 w-full pl-3 pr-3 border-t-2 border-white bg-gradient-to-br from-teal-400 to-teal-500 shadow-md text-white rounded-tr-lg rounded-tl-lg`}>
+            <div className={`${cn({'slide-in-bottom-daily': isEditViewVisible})} daily-edit-drawer z-10 fixed bottom-0 left-0 w-full pl-3 pr-3 border-t-2 border-white bg-gradient-to-br from-teal-400 to-teal-500 shadow-md text-white rounded-tr-lg rounded-tl-lg`}>
                 <div className="flex flex-col pt-3 pb-5 px-3">
                     <svg
                         className="ml-auto fill-current text-white w-6 h-6 cursor-pointer mr-3"

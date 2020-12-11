@@ -1,5 +1,5 @@
 import {ITimer} from './timer.types';
-import {IDailySummary} from './dailySummary.types';
+import {IDaily} from './daily.types';
 import {IUser} from "./user.types";
 
 interface BaseApiResult {
@@ -20,5 +20,5 @@ export interface IUserApiResult extends BaseApiResult {
 }
 
 export interface IDailiesApiResult extends BaseApiResult {
-    'hydra:member': IDailySummary[];
+    'hydra:member': IDaily[];
 }

@@ -9,6 +9,8 @@ import {ActionAnimations, SwipeableList, SwipeableListItem} from '@sandstreamdev
 import '@sandstreamdev/react-swipeable-list/dist/styles.css';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Transition } from 'react-transition-group';
+import fetch from 'isomorphic-unfetch';
+import {IsoFetcher} from '../services';
 
 import {Alert, Layout, Pagination, ManualTimerview} from '../components';
 import {FetcherFunc, TokenService, useAuth, useGlobalMessaging} from '../services';
@@ -16,8 +18,9 @@ import {ITimer, ITimerApiResult} from '../types';
 import {toHHMMSS} from "../utilities";
 
 import {GetServerSideProps} from "next";
+import Cookies from "universal-cookie";
 
-export const Timers = ({validToken}) => {
+export const Timers = ({validToken, initialData}) => {
     const router = useRouter();
     const [auth, authDispatch] = useAuth();
     const [manualTimerModalVisible, setManualTimerModalVisible] = useState(false);
@@ -26,7 +29,7 @@ export const Timers = ({validToken}) => {
     const [timerToEdit, setTimerToEdit] = useState<ITimer|null>(null);
     const currentPage = Number(typeof router.query.page !== 'undefined' ? router.query.page : 1);
     const url = `timers?order[dateStart]&page=${currentPage}`;
-    const { data, error, mutate: mutateTimers } = useSWR<ITimerApiResult>([url, auth.jwt, 'GET'], FetcherFunc)
+    const { data, error, mutate: mutateTimers } = useSWR<ITimerApiResult>([url, auth.jwt, 'GET'], FetcherFunc, {initialData})
 
     useEffect(() => {
         if (!data || typeof data["hydra:member"] === 'undefined') return;
@@ -46,7 +49,7 @@ export const Timers = ({validToken}) => {
     }, [data]);
 
     useEffect(() => {
-        console.log('use effect running timer', runningTimer);
+        // console.log('use effect running timer', runningTimer);
         return updateTimerDurationUi(runningTimer);
     }, [runningTimer])
 
@@ -144,8 +147,8 @@ export const Timers = ({validToken}) => {
         let timer = {...runningTimer};
         timer.date_end = new Date();
         let timersToStop = [];
+        let newData = {...data};
         await mutateTimers((data) => {
-            let newData = {...data};
             newData["hydra:member"].map((timer) => {
                 if (typeof timer.date_end === 'undefined' || timer.date_end === null) {
                     timer.date_end = new Date();
@@ -165,7 +168,6 @@ export const Timers = ({validToken}) => {
 
     const startTimer = async (timerType: string) => {
         await stopTimer();
-        // console.group('start timer')
         let tempId = uuidv4();
         const timer = {
             date_start: new Date(),
@@ -178,23 +180,13 @@ export const Timers = ({validToken}) => {
         let newHydra = [{id: tempId, ...timer}, ...data['hydra:member']];
         console.log('new hydra', newHydra);
         console.log('new hydra sorted', newHydra.sort((a,b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime()));
-            // console.log(a, b);
-            // console.log('b - a', new Date(b.date_start) - new Date(a.date_start));
-        // }));
 
         await mutateTimers((data) => {
             return {...data, "hydra:member": newHydra.sort((a,b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime())};
         }, false);
 
         const result = await FetcherFunc('timers', auth.jwt, 'POST', timer);
-
-        // await mutateTimers((data) => {
-        //     return {...data, "hydra:member": data['hydra:member'].map((timer) => timer.id === tempId ? result : timer)};
-        // }, false);
-
-        console.log('result timer from fetch', result);
         setRunningTimer(result);
-        // console.groupEnd();
     }
     // console.log('latest timer', runningTimer);
     // console.log('---- DATA ---- ', data);
@@ -356,7 +348,10 @@ export const Timers = ({validToken}) => {
     );
 }
 
-export const getServerSideProps: GetServerSideProps = (async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const cookies = new Cookies(context.req.headers.cookie);
+    const token = cookies.get('token');
+    const timers = await IsoFetcher.isofetchAuthed(`${process.env.API_BASE_URL}timers?order[dateStart]&page=1`, null, 'GET', token);
     const tokenService = new TokenService();
     const validToken = await tokenService.authenticateTokenSsr(context)
     if (!validToken) {
@@ -367,33 +362,12 @@ export const getServerSideProps: GetServerSideProps = (async (context) => {
             },
         }
     }
-    return { props: { validToken } };
-});
+    return { props: { validToken, initialData: timers } };
+};
 
 //TO-DO
 /**
  * jump to first page when adding timer
- */
-
-//DONE
-/**
- * running timer - update minutes and seconds
- * dynamic user id when generating a timer
- * add timer and refresh directly to show new timer
- * play button to start timer.
- * only allow user to see its own entries!
- * no timers at all handling
- * wrong multi day timer
- * show seconds
- * add timer fixtures
- * paging of timers
- *
- * cleanup paging
- * add hover effect on timer rows
- * menu - highlight current selected menu element
- * format start and endtime on timer nicely
- * bottom right play icon to start work timer. Show stop icon if timer is running on all pages
- * stop timer on icon click and refresh view
  */
 
 export default Timers;

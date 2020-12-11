@@ -68,7 +68,7 @@ class TokenService {
 
   public async authenticateTokenSsr(ctx: GetServerSidePropsContext) {
     const ssr = !!ctx.req;
-    console.log('context in auth',ctx);
+    // console.log('context in auth',ctx);
     const cookies = new Cookies(ssr ? ctx.req.headers.cookie : null);
     const token = cookies.get('token');
     console.log("token from cookie", token);

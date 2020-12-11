@@ -129,6 +129,16 @@ body {
     padding-left: calc(1px +  0.54em);
 }
 
+.timer-edit-drawer {
+    -webkit-transform: translateY(414px);
+    transform: translateY(414px);
+}
+
+.daily-edit-drawer {
+    -webkit-transform: translateY(474px);
+    transform: translateY(474px);
+}
+
 .slide-in-bottom {
     animation: slide-in-bottom 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
