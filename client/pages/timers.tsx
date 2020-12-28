@@ -28,7 +28,7 @@ export const Timers = ({validToken, initialData}) => {
     const [messageState, messageDispatch] = useGlobalMessaging();
     const [timerToEdit, setTimerToEdit] = useState<ITimer|null>(null);
     const currentPage = Number(typeof router.query.page !== 'undefined' ? router.query.page : 1);
-    const url = `timers?order[dateStart]&page=${currentPage}`;
+    const url = `/timers?order[dateStart]&page=${currentPage}`;
     const { data, error, mutate: mutateTimers } = useSWR<ITimerApiResult>([url, auth.jwt, 'GET'], FetcherFunc, {initialData})
 
     useEffect(() => {
@@ -49,7 +49,6 @@ export const Timers = ({validToken, initialData}) => {
     }, [data]);
 
     useEffect(() => {
-        // console.log('use effect running timer', runningTimer);
         return updateTimerDurationUi(runningTimer);
     }, [runningTimer])
 
@@ -111,10 +110,7 @@ export const Timers = ({validToken, initialData}) => {
         )
     }
 
-    if (error) return <div>failed to load</div>;
-
     const editTimer = async (timer: ITimer) => {
-        console.log('timer to edit', timer);
         setTimerToEdit(timer);
         toggleAddTimerView();
     }
@@ -122,7 +118,6 @@ export const Timers = ({validToken, initialData}) => {
     const deleteTimer = async (timerId) => {
         await mutateTimers((data) => {
             let newData = {...data};
-            console.log()
             return {...data, "hydra:member": [...newData["hydra:member"].filter(timer => timer.id !== timerId)]};
         }, false);
 
@@ -139,11 +134,12 @@ export const Timers = ({validToken, initialData}) => {
             .catch(error => {
                return false;
             });
-        console.log(timerId);
     }
 
     const stopTimer = async () => {
         if (!runningTimer) return;
+        setRunningTimer((prevTimer) => null);
+
         let timer = {...runningTimer};
         timer.date_end = new Date();
         let timersToStop = [];
@@ -163,7 +159,6 @@ export const Timers = ({validToken, initialData}) => {
             })
         }
         await FetcherFunc(`/timers/${timer.id}`, auth.jwt, 'PATCH', timer, 'application/merge-patch+json');
-        setRunningTimer((prevTimer) => null);
     }
 
     const startTimer = async (timerType: string) => {
@@ -175,11 +170,7 @@ export const Timers = ({validToken, initialData}) => {
             timer_type: timerType
         }
         setRunningTimer((prevTimer) => {return {id: tempId, 'optimisticTimer': true, ...timer}});
-
-        console.log('data.hydra', data["hydra:member"]);
         let newHydra = [{id: tempId, ...timer}, ...data['hydra:member']];
-        console.log('new hydra', newHydra);
-        console.log('new hydra sorted', newHydra.sort((a,b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime()));
 
         await mutateTimers((data) => {
             return {...data, "hydra:member": newHydra.sort((a,b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime())};
@@ -188,8 +179,6 @@ export const Timers = ({validToken, initialData}) => {
         const result = await FetcherFunc('timers', auth.jwt, 'POST', timer);
         setRunningTimer(result);
     }
-    // console.log('latest timer', runningTimer);
-    // console.log('---- DATA ---- ', data);
 
     if (data && data['@type'] === 'hydra:Error') {
         messageDispatch({
@@ -199,6 +188,7 @@ export const Timers = ({validToken, initialData}) => {
             }
         })
     }
+    if (error) return <div>failed to load</div>;
 
     const toggleAddTimerView = () => {
         if (manualTimerModalVisible) {
@@ -218,9 +208,9 @@ export const Timers = ({validToken, initialData}) => {
                     <div>
                         {!hasTimer ?
                             <div>
-                                <button className="fixed bottom-0 left-0 w-full h-full bg-black opacity-50"/>
-                                <div className="fixed bottom-52 text-white text-lg">Start or add your first timer!</div>
-                                <img src="../images/icons/comic-arrow.svg" width="220" className="fixed bottom-32 left-12 animate-bounce-little"/>
+                                <button className="fixed top-20 bottom-0 left-0 w-full h-full bg-black opacity-50"/>
+                                <div className="fixed bottom-44 text-white text-lg right-6">Start or add your first timer!</div>
+                                <img src="../images/icons/comic-arrow.svg" width="200" className="fixed bottom-24 right-14 animate-bounce-little"/>
                             </div>
                             :
                             data['hydra:member'].map((timer: ITimer) => {
@@ -276,13 +266,6 @@ export const Timers = ({validToken, initialData}) => {
                                                     </TransitionGroup>
                                                 )}
                                             </SwipeableList>
-                                            {/*<SwipeableList*/}
-                                            {/*    threshold={0.30}*/}
-                                            {/*>*/}
-                                            {/*    <TransitionGroup>*/}
-                                            {/*        {subTimerHtml}*/}
-                                            {/*    </TransitionGroup>*/}
-                                            {/*</SwipeableList>*/}
                                         </div>
                                     )
                                 }
@@ -293,6 +276,7 @@ export const Timers = ({validToken, initialData}) => {
                             : ''
                         }
                         <ManualTimerview
+                            data={data}
                             mutateTimers={mutateTimers}
                             toggleAddTimerView={toggleAddTimerView}
                             isVisible={manualTimerModalVisible}
@@ -306,7 +290,7 @@ export const Timers = ({validToken, initialData}) => {
                         />
                     </div>
                     {runningTimer !== null && typeof runningTimer !== 'undefined' ?
-                        <div className="fixed bottom-0 ml-3">
+                        <div className="fixed bottom-0 right-6 ml-3">
                             <div className="flex mb-3">
                                 <button
                                     className={`bg-red-500 rounded-full p-4 border-white border-2 outline-none shadow-md cursor-pointer`}
@@ -324,7 +308,7 @@ export const Timers = ({validToken, initialData}) => {
                         </div>
                         :
 
-                        <div className={`fixed bottom-0 flex flex-col mb-3 ml-3${cn({' border-2 border-gray-300 p-3': !hasTimer})}`}>
+                        <div className={`fixed bottom-0 right-6 flex flex-col mb-3 ml-3`}>
                             <div className="flex-row">
                                 <button
                                     className="bg-teal-500 rounded-full p-4 border-white border-2 outline-none shadow-md cursor-pointer"
@@ -351,10 +335,11 @@ export const Timers = ({validToken, initialData}) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const cookies = new Cookies(context.req.headers.cookie);
     const token = cookies.get('token');
-    const timers = await IsoFetcher.isofetchAuthed(`${process.env.API_BASE_URL}timers?order[dateStart]&page=1`, null, 'GET', token);
+    const timers = await IsoFetcher.isofetchAuthed(`${process.env.API_BASE_URL}/timers?order[dateStart]&page=1`, 'GET', token);
     const tokenService = new TokenService();
     const validToken = await tokenService.authenticateTokenSsr(context)
     if (!validToken) {
+        tokenService.deleteToken();
         return {
             redirect: {
                 permanent: false,

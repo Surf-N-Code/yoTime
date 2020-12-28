@@ -37,6 +37,7 @@ export const Menu = ({ menuIsOpen, onClick, validToken }: MenuProps ) => {
                     {generateMainMenuItem('timers', false, 'timers', 'Timers', router, false)}
                     {generateMainMenuItem('dailies', false, 'dailies', 'Dailies', router, false)}
                     {generateMainMenuItem('personio', false, 'personio', 'Personio', router, false)}
+                    {generateMainMenuItem('reporting', false, 'reporting', 'Reporting', router, false)}
                     {generateMainMenuItem('settings', false, 'settings', 'Settings', router, true)}
                     {generateMainMenuItem(validToken ? 'logout' : 'login', false, validToken ? 'logout' : 'login', validToken ? 'Logout' : 'Login', router, false)}
                 </ul>

@@ -21,7 +21,6 @@ class IsoFetcher {
 
   public isofetchAuthed(
     url: string,
-    data: object,
     method: string,
     token
   ): Promise<any> {

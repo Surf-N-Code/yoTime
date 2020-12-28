@@ -34,18 +34,40 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Attempt to implement a unique validaton on daily summary dates">
-      <change afterPath="$PROJECT_DIR$/client/.env.local" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/services/IsoFetcher.service.ts" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Implement server side loading of dailies and timers">
+      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/JwtToken.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/RegisterHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/RegisterUserHandlerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/pages/reporting.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/DailyEditview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyEditview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.env" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/fixtures/dev/dailies.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/dev/dailies.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/fixtures/dev/users.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/dev/users.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/fixtures/test/dailies.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/test/dailies.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Fixtures/TimerProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Fixtures/TimerProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Services/UserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Services/UserProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Slack/SlackClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Slack/SlackClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Mocks/SlackClientMock.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Mocks/SlackClientMock.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.env.local" beforeDir="false" afterPath="$PROJECT_DIR$/client/.env.local" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Pagination.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/dailies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dailies.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icons/comic-arrow.svg" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/images/icons/comic-arrow.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/services/IsoFetcher.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/IsoFetcher.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/services/Token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Token.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/services/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/apiResult.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/apiResult.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/types/daily.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/daily.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/types/user.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/user.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/utilities/lib.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/utilities/lib.tsx" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -260,15 +282,22 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/client/styles/tailwind.css&#10;/home/norman/Development/yoTime/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/client/pages" />
+      <recent name="$PROJECT_DIR$/api/src/Entity" />
+      <recent name="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack" />
+      <recent name="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api/src/Validator/Constraints" />
       <recent name="$PROJECT_DIR$/client/styles" />
@@ -276,23 +305,8 @@
       <recent name="$PROJECT_DIR$/client/types" />
       <recent name="$PROJECT_DIR$/api/tests/Doctrine" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/client" />
-      <recent name="$PROJECT_DIR$/client/services" />
-      <recent name="$PROJECT_DIR$/api/tests/DataPersister" />
-      <recent name="$PROJECT_DIR$/api/src/EventListener" />
-      <recent name="$PROJECT_DIR$/api/tests/Entity" />
-    </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.tests">
-    <configuration name="DailySummaryPersisteIntegrationTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\DataPersister\DailySummaryPersisteIntegrationTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisteIntegrationTest.php" scope="Class" />
-      <method v="2" />
-    </configuration>
-    <configuration name="DailySummaryPersisteIntegrationTest.testAddDailySummary" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\DataPersister\DailySummaryPersisteIntegrationTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisteIntegrationTest.php" method="testAddDailySummary" scope="Method" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="PHPUnit.SlashCommandMessageControllerTest.testRegister">
     <configuration name="DailySummaryPersisterTest.testPersist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="App\Tests\DataPersister\DailySummaryPersisterTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisterTest.php" method="testPersist" scope="Method" />
       <method v="2" />
@@ -301,17 +315,25 @@
       <TestRunner class="App\Tests\DataPersister\DailySummaryPersisterTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisterTest.php" method="testPersistDsWithoutMail" scope="Method" />
       <method v="2" />
     </configuration>
+    <configuration name="RegisterUserHandlerTest.testRegister" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\RegisterUserHandlerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/RegisterUserHandlerTest.php" method="testRegister" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SlashCommandMessageControllerTest.testRegister" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageController\Slack\SlashCommandMessageControllerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" method="testRegister" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner configuration_file="/srv/api/phpunit.xml" directory="$PROJECT_DIR$/api/tests" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.SlashCommandMessageControllerTest.testRegister" />
+        <item itemvalue="PHPUnit.RegisterUserHandlerTest.testRegister" />
         <item itemvalue="PHPUnit.tests" />
         <item itemvalue="PHPUnit.DailySummaryPersisterTest.testPersistDsWithoutMail" />
         <item itemvalue="PHPUnit.DailySummaryPersisterTest.testPersist" />
-        <item itemvalue="PHPUnit.DailySummaryPersisteIntegrationTest.testAddDailySummary" />
-        <item itemvalue="PHPUnit.DailySummaryPersisteIntegrationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -391,14 +413,16 @@
       <workItem from="1607536341902" duration="3117000" />
       <workItem from="1607613203946" duration="12675000" />
       <workItem from="1607668162100" duration="37000" />
-      <workItem from="1607698380139" duration="11925000" />
-    </task>
-    <task id="LOCAL-00024" summary="Make timezone and timezone offset non-nullable">
-      <created>1600630899043</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1600630899043</updated>
+      <workItem from="1607698380139" duration="15618000" />
+      <workItem from="1607781755620" duration="20512000" />
+      <workItem from="1607925500406" duration="512000" />
+      <workItem from="1608133766150" duration="4884000" />
+      <workItem from="1608233095976" duration="3424000" />
+      <workItem from="1608270918884" duration="647000" />
+      <workItem from="1608273176853" duration="12000" />
+      <workItem from="1608322077787" duration="7896000" />
+      <workItem from="1608483743786" duration="9293000" />
+      <workItem from="1608919664794" duration="10128000" />
     </task>
     <task id="LOCAL-00025" summary="Add yotime benefit file">
       <created>1600630914208</created>
@@ -736,7 +760,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607454048436</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Implement server side loading of dailies and timers">
+      <created>1607715444490</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1607715444490</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -783,7 +814,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Add access control directives to timers to limit access to logged in users" />
     <MESSAGE value="Refine security on timers" />
     <MESSAGE value="Remove authenticationsuccess handler and implement jwt subscriber" />
     <MESSAGE value="Add all files to git" />
@@ -808,7 +838,8 @@
     <MESSAGE value="Improve editing timers" />
     <MESSAGE value="Finish most of daily and timer views" />
     <MESSAGE value="Attempt to implement a unique validaton on daily summary dates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempt to implement a unique validaton on daily summary dates" />
+    <MESSAGE value="Implement server side loading of dailies and timers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement server side loading of dailies and timers" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="4" width="756" height="674" key="#CLI_Interpreters" timestamp="1604086486755">
@@ -847,30 +878,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="58" y="-288" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607624798449" />
-    <state x="651" y="-71" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607622778650">
+    <state x="647" y="-107" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607800900979">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="651" y="-71" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607622778650" />
+    <state x="647" y="-107" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607800900979" />
     <state x="667" y="363" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#" timestamp="1602277418370">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="667" y="363" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#/0.0.1920.1080@0.0.1920.1080" timestamp="1602277418370" />
-    <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog" timestamp="1599332894112">
+    <state x="50" y="-22" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1607715539461">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="649" y="305" width="611" height="477" key="#xdebugger.XInspectDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599332894112" />
-    <state x="54" y="-96" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1607622970011">
+    <state x="50" y="-22" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1607715539461" />
+    <state x="29" y="100" width="1862" height="951" key="DiffContextDialog" timestamp="1607780724107">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="54" y="-96" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1607622970011" />
-    <state width="516" height="465" key="DebuggerActiveHint" timestamp="1599333625815">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="516" height="465" key="DebuggerActiveHint/0.0.1920.1080@0.0.1920.1080" timestamp="1599333625815" />
-    <state x="29" y="100" width="1308" height="951" key="DiffContextDialog" timestamp="1607244348359">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="29" y="100" width="1308" height="951" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607244348359" />
+    <state x="29" y="100" width="1862" height="951" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607780724107" />
     <state x="706" y="347" width="446" height="222" key="DockerComposeFileDialog" timestamp="1604085577311">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -879,42 +902,38 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="717" y="99" width="428" height="474" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1604790193007" />
-    <state x="691" y="454" key="GitCloneDialog" timestamp="1599927280951">
+    <state width="1816" height="260" key="GridCell.Tab.0.bottom" timestamp="1608235803965">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="691" y="454" key="GitCloneDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1599927280951" />
-    <state width="1816" height="261" key="GridCell.Tab.0.bottom" timestamp="1607626543097">
+    <state width="1816" height="260" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1608235803965" />
+    <state width="1816" height="260" key="GridCell.Tab.0.center" timestamp="1608235803965">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1607626543097" />
-    <state width="1816" height="261" key="GridCell.Tab.0.center" timestamp="1607626543097">
+    <state width="1816" height="260" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1608235803965" />
+    <state width="1816" height="260" key="GridCell.Tab.0.left" timestamp="1608235803964">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="261" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1607626543097" />
-    <state width="1816" height="261" key="GridCell.Tab.0.left" timestamp="1607626543097">
+    <state width="1816" height="260" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1608235803964" />
+    <state width="1816" height="260" key="GridCell.Tab.0.right" timestamp="1608235803965">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="261" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1607626543097" />
-    <state width="1816" height="261" key="GridCell.Tab.0.right" timestamp="1607626543097">
+    <state width="1816" height="260" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1608235803965" />
+    <state width="1262" height="313" key="GridCell.Tab.1.bottom" timestamp="1608184653536">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="261" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1607626543097" />
-    <state width="1816" height="314" key="GridCell.Tab.1.bottom" timestamp="1607625958699">
+    <state width="1262" height="313" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1608184653536" />
+    <state width="1262" height="313" key="GridCell.Tab.1.center" timestamp="1608184653536">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="314" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1607625958699" />
-    <state width="1816" height="314" key="GridCell.Tab.1.center" timestamp="1607625958698">
+    <state width="1262" height="313" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1608184653536" />
+    <state width="1262" height="313" key="GridCell.Tab.1.left" timestamp="1608184653536">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="314" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1607625958698" />
-    <state width="1816" height="314" key="GridCell.Tab.1.left" timestamp="1607625958698">
+    <state width="1262" height="313" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1608184653536" />
+    <state width="1262" height="313" key="GridCell.Tab.1.right" timestamp="1608184653536">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="314" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1607625958698" />
-    <state width="1816" height="314" key="GridCell.Tab.1.right" timestamp="1607625958699">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1816" height="314" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1607625958699" />
+    <state width="1262" height="313" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1608184653536" />
     <state width="1070" height="308" key="GridCell.Tab.2.bottom" timestamp="1604299904425">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -947,18 +966,14 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="769" y="-118" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607619544369" />
-    <state x="436" y="4" key="SettingsEditor" timestamp="1605955388327">
+    <state x="452" y="148" key="SettingsEditor" timestamp="1608483808339">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="436" y="4" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1605955388327" />
-    <state x="801" y="337" width="297" height="157" key="VCS.ChangelistChooser" timestamp="1599871952996">
+    <state x="452" y="148" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1608483808339" />
+    <state x="29" y="100" width="1862" height="951" key="VCS.FileHistoryDialog" timestamp="1607780724107">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="801" y="337" width="297" height="157" key="VCS.ChangelistChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1599871952996" />
-    <state x="29" y="100" width="1116" height="951" key="VCS.FileHistoryDialog" timestamp="1604346089253">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="29" y="100" width="1116" height="951" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604346089253" />
+    <state x="29" y="100" width="1862" height="951" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607780724107" />
     <state x="533" y="87" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1607622634973">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -995,18 +1010,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="29" y="136" width="1862" height="915" key="dock-window-2/0.0.1920.1080@0.0.1920.1080" timestamp="1600868604122" />
-    <state x="897" y="466" width="854" height="592" key="find.popup" timestamp="1607704967404">
+    <state x="897" y="466" width="854" height="592" key="find.popup" timestamp="1608494224651">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="897" y="466" width="854" height="592" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1607704967404" />
+    <state x="897" y="466" width="854" height="592" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1608494224651" />
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog" timestamp="1603533059617">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603533059617" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1607710726334">
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1609000565005">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1607710726334" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1609000565005" />
     <state x="649" y="140" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604095844648">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -1019,6 +1034,11 @@
           <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/BotMessageHandler.php</url>
           <line>58</line>
           <option name="timeStamp" value="110" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/api/vendor/theofidry/alice-data-fixtures/src/Loader/PersisterLoader.php</url>
+          <line>82</line>
+          <option name="timeStamp" value="111" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

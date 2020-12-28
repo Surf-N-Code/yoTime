@@ -3,13 +3,15 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(normalizationContext={"groups"={"dailies"}})
  * @ApiFilter(OrderFilter::class, properties={"date": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }})
  * @ORM\Entity(repositoryClass="App\Repository\DailySummaryRepository")
  * @ORM\EntityListeners({"App\Doctrine\SetUserListener"})
@@ -17,57 +19,65 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class DailySummary
 {
-    //* @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="IDX_USER_DATE", columns={"user_id", "date"})})
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"dailies"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"dailies"})
      */
     private $dailySummary;
 
     /**
      * @ORM\Column(type="date", nullable=false)
+     * @Groups({"dailies"})
      */
     private $date;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"dailies"})
      */
     private $timeWorkedInS;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups({"dailies"})
      */
     private $timeBreakInS;
 
     /**
      * @ORM\Column(type="datetime", nullable=false)
+     * @Groups({"dailies"})
      */
     private $startTime;
 
     /**
      * @ORM\Column(type="datetime", nullable=false)
+     * @Groups({"dailies"})
      */
     private $endTime;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="dailySummary")
+     * @Groups({"dailies"})
      */
     private $user;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"dailies"})
      */
     private $isEmailSent;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"dailies"})
      */
     private $isSyncedToPersonio;
 

@@ -34,14 +34,14 @@ export const Layout = (props) => {
                     </a>
                 </Link>
                 <img src="../images/icons/hamburger.svg" width="20" className="ml-3 cursor-pointer" alt="Menu" onClick={() => setMenuIsOpen((prevMenuIsOpen) => !prevMenuIsOpen)}/>
-                {/*{auth.initials ?*/}
-                {/*    <Link href={`/settings`}>*/}
-                {/*        <a className={"ml-auto"}>*/}
-                {/*            <div className="rounded-full mr-5 w-14 h-14 border-2 border-white bg-teal-400 text-2xl font-bold text-white flex items-center justify-center shadow">{auth.initials}</div>*/}
-                {/*        </a>*/}
-                {/*    </Link>*/}
-                {/*    : ''*/}
-                {/*}*/}
+                {auth.initials ?
+                    <Link href={`/settings`}>
+                        <a className={"ml-auto"}>
+                            <div className="rounded-full mr-5 w-14 h-14 border-2 border-white bg-teal-400 text-2xl font-bold text-white flex items-center justify-center shadow">{auth.initials}</div>
+                        </a>
+                    </Link>
+                    : ''
+                }
             </header>
             <Menu
                 menuIsOpen={menuIsOpen}

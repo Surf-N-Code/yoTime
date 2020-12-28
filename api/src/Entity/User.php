@@ -49,13 +49,13 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @Groups({"Timer"})
+     * @Groups({"Timer", "dailies"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $firstName;
 
     /**
-     * @Groups({"Timer"})
+     * @Groups({"Timer", "dailies"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $lastName;
@@ -121,6 +121,7 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\DailySummary", mappedBy="user")
+     * @ApiSubresource
      */
     private $dailySummary;
 

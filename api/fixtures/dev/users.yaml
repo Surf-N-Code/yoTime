@@ -8,6 +8,7 @@ App\Entity\User:
     tzOffset: 100
     password: <getHashedPassword("norman@yazio.com", "trustno1")>
     is_active: 1
+    roles: ['ROLE_ADMIN']
   user_{2..5}:
     email: <email()>
     firstName: <name()>

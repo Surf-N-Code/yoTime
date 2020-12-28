@@ -4,18 +4,21 @@ import cn from 'classnames';
 
 type PaginationProps = {
     currentPage: number,
-    totalPages: number
+    totalPages: number,
+    path: string,
+    urlParams: string
 }
 
-export const Pagination = ({currentPage, totalPages}: PaginationProps) => {
+export const Pagination = ({currentPage, totalPages, path, urlParams}: PaginationProps) => {
     if (totalPages === 0 || totalPages === 1) {
         return (<></>);
     }
+    console.log(totalPages);
     return (
         <div className="flex flex-col items-center my-12">
         <div className="flex text-gray-700">
             {currentPage > 1 ?
-                <Link href={`http://localhost:3000/timers?page=${currentPage-1}`}>
+                <Link href={`${path}?page=${currentPage-1}${urlParams}`}>
                     <a className="h-12 w-12 mr-1 flex justify-center items-center rounded-full cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none"
                              viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
@@ -34,11 +37,11 @@ export const Pagination = ({currentPage, totalPages}: PaginationProps) => {
                 </div>
             }
             <div className="flex h-12 font-medium rounded-full bg-gray-200">
-                {generatePagination(totalPages, currentPage)}
+                {generatePagination(totalPages, currentPage, path)}
                 <div className="w-12 h-12 md:hidden flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-teal-600 text-white">{currentPage}</div>
             </div>
             {currentPage <= totalPages - 1 ?
-                <Link href={`http://localhost:3000/timers?page=${currentPage+1}`}>
+                <Link href={`/${path}?page=${currentPage+1}${urlParams}`}>
                     <a className="h-12 w-12 mr-1 flex justify-center items-center rounded-full cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none"
                              viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
@@ -61,7 +64,7 @@ export const Pagination = ({currentPage, totalPages}: PaginationProps) => {
     )
 }
 
-const generatePagination = (totalPages: number, currentPage: number) => {
+const generatePagination = (totalPages: number, currentPage: number, path: string) => {
     let pageIndicatorLow = 0;
     let pageIndicatorHigh = 0;
     return (
@@ -75,7 +78,7 @@ const generatePagination = (totalPages: number, currentPage: number) => {
 
             return (
                 page === 1 || page === totalPages || page === currentPage || page === currentPage-1 || page === currentPage+1 ?
-                    <Link key={`page_${page}`} href={`http://localhost:3000/timers?page=${page}`}>
+                    <Link key={`page_${page}`} href={`http://localhost:3000/${path}?page=${page}`}>
                         <a className={`w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in hover:bg-white rounded-full${cn({' bg-teal-600 text-white hover:text-gray-700': currentPage === page})}`}>{page}</a>
                     </Link>
                     :

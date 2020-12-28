@@ -53,7 +53,13 @@ export const Dailies = (props) => {
     return (
         <Layout validToken={props.validToken}>
             <div className="mt-6 mb-24">
-            {typeof data['hydra:member'] === 'undefined' || data['hydra:member'].length === 0 ? <div>no data yet...</div> :
+            {typeof data['hydra:member'] === 'undefined' || data['hydra:member'].length === 0 ?
+                <div>
+                    <button className="fixed top-20 bottom-0 left-0 w-full h-full bg-black opacity-50"/>
+                    <div className="fixed bottom-44 text-white text-lg right-6">Add a daily summary</div>
+                    <img src="../images/icons/comic-arrow.svg" width="200" className="fixed bottom-24 right-4 animate-bounce-little"/>
+                </div>
+                :
                 <>
                     <div>
                         {isEditViewVisible ?
@@ -76,7 +82,8 @@ export const Dailies = (props) => {
                         />
                     </div>
                 </>
-                }
+            }
+
                 <DailyEditview
                     mutateDailies={mutateDailies}
                     toggleDailyEditView={toggleDailyEditView}
@@ -97,10 +104,11 @@ export const Dailies = (props) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const cookies = new Cookies(context.req.headers.cookie);
     const token = cookies.get('token');
-    const timers = await IsoFetcher.isofetchAuthed(`${process.env.API_BASE_URL}daily_summaries?order[date]&page=1`, null, 'GET', token);
+    const timers = await IsoFetcher.isofetchAuthed(`${process.env.API_BASE_URL}/daily_summaries?order[date]&page=1`, 'GET', token);
     const tokenService = new TokenService();
     const validToken = await tokenService.authenticateTokenSsr(context)
     if (!validToken) {
+        tokenService.deleteToken();
         return {
             redirect: {
                 permanent: false,

@@ -32,4 +32,12 @@ class TimerProvider extends Base
         }
         return new \DateTime('2020-'.$month.'-'.$d.' 0'.$h.':'.$m.':'.$s);
     }
+
+    public static function generateDsDate(string $current, $userId)
+    {
+        if ($userId >= 1) {
+            $current -= 50*$userId;
+        }
+        return (new \DateTime('2020-01-01'))->modify('+'.$current.' days');
+    }
 }
