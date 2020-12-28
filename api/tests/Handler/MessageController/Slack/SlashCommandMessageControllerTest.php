@@ -224,4 +224,21 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
         );
         self::assertEquals(Response::HTTP_CREATED, $response->getStatusCode());
     }
+
+    public function testRegister()
+    {
+        $data = $this->generateCommandData('register');
+
+        $client = $this->createAuthenticatedClient();
+        $response = $client->request(
+            'POST',
+            '/slack/slashcommand',
+            [
+                'json' => $data,
+                'headers' => $this->getValidSlackHeaders($data, 'application/x-www-form-urlencoded'),
+                'base_uri' => 'https://localhost:8443'
+            ]
+        );
+        self::assertEquals(Response::HTTP_CREATED, $response->getStatusCode());
+    }
 }

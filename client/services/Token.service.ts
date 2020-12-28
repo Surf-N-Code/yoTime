@@ -1,5 +1,5 @@
 import {GetServerSidePropsContext, NextApiRequest, NextApiResponse, NextPageContext} from 'next/types';
-import {FetcherFunc} from '../services';
+import {FetcherFunc, IsoFetcher} from '../services';
 import Cookies from 'universal-cookie';
 import fetch from 'isomorphic-unfetch';
 
@@ -24,13 +24,14 @@ class TokenService {
   }
 
   public async checkAuthToken(token: string): Promise<any> {
+      // const test = await IsoFetcher.isofetchAuthed(`${process.env.API_BASE_URL}/verify-token`, 'POST', token);
+    // console.log('TEST', test);
     // return fetch(
-    //     'https://localhost:8443/users',
+    //     'https://localhost:8443/verify-token',
     //     {
     //       headers: {
     //         Accept: 'application/json',
     //         'Content-Type': 'application/json',
-    //         Authorization: 'Bearer ' + token
     //       },
     //       method: 'GET'
     //     }
@@ -39,7 +40,6 @@ class TokenService {
     //       const res = response.json();
     //       console.log(res);
     //     })
-    //     .then(this.handleErrors)
     //     .catch((error) => {
     //       throw error;
     //     });
@@ -72,6 +72,7 @@ class TokenService {
     const cookies = new Cookies(ssr ? ctx.req.headers.cookie : null);
     const token = cookies.get('token');
     console.log("token from cookie", token);
+    console.log('is valid token', await this.checkAuthToken(token));
     return this.checkAuthToken(token);
   }
 }

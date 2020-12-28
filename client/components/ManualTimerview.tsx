@@ -12,7 +12,7 @@ import {useAuth} from "../services/Auth.context";
 import cn from 'classnames';
 import {ITimer} from "../types/timer.types";
 
-export const ManualTimerview = ({mutateTimers, toggleAddTimerView, isVisible, timerToEdit}) => {
+export const ManualTimerview = ({data, mutateTimers, toggleAddTimerView, isVisible, timerToEdit}) => {
     const [isBreakTimer, setIsBreakTimer] = useState(false);
     const [startTimer, setStartTime] = useState('09:00');
     const [endTime, setEndTime] = useState('18:00');

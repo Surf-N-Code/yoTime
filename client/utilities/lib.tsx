@@ -34,3 +34,15 @@ export const waitForSyncedTimer = async (condition, time) => {
         }, time);
     });
 }
+
+// const getDistinct = (array) => {
+//     let unique = [];
+//     let distinct = [];
+//     for( let i = 0; i < array.length; i++ ){
+//         if( !unique[array[i].user['@id']]){
+//             distinct.push(array[i].user);
+//             unique[array[i].user['@id']] = 1;
+//         }
+//     }
+//     return distinct;
+// }

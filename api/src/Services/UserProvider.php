@@ -44,15 +44,16 @@ class UserProvider
         return $dbUser;
     }
 
-    public function getSlackUserInfo($slackUserId): SlackUser
+    public function getSlackUser($slackUserId): SlackUser
     {
         try {
             $response = $this->client->getSlackUserProfile($slackUserId);
             $data = json_decode($response->getContent(), true);
             return $this->serializer->denormalize($data['user'], SlackUser::class, null);
         } catch (\Exception $e) {
+            dd($e);
             $msg = sprintf('That slack ID seems to be incorrect. Could not find slack user with slack ID: %s', $slackUserId);
-            throw new NotFoundHttpException($msg, 400);
+            throw new NotFoundHttpException($msg);
         }
     }
 
@@ -62,9 +63,21 @@ class UserProvider
         if (!$user) {
             $msg = sprintf('Could not find user with slack ID: %s in our database. The user in question should use the `/register` command', $slackUserId);
             $this->logger->error($msg);
-            throw new NotFoundHttpException($msg, 400);
+            throw new NotFoundHttpException($msg);
         }
 
         return $user;
+    }
+
+    public function randomPassword()
+    {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = [];
+        $alphaLength = strlen($alphabet) - 1;
+        for ($i = 0; $i < 8; $i++) {
+            $n = random_int(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass);
     }
 }

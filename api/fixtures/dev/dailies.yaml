@@ -1,11 +1,51 @@
 App\Entity\DailySummary:
-  ds_{1..5}:
-    user: '@user_*'
+  ds_0:
+    user: '@user_1'
     dailySummary: <realText(50)>
     timeWorkedInS: <randomNumber(5)>
     timeBreakInS: <randomNumber(3)>
     startTime: <getDateStart()>
     endTime: <getDateEnd($startTime)>
-    date: $startTime
+    date: "<date_create('2019-01-01')>"
+    isEmailSent: <boolean()>
+    isSyncedToPersonio: <boolean()>
+  ds_{1..50}:
+    user: '@user_2'
+    dailySummary: <realText(200)>
+    timeWorkedInS: <randomNumber(5)>
+    timeBreakInS: <randomNumber(3)>
+    startTime: <getDateStart()>
+    endTime: <getDateEnd($startTime)>
+    date: <generateDsDate(<current()>, 1)>
+    isEmailSent: <boolean()>
+    isSyncedToPersonio: <boolean()>
+  ds_{51..100}:
+    user: '@user_3'
+    dailySummary: <realText(200)>
+    timeWorkedInS: <randomNumber(5)>
+    timeBreakInS: <randomNumber(3)>
+    startTime: <getDateStart()>
+    endTime: <getDateEnd($startTime)>
+    date: <generateDsDate(<current()>, 2)>
+    isEmailSent: <boolean()>
+    isSyncedToPersonio: <boolean()>
+  ds_{101..150}:
+    user: '@user_4'
+    dailySummary: <realText(200)>
+    timeWorkedInS: <randomNumber(5)>
+    timeBreakInS: <randomNumber(3)>
+    startTime: <getDateStart()>
+    endTime: <getDateEnd($startTime)>
+    date: <generateDsDate(<current()>, 3)>
+    isEmailSent: <boolean()>
+    isSyncedToPersonio: <boolean()>
+  ds_{151..400}:
+    user: '@user_5'
+    dailySummary: <realText(200)>
+    timeWorkedInS: <randomNumber(5)>
+    timeBreakInS: <randomNumber(3)>
+    startTime: <getDateStart()>
+    endTime: <getDateEnd($startTime)>
+    date: <generateDsDate(<current()>, 4)>
     isEmailSent: <boolean()>
     isSyncedToPersonio: <boolean()>

@@ -11,6 +11,10 @@ body {
     box-sizing: inherit;
 }
 
+button:focus {
+    outline: none !important;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

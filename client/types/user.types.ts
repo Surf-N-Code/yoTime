@@ -12,7 +12,8 @@ export interface IUser {
   slack_teams?: any;
   contract_work_hours?: number;
   daily_summary?: string[];
-  full_name?: string;
+  first_name: string;
+  last_name: string;
   timers?: string[];
   roles?: any;
   password?: string;
