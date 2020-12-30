@@ -24,42 +24,8 @@ class TokenService {
   }
 
   public async checkAuthToken(token: string): Promise<any> {
-      // const test = await IsoFetcher.isofetchAuthed(`${process.env.API_BASE_URL}/verify-token`, 'POST', token);
-    // console.log('TEST', test);
-    // return fetch(
-    //     'https://localhost:8443/verify-token',
-    //     {
-    //       headers: {
-    //         Accept: 'application/json',
-    //         'Content-Type': 'application/json',
-    //       },
-    //       method: 'GET'
-    //     }
-    // )
-    //     .then((response: Response) => {
-    //       const res = response.json();
-    //       console.log(res);
-    //     })
-    //     .catch((error) => {
-    //       throw error;
-    //     });
-    // const loginAsync = async (token) => {
-    //   const response = await fetch('authentication_validate', {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-type": "application/json; charset=UTF-8",
-    //     },
-    //     body: JSON.stringify({token}),
-    //   });
-    //
-    //   if (!response.ok) {
-    //     const message = `An error has occured: ${response.status}`;
-    //     throw new Error(message);
-    //   }
-    //
-    //   return await response;
-    // };
-    return typeof token !== 'undefined';
+    const res = await IsoFetcher.isofetchAuthed(`${process.env.API_BASE_URL}/users`, 'GET', token);
+    return typeof res['hydra:member'] !== 'undefined'
   }
 
   public getTokenFromCookie() {
