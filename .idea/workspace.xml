@@ -34,40 +34,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Implement server side loading of dailies and timers">
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/JwtToken.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/RegisterHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/RegisterUserHandlerTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/pages/reporting.tsx" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="11">
+      <change afterPath="$PROJECT_DIR$/client/public/images/icons/icon-checkmark..svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.env" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/fixtures/dev/dailies.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/dev/dailies.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/fixtures/dev/users.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/dev/users.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/fixtures/test/dailies.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/test/dailies.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Fixtures/TimerProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Fixtures/TimerProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Services/UserProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Services/UserProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Slack/SlackClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Slack/SlackClient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Mocks/SlackClientMock.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Mocks/SlackClientMock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.env.local" beforeDir="false" afterPath="$PROJECT_DIR$/client/.env.local" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Menu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Pagination.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/dailies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dailies.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/images/icons/comic-arrow.svg" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/images/icons/comic-arrow.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/services/IsoFetcher.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/IsoFetcher.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/reporting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/reporting.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/services/Token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Token.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/daily.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/daily.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/user.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/user.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/utilities/lib.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/utilities/lib.tsx" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -282,7 +254,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/client/styles/tailwind.css&#10;/home/norman/Development/yoTime/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/public/images/icons" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -291,19 +263,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/client/pages" />
-      <recent name="$PROJECT_DIR$/api/src/Entity" />
-      <recent name="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack" />
-      <recent name="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api/src/Validator/Constraints" />
       <recent name="$PROJECT_DIR$/client/styles" />
       <recent name="$PROJECT_DIR$/client/Errors" />
       <recent name="$PROJECT_DIR$/client/types" />
       <recent name="$PROJECT_DIR$/api/tests/Doctrine" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/public/images/icons" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/client/pages" />
+      <recent name="$PROJECT_DIR$/api/src/Entity" />
+      <recent name="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.SlashCommandMessageControllerTest.testRegister">
@@ -423,13 +395,8 @@
       <workItem from="1608322077787" duration="7896000" />
       <workItem from="1608483743786" duration="9293000" />
       <workItem from="1608919664794" duration="10128000" />
-    </task>
-    <task id="LOCAL-00025" summary="Add yotime benefit file">
-      <created>1600630914208</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1600630914208</updated>
+      <workItem from="1609183012257" duration="4466000" />
+      <workItem from="1609335789411" duration="12127000" />
     </task>
     <task id="LOCAL-00026" summary="Fix bot messages and improve personio error message">
       <created>1600639235724</created>
@@ -767,7 +734,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607715444490</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Implement reporting and dailies">
+      <created>1609183043993</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1609183043994</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -814,7 +788,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Refine security on timers" />
     <MESSAGE value="Remove authenticationsuccess handler and implement jwt subscriber" />
     <MESSAGE value="Add all files to git" />
     <MESSAGE value="Update gitignore" />
@@ -839,7 +812,8 @@
     <MESSAGE value="Finish most of daily and timer views" />
     <MESSAGE value="Attempt to implement a unique validaton on daily summary dates" />
     <MESSAGE value="Implement server side loading of dailies and timers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement server side loading of dailies and timers" />
+    <MESSAGE value="Implement reporting and dailies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement reporting and dailies" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="4" width="756" height="674" key="#CLI_Interpreters" timestamp="1604086486755">
@@ -850,10 +824,6 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="707" y="236" width="454" height="317" key="#Docker2/0.0.1920.1080@0.0.1920.1080" timestamp="1604084960721" />
-    <state x="613" y="46" width="804" height="667" key="#Servers" timestamp="1600510681641">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="613" y="46" width="804" height="667" key="#Servers/0.0.1920.1080@0.0.1920.1080" timestamp="1600510681641" />
     <state x="535" y="161" width="828" height="674" key="#Test_Frameworks" timestamp="1604086474012">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -886,10 +856,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="667" y="363" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#/0.0.1920.1080@0.0.1920.1080" timestamp="1602277418370" />
-    <state x="50" y="-22" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1607715539461">
+    <state x="46" y="-58" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1609183056562">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="50" y="-22" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1607715539461" />
+    <state x="46" y="-58" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1609183056562" />
     <state x="29" y="100" width="1862" height="951" key="DiffContextDialog" timestamp="1607780724107">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -966,18 +936,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="769" y="-118" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607619544369" />
-    <state x="452" y="148" key="SettingsEditor" timestamp="1608483808339">
+    <state x="450" y="130" key="SettingsEditor" timestamp="1609346301734">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="452" y="148" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1608483808339" />
+    <state x="450" y="130" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1609346301734" />
     <state x="29" y="100" width="1862" height="951" key="VCS.FileHistoryDialog" timestamp="1607780724107">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="29" y="100" width="1862" height="951" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607780724107" />
-    <state x="533" y="87" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1607622634973">
+    <state x="531" y="69" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1609183050230">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="533" y="87" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1607622634973" />
+    <state x="531" y="69" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1609183050230" />
     <state x="827" y="256" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1605893582609">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -990,10 +960,6 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="664" y="122" width="364" height="515" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603618367322" />
-    <state x="501" y="299" width="907" height="525" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1600600369717">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="501" y="299" width="907" height="525" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1080@0.0.1920.1080" timestamp="1600600369717" />
     <state x="610" y="237" width="687" height="362" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1607454200367">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -1018,10 +984,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603533059617" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1609000565005">
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1609183169538">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1609000565005" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1609183169538" />
     <state x="649" y="140" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604095844648">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
