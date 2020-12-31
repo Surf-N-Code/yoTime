@@ -12,13 +12,13 @@ import {LoginAsync} from "../services";
 import {ConflictError} from "../errors";
 import {AccountSettingsValidation} from "../Form";
 
-const registerEndpint = 'https://localhost:8443/users';
+const registerEndpoint = 'https://localhost:8443/users';
 
 const registerAsync = async (email, password, firstName, lastName) => {
     const tzOffset = new Date().getTimezoneOffset();
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const fullName = firstName + ' ' + lastName;
-    const response = await fetch(registerEndpint, {
+    const response = await fetch(registerEndpoint, {
         method: "POST",
         headers: {
             "Content-type": "application/json; charset=UTF-8",

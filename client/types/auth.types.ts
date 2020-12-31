@@ -28,3 +28,7 @@ export interface IJwt {
   "initials": string;
   "ip": string;
 }
+
+export interface IResetPassword {
+  email: string;
+}

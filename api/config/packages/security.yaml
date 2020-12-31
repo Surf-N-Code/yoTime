@@ -11,13 +11,13 @@ security:
           class: App\Entity\User
           property: email
     firewalls:
+        dev:
+          pattern: ^/(_(profiler|wdt)|css|images|js)/
+          security: false
         register:
           methods: [ POST ]
           pattern: ^/users
           anonymous: true
-          security: false
-        dev:
-          pattern: ^/(_(profiler|wdt)|css|images|js)/
           security: false
         main:
           stateless: true
@@ -37,5 +37,6 @@ security:
       - { path: ^/docs, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/_profiler, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-      - { path: ^/authentication_validate, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/reset-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/authentication_validate, roles: IS_AUTHENTICATED_ANONYMOUSLY } #is this neede?
       - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
