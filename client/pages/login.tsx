@@ -97,12 +97,10 @@ export const Login = () => {
                                                 </a>
                                             </div>
                                             <div className="text-center">
-                                                <button
-                                                    className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                                                    type="submit"
-                                                >
+                                                <a href="./forgot-password"
+                                                   className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800">
                                                     Forgot Password?
-                                                </button>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
