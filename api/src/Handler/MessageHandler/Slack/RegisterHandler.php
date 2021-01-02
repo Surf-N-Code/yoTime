@@ -17,8 +17,6 @@ class RegisterHandler
 
     private UserProvider $userProvider;
 
-    private Mailer $mailer;
-
     private ResetPasswordHandler $resetPasswordHandler;
 
     public function __construct(
@@ -36,12 +34,6 @@ class RegisterHandler
         $slackUser = $this->userProvider->getSlackUser($command->getUserId());
         $user = $this->userProvider->populateUserEntityFromSlackInfo($slackUser);
         $user->setIsActive(true);
-
-        $mailContent = 'Hi there,\n\n' .
-                        'here is your temporary password for YoTime: %password%\n\n' .
-                        'Follow this link to login and change your password:\n' .
-                        $_ENV['API_BASE_URL'] . '/login\n';
-
         try {
             $this->resetPasswordHandler->resetUserPassword($user);
         } catch (\Exception $e) {

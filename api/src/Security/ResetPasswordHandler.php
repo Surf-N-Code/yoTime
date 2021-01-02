@@ -44,15 +44,14 @@ class ResetPasswordHandler
         $this->em->persist($user);
         $this->em->flush();
 
-        $mailContent = 'Hi there,\n\n' .
-                       'here is your temporary password for YoTime: '. $randomPass .'\n\n' .
-                       'Follow this link to login and change your password:\n' .
-                       $_ENV['API_BASE_URL'] . '/login\n';
-
+        $mailContent = 'Hi there<br>'.
+                       'here is your temporary password for YoTime: '. $randomPass . '<br>' .
+                       'Follow this link to login and change your password:<br>' .
+                       $_ENV['API_BASE_URL'] . '<br>';
 
         $this->mailer->send(
-            'ndilthey@gmail.com',
-            'ndilthey@gmail.com',
+            'norman@diltheymedia.com',
+            $user->getEmail(),
             'YoTime Account Temporary Password',
             $mailContent
         );

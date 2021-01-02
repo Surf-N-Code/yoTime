@@ -34,18 +34,20 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/ResetPassword.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Handler/MessageController/ResetPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Security/ResetPasswordHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/pages/reset-password.tsx" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Implement reset password endpoin">
+      <change afterPath="$PROJECT_DIR$/api/tests/Handler/MessageController/ResetPasswordControllerTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/tests/Security/ResetPasswordHandlerTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageController/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageController/ResetPasswordController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/RegisterHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/RegisterHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Security/ResetPasswordHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Security/ResetPasswordHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/RegisterUserHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/RegisterUserHandlerTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/Form/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/Form/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/auth.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/auth.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Alert.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/reset-password.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/reset-password.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/services/GlobalMessaging.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/GlobalMessaging.context.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/types/global.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/global.types.ts" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +60,10 @@
     <execution />
   </component>
   <component name="DockerExecCommand">
+    <ExecCommand>
+      <option name="command" value="/bin/sh" />
+      <option name="imageId" value="sha256:f8174b76fd96ac7015b959e586966ff4f228265ed873e908f2f0dee68664e5f5" />
+    </ExecCommand>
     <ExecCommand>
       <option name="command" value="php -v" />
       <option name="imageId" value="sha256:f8174b76fd96ac7015b959e586966ff4f228265ed873e908f2f0dee68664e5f5" />
@@ -260,7 +266,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/client/styles/tailwind.css&#10;/home/norman/Development/yoTime/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/src/Handler/MessageController" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/tests/Handler/MessageController" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -277,24 +283,24 @@
       <recent name="$PROJECT_DIR$/api/tests/Doctrine" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/tests/Handler/MessageController" />
       <recent name="$PROJECT_DIR$/api/src/Handler/MessageController" />
       <recent name="$PROJECT_DIR$/api/src/Entity" />
       <recent name="$PROJECT_DIR$/client/Form" />
       <recent name="$PROJECT_DIR$/client/pages" />
-      <recent name="$PROJECT_DIR$/client/public/images/icons" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.SlashCommandMessageControllerTest.testRegister">
-    <configuration name="DailySummaryPersisterTest.testPersist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\DataPersister\DailySummaryPersisterTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisterTest.php" method="testPersist" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="DailySummaryPersisterTest.testPersistDsWithoutMail" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\DataPersister\DailySummaryPersisterTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisterTest.php" method="testPersistDsWithoutMail" scope="Method" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="PHPUnit.ResetPasswordControllerTest.testResetPassword">
     <configuration name="RegisterUserHandlerTest.testRegister" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="App\Tests\Handler\MessageHandler\Slack\RegisterUserHandlerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/RegisterUserHandlerTest.php" method="testRegister" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ResetPasswordControllerTest.testResetPassword" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageController\ResetPasswordControllerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/ResetPasswordControllerTest.php" method="testResetPassword" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ResetPasswordHandlerTest.testResetPassword" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Security\ResetPasswordHandlerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Security/ResetPasswordHandlerTest.php" method="testResetPassword" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="SlashCommandMessageControllerTest.testRegister" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -307,11 +313,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.SlashCommandMessageControllerTest.testRegister" />
+        <item itemvalue="PHPUnit.ResetPasswordControllerTest.testResetPassword" />
+        <item itemvalue="PHPUnit.ResetPasswordHandlerTest.testResetPassword" />
         <item itemvalue="PHPUnit.RegisterUserHandlerTest.testRegister" />
+        <item itemvalue="PHPUnit.SlashCommandMessageControllerTest.testRegister" />
         <item itemvalue="PHPUnit.tests" />
-        <item itemvalue="PHPUnit.DailySummaryPersisterTest.testPersistDsWithoutMail" />
-        <item itemvalue="PHPUnit.DailySummaryPersisterTest.testPersist" />
       </list>
     </recent_temporary>
   </component>
@@ -403,14 +409,7 @@
       <workItem from="1608919664794" duration="10128000" />
       <workItem from="1609183012257" duration="4466000" />
       <workItem from="1609335789411" duration="14244000" />
-      <workItem from="1609398378907" duration="7000000" />
-    </task>
-    <task id="LOCAL-00027" summary="Get integrations tests working">
-      <created>1600699582330</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1600699582331</updated>
+      <workItem from="1609398378907" duration="21030000" />
     </task>
     <task id="LOCAL-00028" summary="Add test database">
       <created>1600716507487</created>
@@ -748,7 +747,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609356666999</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Implement reset password endpoin">
+      <created>1609407884269</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1609407884269</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -795,7 +801,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Add all files to git" />
     <MESSAGE value="Update gitignore" />
     <MESSAGE value="Add authentication (wip)" />
     <MESSAGE value="Add close function when clicking somewhere when menu is open" />
@@ -820,7 +825,8 @@
     <MESSAGE value="Implement server side loading of dailies and timers" />
     <MESSAGE value="Implement reporting and dailies" />
     <MESSAGE value="Implement reporting &amp; token server validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement reporting &amp; token server validation" />
+    <MESSAGE value="Implement reset password endpoin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement reset password endpoin" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="4" width="756" height="674" key="#CLI_Interpreters" timestamp="1604086486755">
@@ -855,22 +861,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="56" y="-306" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609403294988" />
-    <state x="643" y="-143" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609406292432">
+    <state x="639" y="-179" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609524014073">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="643" y="-143" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609406292432" />
+    <state x="639" y="-179" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609524014073" />
     <state x="667" y="363" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#" timestamp="1602277418370">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="667" y="363" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#/0.0.1920.1080@0.0.1920.1080" timestamp="1602277418370" />
-    <state x="44" y="-76" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1609356666921">
+    <state x="40" y="-112" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1609578984195">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="44" y="-76" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1609356666921" />
-    <state x="29" y="100" width="1862" height="951" key="DiffContextDialog" timestamp="1607780724107">
+    <state x="40" y="-112" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1609578984195" />
+    <state x="27" y="82" width="1862" height="951" key="DiffContextDialog" timestamp="1609578983549">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="29" y="100" width="1862" height="951" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607780724107" />
+    <state x="27" y="82" width="1862" height="951" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609578983549" />
     <state x="706" y="347" width="446" height="222" key="DockerComposeFileDialog" timestamp="1604085577311">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -879,38 +885,38 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="717" y="99" width="428" height="474" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1604790193007" />
-    <state width="1816" height="260" key="GridCell.Tab.0.bottom" timestamp="1608235803965">
+    <state width="1816" height="260" key="GridCell.Tab.0.bottom" timestamp="1609595794495">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="260" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1608235803965" />
-    <state width="1816" height="260" key="GridCell.Tab.0.center" timestamp="1608235803965">
+    <state width="1816" height="260" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1609595794495" />
+    <state width="1816" height="260" key="GridCell.Tab.0.center" timestamp="1609595794495">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="260" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1608235803965" />
-    <state width="1816" height="260" key="GridCell.Tab.0.left" timestamp="1608235803964">
+    <state width="1816" height="260" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1609595794495" />
+    <state width="1816" height="260" key="GridCell.Tab.0.left" timestamp="1609595794494">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="260" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1608235803964" />
-    <state width="1816" height="260" key="GridCell.Tab.0.right" timestamp="1608235803965">
+    <state width="1816" height="260" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1609595794494" />
+    <state width="1816" height="260" key="GridCell.Tab.0.right" timestamp="1609595794495">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="260" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1608235803965" />
-    <state width="1262" height="313" key="GridCell.Tab.1.bottom" timestamp="1608184653536">
+    <state width="1816" height="260" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1609595794495" />
+    <state width="1262" height="299" key="GridCell.Tab.1.bottom" timestamp="1609408325424">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1262" height="313" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1608184653536" />
-    <state width="1262" height="313" key="GridCell.Tab.1.center" timestamp="1608184653536">
+    <state width="1262" height="299" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1609408325424" />
+    <state width="1262" height="299" key="GridCell.Tab.1.center" timestamp="1609408325424">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1262" height="313" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1608184653536" />
-    <state width="1262" height="313" key="GridCell.Tab.1.left" timestamp="1608184653536">
+    <state width="1262" height="299" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1609408325424" />
+    <state width="1262" height="299" key="GridCell.Tab.1.left" timestamp="1609408325423">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1262" height="313" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1608184653536" />
-    <state width="1262" height="313" key="GridCell.Tab.1.right" timestamp="1608184653536">
+    <state width="1262" height="299" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1609408325423" />
+    <state width="1262" height="299" key="GridCell.Tab.1.right" timestamp="1609408325424">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1262" height="313" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1608184653536" />
+    <state width="1262" height="299" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1609408325424" />
     <state width="1070" height="308" key="GridCell.Tab.2.bottom" timestamp="1604299904425">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -931,10 +937,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="227" height="471" key="HiddenNamespacesPopup/0.0.1920.1080@0.0.1920.1080" timestamp="1605851176956" />
-    <state x="599" y="-28" width="648" height="532" key="NewPhpClassDialog" timestamp="1609406272060">
+    <state x="597" y="-46" width="648" height="532" key="NewPhpClassDialog" timestamp="1609408677660">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="599" y="-28" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609406272060" />
+    <state x="597" y="-46" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609408677659" />
     <state x="500" y="493" width="356" height="137" key="NewPhpFileDialog" timestamp="1607622410779">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -991,10 +997,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603533059617" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1609407354494">
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1609579448820">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1609407354494" />
+    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1609579448820" />
     <state x="649" y="140" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604095844648">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -1012,6 +1018,11 @@
           <url>file://$PROJECT_DIR$/api/vendor/theofidry/alice-data-fixtures/src/Loader/PersisterLoader.php</url>
           <line>82</line>
           <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/RegisterHandler.php</url>
+          <line>37</line>
+          <option name="timeStamp" value="112" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
