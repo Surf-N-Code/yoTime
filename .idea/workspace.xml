@@ -34,10 +34,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Typo">
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Typo &amp; extend gitignore">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageController/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageController/ResetPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/reporting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/reporting.tsx" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -251,6 +252,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="DatabaseDriversLRU" value="postgresql&#10;mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -260,7 +262,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -399,14 +401,7 @@
       <workItem from="1608919664794" duration="10128000" />
       <workItem from="1609183012257" duration="4466000" />
       <workItem from="1609335789411" duration="14244000" />
-      <workItem from="1609398378907" duration="21824000" />
-    </task>
-    <task id="LOCAL-00029" summary="Finish tests">
-      <created>1600887542062</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1600887542062</updated>
+      <workItem from="1609398378907" duration="24570000" />
     </task>
     <task id="LOCAL-00030" summary="ADd order capability to timers">
       <created>1601232183234</created>
@@ -744,7 +739,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609596015906</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Typo &amp; extend gitignore">
+      <created>1609596674522</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1609596674522</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -791,7 +793,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Add authentication (wip)" />
     <MESSAGE value="Add close function when clicking somewhere when menu is open" />
     <MESSAGE value="Add swagger decorator for token and add setuserlistener as well as userprovider password encoder in services" />
     <MESSAGE value="Update fixtures with various users and encoded passwords" />
@@ -816,7 +817,8 @@
     <MESSAGE value="Implement reporting &amp; token server validation" />
     <MESSAGE value="Implement reset password endpoin" />
     <MESSAGE value="Implement reset-password front and backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement reset-password front and backend" />
+    <MESSAGE value="Typo &amp; extend gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Typo &amp; extend gitignore" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="4" width="756" height="674" key="#CLI_Interpreters" timestamp="1604086486755">
@@ -859,10 +861,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="667" y="363" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#/0.0.1920.1080@0.0.1920.1080" timestamp="1602277418370" />
-    <state x="124" y="-36" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1609596651737">
+    <state x="114" y="-56" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1609620268090">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="124" y="-36" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1609596651737" />
+    <state x="114" y="-56" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1609620268090" />
     <state x="25" y="64" width="1862" height="951" key="DiffContextDialog" timestamp="1609595983886">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -939,18 +941,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="769" y="-118" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607619544369" />
-    <state x="450" y="130" key="SettingsEditor" timestamp="1609346301734">
+    <state x="448" y="112" key="SettingsEditor" timestamp="1609620305194">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="450" y="130" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1609346301734" />
+    <state x="448" y="112" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1609620305194" />
     <state x="29" y="100" width="1862" height="951" key="VCS.FileHistoryDialog" timestamp="1607780724107">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="29" y="100" width="1862" height="951" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607780724107" />
-    <state x="529" y="51" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1609356668741">
+    <state x="527" y="33" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1609596677380">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="529" y="51" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1609356668741" />
+    <state x="527" y="33" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1609596677380" />
     <state x="827" y="256" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1605893582609">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -959,10 +961,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="525" y="324" width="306" height="438" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607623621759" />
-    <state x="664" y="122" width="364" height="515" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1603618367322">
+    <state x="662" y="104" width="364" height="515" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1609620074927">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="664" y="122" width="364" height="515" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603618367322" />
+    <state x="662" y="104" width="364" height="515" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609620074927" />
     <state x="610" y="237" width="687" height="362" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1607454200367">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -991,10 +993,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1609579448820" />
-    <state x="649" y="140" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604095844648">
+    <state x="647" y="122" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1609620083144">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="649" y="140" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604095844648" />
+    <state x="647" y="122" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609620083144" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1008,11 +1010,6 @@
           <url>file://$PROJECT_DIR$/api/vendor/theofidry/alice-data-fixtures/src/Loader/PersisterLoader.php</url>
           <line>82</line>
           <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/RegisterHandler.php</url>
-          <line>37</line>
-          <option name="timeStamp" value="112" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
