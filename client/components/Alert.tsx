@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import styles from '../styles/alert.module.css';
 import {useGlobalMessaging} from "../services/GlobalMessaging.context";
+import cn from 'classnames';
 
 type PaginationProps = {
     message: string,
@@ -16,10 +17,21 @@ export const Alert = ({message, severity}: PaginationProps) => {
         })
     }
 
+    const severityStyles = {
+        'info': 'bg-green-100 text-green-600',
+        'warning': 'bg-yellow-100 text-yellow-600',
+        'error': 'bg-red-100 text-red-600'
+    }
+
+    console.log('severity', severity);
+    if (severity === null || typeof severity === 'undefined') {
+        severity = 'error';
+    }
+
     return (
         <div>
             <div className={`${styles.alert} fixed bottom-0 right-0 m-8 w-4/6 md:w-full max-w-sm z-50`}>
-                <div className="close cursor-pointer flex items-start w-full p-4 bg-red-100 rounded shadow-lg text-red-600 text-m"
+                <div className={`close cursor-pointer flex items-start w-full p-4 rounded shadow-lg ${cn({'bg-green-100 text-green-600': severity === 'info'},{'bg-yellow-100 text-yellow-600': severity === 'warning'},{'bg-red-100 text-red-600': severity === 'error'})}`}
                      ref={alertRef}
                      title="close"
                      onClick={() => closeAlert()}

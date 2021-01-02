@@ -12,20 +12,30 @@ enum ActionType {
 	RemoveDetails = 'removeMessage'
 }
 
+enum SeverityType {
+	info = 'info',
+	warning = 'warning',
+	error = 'error',
+}
+
 interface IState {
 	message: string;
+	severity: string;
 }
 
 interface IAction {
 	type: ActionType;
+	severity: SeverityType;
 	payload: IGlobalStatus;
 }
 
 const reducer = (state: IState, action: IAction) => {
 	switch (action.type) {
 		case ActionType.SetDetails:
+			console.log('return with severity');
 			return {
-				message: action.payload.message
+				message: action.payload.message,
+				severity: action.payload.severity
 			};
 		case ActionType.RemoveDetails:
 			return {
@@ -38,11 +48,11 @@ const reducer = (state: IState, action: IAction) => {
 
 export const GlobalMessagingProvider = ({ children }: any) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
-
+	console.log('reducer state', state);
 	return (
 		<GlobalMessagingContext.Provider value={[state, dispatch]}>
 			{state.message != '' ?
-				<Alert message={state.message} severity={'error'}/> : ''
+				<Alert message={state.message} severity={state.severity}/> : ''
 			}
 			{children}
 		</GlobalMessagingContext.Provider>
