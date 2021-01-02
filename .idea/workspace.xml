@@ -34,20 +34,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Implement reset password endpoin">
-      <change afterPath="$PROJECT_DIR$/api/tests/Handler/MessageController/ResetPasswordControllerTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/Security/ResetPasswordHandlerTest.php" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Typo">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env.test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageController/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageController/ResetPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/RegisterHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/RegisterHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Security/ResetPasswordHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Security/ResetPasswordHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/RegisterUserHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/RegisterUserHandlerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/Form/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/Form/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Alert.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/reset-password.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/reset-password.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/services/GlobalMessaging.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/GlobalMessaging.context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/global.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/global.types.ts" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -409,14 +399,7 @@
       <workItem from="1608919664794" duration="10128000" />
       <workItem from="1609183012257" duration="4466000" />
       <workItem from="1609335789411" duration="14244000" />
-      <workItem from="1609398378907" duration="21030000" />
-    </task>
-    <task id="LOCAL-00028" summary="Add test database">
-      <created>1600716507487</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1600716507487</updated>
+      <workItem from="1609398378907" duration="21824000" />
     </task>
     <task id="LOCAL-00029" summary="Finish tests">
       <created>1600887542062</created>
@@ -754,7 +737,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609407884269</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Implement reset-password front and backend">
+      <created>1609596015906</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1609596015906</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -801,7 +791,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Update gitignore" />
     <MESSAGE value="Add authentication (wip)" />
     <MESSAGE value="Add close function when clicking somewhere when menu is open" />
     <MESSAGE value="Add swagger decorator for token and add setuserlistener as well as userprovider password encoder in services" />
@@ -826,7 +815,8 @@
     <MESSAGE value="Implement reporting and dailies" />
     <MESSAGE value="Implement reporting &amp; token server validation" />
     <MESSAGE value="Implement reset password endpoin" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement reset password endpoin" />
+    <MESSAGE value="Implement reset-password front and backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement reset-password front and backend" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="4" width="756" height="674" key="#CLI_Interpreters" timestamp="1604086486755">
@@ -869,14 +859,14 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="667" y="363" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#/0.0.1920.1080@0.0.1920.1080" timestamp="1602277418370" />
-    <state x="40" y="-112" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1609578984195">
+    <state x="124" y="-36" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1609596651737">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="40" y="-112" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1609578984195" />
-    <state x="27" y="82" width="1862" height="951" key="DiffContextDialog" timestamp="1609578983549">
+    <state x="124" y="-36" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1609596651737" />
+    <state x="25" y="64" width="1862" height="951" key="DiffContextDialog" timestamp="1609595983886">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="27" y="82" width="1862" height="951" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609578983549" />
+    <state x="25" y="64" width="1862" height="951" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609595983886" />
     <state x="706" y="347" width="446" height="222" key="DockerComposeFileDialog" timestamp="1604085577311">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -885,22 +875,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="717" y="99" width="428" height="474" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1604790193007" />
-    <state width="1816" height="260" key="GridCell.Tab.0.bottom" timestamp="1609595794495">
+    <state width="1816" height="253" key="GridCell.Tab.0.bottom" timestamp="1609596158142">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="260" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1609595794495" />
-    <state width="1816" height="260" key="GridCell.Tab.0.center" timestamp="1609595794495">
+    <state width="1816" height="253" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1609596158142" />
+    <state width="1816" height="253" key="GridCell.Tab.0.center" timestamp="1609596158141">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="260" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1609595794495" />
-    <state width="1816" height="260" key="GridCell.Tab.0.left" timestamp="1609595794494">
+    <state width="1816" height="253" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1609596158141" />
+    <state width="1816" height="253" key="GridCell.Tab.0.left" timestamp="1609596158141">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="260" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1609595794494" />
-    <state width="1816" height="260" key="GridCell.Tab.0.right" timestamp="1609595794495">
+    <state width="1816" height="253" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1609596158141" />
+    <state width="1816" height="253" key="GridCell.Tab.0.right" timestamp="1609596158141">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1816" height="260" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1609595794495" />
+    <state width="1816" height="253" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1609596158141" />
     <state width="1262" height="299" key="GridCell.Tab.1.bottom" timestamp="1609408325424">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

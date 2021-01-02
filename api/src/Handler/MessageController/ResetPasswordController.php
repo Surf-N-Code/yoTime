@@ -37,6 +37,6 @@ final class ResetPasswordController implements MessageHandlerInterface
         } catch (\Exception $e) {
             return new JsonResponse('Ups.. an error occurred.', Response::HTTP_BAD_REQUEST);
         }
-        return new JsonResponse('Passwrod reset email sent', Response::HTTP_OK);
+        return new JsonResponse('Password reset email sent', Response::HTTP_OK);
     }
 }
