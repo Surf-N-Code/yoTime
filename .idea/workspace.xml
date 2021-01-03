@@ -34,17 +34,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/components/HighlightNumber.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/Timer.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/Timer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/utilities/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/utilities/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/utilities/lib.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/utilities/lib.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="" />
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +257,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -406,14 +396,7 @@
       <workItem from="1608919664794" duration="10128000" />
       <workItem from="1609183012257" duration="4466000" />
       <workItem from="1609335789411" duration="14244000" />
-      <workItem from="1609398378907" duration="38381000" />
-    </task>
-    <task id="LOCAL-00031" summary="Start adding client">
-      <created>1601238425128</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1601238425128</updated>
+      <workItem from="1609398378907" duration="38687000" />
     </task>
     <task id="LOCAL-00032" summary="Add timer fixtures and continue on timers client view">
       <created>1601340687595</created>
@@ -751,7 +734,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609620369139</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Use dashboard as startscreen. Implement Dashboard">
+      <created>1609681302790</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1609681302790</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -798,7 +788,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Add swagger decorator for token and add setuserlistener as well as userprovider password encoder in services" />
     <MESSAGE value="Update fixtures with various users and encoded passwords" />
     <MESSAGE value="Add set user doctrine entity listeners" />
     <MESSAGE value="Add user filter query extension" />
@@ -823,7 +812,8 @@
     <MESSAGE value="Implement reset-password front and backend" />
     <MESSAGE value="Typo &amp; extend gitignore" />
     <MESSAGE value="Hid employee dropdown when non-admin user ist logged in" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hid employee dropdown when non-admin user ist logged in" />
+    <MESSAGE value="Use dashboard as startscreen. Implement Dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Use dashboard as startscreen. Implement Dashboard" />
   </component>
   <component name="WindowStateProjectService">
     <state x="505" y="4" width="756" height="674" key="#CLI_Interpreters" timestamp="1604086486755">
@@ -866,10 +856,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="667" y="363" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#/0.0.1920.1080@0.0.1920.1080" timestamp="1602277418370" />
-    <state x="112" y="-74" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1609620369075">
+    <state x="108" y="-50" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1609681302745">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="112" y="-74" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1609620369075" />
+    <state x="108" y="-50" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1609681302745" />
     <state x="25" y="64" width="1862" height="951" key="DiffContextDialog" timestamp="1609595983886">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -950,10 +940,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="769" y="-118" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607619544369" />
-    <state x="448" y="112" key="SettingsEditor" timestamp="1609620305194">
+    <state x="446" y="94" key="SettingsEditor" timestamp="1609681256074">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="448" y="112" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1609620305194" />
+    <state x="446" y="94" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1609681256074" />
     <state x="29" y="100" width="1862" height="951" key="VCS.FileHistoryDialog" timestamp="1607780724107">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
