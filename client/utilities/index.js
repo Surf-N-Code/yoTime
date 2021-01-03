@@ -1,7 +1,13 @@
-import {toHHMMSS, toHHMM, sleep} from './lib';
+import {
+    toHHMMSS,
+    toHHMM,
+    sleep,
+    getUniqueValuesForProperty
+} from './lib';
 
 export {
     toHHMMSS,
     toHHMM,
-    sleep
+    sleep,
+    getUniqueValuesForProperty
 };
