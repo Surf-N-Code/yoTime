@@ -39,7 +39,7 @@ export const Login = () => {
 
                             });
                             setInvalidForm(false);
-                            router.push('/')
+                            router.push('/dashboard')
                         })
                         .catch(error => {
                             if (!(error instanceof AuthorizationError)) {
@@ -88,17 +88,17 @@ export const Login = () => {
                                                 </button>
                                             </div>
                                             <hr className="mb-6 border-t"/>
-                                            <div className="text-center">
-                                                <a
-                                                    className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                                                    href="./register"
-                                                >
-                                                    Create an Account!
-                                                </a>
-                                            </div>
+                                            {/*<div className="text-center">*/}
+                                            {/*    <a*/}
+                                            {/*        className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"*/}
+                                            {/*        href="./register"*/}
+                                            {/*    >*/}
+                                            {/*        Create an Account!*/}
+                                            {/*    </a>*/}
+                                            {/*</div>*/}
                                             <div className="text-center">
                                                 <a href="./reset-password"
-                                                   className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800">
+                                                   className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-900">
                                                     Forgot Password?
                                                 </a>
                                             </div>

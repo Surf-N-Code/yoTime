@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TimerRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -12,6 +13,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource()
  * @ApiFilter(OrderFilter::class, properties={"dateEnd": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }, "dateStart": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }})
+ * @ApiFilter(DateFilter::class, properties={"dateStart"})
  * @ORM\EntityListeners({"App\Doctrine\SetUserListener"})
  * @ORM\Entity(repositoryClass=TimerRepository::class)
  */
