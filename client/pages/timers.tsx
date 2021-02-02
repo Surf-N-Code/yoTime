@@ -32,7 +32,7 @@ export const Timers = ({validToken, initialData}) => {
     const currentPage = Number(typeof router.query.page !== 'undefined' ? router.query.page : 1);
     // const url = `/timers?order[dateStart]&page=${currentPage}`;
     const url = `/timers?order[dateStart]&page=1`;
-    const { data, error, isValidating, mutate } = useSWR<ITimerApiResult>([url, auth.jwt, 'GET'], FetcherFunc, {initialData})
+    const { data, error, isValidating, mutate: mutateTimers } = useSWR<ITimerApiResult>([url, auth.jwt, 'GET'], FetcherFunc, {initialData})
 
     // useEffect(() => {
     //     if (!data || typeof data["hydra:member"] === 'undefined') return;
@@ -85,37 +85,20 @@ export const Timers = ({validToken, initialData}) => {
         }
 
         return (
-            // <CSSTransition
-            //     classNames="my-node"
-            //     key={timer.id}
-            //     timeout={300}
-            // >
-            //     <SwipeableListItem
-            //         key={timer.id}
-            //         swipeLeft={{
-            //             content: <div className={`text-white bg-green-500 text-right p-3 w-full`}>Edit</div>,
-            //             action: () => editTimer(timer),
-            //             actionAnimation: ActionAnimations.RETURN
-            //         }}
-            //         swipeRight={{
-            //             content: <div className={`text-white bg-red-500 p-3 w-full`}>Delete</div>,
-            //             action: () => deleteTimer(timer.id),
-            //             actionAnimation: ActionAnimations.REMOVE
-            //         }}
-            //         onSwipeProgress={progress => console.info(`Swipe progress: ${progress}%`)}
-            //     >
-                    <div className="flex flex-row items-center ml-3 mt-1 w-full cursor-pointer" data-id={timer.id} key={timer.id}>
-                        <div className="">{timer.id} {timerStartString}  -  {timerEndString}{timer.timer_type === 'break' ? <span className="text-xs"> (b)</span>:''}</div>
-                        <div className="text-right ml-auto">{formattedDiffInMinPerTimer}</div>
-                    </div>
-            //     </SwipeableListItem>
-            // </CSSTransition>
+            <div
+                className="flex flex-row items-center ml-3 mt-1 w-full cursor-pointer"
+                key={timer.id}
+                onClick={() => editTimer(timer)}
+            >
+                <div className="">{timerStartString}  -  {timerEndString}{timer.timer_type === 'break' ? <span className="text-xs"> (b)</span>:''}</div>
+                <div className="text-right ml-auto">{formattedDiffInMinPerTimer}</div>
+            </div>
         )
     }
 
     const editTimer = async (timer: ITimer) => {
         setTimerToEdit(timer);
-        toggleAddTimerView();
+        toggleAddTimerView(true);
     }
 
     const deleteTimer = async (timerId) => {
@@ -131,12 +114,12 @@ export const Timers = ({validToken, initialData}) => {
                 Authorization: 'Bearer ' + auth.jwt
             }
         })
-            .then(res => {
-                return true;
-            })
-            .catch(error => {
-               return false;
-            });
+        .then(res => {
+            return true;
+        })
+        .catch(error => {
+           return false;
+        });
     }
 
     const stopTimer = async () => {
@@ -165,8 +148,7 @@ export const Timers = ({validToken, initialData}) => {
     }
 
     const startTimer = async (timerType: string) => {
-        console.group('START TIMER')
-        // await stopTimer();
+        stopTimer();
         let tempId = uuidv4();
         const newTimer = {
             date_start: new Date(),
@@ -175,7 +157,7 @@ export const Timers = ({validToken, initialData}) => {
         }
         setRunningTimer((prevTimer) => {return {id: tempId, 'optimisticTimer': true, ...newTimer}});
 
-        await mutate((data) => {
+        await mutateTimers((data: ITimerApiResult) => {
             let newHydra = [{id: tempId, ...newTimer}, ...data['hydra:member']].sort((a, b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime());
             return {
                 ...data,
@@ -186,7 +168,7 @@ export const Timers = ({validToken, initialData}) => {
         const fetchedTimer = await FetcherFunc('timers', auth.jwt, 'POST', newTimer);
         setRunningTimer(fetchedTimer);
 
-        await mutate((data) => {
+        await mutateTimers((data: ITimerApiResult) => {
             return {
                 ...data,
                 'hydra:member': data['hydra:member'].map((timer) =>
@@ -194,11 +176,10 @@ export const Timers = ({validToken, initialData}) => {
                 )
             }
         }, false);
-        console.groupEnd()
     }
 
-    const toggleAddTimerView = () => {
-        if (manualTimerModalVisible) {
+    const toggleAddTimerView = (timerToEdit) => {
+        if (manualTimerModalVisible || !timerToEdit) {
             setTimerToEdit(null);
         }
         setManualTimerModalVisible((prevVal) => {return !prevVal});
@@ -261,20 +242,7 @@ export const Timers = ({validToken, initialData}) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/*<SwipeableList threshold={300}>*/}
-                                            {/*    {({*/}
-                                            {/*          className,*/}
-                                            {/*          scrollStartThreshold,*/}
-                                            {/*          swipeStartThreshold,*/}
-                                            {/*          threshold*/}
-                                            {/*      }) => (*/}
-                                            {/*        <TransitionGroup*/}
-                                            {/*            className={className}*/}
-                                            {/*        >*/}
-                                                        {subTimerHtml}
-                                            {/*        </TransitionGroup>*/}
-                                            {/*    )}*/}
-                                            {/*</SwipeableList>*/}
+                                            {subTimerHtml}
                                         </div>
                                     )
                                 }
@@ -286,7 +254,7 @@ export const Timers = ({validToken, initialData}) => {
                         }
                         <ManualTimerview
                             data={data}
-                            mutate={mutate}
+                            mutateTimers={mutateTimers}
                             toggleAddTimerView={toggleAddTimerView}
                             isVisible={manualTimerModalVisible}
                             timerToEdit={timerToEdit}
@@ -327,7 +295,7 @@ export const Timers = ({validToken, initialData}) => {
                                 </button>
                                 <button
                                     className="ml-3 bg-teal-500 rounded-full p-4 border-white border-2 outline-none shadow-md cursor-pointer"
-                                    onClick={() => toggleAddTimerView()}>
+                                    onClick={() => toggleAddTimerView(false)}>
                                     <img src="../images/icons/icons8-plus-math-60.png" width="30" height="22" alt="Start Timer"/>
                                 </button>
                             </div>
