@@ -35,23 +35,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/yoTime.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yoTime.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageController/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageController/ResetPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/HighlightNumber.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/HighlightNumber.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Pagination.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/reporting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/reporting.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/reset-password.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/reset-password.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/services/Auth.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Auth.context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/services/GlobalMessaging.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/GlobalMessaging.context.tsx" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -431,14 +416,7 @@
       <workItem from="1610270238539" duration="368000" />
       <workItem from="1610270617594" duration="12356000" />
       <workItem from="1611943077581" duration="7523000" />
-      <workItem from="1612291010804" duration="4992000" />
-    </task>
-    <task id="LOCAL-00033" summary="Add button to start / stop a running timer">
-      <created>1601423897416</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1601423897416</updated>
+      <workItem from="1612291010804" duration="7303000" />
     </task>
     <task id="LOCAL-00034" summary="Pre react class for dailies">
       <created>1601836755101</created>
@@ -776,7 +754,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609681331011</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Working timer cache update">
+      <created>1612296013779</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1612296013779</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -797,19 +782,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="feature/general-timers-without-punch" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -823,7 +796,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Add set user doctrine entity listeners" />
     <MESSAGE value="Add user filter query extension" />
     <MESSAGE value="Use Response constants for http code responses" />
     <MESSAGE value="Add and update tests" />
@@ -848,7 +820,8 @@
     <MESSAGE value="Hid employee dropdown when non-admin user ist logged in" />
     <MESSAGE value="Use dashboard as startscreen. Implement Dashboard" />
     <MESSAGE value="Add idea to gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add idea to gitignore" />
+    <MESSAGE value="Working timer cache update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working timer cache update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
