@@ -34,7 +34,25 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/yoTime.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/yoTime.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageController/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageController/ResetPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/HighlightNumber.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/HighlightNumber.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/reporting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/reporting.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/reset-password.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/reset-password.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/services/Auth.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/Auth.context.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/services/GlobalMessaging.context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/services/GlobalMessaging.context.tsx" afterDir="false" />
+    </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +81,14 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
@@ -72,7 +98,10 @@
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/client/package.json" />
   </component>
-  <component name="PhpDebugGeneral" xdebug_debug_port="9001" />
+  <component name="PhpDebugGeneral" xdebug_debug_port="9001">
+    <xdebug_debug_ports port="9001" />
+    <xdebug_debug_ports port="9003" />
+  </component>
   <component name="PhpServers">
     <servers>
       <server host="localhost" id="e32424dd-4548-41dc-9a97-80939239a3f6" name="api-platform" port="8443" use_path_mappings="true">
@@ -253,7 +282,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/client/styles/tailwind.css&#10;/home/norman/Development/yoTime/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/pages" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -262,19 +291,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/pages" />
+      <recent name="$PROJECT_DIR$/client/components" />
+      <recent name="$PROJECT_DIR$/api/tests/Handler/MessageController" />
+      <recent name="$PROJECT_DIR$/api/src/Handler/MessageController" />
+      <recent name="$PROJECT_DIR$/api/src/Entity" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api/src/Validator/Constraints" />
       <recent name="$PROJECT_DIR$/client/styles" />
       <recent name="$PROJECT_DIR$/client/Errors" />
       <recent name="$PROJECT_DIR$/client/types" />
       <recent name="$PROJECT_DIR$/api/tests/Doctrine" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/client/components" />
-      <recent name="$PROJECT_DIR$/api/tests/Handler/MessageController" />
-      <recent name="$PROJECT_DIR$/api/src/Handler/MessageController" />
-      <recent name="$PROJECT_DIR$/api/src/Entity" />
-      <recent name="$PROJECT_DIR$/client/Form" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.ResetPasswordControllerTest.testResetPassword">
@@ -396,14 +425,13 @@
       <workItem from="1608919664794" duration="10128000" />
       <workItem from="1609183012257" duration="4466000" />
       <workItem from="1609335789411" duration="14244000" />
-      <workItem from="1609398378907" duration="38687000" />
-    </task>
-    <task id="LOCAL-00032" summary="Add timer fixtures and continue on timers client view">
-      <created>1601340687595</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1601340687595</updated>
+      <workItem from="1609398378907" duration="39303000" />
+      <workItem from="1609742668340" duration="599000" />
+      <workItem from="1610112813806" duration="4065000" />
+      <workItem from="1610270238539" duration="368000" />
+      <workItem from="1610270617594" duration="12356000" />
+      <workItem from="1611943077581" duration="7523000" />
+      <workItem from="1612291010804" duration="4992000" />
     </task>
     <task id="LOCAL-00033" summary="Add button to start / stop a running timer">
       <created>1601423897416</created>
@@ -741,7 +769,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609681302790</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Add idea to gitignore">
+      <created>1609681331010</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1609681331011</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -788,7 +823,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Update fixtures with various users and encoded passwords" />
     <MESSAGE value="Add set user doctrine entity listeners" />
     <MESSAGE value="Add user filter query extension" />
     <MESSAGE value="Use Response constants for http code responses" />
@@ -813,189 +847,8 @@
     <MESSAGE value="Typo &amp; extend gitignore" />
     <MESSAGE value="Hid employee dropdown when non-admin user ist logged in" />
     <MESSAGE value="Use dashboard as startscreen. Implement Dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="Use dashboard as startscreen. Implement Dashboard" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="505" y="4" width="756" height="674" key="#CLI_Interpreters" timestamp="1604086486755">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="505" y="4" width="756" height="674" key="#CLI_Interpreters/0.0.1920.1080@0.0.1920.1080" timestamp="1604086486755" />
-    <state x="707" y="236" width="454" height="317" key="#Docker2" timestamp="1604084960721">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="707" y="236" width="454" height="317" key="#Docker2/0.0.1920.1080@0.0.1920.1080" timestamp="1604084960721" />
-    <state x="535" y="161" width="828" height="674" key="#Test_Frameworks" timestamp="1604086474012">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="535" y="161" width="828" height="674" key="#Test_Frameworks/0.0.1920.1080@0.0.1920.1080" timestamp="1604086474012" />
-    <state x="675" y="-49" width="871" height="787" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609680358404">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="675" y="-49" width="871" height="787" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609680358404" />
-    <state x="647" y="317" width="603" height="380" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607245810513">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="647" y="317" width="603" height="380" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1607245810513" />
-    <state x="774" y="359" width="357" height="298" key="#com.intellij.ide.actions.DebugLogConfigureAction" timestamp="1604086445887">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="774" y="359" width="357" height="298" key="#com.intellij.ide.actions.DebugLogConfigureAction/0.0.1920.1080@0.0.1920.1080" timestamp="1604086445887" />
-    <state x="752" y="150" width="390" height="552" key="#com.intellij.ide.util.MemberChooser" timestamp="1609406328302">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="752" y="150" width="390" height="552" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1609406328302" />
-    <state x="56" y="-306" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1609403294988">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="56" y="-306" width="1724" height="1070" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609403294988" />
-    <state x="639" y="-179" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609524014073">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="639" y="-179" width="528" height="474" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609524014073" />
-    <state x="667" y="363" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#" timestamp="1602277418370">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="667" y="363" key="#com.jetbrains.php.refactoring.move.member.instance.PhpMoveInstanceMethodDialog#/0.0.1920.1080@0.0.1920.1080" timestamp="1602277418370" />
-    <state x="108" y="-50" width="1610" height="1003" key="CommitChangelistDialog2" timestamp="1609681302745">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="108" y="-50" width="1610" height="1003" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1609681302745" />
-    <state x="25" y="64" width="1862" height="951" key="DiffContextDialog" timestamp="1609595983886">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="25" y="64" width="1862" height="951" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609595983886" />
-    <state x="706" y="347" width="446" height="222" key="DockerComposeFileDialog" timestamp="1604085577311">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="706" y="347" width="446" height="222" key="DockerComposeFileDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604085577311" />
-    <state x="717" y="99" width="428" height="474" key="FileChooserDialogImpl" timestamp="1604790193007">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="717" y="99" width="428" height="474" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1604790193007" />
-    <state width="1816" height="253" key="GridCell.Tab.0.bottom" timestamp="1609596158142">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1816" height="253" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1609596158142" />
-    <state width="1816" height="253" key="GridCell.Tab.0.center" timestamp="1609596158141">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1816" height="253" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1609596158141" />
-    <state width="1816" height="253" key="GridCell.Tab.0.left" timestamp="1609596158141">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1816" height="253" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1609596158141" />
-    <state width="1816" height="253" key="GridCell.Tab.0.right" timestamp="1609596158141">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1816" height="253" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1609596158141" />
-    <state width="1262" height="299" key="GridCell.Tab.1.bottom" timestamp="1609408325424">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1262" height="299" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1609408325424" />
-    <state width="1262" height="299" key="GridCell.Tab.1.center" timestamp="1609408325424">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1262" height="299" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1609408325424" />
-    <state width="1262" height="299" key="GridCell.Tab.1.left" timestamp="1609408325423">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1262" height="299" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1609408325423" />
-    <state width="1262" height="299" key="GridCell.Tab.1.right" timestamp="1609408325424">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1262" height="299" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1609408325424" />
-    <state width="1070" height="308" key="GridCell.Tab.2.bottom" timestamp="1604299904425">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1070" height="308" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904425" />
-    <state width="1070" height="308" key="GridCell.Tab.2.center" timestamp="1604299904424">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1070" height="308" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
-    <state width="1070" height="308" key="GridCell.Tab.2.left" timestamp="1604299904424">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1070" height="308" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904424" />
-    <state width="1070" height="308" key="GridCell.Tab.2.right" timestamp="1604299904425">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1070" height="308" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604299904425" />
-    <state width="227" height="471" key="HiddenNamespacesPopup" timestamp="1605851176956">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="227" height="471" key="HiddenNamespacesPopup/0.0.1920.1080@0.0.1920.1080" timestamp="1605851176956" />
-    <state x="541" y="295" width="828" height="514" key="IDE.errors.dialog" timestamp="1609662665074">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="541" y="295" width="828" height="514" key="IDE.errors.dialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609662665074" />
-    <state x="597" y="-46" width="648" height="532" key="NewPhpClassDialog" timestamp="1609408677660">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="597" y="-46" width="648" height="532" key="NewPhpClassDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609408677659" />
-    <state x="500" y="493" width="356" height="137" key="NewPhpFileDialog" timestamp="1607622410779">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="500" y="493" width="356" height="137" key="NewPhpFileDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607622410779" />
-    <state x="769" y="-118" width="389" height="578" key="RollbackChangesDialog" timestamp="1607619544369">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="769" y="-118" width="389" height="578" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607619544369" />
-    <state x="446" y="94" key="SettingsEditor" timestamp="1609681256074">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="446" y="94" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1609681256074" />
-    <state x="29" y="100" width="1862" height="951" key="VCS.FileHistoryDialog" timestamp="1607780724107">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="29" y="100" width="1862" height="951" key="VCS.FileHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607780724107" />
-    <state x="527" y="33" width="804" height="518" key="Vcs.Push.Dialog.v2" timestamp="1609596677380">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="527" y="33" width="804" height="518" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1609596677380" />
-    <state x="827" y="256" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1605893582609">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="827" y="256" width="324" height="231" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1080@0.0.1920.1080" timestamp="1605893582609" />
-    <state x="525" y="324" width="306" height="438" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1607623621759">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="525" y="324" width="306" height="438" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607623621759" />
-    <state x="662" y="104" width="364" height="515" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1609620074927">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="662" y="104" width="364" height="515" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609620074927" />
-    <state x="610" y="237" width="687" height="362" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1607454200367">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="610" y="237" width="687" height="362" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607454200367" />
-    <state x="385" y="300" width="398" height="251" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1604084128452">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="385" y="300" width="398" height="251" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration/0.0.1920.1080@0.0.1920.1080" timestamp="1604084128452" />
-    <state x="29" y="136" width="1862" height="915" key="dock-window-1" timestamp="1600868478697">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="29" y="136" width="1862" height="915" key="dock-window-1/0.0.1920.1080@0.0.1920.1080" timestamp="1600868478697" />
-    <state x="29" y="136" width="1862" height="915" key="dock-window-2" timestamp="1600868604122">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="29" y="136" width="1862" height="915" key="dock-window-2/0.0.1920.1080@0.0.1920.1080" timestamp="1600868604122" />
-    <state x="369" y="135" width="1042" height="717" key="find.popup" timestamp="1609659631345">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="369" y="135" width="1042" height="717" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1609659631345" />
-    <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog" timestamp="1603533059617">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="523" y="323" width="309" height="441" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603533059617" />
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup" timestamp="1609667638918">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="555" y="92" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1609667638918" />
-    <state x="647" y="122" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1609620083144">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="647" y="122" width="544" height="166" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1609620083144" />
+    <MESSAGE value="Add idea to gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add idea to gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1019,13 +872,13 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/yoTime@DailySummaryPersisterTest.xml" NAME="DailySummaryPersisterTest Coverage Results" MODIFIED="1607542048692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/yoTime@TimerHandlerTest_testStartWorkTimer.xml" NAME="TimerHandlerTest.testStartWorkTimer Coverage Results" MODIFIED="1602322847941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@DailySummaryHandlerTest.xml" NAME="DailySummaryHandlerTest Coverage Results" MODIFIED="1600629596029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@tests.xml" NAME="tests Coverage Results" MODIFIED="1607626543090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/yoTime@DailySummaryHandlerTest_testHandleModalSubmissionFailedPersonioSync.xml" NAME="DailySummaryHandlerTest.testHandleModalSubmissionFailedPersonioSync Coverage Results" MODIFIED="1600593206568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@TimerHandlerTest.xml" NAME="TimerHandlerTest Coverage Results" MODIFIED="1602324601715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@SlashCommandHandlerTest.xml" NAME="SlashCommandHandlerTest Coverage Results" MODIFIED="1597698388851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/yoTime@DailySummaryPersisterTest.xml" NAME="DailySummaryPersisterTest Coverage Results" MODIFIED="1607542048692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/yoTime@DailySummaryHandlerTest_testHandleModalSubmissionFailedPersonioSync.xml" NAME="DailySummaryHandlerTest.testHandleModalSubmissionFailedPersonioSync Coverage Results" MODIFIED="1600593206568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@DailySummaryPersisteIntegrationTest_testAddDailySummary.xml" NAME="DailySummaryPersisteIntegrationTest.testAddDailySummary Coverage Results" MODIFIED="1607618898681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/yoTime@TimerHandlerTest_testStartWorkTimer.xml" NAME="TimerHandlerTest.testStartWorkTimer Coverage Results" MODIFIED="1602322847941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

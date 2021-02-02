@@ -44,7 +44,6 @@ export const AuthProvider = ({ children }: any) => {
 	if (typeof localStorage !== 'undefined' && localStorage.getItem('userInfo')) {
 		localState = JSON.parse(localStorage.getItem('userInfo') || '');
 	}
-	console.log('local state',localState, initialState);
 	const [state, dispatch] = useReducer(reducer, localState || initialState);
 
 	if (typeof localStorage !== 'undefined') {

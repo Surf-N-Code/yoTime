@@ -27,7 +27,7 @@ export const Menu = ({ menuIsOpen, onClick, validToken }: MenuProps ) => {
                 onClick={() => onClick()}
             >
                 <div className="pr-3 bg-white shadow flex items-center h-20">
-                    <Link href="/">
+                    <Link href="/dashboard">
                         <img src="../images/icons/icons8-timer-100.png" width="90" className="pl-2 pr-2 border-r border-teal-100 cursor-pointer" alt="Logo"/>
                     </Link>
                     <img src="../images/icons/close.svg" width="25" className="ml-5 cursor-pointer" alt="Menu" onClick={() => onClick()}/>
