@@ -97,7 +97,7 @@ export const Dashboard = (props) => {
 
     console.log(props.initialData.users['hydra:totalItems'] > 1)
     return (
-        <Layout>
+        <Layout validToken={props.validToken}>
             <div className="mt-6 mb-24 z-10">
                 {typeof data['hydra:member'] === 'undefined' || data['hydra:member'].length === 0 ? <div>no data yet</div>
                     :

@@ -15,6 +15,7 @@ const resetPasswordAsync = async (email) => {
         },
         body: JSON.stringify({email}),
     });
+        console.log(response);
 
     if (!response.ok) {
         const message = `Ups... an error occured. Please try again.`;

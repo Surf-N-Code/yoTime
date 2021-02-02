@@ -17,7 +17,7 @@ export const Pagination = ({currentPage, totalPages, path, urlParams}: Paginatio
         <div className="flex flex-col items-center my-12">
         <div className="flex text-gray-700">
             {currentPage > 1 ?
-                <Link href={`${path}?page=${currentPage-1}${urlParams ? urlParams : ''}`}>
+                <Link href={`${path}?page=${currentPage-1}${urlParams !== null && typeof urlParams !== 'undefined' ? urlParams : ''}`}>
                     <a className="h-12 w-12 mr-1 flex justify-center items-center rounded-full cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none"
                              viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
@@ -41,7 +41,7 @@ export const Pagination = ({currentPage, totalPages, path, urlParams}: Paginatio
             </div>
 
             {currentPage <= totalPages - 1 ?
-                <Link href={`/${path}?page=${currentPage+1}${urlParams !== null ? urlParams : ''}`}>
+                <Link href={`/${path}?page=${currentPage+1}${urlParams !== null && typeof urlParams !== 'undefined' ? urlParams : ''}`}>
                     <a className="h-12 w-12 mr-1 flex justify-center items-center rounded-full cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none"
                              viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round"

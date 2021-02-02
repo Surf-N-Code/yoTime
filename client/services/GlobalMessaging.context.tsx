@@ -32,7 +32,6 @@ interface IAction {
 const reducer = (state: IState, action: IAction) => {
 	switch (action.type) {
 		case ActionType.SetDetails:
-			console.log('return with severity');
 			return {
 				message: action.payload.message,
 				severity: action.payload.severity
@@ -48,7 +47,6 @@ const reducer = (state: IState, action: IAction) => {
 
 export const GlobalMessagingProvider = ({ children }: any) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
-	console.log('reducer state', state);
 	return (
 		<GlobalMessagingContext.Provider value={[state, dispatch]}>
 			{state.message != '' ?

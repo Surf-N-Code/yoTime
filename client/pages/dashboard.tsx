@@ -63,7 +63,7 @@ export const Dashboard = (props) => {
     }
 
     return (
-        <Layout>
+        <Layout validToken={props.validToken}>
             <div className="mt-6">
                 <div className="flex flex-col md:flex-row justify-around">
                     <HighlightNumberCard

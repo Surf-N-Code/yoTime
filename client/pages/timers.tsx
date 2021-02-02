@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import useSWR from 'swr';
+import useSWR, { mutate } from 'swr';
 import {useRouter} from 'next/router';
 import {differenceInDays, differenceInSeconds, format} from 'date-fns';
 import isToday from 'date-fns/isToday';
@@ -19,6 +19,8 @@ import {toHHMMSS} from "../utilities";
 
 import {GetServerSideProps} from "next";
 import Cookies from "universal-cookie";
+import {log} from "util";
+import {sleep} from "../utilities/lib";
 
 export const Timers = ({validToken, initialData}) => {
     const router = useRouter();
@@ -28,45 +30,46 @@ export const Timers = ({validToken, initialData}) => {
     const [messageState, messageDispatch] = useGlobalMessaging();
     const [timerToEdit, setTimerToEdit] = useState<ITimer|null>(null);
     const currentPage = Number(typeof router.query.page !== 'undefined' ? router.query.page : 1);
-    const url = `/timers?order[dateStart]&page=${currentPage}`;
-    const { data, error, mutate: mutateTimers } = useSWR<ITimerApiResult>([url, auth.jwt, 'GET'], FetcherFunc, {initialData})
+    // const url = `/timers?order[dateStart]&page=${currentPage}`;
+    const url = `/timers?order[dateStart]&page=1`;
+    const { data, error, isValidating, mutate } = useSWR<ITimerApiResult>([url, auth.jwt, 'GET'], FetcherFunc, {initialData})
 
-    useEffect(() => {
-        if (!data || typeof data["hydra:member"] === 'undefined') return;
-        const timer = data["hydra:member"].filter((timer) => {return typeof timer.date_end === 'undefined' || timer.date_end === null});
-        setRunningTimer((prevTimer) => timer[0]);
-    }, [data])
+    // useEffect(() => {
+    //     if (!data || typeof data["hydra:member"] === 'undefined') return;
+    //     const timer = data["hydra:member"].filter((timer) => {return typeof timer.date_end === 'undefined' || timer.date_end === null});
+    //     setRunningTimer((prevTimer) => timer[0]);
+    // }, [data])
 
-    useEffect(() => {
-        if (data && typeof data.code !== 'undefined' && data.code === 401) {
-            const tokenService = new TokenService();
-            authDispatch({
-                type: 'removeAuthDetails'
-            });
-            tokenService.deleteToken();
-            router.push('/timers');
-        }
-    }, [data]);
+    // useEffect(() => {
+    //     if (data && typeof data.code !== 'undefined' && data.code === 401) {
+    //         const tokenService = new TokenService();
+    //         authDispatch({
+    //             type: 'removeAuthDetails'
+    //         });
+    //         tokenService.deleteToken();
+    //         router.push('/timers');
+    //     }
+    // }, [data]);
 
-    useEffect(() => {
-        return updateTimerDurationUi(runningTimer);
-    }, [runningTimer])
+    // useEffect(() => {
+    //     return updateTimerDurationUi(runningTimer);
+    // }, [runningTimer])
 
-    const updateTimerDurationUi = (runTimer) => {
-        if (typeof runTimer === 'undefined' || runTimer === null || typeof runTimer.timer_type === 'undefined' ) {
-            return;
-        }
-
-        const timerSecondsUpdater = setInterval(() => {
-            setRunningTimer((prevTimer) => {return {...runTimer}})
-        }, 1000);
-
-        if (typeof runningTimer.date_end !== 'undefined' && runningTimer.date_end !== null) {
-            console.error('clear interval');
-            clearInterval(timerSecondsUpdater);
-        }
-        return () => clearInterval(timerSecondsUpdater);
-    }
+    // const updateTimerDurationUi = (runTimer) => {
+    //     if (typeof runTimer === 'undefined' || runTimer === null || typeof runTimer.timer_type === 'undefined' ) {
+    //         return;
+    //     }
+    //
+    //     const timerSecondsUpdater = setInterval(() => {
+    //         setRunningTimer((prevTimer) => {return {...runTimer}})
+    //     }, 1000);
+    //
+    //     if (typeof runningTimer.date_end !== 'undefined' && runningTimer.date_end !== null) {
+    //         console.error('clear interval');
+    //         clearInterval(timerSecondsUpdater);
+    //     }
+    //     return () => clearInterval(timerSecondsUpdater);
+    // }
 
     const generateSubTimerHtml = (timer: ITimer, formattedDiffInMinPerTimer: string) => {
         const dateStart = new Date(timer.date_start);
@@ -82,31 +85,31 @@ export const Timers = ({validToken, initialData}) => {
         }
 
         return (
-            <CSSTransition
-                classNames="my-node"
-                key={timer.id}
-                timeout={300}
-            >
-                <SwipeableListItem
-                    key={timer.id}
-                    swipeLeft={{
-                        content: <div className={`text-white bg-green-500 text-right p-3 w-full`}>Edit</div>,
-                        action: () => editTimer(timer),
-                        actionAnimation: ActionAnimations.RETURN
-                    }}
-                    swipeRight={{
-                        content: <div className={`text-white bg-red-500 p-3 w-full`}>Delete</div>,
-                        action: () => deleteTimer(timer.id),
-                        actionAnimation: ActionAnimations.REMOVE
-                    }}
-                    onSwipeProgress={progress => console.info(`Swipe progress: ${progress}%`)}
-                >
-                    <div className="flex flex-row items-center ml-3 mt-1 w-full cursor-pointer" data-id={timer.id}>
-                        <div className="">{timerStartString}  -  {timerEndString}{timer.timer_type === 'break' ? <span className="text-xs"> (b)</span>:''}</div>
+            // <CSSTransition
+            //     classNames="my-node"
+            //     key={timer.id}
+            //     timeout={300}
+            // >
+            //     <SwipeableListItem
+            //         key={timer.id}
+            //         swipeLeft={{
+            //             content: <div className={`text-white bg-green-500 text-right p-3 w-full`}>Edit</div>,
+            //             action: () => editTimer(timer),
+            //             actionAnimation: ActionAnimations.RETURN
+            //         }}
+            //         swipeRight={{
+            //             content: <div className={`text-white bg-red-500 p-3 w-full`}>Delete</div>,
+            //             action: () => deleteTimer(timer.id),
+            //             actionAnimation: ActionAnimations.REMOVE
+            //         }}
+            //         onSwipeProgress={progress => console.info(`Swipe progress: ${progress}%`)}
+            //     >
+                    <div className="flex flex-row items-center ml-3 mt-1 w-full cursor-pointer" data-id={timer.id} key={timer.id}>
+                        <div className="">{timer.id} {timerStartString}  -  {timerEndString}{timer.timer_type === 'break' ? <span className="text-xs"> (b)</span>:''}</div>
                         <div className="text-right ml-auto">{formattedDiffInMinPerTimer}</div>
                     </div>
-                </SwipeableListItem>
-            </CSSTransition>
+            //     </SwipeableListItem>
+            // </CSSTransition>
         )
     }
 
@@ -116,7 +119,7 @@ export const Timers = ({validToken, initialData}) => {
     }
 
     const deleteTimer = async (timerId) => {
-        await mutateTimers((data) => {
+        await mutate((data) => {
             let newData = {...data};
             return {...data, "hydra:member": [...newData["hydra:member"].filter(timer => timer.id !== timerId)]};
         }, false);
@@ -144,7 +147,7 @@ export const Timers = ({validToken, initialData}) => {
         timer.date_end = new Date();
         let timersToStop = [];
         let newData = {...data};
-        await mutateTimers((data) => {
+        await mutate((data) => {
             newData["hydra:member"].map((timer) => {
                 if (typeof timer.date_end === 'undefined' || timer.date_end === null) {
                     timer.date_end = new Date();
@@ -162,33 +165,37 @@ export const Timers = ({validToken, initialData}) => {
     }
 
     const startTimer = async (timerType: string) => {
-        await stopTimer();
+        console.group('START TIMER')
+        // await stopTimer();
         let tempId = uuidv4();
-        const timer = {
+        const newTimer = {
             date_start: new Date(),
             date_end: null,
             timer_type: timerType
         }
-        setRunningTimer((prevTimer) => {return {id: tempId, 'optimisticTimer': true, ...timer}});
-        let newHydra = [{id: tempId, ...timer}, ...data['hydra:member']];
+        setRunningTimer((prevTimer) => {return {id: tempId, 'optimisticTimer': true, ...newTimer}});
 
-        await mutateTimers((data) => {
-            return {...data, "hydra:member": newHydra.sort((a,b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime())};
+        await mutate((data) => {
+            let newHydra = [{id: tempId, ...newTimer}, ...data['hydra:member']].sort((a, b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime());
+            return {
+                ...data,
+                'hydra:member': [ ... newHydra ]
+            }
         }, false);
 
-        const result = await FetcherFunc('timers', auth.jwt, 'POST', timer);
-        setRunningTimer(result);
-    }
+        const fetchedTimer = await FetcherFunc('timers', auth.jwt, 'POST', newTimer);
+        setRunningTimer(fetchedTimer);
 
-    if (data && data['@type'] === 'hydra:Error') {
-        messageDispatch({
-            type: 'setMessage',
-            payload: {
-                message: 'Ups... Something went wrong. Please try again.'
+        await mutate((data) => {
+            return {
+                ...data,
+                'hydra:member': data['hydra:member'].map((timer) =>
+                    timer.id === tempId ? fetchedTimer : timer
+                )
             }
-        })
+        }, false);
+        console.groupEnd()
     }
-    if (error) return <div>failed to load</div>;
 
     const toggleAddTimerView = () => {
         if (manualTimerModalVisible) {
@@ -213,7 +220,9 @@ export const Timers = ({validToken, initialData}) => {
                                 <img src="../images/icons/comic-arrow.svg" width="200" className="fixed bottom-24 right-14 animate-bounce-little"/>
                             </div>
                             :
-                            data['hydra:member'].map((timer: ITimer) => {
+                            data['hydra:member']
+                                .sort((a, b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime())
+                                .map((timer: ITimer) => {
                                 const timerDate = format(new Date(timer.date_start), 'u-MM-dd');
                                 const todayTimer = isToday(new Date(timer.date_start));
 
@@ -252,20 +261,20 @@ export const Timers = ({validToken, initialData}) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <SwipeableList threshold={300}>
-                                                {({
-                                                      className,
-                                                      scrollStartThreshold,
-                                                      swipeStartThreshold,
-                                                      threshold
-                                                  }) => (
-                                                    <TransitionGroup
-                                                        className={className}
-                                                    >
+                                            {/*<SwipeableList threshold={300}>*/}
+                                            {/*    {({*/}
+                                            {/*          className,*/}
+                                            {/*          scrollStartThreshold,*/}
+                                            {/*          swipeStartThreshold,*/}
+                                            {/*          threshold*/}
+                                            {/*      }) => (*/}
+                                            {/*        <TransitionGroup*/}
+                                            {/*            className={className}*/}
+                                            {/*        >*/}
                                                         {subTimerHtml}
-                                                    </TransitionGroup>
-                                                )}
-                                            </SwipeableList>
+                                            {/*        </TransitionGroup>*/}
+                                            {/*    )}*/}
+                                            {/*</SwipeableList>*/}
                                         </div>
                                     )
                                 }
@@ -277,7 +286,7 @@ export const Timers = ({validToken, initialData}) => {
                         }
                         <ManualTimerview
                             data={data}
-                            mutateTimers={mutateTimers}
+                            mutate={mutate}
                             toggleAddTimerView={toggleAddTimerView}
                             isVisible={manualTimerModalVisible}
                             timerToEdit={timerToEdit}
@@ -287,6 +296,7 @@ export const Timers = ({validToken, initialData}) => {
                         <Pagination
                             currentPage={currentPage}
                             totalPages={Math.ceil(typeof data === 'undefined' || typeof data['hydra:member'] === 'undefined' || data['hydra:member'].length === 0 ? 30 / 30 : data['hydra:totalItems'] / 30)}
+                            path="timers"
                         />
                     </div>
                     {runningTimer !== null && typeof runningTimer !== 'undefined' ?
@@ -335,7 +345,15 @@ export const Timers = ({validToken, initialData}) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const cookies = new Cookies(context.req.headers.cookie);
     const token = cookies.get('token');
-    const timers = await IsoFetcher.isofetchAuthed(`${process.env.API_BASE_URL}/timers?order[dateStart]&page=1`, 'GET', token);
+    let pageQueryParam = null;
+    let url = new URL(`${process.env.API_BASE_URL}/timers?order[dateStart]`);
+    if (context.query.hasOwnProperty('page')) {
+        url.searchParams.append('page', context.query.page)
+    }
+    console.log('page query param', pageQueryParam);
+    console.log('url search params', context.query);
+    console.log('url', url.href, url);
+    const timers = await IsoFetcher.isofetchAuthed(url.href, 'GET', token);
     const tokenService = new TokenService();
     const validToken = await tokenService.authenticateTokenSsr(context)
     if (!validToken) {
