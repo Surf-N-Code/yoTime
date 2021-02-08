@@ -22,6 +22,13 @@ import Cookies from "universal-cookie";
 import {log} from "util";
 import {sleep} from "../utilities/lib";
 
+const TimerData = (pageIndex, initialData) => {
+    const [auth, authDispatch] = useAuth();
+    const url = `/timers?order[dateStart]&page=${pageIndex}`;
+    const { data, error, mutate: mutateTimers } = useSWR<ITimerApiResult>([url, auth.jwt, 'GET'], FetcherFunc, {initialData})
+    return { data, error, mutate: mutateTimers };
+}
+
 export const Timers = ({validToken, initialData}) => {
     const router = useRouter();
     const [auth, authDispatch] = useAuth();
@@ -30,13 +37,8 @@ export const Timers = ({validToken, initialData}) => {
     const [pageIndex, setPageIndex] = useState(1);
     const [messageState, messageDispatch] = useGlobalMessaging();
     const [timerToEdit, setTimerToEdit] = useState<ITimer|null>(null);
-    const currentPage = Number(typeof router.query.page !== 'undefined' ? router.query.page : 1);
-    const url = `/timers?order[dateStart]&page=${pageIndex}&itemsPerPage=10`;
-    const { data, error, isValidating, mutate: mutateTimers } = useSWR<ITimerApiResult>([url, auth.jwt, 'GET'], FetcherFunc, {initialData})
-
-    useEffect(() => {
-        console.log(url);
-    }, [pageIndex])
+    const { data, error, mutate: mutateTimers } = TimerData(pageIndex, initialData);
+    TimerData(pageIndex+1, initialData);
 
     useEffect(() => {
         if (data && typeof data.code !== 'undefined' && data.code === 401) {
@@ -89,7 +91,7 @@ export const Timers = ({validToken, initialData}) => {
 
         return (
             <div
-                className="flex flex-row items-center ml-3 mt-1 cursor-pointer"
+                className="flex flex-row items-center ml-3 mt-1 py-1 cursor-pointer"
                 key={timer.id}
                 onClick={() => editTimer(timer)}
                 data-id={timer.id}
@@ -197,20 +199,12 @@ export const Timers = ({validToken, initialData}) => {
 
     const hasTimer = typeof data !== 'undefined' && typeof data['hydra:member'] !== 'undefined' && data['hydra:member'].length !== 0;
 
-    const incrementPage = async () => {
-        setPageIndex((prevVal) => prevVal + 1);
-        console.log('page index', pageIndex);
-        await mutateTimers();
-    }
     let daysRendered = [];
     return (
         <Layout validToken={validToken}>
             <div className="mt-6 mb-24">
             {error || (data && data['@type'] === 'hydra:Error')? <div>Ups... there was an error fetching your timers</div> :
                 <>
-                    <div onClick={() => incrementPage()}>
-                        increment
-                    </div>
                     <div>
                         {!hasTimer ?
                             <div>
@@ -222,50 +216,51 @@ export const Timers = ({validToken, initialData}) => {
                             data['hydra:member']
                                 .sort((a, b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime())
                                 .map((timer: ITimer) => {
-                                const timerDate = format(new Date(timer.date_start), 'u-MM-dd');
-                                const todayTimer = isToday(new Date(timer.date_start));
+                                    const timerDate = format(new Date(timer.date_start), 'u-MM-dd');
+                                    const todayTimer = isToday(new Date(timer.date_start));
 
-                                let totalWorkDuration = 0
-                                let totalBreakDuration = 0
-                                let subTimerHtml = data['hydra:member'].map((subTimer: ITimer) => {
-                                    if (timerDate === format(new Date(subTimer.date_start), 'u-MM-dd') && !daysRendered.some((e) => { return e === timerDate })) {
-                                        let isRunningTimer = typeof subTimer.date_end === 'undefined' || subTimer.date_end === null;
-                                        let diffInSWork = 0;
-                                        let diffInSBreak = 0;
-                                        if (subTimer.timer_type === 'work') {
-                                            diffInSWork = differenceInSeconds(isRunningTimer ? new Date() : new Date(subTimer.date_end), new Date(subTimer.date_start));
-                                        } else {
-                                            diffInSBreak = differenceInSeconds(isRunningTimer ? new Date() : new Date(subTimer.date_end), new Date(subTimer.date_start));
+                                    let totalWorkDuration = 0
+                                    let totalBreakDuration = 0
+                                    let subTimerHtml = data['hydra:member'].map((subTimer: ITimer) => {
+                                        if (timerDate === format(new Date(subTimer.date_start), 'u-MM-dd') && !daysRendered.some((e) => { return e === timerDate })) {
+                                            let isRunningTimer = typeof subTimer.date_end === 'undefined' || subTimer.date_end === null;
+                                            let diffInSWork = 0;
+                                            let diffInSBreak = 0;
+                                            if (subTimer.timer_type === 'work') {
+                                                diffInSWork = differenceInSeconds(isRunningTimer ? new Date() : new Date(subTimer.date_end), new Date(subTimer.date_start));
+                                            } else {
+                                                diffInSBreak = differenceInSeconds(isRunningTimer ? new Date() : new Date(subTimer.date_end), new Date(subTimer.date_start));
+                                            }
+                                            totalWorkDuration += diffInSWork;
+                                            totalBreakDuration += diffInSBreak;
+                                            return generateSubTimerHtml(subTimer, toHHMMSS(subTimer.timer_type === 'work' ? diffInSWork : diffInSBreak));
                                         }
-                                        totalWorkDuration += diffInSWork;
-                                        totalBreakDuration += diffInSBreak;
-                                        return generateSubTimerHtml(subTimer, toHHMMSS(subTimer.timer_type === 'work' ? diffInSWork : diffInSBreak));
-                                    }
-                                })
+                                    })
 
-                                if (!daysRendered.some((e) => { return e === timerDate })) {
-                                    daysRendered.push(timerDate);
-                                    return (
-                                        <div key={timerDate} className="bg-white p-3 mb-1 border-gray-300 border-l-4 hover:border-teal-600 rounded-md">
-                                            <div>
-                                                <div className="flex">
-                                                    <div className="flex flex-col">
-                                                        <div className="text-xs text-gray-500">{format(new Date(timer.date_start), 'dd LLLL uuuu')}</div>
-                                                        <div className={`text-2xl${cn({' text-yellow-500 font-bold': todayTimer}, {' text-gray-900': !todayTimer})}`}>{todayTimer ? 'Today' : format(new Date(timer.date_start), 'iiii')}</div>
-                                                    </div>
+                                    if (!daysRendered.some((e) => { return e === timerDate })) {
+                                        daysRendered.push(timerDate);
+                                        return (
+                                            <div key={timerDate} className="bg-white p-3 mb-1 border-gray-300 border-l-4 hover:border-teal-600 rounded-md">
+                                                <div>
+                                                    <div className="flex">
+                                                        <div className="flex flex-col">
+                                                            <div className="text-xs text-gray-500">{format(new Date(timer.date_start), 'dd LLLL uuuu')}</div>
+                                                            <div className={`text-2xl${cn({' text-yellow-500 font-bold': todayTimer}, {' text-gray-900': !todayTimer})}`}>{todayTimer ? 'Today' : format(new Date(timer.date_start), 'iiii')}</div>
+                                                        </div>
 
-                                                    <div className="ml-auto text-xs text-gray-500">
-                                                        {totalBreakDuration > 0 ? <span className="text-xs mr-2">({toHHMMSS(totalBreakDuration)})</span> :''}
-                                                        {toHHMMSS(totalWorkDuration)}
+                                                        <div className="ml-auto text-xs text-gray-500">
+                                                            {totalBreakDuration > 0 ? <span className="text-xs mr-2">({toHHMMSS(totalBreakDuration)})</span> :''}
+                                                            {toHHMMSS(totalWorkDuration)}
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                {subTimerHtml}
                                             </div>
-                                            {subTimerHtml}
-                                        </div>
-                                    )
-                                }
-                            })
+                                        )
+                                    }
+                                })
                         }
+
                         {manualTimerModalVisible ?
                             <button className={`inset-0 fixed w-full h-full cursor-default bg-black opacity-50`} onClick={() => setManualTimerModalVisible(false)}/>
                             : ''
@@ -281,7 +276,8 @@ export const Timers = ({validToken, initialData}) => {
                     </div>
                     <div>
                         <Pagination
-                            currentPage={currentPage}
+                            currentPage={pageIndex}
+                            setPageIndex={setPageIndex}
                             totalPages={Math.ceil(typeof data === 'undefined' || typeof data['hydra:member'] === 'undefined' || data['hydra:member'].length === 0 ? 30 / 30 : data['hydra:totalItems'] / 30)}
                             path="timers"
                         />
@@ -333,7 +329,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const cookies = new Cookies(context.req.headers.cookie);
     const token = cookies.get('token');
     let pageQueryParam = null;
-    let url = new URL(`${process.env.API_BASE_URL}/timers?order[dateStart]&itemsPerPage=10`);
+    let url = new URL(`${process.env.API_BASE_URL}/timers?order[dateStart]`);
     if (context.query.hasOwnProperty('page')) {
         url.searchParams.append('page', context.query.page)
     }
