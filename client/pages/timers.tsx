@@ -27,49 +27,52 @@ export const Timers = ({validToken, initialData}) => {
     const [auth, authDispatch] = useAuth();
     const [manualTimerModalVisible, setManualTimerModalVisible] = useState(false);
     const [runningTimer, setRunningTimer] = useState<ITimer | null>(null);
+    const [pageIndex, setPageIndex] = useState(1);
     const [messageState, messageDispatch] = useGlobalMessaging();
     const [timerToEdit, setTimerToEdit] = useState<ITimer|null>(null);
     const currentPage = Number(typeof router.query.page !== 'undefined' ? router.query.page : 1);
-    // const url = `/timers?order[dateStart]&page=${currentPage}`;
-    const url = `/timers?order[dateStart]&page=1`;
+    const url = `/timers?order[dateStart]&page=${pageIndex}&itemsPerPage=10`;
     const { data, error, isValidating, mutate: mutateTimers } = useSWR<ITimerApiResult>([url, auth.jwt, 'GET'], FetcherFunc, {initialData})
 
-    // useEffect(() => {
-    //     if (!data || typeof data["hydra:member"] === 'undefined') return;
-    //     const timer = data["hydra:member"].filter((timer) => {return typeof timer.date_end === 'undefined' || timer.date_end === null});
-    //     setRunningTimer((prevTimer) => timer[0]);
-    // }, [data])
+    useEffect(() => {
+        console.log(url);
+    }, [pageIndex])
 
-    // useEffect(() => {
-    //     if (data && typeof data.code !== 'undefined' && data.code === 401) {
-    //         const tokenService = new TokenService();
-    //         authDispatch({
-    //             type: 'removeAuthDetails'
-    //         });
-    //         tokenService.deleteToken();
-    //         router.push('/timers');
-    //     }
-    // }, [data]);
+    useEffect(() => {
+        if (data && typeof data.code !== 'undefined' && data.code === 401) {
+            const tokenService = new TokenService();
+            authDispatch({
+                type: 'removeAuthDetails'
+            });
+            tokenService.deleteToken();
+            router.push('/timers');
+            return;
+        }
 
-    // useEffect(() => {
-    //     return updateTimerDurationUi(runningTimer);
-    // }, [runningTimer])
+        if (!data || typeof data["hydra:member"] === 'undefined') return;
+        const timer = data["hydra:member"].filter((timer) => {return typeof timer.date_end === 'undefined' || timer.date_end === null});
+        setRunningTimer((prevTimer) => timer[0]);
+    }, [data])
 
-    // const updateTimerDurationUi = (runTimer) => {
-    //     if (typeof runTimer === 'undefined' || runTimer === null || typeof runTimer.timer_type === 'undefined' ) {
-    //         return;
-    //     }
-    //
-    //     const timerSecondsUpdater = setInterval(() => {
-    //         setRunningTimer((prevTimer) => {return {...runTimer}})
-    //     }, 1000);
-    //
-    //     if (typeof runningTimer.date_end !== 'undefined' && runningTimer.date_end !== null) {
-    //         console.error('clear interval');
-    //         clearInterval(timerSecondsUpdater);
-    //     }
-    //     return () => clearInterval(timerSecondsUpdater);
-    // }
+    useEffect(() => {
+        return updateTimerDurationUi(runningTimer);
+    }, [runningTimer])
+
+    const updateTimerDurationUi = (runTimer) => {
+        if (typeof runTimer === 'undefined' || runTimer === null || typeof runTimer.timer_type === 'undefined' ) {
+            return;
+        }
+
+        const timerSecondsUpdater = setInterval(() => {
+            setRunningTimer((prevTimer) => {return {...runTimer}})
+        }, 1000);
+
+        if (typeof runningTimer.date_end !== 'undefined' && runningTimer.date_end !== null) {
+            console.error('clear interval');
+            clearInterval(timerSecondsUpdater);
+        }
+        return () => clearInterval(timerSecondsUpdater);
+    }
 
     const generateSubTimerHtml = (timer: ITimer, formattedDiffInMinPerTimer: string) => {
         const dateStart = new Date(timer.date_start);
@@ -86,11 +89,12 @@ export const Timers = ({validToken, initialData}) => {
 
         return (
             <div
-                className="flex flex-row items-center ml-3 mt-1 w-full cursor-pointer"
+                className="flex flex-row items-center ml-3 mt-1 cursor-pointer"
                 key={timer.id}
                 onClick={() => editTimer(timer)}
+                data-id={timer.id}
             >
-                <div className="">{timerStartString}  -  {timerEndString}{timer.timer_type === 'break' ? <span className="text-xs"> (b)</span>:''}</div>
+                <div className="">{timerStartString}  -  {timerEndString}{timer.timer_type === 'break' ? <span className="text-md"> 💤</span>:''}</div>
                 <div className="text-right ml-auto">{formattedDiffInMinPerTimer}</div>
             </div>
         )
@@ -101,13 +105,14 @@ export const Timers = ({validToken, initialData}) => {
         toggleAddTimerView(true);
     }
 
-    const deleteTimer = async (timerId) => {
-        await mutate((data) => {
+    const deleteTimer = async (timerToDelete) => {
+        console.log('timer to delete', timerToDelete.id)
+        await mutateTimers((data) => {
             let newData = {...data};
-            return {...data, "hydra:member": [...newData["hydra:member"].filter(timer => timer.id !== timerId)]};
+            return {...data, "hydra:member": [...newData["hydra:member"].filter(timer => timer.id !== timerToDelete.id)]};
         }, false);
 
-        fetch(`https://localhost:8443/timers/${timerId}`, {
+        fetch(`https://localhost:8443/timers/${timerToDelete.id}`, {
             method: "DELETE",
             headers: {
                 "content-type": "application/json",
@@ -130,7 +135,7 @@ export const Timers = ({validToken, initialData}) => {
         timer.date_end = new Date();
         let timersToStop = [];
         let newData = {...data};
-        await mutate((data) => {
+        await mutateTimers((data) => {
             newData["hydra:member"].map((timer) => {
                 if (typeof timer.date_end === 'undefined' || timer.date_end === null) {
                     timer.date_end = new Date();
@@ -157,23 +162,28 @@ export const Timers = ({validToken, initialData}) => {
         }
         setRunningTimer((prevTimer) => {return {id: tempId, 'optimisticTimer': true, ...newTimer}});
 
-        await mutateTimers((data: ITimerApiResult) => {
-            let newHydra = [{id: tempId, ...newTimer}, ...data['hydra:member']].sort((a, b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime());
-            return {
-                ...data,
-                'hydra:member': [ ... newHydra ]
+        await mutateTimers((data) => {
+            if (typeof data !== 'undefined' && typeof data['hydra:member'] !== 'undefined') {
+                let newHydra = [{id: tempId, ...newTimer}, ...data['hydra:member']].sort((a, b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime());
+                return {
+                    ...data,
+                    'hydra:member': [ ... newHydra ]
+                }
             }
         }, false);
 
         const fetchedTimer = await FetcherFunc('timers', auth.jwt, 'POST', newTimer);
         setRunningTimer(fetchedTimer);
 
-        await mutateTimers((data: ITimerApiResult) => {
-            return {
-                ...data,
-                'hydra:member': data['hydra:member'].map((timer) =>
-                    timer.id === tempId ? fetchedTimer : timer
-                )
+        await mutateTimers((data) => {
+            if (typeof data !== 'undefined' && typeof data['hydra:member'] !== 'undefined') {
+                return {
+                    ...data,
+                    'hydra:member': data['hydra:member'].map((timer) =>
+                        timer.id === tempId ? fetchedTimer : timer
+                    )
+
+                }
             }
         }, false);
     }
@@ -187,12 +197,20 @@ export const Timers = ({validToken, initialData}) => {
 
     const hasTimer = typeof data !== 'undefined' && typeof data['hydra:member'] !== 'undefined' && data['hydra:member'].length !== 0;
 
+    const incrementPage = async () => {
+        setPageIndex((prevVal) => prevVal + 1);
+        console.log('page index', pageIndex);
+        await mutateTimers();
+    }
     let daysRendered = [];
     return (
         <Layout validToken={validToken}>
             <div className="mt-6 mb-24">
             {error || (data && data['@type'] === 'hydra:Error')? <div>Ups... there was an error fetching your timers</div> :
                 <>
+                    <div onClick={() => incrementPage()}>
+                        increment
+                    </div>
                     <div>
                         {!hasTimer ?
                             <div>
@@ -258,6 +276,7 @@ export const Timers = ({validToken, initialData}) => {
                             toggleAddTimerView={toggleAddTimerView}
                             isVisible={manualTimerModalVisible}
                             timerToEdit={timerToEdit}
+                            removeTimer={deleteTimer}
                         />
                     </div>
                     <div>
@@ -314,7 +333,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const cookies = new Cookies(context.req.headers.cookie);
     const token = cookies.get('token');
     let pageQueryParam = null;
-    let url = new URL(`${process.env.API_BASE_URL}/timers?order[dateStart]`);
+    let url = new URL(`${process.env.API_BASE_URL}/timers?order[dateStart]&itemsPerPage=10`);
     if (context.query.hasOwnProperty('page')) {
         url.searchParams.append('page', context.query.page)
     }

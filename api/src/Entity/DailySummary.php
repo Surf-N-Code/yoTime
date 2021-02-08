@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(normalizationContext={"groups"={"dailies"}})
  * @ApiFilter(OrderFilter::class, properties={"date": { "nulls_comparison": OrderFilter::NULLS_LARGEST, "default_direction": "DESC" }})
+ * @ApiFilter(OrderFilter::class, properties={"user.firstName": "ASC"})
  * @ApiFilter(DateFilter::class, properties={"date"})
  * @ORM\Entity(repositoryClass="App\Repository\DailySummaryRepository")
  * @ORM\EntityListeners({"App\Doctrine\SetUserListener"})

@@ -34,9 +34,14 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Fix editing timer and updating button with update or add text">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/reporting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/reporting.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -416,14 +421,9 @@
       <workItem from="1610270238539" duration="368000" />
       <workItem from="1610270617594" duration="12356000" />
       <workItem from="1611943077581" duration="7523000" />
-      <workItem from="1612291010804" duration="7303000" />
-    </task>
-    <task id="LOCAL-00034" summary="Pre react class for dailies">
-      <created>1601836755101</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1601836755101</updated>
+      <workItem from="1612291010804" duration="13014000" />
+      <workItem from="1612381838196" duration="11147000" />
+      <workItem from="1612780231851" duration="1060000" />
     </task>
     <task id="LOCAL-00035" summary="React class component for dailies test">
       <created>1601837020959</created>
@@ -761,7 +761,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612296013779</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Fix editing timer and updating button with update or add text">
+      <created>1612298341044</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1612298341044</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -796,7 +803,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Add user filter query extension" />
     <MESSAGE value="Use Response constants for http code responses" />
     <MESSAGE value="Add and update tests" />
     <MESSAGE value="Update fixtures for dev env" />
@@ -821,7 +827,8 @@
     <MESSAGE value="Use dashboard as startscreen. Implement Dashboard" />
     <MESSAGE value="Add idea to gitignore" />
     <MESSAGE value="Working timer cache update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working timer cache update" />
+    <MESSAGE value="Fix editing timer and updating button with update or add text" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix editing timer and updating button with update or add text" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
