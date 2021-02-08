@@ -12,7 +12,7 @@ import {useAuth} from "../services/Auth.context";
 import cn from 'classnames';
 import {ITimer} from "../types/timer.types";
 
-export const ManualTimerview = ({data, mutateTimers, toggleAddTimerView, isVisible, timerToEdit}) => {
+export const ManualTimerview = ({data, mutateTimers, toggleAddTimerView, isVisible, timerToEdit, removeTimer}) => {
     const [isBreakTimer, setIsBreakTimer] = useState(false);
     const [startTimer, setStartTime] = useState('09:00');
     const [endTime, setEndTime] = useState('18:00');
@@ -32,6 +32,11 @@ export const ManualTimerview = ({data, mutateTimers, toggleAddTimerView, isVisib
             // setTimerToEdit(timerToEdit);
         }
     }, [timerToEdit]);
+
+    const deleteTimer = (timer) => {
+        toggleAddTimerView();
+        removeTimer(timer)
+    }
 
     const addOrUpdateTimer = async (timerToEdit: ITimer) => {
         const hs = Number(startTimer.split(':')[0]);
@@ -133,7 +138,7 @@ export const ManualTimerview = ({data, mutateTimers, toggleAddTimerView, isVisib
                     clearIcon={null}
                 />
             </div>
-            <div className="flex items-center p-3 mb-3 ml-auto">
+            <div className="flex items-center justify-center p-3 mb-3 ml-auto">
                 <div className="mr-3 mb-1 text-md">
                     Work
                 </div>
@@ -146,10 +151,21 @@ export const ManualTimerview = ({data, mutateTimers, toggleAddTimerView, isVisib
                 <div className="ml-3 mb-1 text-md">
                     Break
                 </div>
-                <button className="ml-auto px-10 py-2 font-bold text-white bg-gradient-to-br from-blueGray-500 to-blueGray-400 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                        type="submit"
-                        onClick={() => addOrUpdateTimer(timerToEdit)}
+            </div>
+            <div className="flex justify-center items-center">
+                {/*@TODO maybe implement a split button here for update and delete*/}
+                <button
+                    className={`w-full ml-auto px-10 py-2 font-bold text-white bg-gradient-to-br from-blueGray-500 to-blueGray-400 rounded-lg hover:bg-blue-700 focus:outline-none focus:shadow-outline`}
+                    type="submit"
+                    onClick={() => addOrUpdateTimer(timerToEdit)}
                 >{timerToEdit ? 'Update' : 'Add'}</button>
+            </div>
+            <div className="flex justify-center items-center">
+                <button
+                    className="w-full mt-5 mb-5 ml-auto px-10 py-2 font-bold text-white bg-rose-500 rounded-lg hover:bg-rose-600 focus:outline-none focus:shadow-outline"
+                    type="submit"
+                    onClick={() => deleteTimer(timerToEdit)}
+                >Delete</button>
             </div>
         </div>
     )

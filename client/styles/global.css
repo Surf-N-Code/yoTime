@@ -134,8 +134,8 @@ button:focus {
 }
 
 .timer-edit-drawer {
-    -webkit-transform: translateY(414px);
-    transform: translateY(414px);
+    -webkit-transform: translateY(515px);
+    transform: translateY(515px);
 }
 
 .daily-edit-drawer {
@@ -175,8 +175,8 @@ button:focus {
 
 @keyframes slide-in-bottom {
     0% {
-        -webkit-transform: translateY(414px);
-        transform: translateY(414px);
+        -webkit-transform: translateY(515px);
+        transform: translateY(515px);
     }
     100% {
         -webkit-transform: translateY(0);
@@ -190,8 +190,8 @@ button:focus {
         transform: translateY(0px);
     }
     100% {
-        -webkit-transform: translateY(414px);
-        transform: translateY(414px);
+        -webkit-transform: translateY(515px);
+        transform: translateY(515px);
     }
 }
 
