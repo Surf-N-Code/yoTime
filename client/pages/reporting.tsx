@@ -14,51 +14,39 @@ import Cookies from "universal-cookie";
 import {IUser} from "../types/user.types";
 import Link from "next/link";
 
-export const Dashboard = (props) => {
+const ReportingData = (pageIndex, sortOption, sortAscending, selectedUser, initialData) => {
+    const [auth, authDispatch] = useAuth();
+    let url = new URL(`https://localhost:8443/daily_summaries?order[${sortOption}]=${sortAscending ? 'asc' : 'desc'}`);
+    if (pageIndex) {
+        url.searchParams.append('page', pageIndex)
+    }
+
+    if (selectedUser) {
+        url.pathname = `${selectedUser['@id']}/daily_summaries`;
+    }
+
+    return useSWR<IDailiesApiResult>([url.pathname+url.search, auth.jwt, 'GET'], FetcherFunc, {initialData})
+}
+
+export const Reporting = (props) => {
     const router = useRouter();
     const [auth, authDispatch] = useAuth();
     const [isDailySummaryVisible, setIsDailySummaryVisible] = useState(false);
-    const [dailyText, setDailyText] = useState('');
     const [selectedUser, setSelectedUser] = useState(null);
     const [hoverSelectedUser, setHoverSelectedUser] = useState(false);
     const [isUserSelectVisible, setIsUserSelectVisible] = useState(false);
     const [isSortingSelectVisible, setIsSortingSelectVisible] = useState(false);
-    const currentPage = typeof router.query.page !== 'undefined' ? router.query.page : 1;
-    const userQueryParam = typeof router.query.user !== 'undefined' ? router.query.user : null;
+    const [sortAscending, setSortAscending] = useState(false);
+    const [pageIndex, setPageIndex] = useState(1);
     const [sortOption, setSortOption] = useState<'date' | 'user.first_name'>('date');
-    console.log(router.query);
-    let url = new URL(`${props.ApiBaseUrl}/daily_summaries?order[${sortOption}]`);
-    if (currentPage) {
-        console.log('append page', currentPage);
-        url.searchParams.append('page', currentPage)
-    }
 
-    if (userQueryParam) {
-        url.pathname = `${userQueryParam}/daily_summaries`;
-    }
-    console.log('url', url.pathname,url.search);
+    const { data: dailies, error: dailiesError } = ReportingData(pageIndex, sortOption, sortAscending, selectedUser, props.initialData.dailies);
+    ReportingData(pageIndex+1, sortOption, sortAscending, selectedUser, props.initialData.dailies);
 
-    const initialData = props.initialData.dailies;
-    const { data, error, mutate: mutateDailies } = useSWR<IDailiesApiResult>([url.pathname+url.search, auth.jwt, 'GET'], FetcherFunc, {initialData})
-
-    // const userUrl = `/daily_summaries?order[date]&page=${currentPage}`;
-    // const { data: userData, error: userError } = useSWR<IUserApiResult>([userUrl, auth.jwt, 'GET'], FetcherFunc, {initialData})
-
-    console.log(data);
-    useEffect(() => {
-        console.log('router', router.query)
-        if (router.query.user) {
-            router.push( `/reporting?user=${router.query.user}`);
-            console.log('pushed to router');
-        }
-    }, [router.query.user])
+    const { data: users, error: usersError } = useSWR<IUserApiResult>(['users', auth.jwt, 'GET'], FetcherFunc);
 
     useEffect(() => {
-        setSelectedUser(props.selectedUser);
-    }, [props.selectedUser])
-
-    useEffect(() => {
-        if (data && typeof data.code !== 'undefined' && data.code === 401) {
+        if (dailies && typeof dailies.code !== 'undefined' && dailies.code === 401) {
             const tokenService = new TokenService();
             authDispatch({
                 type: 'removeAuthDetails'
@@ -66,25 +54,34 @@ export const Dashboard = (props) => {
             tokenService.deleteToken();
             router.push('/reporting');
         }
-    }, [data]);
+    }, [dailies]);
 
-    const selectSortOption = (sortOption) => {
-        console.log('sortoption', sortOption);
-        setSortOption(sortOption);
-        setIsSortingSelectVisible((prevVal) => !prevVal)
+    const selectSortOption = (option) => {
+        setSortOption(option);
+        setIsSortingSelectVisible(prev => !prev);
     }
 
-    if (error) return <div>failed to load</div>
-    if (!data) return <div>loading...</div>
+    if (dailiesError) return <div>failed to load</div>
+    if (!dailies) return <div>loading...</div>
 
     const colWidthMd = selectedUser ? 'md:w-1/5' : 'md:w-1/6';
-    const multipleUsers = props.initialData.users['hydra:totalItems'] > 1;
+    const multipleUsers = users?.['hydra:totalItems'] > 1;
 
-    console.log(props.initialData.users['hydra:totalItems'] > 1)
+    const setUserFilter = (user: IUser) => {
+        setIsUserSelectVisible(prev => !prev);
+        setIsSortingSelectVisible(prev => !prev)
+        setSelectedUser((prevUser) => {
+            if (prevUser?.["@id"] === user["@id"]) {
+                return null;
+            }
+            return user;
+        });
+    }
+
     return (
         <Layout validToken={props.validToken}>
             <div className="mt-6 mb-24 z-10">
-                {typeof data['hydra:member'] === 'undefined' || data['hydra:member'].length === 0 ? <div>no data yet</div>
+                {dailies?.['hydra:member']?.length === 0 ? <div>There are no daily summaries for your organisation yet</div>
                     :
                     <>
                         {isUserSelectVisible ? <div className="w-full h-full absolute left-0 top-0" onClick={() => setIsUserSelectVisible(prev => !prev)}/> : ''}
@@ -99,7 +96,7 @@ export const Dashboard = (props) => {
                                                     id="options-menu" aria-haspopup="true" aria-expanded="true"
                                                     onClick={() => {setIsUserSelectVisible(prev => !prev)}}
                                             >
-                                                {props.selectedUser ? (props.selectedUser.first_name +' '+ props.selectedUser.last_name) : 'Employee'}
+                                                {selectedUser ? selectedUser?.first_name +' '+ selectedUser?.last_name : 'Employee'}
                                                 <svg className={`-mr - 1 ml-2 h-5 w-5 transform transition ease-out ${cn({'-rotate-90': !isUserSelectVisible})}`} xmlns="http://www.w3.org/2000/svg"
                                                      viewBox="0 0 20 20" aria-hidden="true">
                                                     <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -115,45 +112,39 @@ export const Dashboard = (props) => {
                                             })}origin-top-right absolute left-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition`}>
                                             <div role="menu" aria-orientation="vertical"
                                                  aria-labelledby="options-menu">
-                                                {props.initialData.users['hydra:member'].map((user: IUser) => {
-                                                    let link = (selectedUser && selectedUser['@id'] === user['@id']) ? `/reporting` : `/reporting?user=${user['@id']}`;
+                                                {users['hydra:member'].map((user: IUser, i) => {
                                                     return (
-                                                        <Link
-                                                            href={`${link}`}
+                                                        <a
                                                             key={user["@id"]}
+                                                            className={`flex items-center block cursor-pointer pl-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ${cn({'bg-gray-100 js-user-selected': selectedUser?.['@id'] === user['@id']}, {'hover:rounded-b-md': users['hydra:totalItems'] === i+1}, {'hover:rounded-t-md': i === 0})} hover:text-gray-900`}
+                                                            onClick={() => setUserFilter(user)}
+                                                            onMouseEnter={() => setHoverSelectedUser(selectedUser?.['@id'] === user['@id'])}
+                                                            onMouseLeave={() => setHoverSelectedUser(false)}
                                                         >
-                                                            <a
-                                                                className={`flex items-center block cursor-pointer pl-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ${cn({'bg-gray-100 js-user-selected': selectedUser && selectedUser['@id'] === user['@id']})} hover:text-gray-900`}
-                                                                onClick={() => setIsUserSelectVisible(prev => !prev)}
-                                                                onMouseEnter={() => setHoverSelectedUser(selectedUser && selectedUser['@id'] === user['@id'])}
-                                                                onMouseLeave={() => setHoverSelectedUser(false)}
-                                                            >
-                                                                <div
-                                                                    className="pr-3 w-5/6">{user.first_name} {user.last_name}</div>
-                                                                {
-                                                                    selectedUser ? selectedUser['@id'] === user['@id'] ?
-                                                                        <div className="w-1/6">
-                                                                            <svg
-                                                                                className={`js-close-icon h-4 w-4 fill-current text-red-500 ${cn({'hidden': !hoverSelectedUser && selectedUser && selectedUser['@id'] === user['@id']})}`}
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                                                <path strokeLinecap="round"
-                                                                                      strokeLinejoin="round" strokeWidth="2"
-                                                                                      d="M6 18L18 6M6 6l12 12"/>
-                                                                            </svg>
-                                                                            <svg
-                                                                                className={`js-green-checkmark h-4 w-4 fill-current text-teal-500  ${cn({'hidden': hoverSelectedUser})}`}
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                                viewBox="0 0 24 24">
-                                                                                <path
-                                                                                    d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm0-2C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.25 8.891l-1.421-1.409-6.105 6.218-3.078-2.937-1.396 1.436 4.5 4.319 7.5-7.627z"/>
-                                                                            </svg>
-                                                                        </div>
-                                                                        : ''
-                                                                        : ''
-                                                                }
-                                                            </a>
-                                                        </Link>
+                                                            <div
+                                                                className="pr-3 w-5/6">{user.first_name} {user.last_name}</div>
+                                                            {
+                                                                selectedUser?.['@id'] === user['@id'] ?
+                                                                    <div className="w-1/6">
+                                                                        <svg
+                                                                            className={`js-close-icon h-4 w-4 fill-current text-red-500 ${cn({'hidden': !hoverSelectedUser && selectedUser?.['@id'] === user['@id']})}`}
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24" stroke="currentColor">
+                                                                            <path strokeLinecap="round"
+                                                                                  strokeLinejoin="round" strokeWidth="2"
+                                                                                  d="M6 18L18 6M6 6l12 12"/>
+                                                                        </svg>
+                                                                        <svg
+                                                                            className={`js-green-checkmark h-4 w-4 fill-current text-teal-500  ${cn({'hidden': hoverSelectedUser})}`}
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24">
+                                                                            <path
+                                                                                d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm0-2C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.25 8.891l-1.421-1.409-6.105 6.218-3.078-2.937-1.396 1.436 4.5 4.319 7.5-7.627z"/>
+                                                                        </svg>
+                                                                    </div>
+                                                                    : ''
+                                                            }
+                                                        </a>
                                                     )
                                                 })}
                                             </div>
@@ -165,14 +156,17 @@ export const Dashboard = (props) => {
                             }
 
                             <div>
-                                <div className="relative inline-block text-left">
+                                <div className="relative inline-block text-left ml-2">
                                     <div>
                                         <button type="button"
                                                 className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
                                                 id="options-menu" aria-haspopup="true" aria-expanded="true"
-                                                onClick={() => {setIsSortingSelectVisible(prev => !prev)}}
+                                                onClick={() => {
+                                                    setIsSortingSelectVisible(prev => !prev);
+                                                    setIsUserSelectVisible(prev => !prev);
+                                                }}
                                         >
-                                            Sorting
+                                            {sortOption? `Sorted by ${sortOption === 'user.first_name' ? 'User' : 'Date'}` : 'Sorting'}
                                             <svg className={`-mr - 1 ml-2 h-5 w-5 transform transition ease-out ${cn({'-rotate-90': !isSortingSelectVisible})}`} xmlns="http://www.w3.org/2000/svg"
                                                  viewBox="0 0 20 20" aria-hidden="true">
                                                 <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -189,13 +183,13 @@ export const Dashboard = (props) => {
                                         <div role="menu" aria-orientation="vertical"
                                              aria-labelledby="options-menu">
                                             <a
-                                                className={`flex items-center block cursor-pointer pl-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900`}
+                                                className={`flex items-center block cursor-pointer pl-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:rounded-t-md hover:text-gray-900`}
                                                 onClick={() => selectSortOption('date')}
                                             >
                                                 <div className="pr-3">Date</div>
                                             </a>
                                             <a
-                                                className={`flex items-center block cursor-pointer pl-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900`}
+                                                className={`flex items-center block cursor-pointer pl-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:rounded-b-md hover:text-gray-900`}
                                                 onClick={() => selectSortOption('user.first_name')}
                                             >
                                                 <div className="pr-3">User</div>
@@ -203,6 +197,17 @@ export const Dashboard = (props) => {
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div className="inline-flex items-center ml-2 cursor-pointer">
+                                <svg className={`inline-flex w-6 h-6${cn({' transform rotate-180':!sortAscending})}`}
+                                     onClick={() => setSortAscending(prev => !prev)}
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path className="secondary"
+                                          d="M18 13v7a1 1 0 0 1-2 0v-7h-3a1 1 0 0 1-.7-1.7l4-4a1 1 0 0 1 1.4 0l4 4A1 1 0 0 1 21 13h-3z"/>
+                                    <path className="primary"
+                                          d="M3 3h13a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h9a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h5a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2z"/>
+                                </svg>
                             </div>
                         </div>
 
@@ -218,7 +223,7 @@ export const Dashboard = (props) => {
                                 <dt className={`font-bold ${colWidthMd} lg:w-1/12 text-center`}>Start</dt>
                                 <dt className={`font-bold ${colWidthMd} lg:w-1/12 text-center`}>End</dt>
                             </div>
-                            {data['hydra:member'].map((daily: IDaily, i) => {
+                            {dailies['hydra:member'].map((daily: IDaily, i) => {
                                 return (
                                     <div  key={daily.id}>
                                         <div className={`js-daily-parent flex flex-col lg:hidden items-start py-4 px-3 position-relative border-b-2 ${cn({' bg-gray-100': i % 2 != 0 })}`}>
@@ -269,10 +274,10 @@ export const Dashboard = (props) => {
                 }
                 <div>
                     <Pagination
-                        currentPage={currentPage}
-                        totalPages={Math.ceil(typeof data === 'undefined' || typeof data['hydra:member'] === 'undefined' || data['hydra:member'].length === 0 ? 30 / 30 : data['hydra:totalItems'] / 30)}
+                        currentPage={pageIndex}
+                        setPageIndex={setPageIndex}
+                        totalPages={Math.ceil(typeof dailies === 'undefined' || typeof dailies['hydra:member'] === 'undefined' || dailies['hydra:member'].length === 0 ? 30 / 30 : dailies['hydra:totalItems'] / 30)}
                         path={'reporting'}
-                        urlParams={userQueryParam ? `&user=${userQueryParam}` : null}
                     />
                 </div>
             </div>
@@ -294,40 +299,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
 
     const cookies = new Cookies(context.req.headers.cookie);
-    let userQueryParam = null;
-    let pageQueryParam = null;
-    if (context.query.hasOwnProperty('user')) {
-        userQueryParam = context.query.user;
-    }
-
-    if (context.query.hasOwnProperty('page')) {
-        pageQueryParam = context.query.page;
-    }
-
-    let url = new URL(`${process.env.API_BASE_URL}/daily_summaries?order[date]`);
-    if (pageQueryParam) {
-        url.searchParams.append('page', pageQueryParam)
-    }
-
-    if (userQueryParam) {
-        url.pathname = `${userQueryParam}/daily_summaries`;
-    }
-
+    let url = new URL(`${process.env.API_BASE_URL}/daily_summaries?order[date]=desc`);
     const token = cookies.get('token');
     const dailies = await IsoFetcher.isofetchAuthed(url.href, 'GET', token);
-    const users = await IsoFetcher.isofetchAuthed(`${process.env.API_BASE_URL}/users`, 'GET', token);
-    let selectedUser = null;
-    if (typeof users !== 'undefined' && users['hydra:member'] !== 'undefined') {
-        let user = users['hydra:member'].filter((user) => user['@id'] === userQueryParam);
-        if (user.length > 0) {
-            selectedUser = user[0];
-        }
-    }
-
-    if (typeof users !== 'undefined' && users['hydra:totalItems'] === 1) {
-        selectedUser = users['hydra:member'][0];
-    }
-
-    return { props: { validToken, ApiBaseUrl: process.env.API_BASE_URL, selectedUser: selectedUser, initialData: { dailies, users } } };
+    return { props: { validToken, ApiBaseUrl: process.env.API_BASE_URL, initialData: dailies} };
 };
-export default Dashboard;
+export default Reporting;
