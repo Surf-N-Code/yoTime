@@ -10,7 +10,7 @@ type PaginationProps = {
     urlParams: string
 }
 
-export const Pagination = ({currentPage, setPageIndex, totalPages, path, urlParams}: PaginationProps) => {
+export const Pagination = ({currentPage, setPageIndex, totalPages, path}: PaginationProps) => {
     if (totalPages === 0 || totalPages === 1) {
         return (<></>);
     }
@@ -37,7 +37,7 @@ export const Pagination = ({currentPage, setPageIndex, totalPages, path, urlPara
                 </div>
             }
             <div className="flex h-12 font-medium rounded-full bg-gray-200">
-                {generatePagination(totalPages, currentPage, path)}
+                {generatePagination(totalPages, currentPage, setPageIndex)}
                 <div className="w-12 h-12 md:hidden flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-teal-600 text-white">{currentPage}</div>
             </div>
 
@@ -81,6 +81,7 @@ const generatePagination = (totalPages: number, currentPage: number, setPageInde
                 page === 1 || page === totalPages || page === currentPage || page === currentPage-1 || page === currentPage+1 ?
                     // <Link key={`page_${page}`} href={`http://localhost:3000/${path}?page=${page}`}>
                         <a
+                            key={`page_${page}`}
                             className={`w-12 md:flex justify-center items-center hidden cursor-pointer leading-5 transition duration-150 ease-in hover:bg-white rounded-full${cn({' bg-teal-600 text-white hover:text-gray-700': currentPage === page})}`}
                             onClick={() => setPageIndex(page)}
                         >{page}</a>

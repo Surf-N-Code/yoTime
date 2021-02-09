@@ -34,11 +34,16 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/pages/timerstest.tsx" afterDir="false" />
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Update yarn and wip sorting filter on reporting view">
+      <change afterPath="$PROJECT_DIR$/client/public/images/icons/icon-sort-ascending.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/icons/sort.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/DailySummary.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Pagination.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/reporting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/reporting.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/tailwind.config.js" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +68,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="pagination-test" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -269,21 +274,21 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/client/styles/tailwind.css&#10;/home/norman/Development/yoTime/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/public/images/icons" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/public/images/icons" />
       <recent name="$PROJECT_DIR$/client/pages" />
       <recent name="$PROJECT_DIR$/client/components" />
       <recent name="$PROJECT_DIR$/api/tests/Handler/MessageController" />
       <recent name="$PROJECT_DIR$/api/src/Handler/MessageController" />
-      <recent name="$PROJECT_DIR$/api/src/Entity" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api/src/Validator/Constraints" />
@@ -421,6 +426,8 @@
       <workItem from="1612291010804" duration="13014000" />
       <workItem from="1612381838196" duration="11147000" />
       <workItem from="1612780231851" duration="3803000" />
+      <workItem from="1612799329366" duration="2329000" />
+      <workItem from="1612893776318" duration="3554000" />
     </task>
     <task id="LOCAL-00036" summary="Add daily summary add view">
       <created>1602276114418</created>
@@ -772,12 +779,12 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
+    <option name="COLUMN_ID_ORDER">
       <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
       </list>
     </option>
   </component>
