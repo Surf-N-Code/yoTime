@@ -8,7 +8,7 @@ export const HighlightNumberCard = ({title, number, numberPostFix, href}) => {
     return (
         <Link href={href}>
             <a>
-                <div className="p-6 mt-3 rounded-md shadow-md bg-white flex w-full md:w-5/12 flex-col items-center">
+                <div className="p-6 mt-3 rounded-md shadow-md bg-white flex w-full flex-col items-center">
                     <div className="text-4xl font-bold">{number} {numberPostFix}</div>
                     <div className="flex items-center mt-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 mr-1">

@@ -65,7 +65,7 @@ export const Dashboard = (props) => {
     return (
         <Layout validToken={props.validToken}>
             <div className="mt-6">
-                <div className="flex flex-col md:flex-row justify-around">
+                <div className="flex flex-col md:flex-row">
                     <HighlightNumberCard
                         title={"Today"}
                         number={toHHMMSS(dayWorkedInS == 0 && props.dayWorkedInS !== 0 ? props.dayWorkedInS : dayWorkedInS)}

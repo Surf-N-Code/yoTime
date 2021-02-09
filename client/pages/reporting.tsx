@@ -67,6 +67,7 @@ export const Reporting = (props) => {
     const colWidthMd = selectedUser ? 'md:w-1/5' : 'md:w-1/6';
     const multipleUsers = users?.['hydra:totalItems'] > 1;
 
+    console.log('users',users, 'multiple users', multipleUsers);
     const setUserFilter = (user: IUser) => {
         setIsUserSelectVisible(prev => !prev);
         setIsSortingSelectVisible(prev => !prev)
@@ -155,54 +156,64 @@ export const Reporting = (props) => {
                                 ''
                             }
 
-                            <div>
-                                <div className="relative inline-block text-left ml-2">
-                                    <div>
-                                        <button type="button"
-                                                className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
-                                                id="options-menu" aria-haspopup="true" aria-expanded="true"
-                                                onClick={() => {
-                                                    setIsSortingSelectVisible(prev => !prev);
-                                                    setIsUserSelectVisible(prev => !prev);
-                                                }}
-                                        >
-                                            {sortOption? `Sorted by ${sortOption === 'user.first_name' ? 'User' : 'Date'}` : 'Sorting'}
-                                            <svg className={`-mr - 1 ml-2 h-5 w-5 transform transition ease-out ${cn({'-rotate-90': !isSortingSelectVisible})}`} xmlns="http://www.w3.org/2000/svg"
-                                                 viewBox="0 0 20 20" aria-hidden="true">
-                                                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                      clipRule="evenodd"/>
-                                            </svg>
-                                        </button>
-                                    </div>
+                            {multipleUsers ?
+                                <div>
+                                    <div className="relative inline-block text-left ml-2">
+                                        <div>
+                                            <button type="button"
+                                                    className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+                                                    id="options-menu" aria-haspopup="true" aria-expanded="true"
+                                                    onClick={() => {
+                                                        setIsSortingSelectVisible(prev => !prev);
+                                                        setIsUserSelectVisible(prev => !prev);
+                                                    }}
+                                            >
+                                                {sortOption ? `Sorted by ${sortOption === 'user.first_name' ? 'User' : 'Date'}` : 'Sorting'}
+                                                <svg
+                                                    className={`-mr - 1 ml-2 h-5 w-5 transform transition ease-out ${cn({'-rotate-90': !isSortingSelectVisible})}`}
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20" aria-hidden="true">
+                                                    <path
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clipRule="evenodd"/>
+                                                </svg>
+                                            </button>
+                                        </div>
 
-                                    <div
-                                        className={`${cn({
-                                            'transition ease-out duration-100 transform opacity-100 scale-100 ': isSortingSelectVisible,
-                                            'transition ease-in duration-75 transform opacity-0 scale-95 z-0 hidden ': !isSortingSelectVisible
-                                        })}origin-top-right absolute left-0 w-20 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition`}>
-                                        <div role="menu" aria-orientation="vertical"
-                                             aria-labelledby="options-menu">
-                                            <a
-                                                className={`flex items-center block cursor-pointer pl-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:rounded-t-md hover:text-gray-900`}
-                                                onClick={() => selectSortOption('date')}
-                                            >
-                                                <div className="pr-3">Date</div>
-                                            </a>
-                                            <a
-                                                className={`flex items-center block cursor-pointer pl-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:rounded-b-md hover:text-gray-900`}
-                                                onClick={() => selectSortOption('user.first_name')}
-                                            >
-                                                <div className="pr-3">User</div>
-                                            </a>
+                                        <div
+                                            className={`${cn({
+                                                'transition ease-out duration-100 transform opacity-100 scale-100 ': isSortingSelectVisible,
+                                                'transition ease-in duration-75 transform opacity-0 scale-95 z-0 hidden ': !isSortingSelectVisible
+                                            })}origin-top-right absolute left-0 w-20 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition`}>
+                                            <div role="menu" aria-orientation="vertical"
+                                                 aria-labelledby="options-menu">
+                                                <a
+                                                    className={`flex items-center block cursor-pointer pl-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:rounded-t-md hover:text-gray-900`}
+                                                    onClick={() => selectSortOption('date')}
+                                                >
+                                                    <div className="pr-3">Date</div>
+                                                </a>
+                                                <a
+                                                    className={`flex items-center block cursor-pointer pl-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:rounded-b-md hover:text-gray-900`}
+                                                    onClick={() => selectSortOption('user.first_name')}
+                                                >
+                                                    <div className="pr-3">User</div>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                : ''
+                            }
 
-                            <div className="inline-flex items-center ml-2 cursor-pointer">
-                                <svg className={`inline-flex w-6 h-6${cn({' transform rotate-180':!sortAscending})}`}
-                                     onClick={() => setSortAscending(prev => !prev)}
-                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <div className={`inline-flex items-center cursor-pointer${cn({' ml-2': multipleUsers})}`}>
+                                <div className="mr-2">{multipleUsers ? '' : 'Sort by date:'}</div>
+                                <svg
+                                    className={`inline-flex w-6 h-6${cn({' transform rotate-180': !sortAscending})}`}
+                                    onClick={() => setSortAscending(prev => !prev)}
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                >
+                                    <title>{sortAscending ? 'Sorted by date in ascending order' : 'Sorted by date in descending order'}</title>
                                     <path className="secondary"
                                           d="M18 13v7a1 1 0 0 1-2 0v-7h-3a1 1 0 0 1-.7-1.7l4-4a1 1 0 0 1 1.4 0l4 4A1 1 0 0 1 21 13h-3z"/>
                                     <path className="primary"
