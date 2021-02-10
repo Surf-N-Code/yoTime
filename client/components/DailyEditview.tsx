@@ -14,7 +14,8 @@ import {FetcherFunc, useGlobalMessaging, useAuth} from "../services";
 import {IDaily} from "../types/daily.types";
 import {FormField} from "./FormField";
 import {create} from "domain";
-import {IDailiesApiResult} from "../types/apiResult.types";
+import {IDailiesApiResult, ITimerApiResult} from "../types/apiResult.types";
+import useSWR from "swr";
 
 interface IProps {
     mutateDailies: Function;
@@ -36,6 +37,31 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
     const forceUpdate = useForceUpdate();
     const [value, onChange] = useState(new Date());
 
+    const today = format(new Date(), 'yyyy-MM-dd');
+    const timerUrl = `/timers?date_start[after]=${today}&order[date_start]=asc`;
+    const { data: timers, error: timerErrors } = useSWR<ITimerApiResult>([timerUrl, auth.jwt, 'GET'], FetcherFunc)
+
+    useEffect(() => {
+        if (timers) {
+            //calculate total time spent today
+            let secondsWorking = 0;
+            let startDate = timers?.['hydra:member']?.[0].date_start;
+            let endDate = timers?.['hydra:member']?.[timers['hydra:totalItems']-1].date_end;
+            let totalTimeAtWork = differenceInSeconds(new Date(endDate), new Date(startDate))
+            timers?.['hydra:member'].map((timer: ITimer) => {
+                if (timer.timer_type != 'break') {
+                    secondsWorking += differenceInSeconds(new Date(timer.date_end), new Date(timer.date_start));
+                }
+            })
+
+            let breakInSeconds = totalTimeAtWork - secondsWorking;
+            console.log('hier')
+            setStartTime(format(new Date(startDate), 'HH:mm'));
+            setEndTime(format(new Date(endDate), 'HH:mm'));
+            setBreakDuration(toHHMM(breakInSeconds));
+        }
+    }, [timers])
+
     useEffect(() => {
         if (dailyToEdit) {
             console.log('use effect edit dailyToEdit ', dailyToEdit)
@@ -49,8 +75,8 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
             return;
         }
 
-        setStartTime('09:00');
-        setEndTime('18:00');
+        // setStartTime('09:00');
+        // setEndTime('18:00');
         setDate(new Date());
     }, [dailyToEdit]);
 
@@ -84,7 +110,6 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
     }
 
     const addOrUpdateDaily = async (dailyToEdit: IDaily) => {
-        toggleDailyEditView();
         const startDate = createDateFromString(startTime);
         const endDate = createDateFromString(endTime);
         const startBreak = createDateFromString('00:00');
@@ -131,12 +156,15 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
                 })
                 return;
             }
+            toggleDailyEditView();
             await mutateDailies((data) => {
                 const newHydra = [{id: tempId, ...updatedDaily}, ...data['hydra:member']];
                 return {...data, "hydra:member": newHydra.sort((a,b) => new Date(b.start_time).getTime() - new Date(a.end_time).getTime())};
             }, false);
             await FetcherFunc(`/daily_summaries`, auth.jwt, 'POST', updatedDaily);
             return;
+        } else {
+            toggleDailyEditView();
         }
 
         await mutateDailies((data) => {
@@ -156,7 +184,6 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
             return {...data, "hydra:member": [...newData['hydra:member']]};
         }, false);
         await FetcherFunc(`/daily_summaries/${dailyToEdit.id}`, auth.jwt, 'PATCH', updatedDaily, 'application/merge-patch+json');
-        toggleDailyEditView();
         setBreakDuration('00:00');
     }
 

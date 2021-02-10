@@ -12,7 +12,7 @@ import {useAuth} from "../services/Auth.context";
 import cn from 'classnames';
 import {ITimer} from "../types/timer.types";
 
-export const ManualTimerview = ({data, mutateTimers, toggleAddTimerView, isVisible, timerToEdit, removeTimer}) => {
+export const ManualTimerview = ({data, mutateTimers, toggleAddTimerView, isVisible, timerToEdit, removeTimer, setRunningTimer}) => {
     const [isBreakTimer, setIsBreakTimer] = useState(false);
     const [startTimer, setStartTime] = useState('09:00');
     const [endTime, setEndTime] = useState('18:00');
@@ -22,14 +22,16 @@ export const ManualTimerview = ({data, mutateTimers, toggleAddTimerView, isVisib
 
     useEffect(() => {
         if (timerToEdit) {
-            console.log('use effect edit timerToEdit ', timerToEdit)
             const startDate = new Date(timerToEdit.date_start);
-            const endDate = new Date(timerToEdit.date_end);
             setStartTime(startDate.toTimeString().substr(0,5));
-            setEndTime(endDate.toTimeString().substr(0,5));
+            let timerEndDate = new Date(timerToEdit.date_end);
+            if (!timerToEdit.date_end) {
+                timerEndDate = new Date();
+            }
+            setEndTime(timerEndDate.toTimeString().substr(0,5));
+
+            setIsBreakTimer(timerToEdit.timer_type === 'break');
             setDate(startDate);
-            // setIsEditTimer(true);
-            // setTimerToEdit(timerToEdit);
         }
     }, [timerToEdit]);
 
@@ -62,10 +64,8 @@ export const ManualTimerview = ({data, mutateTimers, toggleAddTimerView, isVisib
             timer_type: isBreakTimer ? 'break' : 'work'
         }
 
-        console.log('timer in add timer', timerToEdit);
         if (!timerToEdit) {
-            console.log('adding timer');
-            await mutateTimers((data) => {
+            await mutateTimers(() => {
                 const newHydra = [{id: tempId, ...updatedTimer}, ...data['hydra:member']];
                 return {...data, "hydra:member": newHydra.sort((a,b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime())};
             }, false);
@@ -73,7 +73,10 @@ export const ManualTimerview = ({data, mutateTimers, toggleAddTimerView, isVisib
             toggleAddTimerView();
             return;
         }
-        await mutateTimers((data) => {
+
+        setRunningTimer(null);
+
+        await mutateTimers(() => {
             let newData = {...data};
             newData["hydra:member"].map((timer) => {
                 if (timer.id === timerToEdit.id) {
@@ -143,9 +146,9 @@ export const ManualTimerview = ({data, mutateTimers, toggleAddTimerView, isVisib
                     Work
                 </div>
                 <Toggle
-                    defaultChecked={isBreakTimer}
+                    checked={isBreakTimer}
                     icons={false}
-                    onChange={() => setIsBreakTimer((prevVal) => !prevVal)}
+                    onChange={() => setIsBreakTimer(prev => !prev)}
                     className='timer-type-toggle'
                 />
                 <div className="ml-3 mb-1 text-md">

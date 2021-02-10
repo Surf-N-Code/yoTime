@@ -36,9 +36,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/HighlightNumber.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/HighlightNumber.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/reporting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/reporting.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/DailyEditview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyEditview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/DailyTablerow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyTablerow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/dailies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dailies.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/global.css" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -422,14 +425,8 @@
       <workItem from="1612381838196" duration="11147000" />
       <workItem from="1612780231851" duration="3803000" />
       <workItem from="1612799329366" duration="2329000" />
-      <workItem from="1612893776318" duration="4885000" />
-    </task>
-    <task id="LOCAL-00037" summary="Create components for daily table rows and daily edit view. Add new switch for send mail">
-      <created>1603478031002</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1603478031002</updated>
+      <workItem from="1612893776318" duration="12161000" />
+      <workItem from="1612984277392" duration="3221000" />
     </task>
     <task id="LOCAL-00038" summary="Add sync daily summary command">
       <created>1603528755268</created>
@@ -767,7 +764,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612897356399</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Fix sorting for single user cases in reporting">
+      <created>1612898687045</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1612898687045</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -802,7 +806,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Update fixtures for dev env" />
     <MESSAGE value="Working adding new timer and optimistically updating the ui" />
     <MESSAGE value="Attempt to add timer to state" />
     <MESSAGE value="Add pause timer and fix start stopping timer including counting up seconds properly" />
@@ -827,7 +830,8 @@
     <MESSAGE value="Fix editing timer and updating button with update or add text" />
     <MESSAGE value="Update yarn and wip sorting filter on reporting view" />
     <MESSAGE value="Optimize reporting loading" />
-    <option name="LAST_COMMIT_MESSAGE" value="Optimize reporting loading" />
+    <MESSAGE value="Fix sorting for single user cases in reporting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix sorting for single user cases in reporting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
