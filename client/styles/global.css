@@ -21,11 +21,11 @@ button:focus {
 
 
 .timer-type-toggle.react-toggle--checked .react-toggle-track {
-    background-color: #F2A88D;
+    background-color: #3fff45;
 }
 
 .timer-type-toggle.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
-    background-color: #F2A88D;
+    background-color: #3fff45;
 }
 
 .timer-type-toggle .react-toggle-track {
@@ -50,15 +50,15 @@ button:focus {
 
 
 .mail-toggle.react-toggle--checked .react-toggle-track {
-    background-color: #F2A88D;
+    background-color: #3fff45;
 }
 
 .mail-toggle.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
-    background-color: #F2A88D;
+    background-color: #3fff45;
 }
 
 .mail-toggle.react-toggle--checked .react-toggle-track {
-    background-color: #F2A88D;
+    background-color: #3fff45;
 }
 
 
@@ -131,6 +131,10 @@ button:focus {
 .react-time-picker__inputGroup__input--hasLeadingZero {
     margin-left: -0.54em;
     padding-left: calc(1px +  0.54em);
+}
+
+.react-time-picker__inputGroup__leadingZero {
+    margin-bottom: 1px;
 }
 
 .timer-edit-drawer {

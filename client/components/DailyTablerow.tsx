@@ -11,7 +11,7 @@ export const DailyTablerow = ({daily, onClick}) => {
     const formattedDiffInMinPerDayBreak = toHHMMSS(daily.time_break_in_s);
     const todayDaily = isToday(new Date(daily.start_time));
     return (
-         <div key={daily.id} className="w-full bg-white p-3 mb-1 border-gray-300 border-l-4 hover:border-teal-600 rounded-md" onClick={() => onClick(daily)}>
+         <div key={daily.id} className="w-full bg-white p-3 mb-1 border-gray-300 border-l-4 hover:border-teal-600 rounded-md cursor-pointer" onClick={() => onClick(daily)}>
             <div className={"flex"}>
                 <div className="flex flex-col">
                     <div className="text-xs text-gray-500">{format(new Date(daily.start_time), 'dd LLLL uuuu')}</div>

@@ -6,19 +6,26 @@ import {useAuth, TokenService, FetcherFunc, IsoFetcher} from "../services";
 import {GetServerSideProps} from "next";
 import {IDaily, IDailiesApiResult} from "../types";
 import Cookies from "universal-cookie";
+import {differenceInSeconds, format} from "date-fns";
+import {ITimer} from "../types/timer.types";
+import {ITimerApiResult} from "../types/apiResult.types";
+import {toHHMMSS} from "../utilities/lib";
 
 export const Dailies = (props) => {
     const router = useRouter();
     const [auth, authDispatch] = useAuth();
     const [dailyToEdit, setDailyToEdit] = useState<IDaily|null>(null);
     const [isEditViewVisible, setIsEditViewVisible] = useState(false);
-    const currentPage = Number(typeof router.query.page !== 'undefined' ? router.query.page : 1);
-    const url = `/daily_summaries?order[date]&page=${currentPage}`;
+    const [pageIndex, setPageIndex] = useState(1);
+    const url = `/daily_summaries?order[date]&page=${pageIndex}`;
+    const today = format(new Date(), 'yyyy-MM-dd');
+    const timerUrl = `/timers?date_start[after]=${today}&order[date_start]=asc`;
     const initialData = props.initialData;
     const { data, error, mutate: mutateDailies } = useSWR<IDailiesApiResult>([url, auth.jwt, 'GET'], FetcherFunc, {initialData})
+    const { data: timers, error: timerErrors } = useSWR<ITimerApiResult>([timerUrl, auth.jwt, 'GET'], FetcherFunc, {initialData})
 
     useEffect(() => {
-        if (data && typeof data.code !== 'undefined' && data.code === 401) {
+        if (data?.code === 401) {
             const tokenService = new TokenService();
             authDispatch({
                 type: 'removeAuthDetails'
@@ -44,22 +51,14 @@ export const Dailies = (props) => {
     }
 
     const handleTableRowClick = daily => {
-        console.log('editing daily', daily)
         setDailyToEdit(() => daily);
-        console.log('dialy to edit', dailyToEdit);
         toggleDailyEditView();
     }
 
     return (
         <Layout validToken={props.validToken}>
             <div className="mt-6 mb-24">
-            {typeof data['hydra:member'] === 'undefined' || data['hydra:member'].length === 0 ?
-                <div>
-                    <button className="fixed top-20 bottom-0 left-0 w-full h-full bg-black opacity-50"/>
-                    <div className="fixed bottom-44 text-white text-lg right-6">Add a daily summary</div>
-                    <img src="../images/icons/comic-arrow.svg" width="200" className="fixed bottom-24 right-4 animate-bounce-little"/>
-                </div>
-                :
+            {data?.['hydra:member']?.length > 0 ?
                 <>
                     <div>
                         {isEditViewVisible ?
@@ -73,15 +72,22 @@ export const Dailies = (props) => {
                                 onClick={daily => handleTableRowClick(daily)}
                             />
                         ))}
-
                     </div>
                     <div>
                         <Pagination
-                            currentPage={currentPage}
-                            totalPages={Math.ceil(data['hydra:totalItems'] / 30)}
+                            currentPage={pageIndex}
+                            setPageIndex={setPageIndex}
+                            totalPages={Math.ceil(data?.['hydra:member']?.length === 0 ? 1 : data['hydra:totalItems'] / 30)}
+                            path="dailies"
                         />
                     </div>
                 </>
+                :
+                <div>
+                    <button className="fixed top-20 bottom-0 left-0 w-full h-full bg-black opacity-50"/>
+                    <div className="fixed bottom-44 text-white text-lg right-6">Add a daily summary</div>
+                    <img src="../images/icons/comic-arrow.svg" width="200" className="fixed bottom-24 right-4 animate-bounce-little"/>
+                </div>
             }
 
                 <DailyEditview
