@@ -23,7 +23,7 @@ export const Dashboard = (props) => {
     const { data, error } = useSWR<ITimerApiResult>([url, auth.jwt, 'GET'], FetcherFunc);
 
     useEffect(() => {
-        if (data && typeof data.code !== 'undefined' && data.code === 401) {
+        if (data?.code === 401) {
             const tokenService = new TokenService();
             authDispatch({
                 type: 'removeAuthDetails'
