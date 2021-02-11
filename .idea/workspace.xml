@@ -36,12 +36,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/DailyEditview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyEditview.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/DailyTablerow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyTablerow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/ManualTimerview.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/dailies.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dailies.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Security/Slack/EventListener/SecurityListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Security/Slack/EventListener/SecurityListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dashboard.tsx" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -271,6 +268,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/client/styles/tailwind.css&#10;/home/norman/Development/yoTime/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/client/public/images/icons" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -296,7 +294,7 @@
       <recent name="$PROJECT_DIR$/api/tests/Doctrine" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.ResetPasswordControllerTest.testResetPassword">
+  <component name="RunManager" selected="PHPUnit.SlashCommandMessageControllerTest.testWorkCommand">
     <configuration name="RegisterUserHandlerTest.testRegister" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="App\Tests\Handler\MessageHandler\Slack\RegisterUserHandlerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/RegisterUserHandlerTest.php" method="testRegister" scope="Method" />
       <method v="2" />
@@ -313,17 +311,17 @@
       <TestRunner class="App\Tests\Handler\MessageController\Slack\SlashCommandMessageControllerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" method="testRegister" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner configuration_file="/srv/api/phpunit.xml" directory="$PROJECT_DIR$/api/tests" />
+    <configuration name="SlashCommandMessageControllerTest.testWorkCommand" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageController\Slack\SlashCommandMessageControllerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/SlashCommandMessageControllerTest.php" method="testWorkCommand" scope="Method" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.SlashCommandMessageControllerTest.testWorkCommand" />
         <item itemvalue="PHPUnit.ResetPasswordControllerTest.testResetPassword" />
         <item itemvalue="PHPUnit.ResetPasswordHandlerTest.testResetPassword" />
         <item itemvalue="PHPUnit.RegisterUserHandlerTest.testRegister" />
         <item itemvalue="PHPUnit.SlashCommandMessageControllerTest.testRegister" />
-        <item itemvalue="PHPUnit.tests" />
       </list>
     </recent_temporary>
   </component>
@@ -426,14 +424,8 @@
       <workItem from="1612780231851" duration="3803000" />
       <workItem from="1612799329366" duration="2329000" />
       <workItem from="1612893776318" duration="12161000" />
-      <workItem from="1612984277392" duration="3221000" />
-    </task>
-    <task id="LOCAL-00038" summary="Add sync daily summary command">
-      <created>1603528755268</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1603528755268</updated>
+      <workItem from="1612984277392" duration="4920000" />
+      <workItem from="1613056821757" duration="5709000" />
     </task>
     <task id="LOCAL-00039" summary="Add jwt bundle">
       <created>1603528846465</created>
@@ -771,7 +763,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612898687045</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Refactor typeofs, use swr properly, enable updating running timer">
+      <created>1612987822491</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1612987822491</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -806,7 +805,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Working adding new timer and optimistically updating the ui" />
     <MESSAGE value="Attempt to add timer to state" />
     <MESSAGE value="Add pause timer and fix start stopping timer including counting up seconds properly" />
     <MESSAGE value="Remove button outline and handle z-index of menu and header properly" />
@@ -831,7 +829,8 @@
     <MESSAGE value="Update yarn and wip sorting filter on reporting view" />
     <MESSAGE value="Optimize reporting loading" />
     <MESSAGE value="Fix sorting for single user cases in reporting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix sorting for single user cases in reporting" />
+    <MESSAGE value="Refactor typeofs, use swr properly, enable updating running timer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor typeofs, use swr properly, enable updating running timer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

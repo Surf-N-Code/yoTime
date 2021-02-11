@@ -14,6 +14,10 @@ security:
         dev:
           pattern: ^/(_(profiler|wdt)|css|images|js)/
           security: false
+        slack:
+          pattern: ^/slack/.+
+          anonymous: true
+          security: false
         register:
           methods: [ POST ]
           pattern: ^/users
