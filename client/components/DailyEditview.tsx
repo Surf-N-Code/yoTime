@@ -203,6 +203,7 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
                         <div className="mb-2 text-md">
                             Date
                         </div>
+
                         <DatePicker
                             className={'timer-date-picker'}
                             calendarIcon={null}
