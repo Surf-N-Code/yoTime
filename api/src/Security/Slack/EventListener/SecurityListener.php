@@ -6,6 +6,8 @@ namespace App\Security\Slack\EventListener;
 use App\Entity\Slack\SlackMessage;
 use App\Entity\Slack\SlackSecurityVoter;
 use App\Slack\SlackClient;
+use PHPUnit\Util\Json;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
@@ -31,7 +33,10 @@ class SecurityListener
             $slackSig = $request->headers->get('X-Slack-Signature');
 
             if (!hash_equals((string)$slackSig, $mySig)) {
-                $response = new Response();
+                $response = new JsonResponse([
+                    'code' => 401,
+                    'message' => 'The Slack Header could not be verified'
+                ]);
                 $response->setStatusCode(401);
                 $event->setResponse($response);
             }
