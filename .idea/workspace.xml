@@ -34,11 +34,17 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Remove some typeof code">
+      <change afterPath="$PROJECT_DIR$/client/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Security/Slack/EventListener/SecurityListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Security/Slack/EventListener/SecurityListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/BasicSwipe.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/BasicSwipeContent.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/BasicSwipeContent.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/DailyEditview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyEditview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/yarn-error.log" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn-error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -270,7 +276,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/client/styles/tailwind.css&#10;/home/norman/Development/yoTime/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/public/images/icons" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -280,11 +286,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client" />
       <recent name="$PROJECT_DIR$/client/public/images/icons" />
       <recent name="$PROJECT_DIR$/client/pages" />
       <recent name="$PROJECT_DIR$/client/components" />
       <recent name="$PROJECT_DIR$/api/tests/Handler/MessageController" />
-      <recent name="$PROJECT_DIR$/api/src/Handler/MessageController" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api/src/Validator/Constraints" />
@@ -425,21 +431,7 @@
       <workItem from="1612799329366" duration="2329000" />
       <workItem from="1612893776318" duration="12161000" />
       <workItem from="1612984277392" duration="4920000" />
-      <workItem from="1613056821757" duration="5709000" />
-    </task>
-    <task id="LOCAL-00039" summary="Add jwt bundle">
-      <created>1603528846465</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1603528846465</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Add access control directives to timers to limit access to logged in users">
-      <created>1603567215757</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1603567215757</updated>
+      <workItem from="1613056821757" duration="9566000" />
     </task>
     <task id="LOCAL-00041" summary="Refine security on timers">
       <created>1603567379486</created>
@@ -770,7 +762,21 @@
       <option name="project" value="LOCAL" />
       <updated>1612987822491</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Open up slack endpoints to the public">
+      <created>1613069272087</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1613069272087</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Remove some typeof code">
+      <created>1613069282564</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1613069282564</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -805,8 +811,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Attempt to add timer to state" />
-    <MESSAGE value="Add pause timer and fix start stopping timer including counting up seconds properly" />
     <MESSAGE value="Remove button outline and handle z-index of menu and header properly" />
     <MESSAGE value="Create usercreatelistener to throw a 409 status code on duplicate email when registering" />
     <MESSAGE value="Pre removing stop timer attempts" />
@@ -830,7 +834,9 @@
     <MESSAGE value="Optimize reporting loading" />
     <MESSAGE value="Fix sorting for single user cases in reporting" />
     <MESSAGE value="Refactor typeofs, use swr properly, enable updating running timer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor typeofs, use swr properly, enable updating running timer" />
+    <MESSAGE value="Open up slack endpoints to the public" />
+    <MESSAGE value="Remove some typeof code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove some typeof code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
