@@ -166,7 +166,7 @@ class SlashCommandHandlerTest extends TestCase
     {
         $this->sc->getCommand()
            ->shouldBeCalled()
-           ->willReturn("/late_break");
+           ->willReturn(SlashCommandHandler::LATE_BREAK);
 
         $this->sc->getText()
            ->shouldBeCalled()
@@ -190,7 +190,7 @@ class SlashCommandHandlerTest extends TestCase
     {
         $this->sc->getCommand()
            ->shouldBeCalled()
-           ->willReturn("/end_break");
+           ->willReturn(SlashCommandHandler::STOP_TIMER);
 
         $this->sc->getText()
            ->shouldBeCalled()
@@ -234,7 +234,7 @@ class SlashCommandHandlerTest extends TestCase
     {
         $this->sc->getCommand()
            ->shouldBeCalled()
-           ->willReturn("/end_work");
+           ->willReturn("/stop-timer");
 
         $this->sc->getText()
            ->shouldBeCalled()

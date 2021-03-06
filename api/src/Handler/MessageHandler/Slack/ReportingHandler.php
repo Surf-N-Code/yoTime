@@ -26,7 +26,7 @@ class ReportingHandler
         $this->time = $time;
     }
 
-    public function getUserStatus(User $user, string $commandStr): SlackMessage
+    public function getUserReport(User $user, string $commandStr): SlackMessage
     {
         $period = str_replace('/', '', $commandStr);
         [$timeOnWork, $timeOnBreak] = $this->time->getTimesSpentByTypeAndPeriod($user, $period);
