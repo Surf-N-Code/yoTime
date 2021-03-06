@@ -42,7 +42,7 @@ class DailySummaryRepository extends ServiceEntityRepository
         $monthEnd->modify('last day of this month')->setTime(23, 59, 59);
         $yearEnd->modify('last day of December this year')->setTime(23, 59, 59);
 
-        $qb = $this->createQueryBuilder('ds');
+        $qb = $this->createQueryBuilder(SlashCommandHandler::DAILY_SUMMARY);
 
         switch ($constraint) {
             case 'day':

@@ -62,7 +62,7 @@ class TimerHandler
         $timers = $this->timerRepository->findTimersFromToday($user);
 
         if (empty($timers)) {
-            throw new MessageHandlerException('Seems like you didn\'t sign in this morning. You can travel back in time to check yourself in for today by using the `/late_hi` command.', Response::HTTP_PRECONDITION_FAILED);
+            throw new MessageHandlerException('Seems like you didn\'t sign in this morning. You can travel back in time to check yourself in for today by using the `%s` command.', Response::HTTP_PRECONDITION_FAILED, SlashCommandHandler::LATE_HI);
         }
 
         $latestTimer = $timers[count($timers)-1];

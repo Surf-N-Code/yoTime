@@ -20,6 +20,24 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class SlashCommandHandler {
 
+    const STOP_TIMER = '/stop-timer';
+
+    const START_WORK = '/work';
+
+    const START_BREAK = '/break';
+
+    const LATE_HI = '/late-hi';
+
+    const REGISTER = '/register';
+
+    const LATE_BREAK = '/late-break';
+
+    const REPORT = '/report';
+
+    const DAILY_SUMMARY = '/ds';
+
+    const HELP = '/help-me';
+
     private UserProvider $userProvider;
 
     private TimerHandler $timerHandler;
@@ -69,30 +87,29 @@ class SlashCommandHandler {
         $commandText = $command->getText();
         $responseUrl = $command->getResponseUrl();
         switch ($commandStr) {
-            case '/'.TimerType::WORK:
-            case '/'.TimerType::BREAK:
+            case '/'.self::START_WORK:
+            case '/'.self::START_BREAK:
                 $timer = $this->timerHandler->startTimer($user, $commandStr);
                 $message = $message->addTextSection(sprintf(':clock9: %s timer started', ucfirst($timer->getTimerType())));
                 $this->databaseHelper->flushAndPersist($timer);
                 $this->sendSlackMessage($responseUrl, $message);
                 return Response::HTTP_CREATED;
 
-            case '/late_hi':
+            case self::LATE_HI:
                 $timer = $this->timerHandler->lateSignIn($user, $commandText);
                 $message->addTextSection(sprintf('Checked you in at `%s` :rocket:', $timer->getDateStart()->format('d.m.Y H:i:s')));
                 $this->databaseHelper->flushAndPersist($timer);
                 $this->sendSlackMessage($responseUrl, $message);
                 return Response::HTTP_CREATED;
 
-            case '/late_break':
+            case self::LATE_BREAK:
                 $timer = $this->time->addFinishedTimer($user, TimerType::BREAK, $commandText);
                 $message->addTextSection(':sleeping: Break added');
                 $this->databaseHelper->flushAndPersist($timer);
                 $this->sendSlackMessage($responseUrl, $message);
                 return Response::HTTP_CREATED;
 
-            case '/end_break':
-            case '/end_work':
+            case self::STOP_TIMER:
                 $timer = $this->timerHandler->stopTimer($user, $commandText);
                 $timeSpent = $this->time->formatSecondsAsHoursAndMinutes(
                     abs($timer->getDateEnd()->getTimestamp() - $timer->getDateStart()->getTimestamp())
@@ -104,23 +121,23 @@ class SlashCommandHandler {
                 $this->sendSlackMessage($responseUrl, $message);
                 return Response::HTTP_OK;
 
-            case '/ds':
+            case self::DAILY_SUMMARY:
                 $modal = $this->dailySummaryHandler->getDailySummarySubmitView($command->getTriggerId());
                 $this->slackClient->slackApiCall('POST', 'views.open', $modal);
                 return Response::HTTP_CREATED;
 
-            case '/help_me':
+            case self::HELP:
                 $message = $this->userHelpHandler->showUserHelp($command);
                 $this->sendSlackMessage($responseUrl, $message);
                 return Response::HTTP_OK;
 
-            case '/register':
+            case self::REGISTER:
                 $message = $this->registerHandler->register($command);
                 $this->sendSlackMessage($responseUrl, $message);
                 return Response::HTTP_CREATED;
 
-            case '/status':
-                $message = $this->reportingHandler->getUserStatus($user, $command);
+            case self::REPORT:
+                $message = $this->reportingHandler->getUserReport($user, $command);
                 $this->sendSlackMessage($responseUrl, $message);
                 return Response::HTTP_OK;
 

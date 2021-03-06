@@ -34,6 +34,6 @@ class ReportingHandlerTest extends TestCase
         $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
             ->shouldBeCalled()
             ->willReturn([3600, 600]);
-        $this->reportinghandler->getUserStatus($this->user->reveal(), '/day');
+        $this->reportinghandler->getUserReport($this->user->reveal(), '/day');
     }
 }

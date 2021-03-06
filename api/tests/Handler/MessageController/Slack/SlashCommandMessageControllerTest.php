@@ -5,6 +5,7 @@ namespace App\Tests\Handler\MessageController\Slack;
 use App\Entity\Timer;
 use App\Entity\TimerType;
 use App\Entity\User;
+use App\Handler\MessageHandler\Slack\SlashCommandHandler;
 use App\Tests\IntegrationTestCase;
 use Hautelook\AliceBundle\PhpUnit\ReloadDatabaseTrait;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +22,7 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
             "channel_name" => "privategroup",
             "user_id" => "UHW253RU1",
             "user_name" => "ndilthey",
-            "command" => "/".$command,
+            "command" => $command,
             "text" => $text,
             "api_app_id" => "ALTNUDXE0",
             "response_url" => "",
@@ -31,7 +32,7 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
 
     public function testWorkCommand()
     {
-        $data = $this->generateCommandData(TimerType::WORK);
+        $data = $this->generateCommandData(SlashCommandHandler::START_WORK);
         $client = $this->createAuthenticatedClient();
         $response = $client->request(
             'POST',
@@ -48,7 +49,7 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
 
     public function testBreakCommand()
     {
-        $data = $this->generateCommandData(TimerType::BREAK);
+        $data = $this->generateCommandData(SlashCommandHandler::START_BREAK);
         $client = $this->createAuthenticatedClient();
         $response = $client->request(
             'POST',
@@ -65,7 +66,7 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
 
     public function testLateHiCommandInvalid()
     {
-        $data = $this->generateCommandData('late_hi', '25:32');
+        $data = $this->generateCommandData(SlashCommandHandler::LATE_HI, '25:32');
 
         $client = $this->createAuthenticatedClient();
         $response = $client->request(
@@ -83,7 +84,7 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
 
     public function testLateHiCommand()
     {
-        $data = $this->generateCommandData('late_hi', '07:33');
+        $data = $this->generateCommandData(SlashCommandHandler::LATE_HI, '07:33');
         $client = $this->createAuthenticatedClient();
 
         $this->truncateTableForClass(Timer::class);
@@ -103,7 +104,7 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
 
     public function testLateBreakCommandInvalid()
     {
-        $data = $this->generateCommandData('late_break', '25:32');
+        $data = $this->generateCommandData(SlashCommandHandler::LATE_BREAK, '25:32');
         $client = $this->createAuthenticatedClient();
         $response = $client->request(
             'POST',
@@ -120,7 +121,7 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
 
     public function testLateBreakCommand()
     {
-        $data = $this->generateCommandData('late_break', '01:33');
+        $data = $this->generateCommandData(SlashCommandHandler::LATE_BREAK, '01:33');
         $client = $this->createAuthenticatedClient();
         $response = $client->request(
             'POST',
@@ -137,7 +138,7 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
 
     public function testEndBreakCommand()
     {
-        $data = $this->generateCommandData('end_break');
+        $data = $this->generateCommandData(SlashCommandHandler::STOP_TIMER);
         $client = $this->createAuthenticatedClient();
 
         $em = self::$container->get('doctrine')->getManager();
@@ -165,7 +166,7 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
 
     public function testEndWorkCommand()
     {
-        $data = $this->generateCommandData('end_work');
+        $data = $this->generateCommandData(SlashCommandHandler::STOP_TIMER);
         $client = $this->createAuthenticatedClient();
 
         $em = self::$container->get('doctrine')->getManager();
@@ -210,7 +211,7 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
 
     public function testDsCommand()
     {
-        $data = $this->generateCommandData('ds');
+        $data = $this->generateCommandData(SlashCommandHandler::DAILY_SUMMARY);
 
         $client = $this->createAuthenticatedClient();
         $response = $client->request(
@@ -227,7 +228,7 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
 
     public function testRegister()
     {
-        $data = $this->generateCommandData('register');
+        $data = $this->generateCommandData(SlashCommandHandler::REGISTER);
 
         $client = $this->createAuthenticatedClient();
         $response = $client->request(
