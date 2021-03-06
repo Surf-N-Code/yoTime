@@ -51,7 +51,6 @@ class UserProvider
             $data = json_decode($response->getContent(), true);
             return $this->serializer->denormalize($data['user'], SlackUser::class, null);
         } catch (\Exception $e) {
-            dd($e);
             $msg = sprintf('That slack ID seems to be incorrect. Could not find slack user with slack ID: %s', $slackUserId);
             throw new NotFoundHttpException($msg);
         }

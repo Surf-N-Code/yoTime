@@ -116,7 +116,11 @@ class Time
         ];
 
         if (!array_key_exists(trim($period), $timeConstraintsFormat)) {
-            throw new MessageHandlerException(sprintf('The time period you entered: `%s` is not valid', $period), 400);
+            $m = 'The time period you entered: `%s` is not valid';
+            if ($period === '') {
+                $m = sprintf('Please provide a period for your report. It can be anything from this list: `%s`', implode('`, `', $timeConstraintsFormat));
+            }
+            throw new MessageHandlerException($m, 400);
         }
 
         try {
