@@ -35,18 +35,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add react calendar types and prepare for heroku build">
-      <change afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/ReportingHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/ReportingHandlerTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/BotMessageHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/BotMessageHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Services/Time.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Services/Time.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Slack/SlackMessageHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Slack/SlackMessageHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/BotMessageHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/BotMessageHandlerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Security/ResetPasswordHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Security/ResetPasswordHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/DailyEditview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyEditview.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/DailyTablerow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyTablerow.tsx" afterDir="false" />
     </list>
@@ -304,9 +294,13 @@
       <recent name="$PROJECT_DIR$/api/tests/Doctrine" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.ReportingHandlerTest.testGetStatusByDay">
-    <configuration name="DailySummaryHandlerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\DailySummaryHandlerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" scope="Class" />
+  <component name="RunManager" selected="PHPUnit.BotMessageControllerTest">
+    <configuration name="BotMessageControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageController\Slack\BotMessageControllerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/BotMessageControllerTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="BotMessageHandlerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\BotMessageHandlerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/BotMessageHandlerTest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <configuration name="ReportingHandlerTest.testGetStatusByDay" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -317,21 +311,17 @@
       <TestRunner class="App\Tests\Security\Slack\EventListener\SecurityListenerTest" configuration_file="/srv/api/phpunit.xml" directory="$PROJECT_DIR$/api/tests" file="$PROJECT_DIR$/api/tests/Security/Slack/EventListener/SecurityListenerTest.php" method="testSecurityListenerInteractionEvent" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest.testCreateUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Entity\UserTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Entity/UserTest.php" method="testCreateUser" scope="Method" />
-      <method v="2" />
-    </configuration>
     <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner configuration_file="/srv/api/phpunit.xml" directory="$PROJECT_DIR$/api/tests" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.BotMessageControllerTest" />
+        <item itemvalue="PHPUnit.BotMessageHandlerTest" />
         <item itemvalue="PHPUnit.ReportingHandlerTest.testGetStatusByDay" />
         <item itemvalue="PHPUnit.SecurityListenerTest.testSecurityListenerInteractionEvent" />
         <item itemvalue="PHPUnit.tests" />
-        <item itemvalue="PHPUnit.UserTest.testCreateUser" />
-        <item itemvalue="PHPUnit.DailySummaryHandlerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -437,21 +427,7 @@
       <workItem from="1612984277392" duration="4920000" />
       <workItem from="1613056821757" duration="15270000" />
       <workItem from="1613157737566" duration="6301000" />
-      <workItem from="1615015046122" duration="445000" />
-    </task>
-    <task id="LOCAL-00042" summary="Remove authenticationsuccess handler and implement jwt subscriber">
-      <created>1603617895540</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1603617895540</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Update gitignore">
-      <created>1603617970547</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1603617970547</updated>
+      <workItem from="1615015046122" duration="1626000" />
     </task>
     <task id="LOCAL-00044" summary="Update gitignore">
       <created>1603618468958</created>
@@ -782,7 +758,21 @@
       <option name="project" value="LOCAL" />
       <updated>1613073557711</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Get getTimesSpentByTypeAndPeriod function to have 1 query instead of two per timer type">
+      <created>1615015554080</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1615015554080</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Add reporting endpoint">
+      <created>1615015590887</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1615015590887</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -817,8 +807,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Create usercreatelistener to throw a 409 status code on duplicate email when registering" />
-    <MESSAGE value="Pre removing stop timer attempts" />
     <MESSAGE value="Counting up on timers works again" />
     <MESSAGE value="Working manual add, delete and edit timers" />
     <MESSAGE value="Improve editing timers" />
@@ -842,7 +830,9 @@
     <MESSAGE value="Open up slack endpoints to the public" />
     <MESSAGE value="Remove some typeof code" />
     <MESSAGE value="Add react calendar types and prepare for heroku build" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add react calendar types and prepare for heroku build" />
+    <MESSAGE value="Get getTimesSpentByTypeAndPeriod function to have 1 query instead of two per timer type" />
+    <MESSAGE value="Add reporting endpoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add reporting endpoint" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
