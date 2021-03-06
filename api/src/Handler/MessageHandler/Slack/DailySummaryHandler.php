@@ -181,8 +181,7 @@ class DailySummaryHandler
             return new ModalSubmissionDto(ModalSubmissionDto::STATUS_ERROR, ':heavy_exclamation_mark: '.$e->getMessage(), 'Something is wrong :(');
         }
 
-        $timeOnWork = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::WORK);
-        $timeOnBreak = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::BREAK);
+        [$timeOnWork, $timeOnBreak] = $this->time->getTimesSpentByTypeAndPeriod($user, 'day');
 
         $dailySummaryEntity = $this->dailySummaryRepo->findOneBy(['date' => new \DateTime('now')]);
         $ds = $this->dailySummaryFactory->createDailySummaryObject($summary, $user, $punchTimerStatusDto->getTimer(), $dailySummaryEntity, $timeOnWork, $timeOnBreak);

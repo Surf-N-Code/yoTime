@@ -73,8 +73,7 @@ class BotMessageHandler
 
                 $m->addTextSection('Signed you out for today. :call_me_hand:');
 
-                $timeOnWork = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::WORK);
-                $timeOnBreak = $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::BREAK);
+                [$timeOnWork, $timeOnBreak] = $this->time->getTimesSpentByTypeAndPeriod($user, 'day');
 
                 $formattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($timeOnWork - $timeOnBreak);
                 $formattedTimeOnBreak = $this->time->formatSecondsAsHoursAndMinutes($timeOnBreak);

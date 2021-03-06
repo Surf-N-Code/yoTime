@@ -105,7 +105,7 @@ class Time
         return  sprintf("%sh %smin", $parts[0], $minutes);
     }
 
-    public function getTimeSpentOnTypeByPeriod(User $user, string $period, $timerType, string $slackUserId = null)
+    public function getTimesSpentByTypeAndPeriod(User $user, string $period, ?string $timerType = null)
     {
         $timeConstraintsFormat = [
             'day' => 'day',
@@ -117,12 +117,6 @@ class Time
 
         if (!array_key_exists(trim($period), $timeConstraintsFormat)) {
             throw new MessageHandlerException(sprintf('The time period you entered: `%s` is not valid', $period), 400);
-        }
-
-        if ($slackUserId) {
-            $user = $this->userRepository->findOneBy([
-                'slackUserId' => $slackUserId,
-            ]);
         }
 
         try {
@@ -137,26 +131,19 @@ class Time
             throw new MessageHandlerException('An error occured, please contact support', 400);
         }
 
-        $s = 0;
-        foreach ($timeEntries as $entry) {
-            if (!$entry->getDateEnd()) {
+        $s[TimerType::WORK] = 0;
+        $s[TimerType::BREAK] = 0;
+        foreach ($timeEntries as $timer) {
+            if (!$timer->getDateEnd()) {
                 //currently running timer
                 $tE = $this->dateTimeProvider->getLocalUserTime($user)->getTimestamp();
             } else {
-                $tE = $entry->getDateEnd()->getTimestamp();
+                $tE = $timer->getDateEnd()->getTimestamp();
             }
 
-            $s += abs($tE - $entry->getDateStart()->getTimestamp());
+            $s[$timer->getTimerType()] += abs($tE - $timer->getDateStart()->getTimestamp());
         }
 
-        return $s ?? 0;
-    }
-
-    public function getWorktimeByPeriod(User $user, $period)
-    {
-        $work = $this->getTimeSpentOnTypeByPeriod($user, $period, TimerType::WORK);
-        $break = $this->getTimeSpentOnTypeByPeriod($user, $period, TimerType::BREAK);
-
-        return $work - $break;
+        return $s;
     }
 }

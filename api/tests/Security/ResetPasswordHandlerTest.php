@@ -62,7 +62,7 @@ class ResetPasswordHandlerTest extends IntegrationTestCase
         $this->em->flush()
                  ->shouldBeCalled();
 
-        $mailContent = 'Hi there,\n\nhere is your temporary password for YoTime: randompass\n\nFollow this link to login and change your password:\nhttps://localhost:8443/login\n';
+        $mailContent = 'Hi there<br>here is your temporary password for YoTime: randompass<br>Follow this link to login and change your password:<br>https://localhost:8443<br>';
         $this->mailer->send(Argument::type('string'), Argument::type('string'), Argument::type('string'), $mailContent)
                      ->shouldBeCalled();
 
