@@ -36,7 +36,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add react calendar types and prepare for heroku build">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/api/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/DailyEditview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyEditview.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/DailyTablerow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyTablerow.tsx" afterDir="false" />
     </list>
@@ -427,14 +427,7 @@
       <workItem from="1612984277392" duration="4920000" />
       <workItem from="1613056821757" duration="15270000" />
       <workItem from="1613157737566" duration="6301000" />
-      <workItem from="1615015046122" duration="1626000" />
-    </task>
-    <task id="LOCAL-00044" summary="Update gitignore">
-      <created>1603618468958</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1603618468958</updated>
+      <workItem from="1615015046122" duration="2821000" />
     </task>
     <task id="LOCAL-00045" summary="Update gitignore">
       <created>1603618477998</created>
@@ -772,7 +765,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615015590887</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="Add slack bot event to unauthorized access list">
+      <created>1615018683140</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1615018683140</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -807,7 +807,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Counting up on timers works again" />
     <MESSAGE value="Working manual add, delete and edit timers" />
     <MESSAGE value="Improve editing timers" />
     <MESSAGE value="Finish most of daily and timer views" />
@@ -832,7 +831,8 @@
     <MESSAGE value="Add react calendar types and prepare for heroku build" />
     <MESSAGE value="Get getTimesSpentByTypeAndPeriod function to have 1 query instead of two per timer type" />
     <MESSAGE value="Add reporting endpoint" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add reporting endpoint" />
+    <MESSAGE value="Add slack bot event to unauthorized access list" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add slack bot event to unauthorized access list" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
