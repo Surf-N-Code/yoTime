@@ -42,5 +42,6 @@ security:
       - { path: ^/_profiler, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/reset-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/slack/event/bot, roles: IS_AUTHENTICATED_ANONYMOUSLY }
       - { path: ^/authentication_validate, roles: IS_AUTHENTICATED_ANONYMOUSLY } #is this neede?
       - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
