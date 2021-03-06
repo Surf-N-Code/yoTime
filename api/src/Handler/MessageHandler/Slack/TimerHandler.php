@@ -87,7 +87,7 @@ class TimerHandler
         if (!$timeEntry) {
             throw new MessageHandlerException(
                 sprintf(
-                    'No timer is running at the moment. Please start one using `/%s` or `/%s`',
+                    'No timer is running at the moment. Please start one using `%s` or `%s`',
                     TimerType::WORK,
                     TimerType::BREAK
                 ),

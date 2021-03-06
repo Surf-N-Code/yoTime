@@ -40,6 +40,6 @@ class RegisterHandler
             return $m->addTextSection('Ups, could not send your registration mail. Please contact support to receive your login password.');
         }
 
-        return $m->addTextSection('Registered successfully :hugging_face:');
+        return $m->addTextSection(sprintf('Yo <@%s>! :call_me_hand: Welcome :hugging_face:', $command->getUserId()));
     }
 }

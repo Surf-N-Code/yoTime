@@ -43,7 +43,6 @@ class BotMessageHandler
     {
         $command = strtolower($evt['text']);
         $slackUserId = $evt['user'];
-        $channel = $evt['channel'];
 
         if ($evt['type'] !== 'app_mention') {
             throw new MessageHandlerException('Sorry, this is currently not supported.', 400);
@@ -66,36 +65,23 @@ class BotMessageHandler
             case strpos($command, 'bye') !== false:
                $punchTimerStatusDto = $this->timerHandler->punchOut($user);
                 if (!$punchTimerStatusDto->didSignOut()) {
-                    $m->addTextSection('You have already punched out for today.');
+                    $m->addTextSection('You have already punched out for today. :slightly_smiling_face:');
                     break;
                 }
 
-
                 $m->addTextSection('Signed you out for today. :call_me_hand:');
 
-                [$timeOnWork, $timeOnBreak] = $this->time->getTimesSpentByTypeAndPeriod($user, 'day');
+                extract($this->time->getTimesSpentByTypeAndPeriod($user, 'day'), EXTR_OVERWRITE);
 
-                $formattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($timeOnWork - $timeOnBreak);
-                $formattedTimeOnBreak = $this->time->formatSecondsAsHoursAndMinutes($timeOnBreak);
+                $formattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($work - $break);
+                $formattedTimeOnBreak = $this->time->formatSecondsAsHoursAndMinutes($break);
                 $m->addTextSection(sprintf('You spent `%s` on work and `%s` on break.', $formattedTimeOnWork, $formattedTimeOnBreak));
                 $this->databaseHelper->flushAndPersist($punchTimerStatusDto->getTimer());
                 break;
             default:
-                throw new MessageHandlerException('You pinged me, however I do not recognise your command. Try `/help` to get a list of available commands', 400);
+                throw new MessageHandlerException(sprintf('You pinged me, however I do not recognise your command. Try `%s` to get a list of available commands', SlashCommandHandler::HELP), 400);
         }
 
-        $this->sendEphemeral($channel, $slackUserId, $m);
-
         return $m;
-    }
-
-    private function sendEphemeral(string $channel, string $userId, SlackMessage $m)
-    {
-        $this->slackClient->slackApiCall('POST', 'chat.postEphemeral', [
-            'channel' => $channel,
-            'user' => $userId,
-            'text' => $m->getBlockText(0),
-            'blocks' => $m->getBlocks()
-        ]);
     }
 }

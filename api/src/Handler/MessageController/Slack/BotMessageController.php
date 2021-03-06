@@ -71,7 +71,7 @@ final class BotMessageController implements MessageHandlerInterface
             $m->addTextSection($e->getMessage());
 
             $this->sendEphemeral($slackBotMessage, $slackUserId, $m);
-            return new Response($e->getMessage(), Response::HTTP_PRECONDITION_FAILED);
+            return new Response($e->getMessage(), Response::HTTP_OK);
         }
     }
 

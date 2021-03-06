@@ -181,14 +181,14 @@ class DailySummaryHandler
             return new ModalSubmissionDto(ModalSubmissionDto::STATUS_ERROR, ':heavy_exclamation_mark: '.$e->getMessage(), 'Something is wrong :(');
         }
 
-        [$timeOnWork, $timeOnBreak] = $this->time->getTimesSpentByTypeAndPeriod($user, 'day');
+        extract($this->time->getTimesSpentByTypeAndPeriod($user, 'day'), EXTR_OVERWRITE);
 
         $dailySummaryEntity = $this->dailySummaryRepo->findOneBy(['date' => new \DateTime('now')]);
-        $ds = $this->dailySummaryFactory->createDailySummaryObject($summary, $user, $punchTimerStatusDto->getTimer(), $dailySummaryEntity, $timeOnWork, $timeOnBreak);
+        $ds = $this->dailySummaryFactory->createDailySummaryObject($summary, $user, $punchTimerStatusDto->getTimer(), $dailySummaryEntity, $work, $break);
 
         if ($doSendMail) {
             try {
-                $this->mailer->sendDailySummaryMail($timeOnBreak, $timeOnWork - $timeOnBreak, $user, $ds->getDailySummary());
+                $this->mailer->sendDailySummaryMail($break, $work - $break, $user, $ds->getDailySummary());
                 $ds->setIsEmailSent(true);
             } catch (MessageHandlerException $e) {
                 $ds->setIsEmailSent(false);
@@ -210,7 +210,7 @@ class DailySummaryHandler
             $ds->setIsSyncedToPersonio($didSyncToPersonio);
         }
 
-        $m = $this->getDailySummaryAddSlackMessage($timeOnWork, $timeOnBreak, $punchTimerStatusDto->didSignOut(), $doSendMail, $ds->getIsSyncedToPersonio(), $personioErrorMsg ?? '');
+        $m = $this->getDailySummaryAddSlackMessage($work, $break, $punchTimerStatusDto->didSignOut(), $doSendMail, $ds->getIsSyncedToPersonio(), $personioErrorMsg ?? '');
 
         $this->databaseHelper->flushAndPersist($ds);
 
@@ -231,7 +231,7 @@ class DailySummaryHandler
             return $m;
         }
 
-        $msg = $doSendMail ? 'Summary sent :slightly_smiling_face:' : 'Summary saved :slightly_smiling_face:';
+        $msg = $doSendMail ? ':white_check_mark: Summary sent' : 'Summary saved :slightly_smiling_face:';
         $msg .= $this->getPersonioSyncStatusMessage($personioErrorMsg, $alreadySynchedToPersonio);
         $this->slackMessageHelper->addTextSection($msg, $m);
         return $m;

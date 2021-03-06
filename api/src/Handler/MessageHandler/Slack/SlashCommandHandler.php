@@ -8,6 +8,7 @@ use App\Entity\Slack\SlackMessage;
 use App\Entity\Slack\SlashCommand;
 use App\Entity\TimerType;
 use App\Entity\User;
+use App\Exceptions\MessageHandlerException;
 use App\Exceptions\SlashCommandException;
 use App\Mail\Mailer;use App\Services\DatabaseHelper;
 use App\Services\Time;
@@ -82,13 +83,13 @@ class SlashCommandHandler {
     public function getSlashCommandToExecute(SlashCommand $command): int
     {
         $message = new SlackMessage();
-        $user = $this->getUser($command->getUserId());
         $commandStr = $command->getCommand();
         $commandText = $command->getText();
         $responseUrl = $command->getResponseUrl();
         switch ($commandStr) {
-            case '/'.self::START_WORK:
-            case '/'.self::START_BREAK:
+            case self::START_WORK:
+            case self::START_BREAK:
+                $user = $this->getUser($command->getUserId());
                 $timer = $this->timerHandler->startTimer($user, $commandStr);
                 $message = $message->addTextSection(sprintf(':clock9: %s timer started', ucfirst($timer->getTimerType())));
                 $this->databaseHelper->flushAndPersist($timer);
@@ -96,20 +97,33 @@ class SlashCommandHandler {
                 return Response::HTTP_CREATED;
 
             case self::LATE_HI:
-                $timer = $this->timerHandler->lateSignIn($user, $commandText);
-                $message->addTextSection(sprintf('Checked you in at `%s` :rocket:', $timer->getDateStart()->format('d.m.Y H:i:s')));
-                $this->databaseHelper->flushAndPersist($timer);
+                $user = $this->getUser($command->getUserId());
+                try {
+                    $timer = $this->timerHandler->lateSignIn($user, $commandText);
+                    $message->addTextSection(sprintf('Checked you in at `%s` :rocket:', $timer->getDateStart()->format('d.m.Y H:i:s')));
+                    $this->databaseHelper->flushAndPersist($timer);
+                } catch (MessageHandlerException $e) {
+                    $message = new SlackMessage();
+                    $message->addTextSection($e->getMessage());
+                }
                 $this->sendSlackMessage($responseUrl, $message);
                 return Response::HTTP_CREATED;
 
             case self::LATE_BREAK:
-                $timer = $this->time->addFinishedTimer($user, TimerType::BREAK, $commandText);
-                $message->addTextSection(':sleeping: Break added');
-                $this->databaseHelper->flushAndPersist($timer);
+                $user = $this->getUser($command->getUserId());
+                try {
+                    $timer = $this->time->addFinishedTimer($user, TimerType::BREAK, $commandText);
+                    $message->addTextSection(':sleeping: Break added');
+                    $this->databaseHelper->flushAndPersist($timer);
+                } catch (MessageHandlerException $e) {
+                    $message = new SlackMessage();
+                    $message->addTextSection($e->getMessage());
+                }
                 $this->sendSlackMessage($responseUrl, $message);
                 return Response::HTTP_CREATED;
 
             case self::STOP_TIMER:
+                $user = $this->getUser($command->getUserId());
                 $timer = $this->timerHandler->stopTimer($user, $commandText);
                 $timeSpent = $this->time->formatSecondsAsHoursAndMinutes(
                     abs($timer->getDateEnd()->getTimestamp() - $timer->getDateStart()->getTimestamp())
@@ -137,6 +151,7 @@ class SlashCommandHandler {
                 return Response::HTTP_CREATED;
 
             case self::REPORT:
+                $user = $this->getUser($command->getUserId());
                 $message = $this->reportingHandler->getUserReport($user, $command);
                 $this->sendSlackMessage($responseUrl, $message);
                 return Response::HTTP_OK;
