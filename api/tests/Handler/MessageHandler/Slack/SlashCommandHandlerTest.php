@@ -8,6 +8,7 @@ use App\Entity\Timer;
 use App\Entity\TimerType;
 use App\Entity\User;
 use App\Handler\MessageHandler\Slack\DailySummaryHandler;
+use App\Handler\MessageHandler\Slack\RegisterHandler;
 use App\Handler\MessageHandler\Slack\SlashCommandHandler;
 use App\Handler\MessageHandler\Slack\TimerHandler;
 use App\Handler\MessageHandler\Slack\UserHelpHandler;
@@ -32,6 +33,7 @@ class SlashCommandHandlerTest extends TestCase
     private SlashCommandHandler $slashCommandHandler;
     private $databaseHelper;
     private $userHelpHandler;
+    private $registerHandler;
     private $dailySummaryHandler;
     private $slackClient;
     private $sc;
@@ -44,6 +46,7 @@ class SlashCommandHandlerTest extends TestCase
         $this->userProvider = $this->prophesize(UserProvider::class);
         $this->databaseHelper = $this->prophesize(DatabaseHelper::class);
         $this->userHelpHandler = $this->prophesize(UserHelpHandler::class);
+        $this->registerHandler = $this->prophesize(RegisterHandler::class);
         $this->timerHandler = $this->prophesize(TimerHandler::class);
         $this->dailySummaryHandler = $this->prophesize(DailySummaryHandler::class);
         $this->mailer = $this->prophesize(Mailer::class);
@@ -67,7 +70,8 @@ class SlashCommandHandlerTest extends TestCase
             $this->userProvider->reveal(),
             $this->databaseHelper->reveal(),
             $this->time->reveal(),
-            $this->slackClient->reveal()
+            $this->slackClient->reveal(),
+            $this->registerHandler->reveal()
         );
     }
 

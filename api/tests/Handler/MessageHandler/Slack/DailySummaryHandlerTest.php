@@ -88,11 +88,8 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn(true);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
-                   ->shouldBeCalled()->willReturn(3600);
-
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
-                   ->shouldBeCalled()->willReturn(600);
+        $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
+                   ->shouldBeCalled()->willReturn([3600, 600]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()
@@ -156,11 +153,8 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn(true);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
-                   ->shouldBeCalled()->willReturn(3600);
-
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
-                   ->shouldBeCalled()->willReturn(600);
+        $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
+                   ->shouldBeCalled()->willReturn([3600, 600]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()
@@ -222,11 +216,8 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn(false);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
-                   ->shouldBeCalled()->willReturn(3600);
-
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
-                   ->shouldBeCalled()->willReturn(600);
+        $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
+                   ->shouldBeCalled()->willReturn([3600, 600]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()
@@ -288,11 +279,8 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn(false);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
-                   ->shouldBeCalled()->willReturn(3600);
-
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
-                   ->shouldBeCalled()->willReturn(600);
+        $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
+                   ->shouldBeCalled()->willReturn([3600, 600]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()
@@ -356,11 +344,8 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn(true);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
-                   ->shouldBeCalled()->willReturn(3600);
-
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
-                   ->shouldBeCalled()->willReturn(0);
+        $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
+                   ->shouldBeCalled()->willReturn([3600, 0]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()
@@ -422,11 +407,8 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn(true);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
-                   ->shouldBeCalled()->willReturn(3600);
-
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
-                   ->shouldBeCalled()->willReturn(0);
+        $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
+                   ->shouldBeCalled()->willReturn([3600, 0]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()
@@ -483,9 +465,6 @@ class DailySummaryHandlerTest extends TestCase
                                 ->shouldBeCalled()
                                 ->willThrow(MessageHandlerException::class);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
-                   ->shouldNotBeCalled()->willReturn(3600);
-
         $evt['view']['state']['values']['daily_summary_block']['summary_block_input']['value'] = 'Daily summary notes';
         $evt['view']['state']['values']['mail_block']['mail_choice']['selected_option']['value'] = 'false';
 
@@ -506,11 +485,8 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn(false);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
-                   ->shouldBeCalled()->willReturn(3600);
-
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
-                   ->shouldBeCalled()->willReturn(600);
+        $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
+                   ->shouldBeCalled()->willReturn([3600, 600]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()
@@ -575,11 +551,8 @@ class DailySummaryHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn(false);
 
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::WORK)
-                   ->shouldBeCalled()->willReturn(3600);
-
-        $this->time->getTimeSpentOnTypeByPeriod($this->user->reveal(), 'day', TimerType::BREAK)
-                   ->shouldBeCalled()->willReturn(600);
+        $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
+                   ->shouldBeCalled()->willReturn([3600, 600]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()

@@ -139,13 +139,9 @@ class BotMessageHandlerTest extends TestCase
                                 ->shouldBeCalled()
                                 ->willReturn(new PunchTimerStatusDto(true, $this->timer->reveal()));
 
-        $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::WORK)
+        $this->time->getTimesSpentByTypeAndPeriod($user, 'day')
             ->shouldBeCalled()
-            ->willReturn(3600);
-
-        $this->time->getTimeSpentOnTypeByPeriod($user, 'day', TimerType::BREAK)
-                   ->shouldBeCalled()
-                   ->willReturn(600);
+            ->willReturn([3600, 600]);
 
         $this->time->formatSecondsAsHoursAndMinutes(3000)
             ->shouldBeCalled()
