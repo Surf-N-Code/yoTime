@@ -36,6 +36,8 @@ class SlashCommandHandler {
 
     private RegisterHandler $registerHandler;
 
+    private ReportingHandler $reportingHandler;
+
     public function __construct(
         UserHelpHandler $userHelpHandler,
         DailySummaryHandler $dailySummaryHandler,
@@ -44,7 +46,8 @@ class SlashCommandHandler {
         DatabaseHelper $databaseHelper,
         Time $time,
         SlackClient $slackClient,
-        RegisterHandler $registerHandler
+        RegisterHandler $registerHandler,
+        ReportingHandler $reportingHandler
     )
     {
         $this->userHelpHandler = $userHelpHandler;
@@ -55,6 +58,7 @@ class SlashCommandHandler {
         $this->time = $time;
         $this->slackClient = $slackClient;
         $this->registerHandler = $registerHandler;
+        $this->reportingHandler = $reportingHandler;
     }
 
     public function getSlashCommandToExecute(SlashCommand $command): int
@@ -114,6 +118,11 @@ class SlashCommandHandler {
                 $message = $this->registerHandler->register($command);
                 $this->sendSlackMessage($responseUrl, $message);
                 return Response::HTTP_CREATED;
+
+            case '/status':
+                $message = $this->reportingHandler->getUserStatus($user, $command);
+                $this->sendSlackMessage($responseUrl, $message);
+                return Response::HTTP_OK;
 
             default:
                 $message->addTextSection(sprintf('Command `%s` is not supported. Try `/help_me` for a list of available commands',$command->getCommand()));
