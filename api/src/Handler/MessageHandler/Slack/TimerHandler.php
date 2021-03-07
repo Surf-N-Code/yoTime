@@ -9,8 +9,8 @@ use App\Entity\Timer;use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
 use App\Repository\TimerRepository;
-use App\Services\DatabaseHelper;
 use App\Services\Time;
+use App\Slack\SlackUserClient;
 use Symfony\Component\HttpFoundation\Response;
 
 class TimerHandler
@@ -20,22 +20,41 @@ class TimerHandler
 
     private TimerRepository $timerRepository;
 
+    private SlackUserClient $slackUserClient;
+
     public function __construct(
         Time $time,
-        TimerRepository $timerRepository
+        TimerRepository $timerRepository,
+        SlackUserClient $slackUserClient
     )
     {
         $this->time = $time;
         $this->timerRepository = $timerRepository;
+        $this->slackUserClient = $slackUserClient;
     }
 
     public function startTimer(User $user, string $commandStr): Timer
     {
         $timer = $this->timerRepository->findRunningTimer($user);
         if ($timer) {
-            $this->time->stopTimer($user, $timer);
+            $this->time->stopTimer($timer);
         }
         $timerType = str_replace('/', '', $commandStr);
+        $statusText = '';
+        $emoji = '';
+
+        if ($commandStr === SlashCommandHandler::START_BREAK) {
+            $statusText = 'Shortly away';
+            $emoji = ':zzz:';
+        }
+
+        $this->slackUserClient->slackApiCall('POST', 'users.profile.set', [
+            'profile' => [
+                'status_text' => $statusText,
+                'status_emoji' => $emoji,
+                'status_expiration' => 0
+            ]
+        ]);
         return $this->time->startTimer($user, $timerType);
     }
 
@@ -48,7 +67,7 @@ class TimerHandler
             $timer = $this->time->addTaskToTimer($timer, $taskDescription);
         }
 
-        return $this->time->stopTimer($user, $timer);
+        return $this->time->stopTimer($timer);
     }
 
     public function lateSignIn(User $user, string $timeStr): Timer
@@ -62,7 +81,7 @@ class TimerHandler
         $timers = $this->timerRepository->findTimersFromToday($user);
 
         if (empty($timers)) {
-            throw new MessageHandlerException('Seems like you didn\'t sign in this morning. You can travel back in time to check yourself in for today by using the `%s` command.', Response::HTTP_PRECONDITION_FAILED, SlashCommandHandler::LATE_HI);
+            throw new MessageHandlerException(sprintf('Seems like you didn\'t sign in this morning. You can travel back in time to check yourself in for today by using the `%s` command.', SlashCommandHandler::LATE_HI), Response::HTTP_PRECONDITION_FAILED);
         }
 
         $latestTimer = $timers[count($timers)-1];
@@ -78,7 +97,7 @@ class TimerHandler
             return new PunchTimerStatusDto(false, $latestTimer);
         }
 
-        $this->time->stopTimer($user, $latestTimer);
+        $this->time->stopTimer($latestTimer);
         return new PunchTimerStatusDto(true, $latestTimer);
     }
 
