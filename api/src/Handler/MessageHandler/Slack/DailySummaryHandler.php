@@ -188,7 +188,13 @@ class DailySummaryHandler
 
         if ($doSendMail) {
             try {
-                $this->mailer->sendDailySummaryMail($break, $work - $break, $user, $ds->getDailySummary());
+                $this->mailer->sendDailySummaryMail($break, $work, $user, $ds->getDailySummary());
+                $subject = sprintf('Daily Summary of %s', $user->getFirstName());
+                $formattedTimeOnBreak = $this->time->formatSecondsAsHoursAndMinutes($break);
+                $ormattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($work);
+                $content = sprintf('<strong>%s</strong><br>Work: %s<br>Break: %s<br><pre>%s</pre>', $user->getFirstName(), $ormattedTimeOnWork, $formattedTimeOnBreak, $summary);
+
+                $this->mailer->send($_ENV['MAIL_SENDER'], $user->getEmail(), $subject, $content);
                 $ds->setIsEmailSent(true);
             } catch (MessageHandlerException $e) {
                 $ds->setIsEmailSent(false);
@@ -214,13 +220,13 @@ class DailySummaryHandler
 
         $this->databaseHelper->flushAndPersist($ds);
 
-        return new ModalSubmissionDto(ModalSubmissionDto::STATUS_SUCCESS, $m->getBlockText(0), 'Jabadabadingboombang!');
+        return new ModalSubmissionDto(ModalSubmissionDto::STATUS_SUCCESS, $m->getBlockText(0), 'Signed out!');
     }
 
     private function getDailySummaryAddSlackMessage(int $timeOnWork, int $timeOnBreak, bool $didPunchOut, bool $doSendMail, bool $alreadySynchedToPersonio, ?string $personioErrorMsg): SlackMessage
     {
         $formattedTimeOnBreak = $this->time->formatSecondsAsHoursAndMinutes($timeOnBreak);
-        $formattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($timeOnWork - $timeOnBreak);
+        $formattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($timeOnWork);
 
         $m = $this->slackMessageHelper->createSlackMessage();
         if ($didPunchOut) {

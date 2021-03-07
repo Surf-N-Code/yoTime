@@ -7,6 +7,7 @@ use App\Entity\Slack\SlackInteractionEvent;
 use App\Exceptions\MessageHandlerException;
 use App\Handler\MessageHandler\Slack\DailySummaryHandler;
 use App\Services\UserProvider;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,13 +19,17 @@ final class InteractionEventController implements MessageHandlerInterface
 
     private UserProvider $userProvider;
 
+    private LoggerInterface $logger;
+
     public function __construct(
         DailySummaryHandler $dailySummaryHandler,
-        UserProvider $userProvider
+        UserProvider $userProvider,
+        LoggerInterface $logger
     )
     {
         $this->dailySummaryHandler = $dailySummaryHandler;
         $this->userProvider = $userProvider;
+        $this->logger = $logger;
     }
 
     public function __invoke(SlackInteractionEvent $interactionEvent)
@@ -49,6 +54,7 @@ final class InteractionEventController implements MessageHandlerInterface
 
             return new Response(sprintf('Unsupported event detected in payload: %s', json_encode($payload)), 400);
         } catch (\Exception $e) {
+            $this->logger->error(sprintf('Something went wrong setting the daily summary with message: %s', $e->getMessage()));
             return new Response($e->getMessage(), Response::HTTP_PRECONDITION_FAILED);
         }
     }

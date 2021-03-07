@@ -10,6 +10,7 @@ use App\Security\ResetPasswordHandler;
 use App\Services\UserProvider;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Psr\Log\LoggerInterface;
 
 class RegisterUserHandlerTest extends TestCase
 {
@@ -25,11 +26,13 @@ class RegisterUserHandlerTest extends TestCase
     {
         $this->userProvider = $this->prophesize(UserProvider::class);
         $this->resetPasswordHandler = $this->prophesize(ResetPasswordHandler::class);
+        $this->logger = $this->prophesize(LoggerInterface::class);
         $this->user = $this->prophesize(User::class);
 
         $this->registerHandler = new RegisterHandler(
             $this->userProvider->reveal(),
             $this->resetPasswordHandler->reveal(),
+            $this->logger->reveal()
         );
     }
 

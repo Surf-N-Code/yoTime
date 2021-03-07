@@ -165,7 +165,6 @@ export const Reporting = (props) => {
                                                     id="options-menu" aria-haspopup="true" aria-expanded="true"
                                                     onClick={() => {
                                                         setIsSortingSelectVisible(prev => !prev);
-                                                        setIsUserSelectVisible(prev => !prev);
                                                     }}
                                             >
                                                 {sortOption ? `Sorted by ${sortOption === 'user.first_name' ? 'User' : 'Date'}` : 'Sorting'}

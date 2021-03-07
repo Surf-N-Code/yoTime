@@ -74,7 +74,7 @@ export const Timers = ({validToken, initialData}) => {
     }
 
     const generateSubTimerHtml = (timer: ITimer, formattedDiffInMinPerTimer: string) => {
-        const dateStart = utcDate(timer.date_start);
+        const dateStart = new Date(timer.date_start);
         const isRunning = typeof timer.date_end === 'undefined' || timer.date_end === null;
         const timerStartString = format(dateStart, 'HH:mm');
 

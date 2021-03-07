@@ -34,10 +34,26 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Add function to set user status to away in case of a break">
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/api/src/EventListener/TimerListener.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/api/.env.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/fixtures/dev/users.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/dev/users.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/EventListener/DailySummaryListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/EventListener/DailySummaryListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageController/Slack/InteractionEventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageController/Slack/InteractionEventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/BotMessageHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/BotMessageHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/RegisterHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/RegisterHandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/TimerHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/TimerHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/TimerHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/TimerHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/UserHelpHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/UserHelpHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Mail/Mailer.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Mail/Mailer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/BotMessageHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/BotMessageHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/RegisterUserHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/RegisterUserHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/DailyEditview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DailyEditview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/reporting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/reporting.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/timers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/timers.tsx" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -269,7 +285,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/client/styles/tailwind.css&#10;/home/norman/Development/yoTime/api/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Test/Client.php" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/src/Slack" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/src/EventListener" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -279,11 +295,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/src/EventListener" />
       <recent name="$PROJECT_DIR$/api/src/Slack" />
       <recent name="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack" />
       <recent name="$PROJECT_DIR$/client" />
       <recent name="$PROJECT_DIR$/client/public/images/icons" />
-      <recent name="$PROJECT_DIR$/client/pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api/src/Validator/Constraints" />
@@ -293,17 +309,17 @@
       <recent name="$PROJECT_DIR$/api/tests/Doctrine" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.TimerHandlerTest">
-    <configuration name="DailySummaryPersisteIntegrationTest.testAddDailySummary" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\DataPersister\DailySummaryPersisteIntegrationTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/DataPersister/DailySummaryPersisteIntegrationTest.php" method="testAddDailySummary" scope="Method" />
+  <component name="RunManager" selected="PHPUnit.RegisterUserHandlerTest.testRegister">
+    <configuration name="RegisterUserHandlerTest.testRegister" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\RegisterUserHandlerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/RegisterUserHandlerTest.php" method="testRegister" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="DataPersister" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner configuration_file="/srv/api/phpunit.xml" directory="$PROJECT_DIR$/api/tests/DataPersister" />
+    <configuration name="SetUserListenerTest.testAddTimer" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Doctrine\SetUserListenerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Doctrine/SetUserListenerTest.php" method="testAddTimer" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="InteractionEventControllerIntegrationTest.testDailySummaryUpdateAlreadyPunchedOut" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Handler\MessageController\Slack\InteractionEventControllerIntegrationTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageController/Slack/InteractionEventControllerIntegrationTest.php" method="testDailySummaryUpdateAlreadyPunchedOut" scope="Method" />
+    <configuration name="SlashCommandHandlerTest.testRegisterCommand" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Handler\MessageHandler\Slack\SlashCommandHandlerTest" configuration_file="/srv/api/phpunit.xml" file="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/SlashCommandHandlerTest.php" method="testRegisterCommand" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="TimerHandlerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -316,11 +332,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.TimerHandlerTest" />
+        <item itemvalue="PHPUnit.RegisterUserHandlerTest.testRegister" />
+        <item itemvalue="PHPUnit.SlashCommandHandlerTest.testRegisterCommand" />
         <item itemvalue="PHPUnit.tests" />
-        <item itemvalue="PHPUnit.InteractionEventControllerIntegrationTest.testDailySummaryUpdateAlreadyPunchedOut" />
-        <item itemvalue="PHPUnit.DailySummaryPersisteIntegrationTest.testAddDailySummary" />
-        <item itemvalue="PHPUnit.DataPersister" />
+        <item itemvalue="PHPUnit.SetUserListenerTest.testAddTimer" />
+        <item itemvalue="PHPUnit.TimerHandlerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -428,14 +444,7 @@
       <workItem from="1613157737566" duration="6301000" />
       <workItem from="1615015046122" duration="2821000" />
       <workItem from="1615038003457" duration="3305000" />
-      <workItem from="1615102814387" duration="8105000" />
-    </task>
-    <task id="LOCAL-00049" summary="Add authentication (wip)">
-      <created>1603647757997</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1603647757997</updated>
+      <workItem from="1615102814387" duration="17855000" />
     </task>
     <task id="LOCAL-00050" summary="Add authentication (wip)">
       <created>1603647792347</created>
@@ -773,7 +782,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615112117488</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="Add function to set user status to away in case of a break">
+      <created>1615112900433</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1615112900433</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -845,8 +861,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/api/src/Handler/MessageController/Slack/InteractionEventController.php</url>
-          <line>33</line>
+          <line>38</line>
           <option name="timeStamp" value="113" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/BotMessageHandler.php</url>
+          <line>75</line>
+          <option name="timeStamp" value="117" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php</url>
+          <line>151</line>
+          <option name="timeStamp" value="120" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

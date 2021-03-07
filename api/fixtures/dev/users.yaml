@@ -13,7 +13,7 @@ App\Entity\User:
     email: <email()>
     firstName: <name()>
     lastName: <name()>
-    slack_user_id: UHW253RU1
+    slack_user_id: UHW253XXX
     timezone: Europe/Amsterdam
     tzOffset: 100
     password: <getHashedPassword($email, "trustno1")>

@@ -38,10 +38,7 @@ class DailySummaryListener implements EventSubscriberInterface
     {
         $ds = $event->getControllerResult();
 
-        if (!$ds instanceof DailySummary &&
-            (Request::METHOD_POST !== 'PATCH' ||
-            Request::METHOD_POST !== $event->getRequest()->getMethod())
-        ) {
+        if (!$ds instanceof DailySummary && Request::METHOD_POST !== $event->getRequest()->getMethod()) {
             return;
         }
 
