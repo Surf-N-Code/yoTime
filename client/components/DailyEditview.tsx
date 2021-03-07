@@ -124,7 +124,7 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
         const tempId = uuidv4();
 
         const updatedDaily = {
-            date: date[0],
+            date: date,
             daily_summary: dailySummaryText,
             is_email_sent: sendMail,
             is_synced_to_personio: true,
@@ -156,7 +156,13 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
             }
             toggleDailyEditView();
             await mutateDailies((data) => {
-                const newHydra = [{id: tempId, ...updatedDaily}, ...data['hydra:member']];
+                let newHydra = [];
+                console.log(updatedDaily);
+                if (typeof data !== 'undefined' && typeof data['hydra:member'] !== 'undefined') {
+                    newHydra = [{id: tempId, ...updatedDaily}, ...data?.['hydra:member']];
+                } else {
+                    newHydra = [{id: tempId, ...updatedDaily}];
+                }
                 return {...data, "hydra:member": newHydra.sort((a,b) => new Date(b.start_time).getTime() - new Date(a.end_time).getTime())};
             }, false);
             await FetcherFunc(`/daily_summaries`, auth.jwt, 'POST', updatedDaily);

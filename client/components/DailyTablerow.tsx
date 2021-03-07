@@ -6,9 +6,9 @@ import isToday from "date-fns/isToday";
 
 export const DailyTablerow = ({daily, onClick}) => {
     const formattedDiffInMinPerDayWork = toHHMMSS(daily.time_worked_in_s);
-    const formattedDiffInMinPerDayBreak = toHHMMSS(daily.time_break_in_s);
+    const formattedDiffInMinPerDayBreak = toHHMMSS(typeof daily.time_break_in_s === 'undefined' ? 0 : daily.time_break_in_s);
     const todayDaily = isToday(new Date(daily.start_time));
-    console.log(daily, formattedDiffInMinPerDayBreak, formattedDiffInMinPerDayWork);
+    console.log(formattedDiffInMinPerDayBreak, formattedDiffInMinPerDayWork);
     return (
          <div key={daily.id} className="w-full bg-white p-3 mb-1 border-gray-300 border-l-4 hover:border-teal-600 rounded-md cursor-pointer" onClick={() => onClick(daily)}>
             <div className={"flex"}>
@@ -24,7 +24,7 @@ export const DailyTablerow = ({daily, onClick}) => {
                     </div>
                     <div className="flex mt-7 items-center">
                         <div className="text-xs">({formattedDiffInMinPerDayBreak})</div>
-                        <div className={`ml-2${cn({' text-red-500': workSubBreak < 0})}`}>{workSubBreak < 0 ? '-' : '' }{formattedDiffInMinPerDayWork}</div>
+                        <div className={`ml-2${cn({' text-red-500': daily.time_worked_in_s <= 0})}`}>{daily.time_worked_in_s <= 0 ? '-' : '' }{formattedDiffInMinPerDayWork}</div>
                     </div>
                 </div>
             </div>
