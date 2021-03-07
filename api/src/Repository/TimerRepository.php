@@ -49,17 +49,16 @@ class TimerRepository extends ServiceEntityRepository
      */
     public function findTimeEntriesByPeriod(
         User $user,
-        \DateTime $userLocalTime,
         string $constraint,
         bool $teamReport,
         string $timerType = null,
         string $slackTeamId = null,
         User $slackUserToReport = null
     ): ?array {
-        $userLocalTime = new \DateTime($userLocalTime->format('Y-m-d H:i:s'));
-        $weekStart = clone $userLocalTime;
-        $monthStart = clone $userLocalTime;
-        $yearStart = clone $userLocalTime;
+        $now = new \DateTime('now');
+        $weekStart = clone $now;
+        $monthStart = clone $now;
+        $yearStart = clone $now;
         $weekStart = clone $weekStart->sub(new \DateInterval(sprintf('P%sD', (date('N')-1))))->setTime(0,0,0);
         $monthStart = clone $monthStart->sub(new \DateInterval(sprintf('P%sD', (date('j')-1))))->setTime(0,0,0);
         $yearStart = clone $yearStart->modify('first day of January this year');
@@ -151,7 +150,7 @@ class TimerRepository extends ServiceEntityRepository
      */
     public function findTimersFromToday(User $user)
     {
-        $startDayTime = $this->dateTimeProvider->getLocalUserTime($user);
+        $startDayTime = new \DateTime('now');
         $startDayTime->setTime(0,0,0);
         $endDayTime = clone $startDayTime;
         $endDayTime->setTime(23,59,59);

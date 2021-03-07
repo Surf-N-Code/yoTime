@@ -95,7 +95,6 @@ class SlashCommandHandler {
                 $this->databaseHelper->flushAndPersist($timer);
                 $this->sendSlackMessage($responseUrl, $message);
                 return Response::HTTP_CREATED;
-
             case self::LATE_HI:
                 $user = $this->getUser($command->getUserId());
                 try {
@@ -105,6 +104,8 @@ class SlashCommandHandler {
                 } catch (MessageHandlerException $e) {
                     $message = new SlackMessage();
                     $message->addTextSection($e->getMessage());
+                    $this->sendSlackMessage($responseUrl, $message);
+                    return Response::HTTP_OK;
                 }
                 $this->sendSlackMessage($responseUrl, $message);
                 return Response::HTTP_CREATED;
@@ -118,6 +119,8 @@ class SlashCommandHandler {
                 } catch (MessageHandlerException $e) {
                     $message = new SlackMessage();
                     $message->addTextSection($e->getMessage());
+                    $this->sendSlackMessage($responseUrl, $message);
+                    return Response::HTTP_OK;
                 }
                 $this->sendSlackMessage($responseUrl, $message);
                 return Response::HTTP_CREATED;

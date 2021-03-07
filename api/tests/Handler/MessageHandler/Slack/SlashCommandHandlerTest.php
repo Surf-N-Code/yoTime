@@ -7,8 +7,10 @@ use App\Entity\Slack\SlashCommand;
 use App\Entity\Timer;
 use App\Entity\TimerType;
 use App\Entity\User;
+use App\Exceptions\MessageHandlerException;
 use App\Handler\MessageHandler\Slack\DailySummaryHandler;
 use App\Handler\MessageHandler\Slack\RegisterHandler;
+use App\Handler\MessageHandler\Slack\ReportingHandler;
 use App\Handler\MessageHandler\Slack\SlashCommandHandler;
 use App\Handler\MessageHandler\Slack\TimerHandler;
 use App\Handler\MessageHandler\Slack\UserHelpHandler;
@@ -35,6 +37,7 @@ class SlashCommandHandlerTest extends TestCase
     private $userHelpHandler;
     private $registerHandler;
     private $dailySummaryHandler;
+    private $reportingHandler;
     private $slackClient;
     private $sc;
 
@@ -49,6 +52,7 @@ class SlashCommandHandlerTest extends TestCase
         $this->registerHandler = $this->prophesize(RegisterHandler::class);
         $this->timerHandler = $this->prophesize(TimerHandler::class);
         $this->dailySummaryHandler = $this->prophesize(DailySummaryHandler::class);
+        $this->reportingHandler = $this->prophesize(ReportingHandler::class);
         $this->mailer = $this->prophesize(Mailer::class);
         $this->slackMessage = $this->prophesize(SlackMessage::class);
         $this->slackClient = $this->prophesize(SlackClient::class);
@@ -71,7 +75,8 @@ class SlashCommandHandlerTest extends TestCase
             $this->databaseHelper->reveal(),
             $this->time->reveal(),
             $this->slackClient->reveal(),
-            $this->registerHandler->reveal()
+            $this->registerHandler->reveal(),
+            $this->reportingHandler->reveal()
         );
     }
 
@@ -79,7 +84,7 @@ class SlashCommandHandlerTest extends TestCase
     {
         $this->sc->getCommand()
                  ->shouldBeCalled()
-                 ->willReturn("/work");
+                 ->willReturn(SlashCommandHandler::START_WORK);
 
         $this->sc->getText()
                  ->shouldBeCalled()
@@ -89,7 +94,7 @@ class SlashCommandHandlerTest extends TestCase
             ->shouldBeCalled()
             ->willReturn($this->user->reveal());
 
-        $this->timerHandler->startTimer($this->user->reveal(), '/work')
+        $this->timerHandler->startTimer($this->user->reveal(), SlashCommandHandler::START_WORK)
             ->shouldBeCalled()
             ->willReturn($this->timeEntryProphecy->reveal());
 
@@ -98,7 +103,7 @@ class SlashCommandHandlerTest extends TestCase
 
         $this->timeEntryProphecy->getTimerType()
             ->shouldBeCalled()
-            ->willReturn('work');
+            ->willReturn(TimerType::WORK);
 
         $this->slashCommandHandler->getSlashCommandToExecute($this->sc->reveal());
     }
@@ -107,7 +112,7 @@ class SlashCommandHandlerTest extends TestCase
     {
         $this->sc->getCommand()
                   ->shouldBeCalled()
-                  ->willReturn("/break");
+                  ->willReturn(SlashCommandHandler::START_BREAK);
 
         $this->sc->getText()
                  ->shouldBeCalled()
@@ -117,13 +122,13 @@ class SlashCommandHandlerTest extends TestCase
                            ->shouldBeCalled()
                            ->willReturn($this->user->reveal());
 
-        $this->timerHandler->startTimer($this->user->reveal(), '/break')
+        $this->timerHandler->startTimer($this->user->reveal(),  SlashCommandHandler::START_BREAK)
                            ->shouldBeCalled()
                            ->willReturn($this->timeEntryProphecy->reveal());
 
         $this->timeEntryProphecy->getTimerType()
                                 ->shouldBeCalled()
-                                ->willReturn('break');
+                                ->willReturn(TimerType::BREAK);
 
         $this->databaseHelper->flushAndPersist($this->timeEntryProphecy->reveal())
                              ->shouldBeCalled();
@@ -135,7 +140,7 @@ class SlashCommandHandlerTest extends TestCase
     {
         $this->sc->getCommand()
            ->shouldBeCalled()
-           ->willReturn("/late_hi");
+           ->willReturn(SlashCommandHandler::LATE_HI);
 
         $this->sc->getText()
            ->shouldBeCalled()
@@ -206,7 +211,7 @@ class SlashCommandHandlerTest extends TestCase
 
         $this->timeEntryProphecy->getTimerType()
                                 ->shouldBeCalled()
-                                ->willReturn('break');
+                                ->willReturn(TimerType::BREAK);
 
         $this->time->formatSecondsAsHoursAndMinutes(3600)
             ->shouldBeCalled()
@@ -222,7 +227,7 @@ class SlashCommandHandlerTest extends TestCase
 
         $this->timeEntryProphecy->getTimerType()
                                 ->shouldBeCalled()
-                                ->willReturn('break');
+                                ->willReturn(TimerType::BREAK);
 
         $this->databaseHelper->flushAndPersist($this->timeEntryProphecy->reveal())
                              ->shouldBeCalled();
@@ -234,7 +239,7 @@ class SlashCommandHandlerTest extends TestCase
     {
         $this->sc->getCommand()
            ->shouldBeCalled()
-           ->willReturn("/stop-timer");
+           ->willReturn(SlashCommandHandler::STOP_TIMER);
 
         $this->sc->getText()
            ->shouldBeCalled()
@@ -250,7 +255,7 @@ class SlashCommandHandlerTest extends TestCase
 
         $this->timeEntryProphecy->getTimerType()
                                 ->shouldBeCalled()
-                                ->willReturn('work');
+                                ->willReturn(TimerType::BREAK);
 
         $this->time->formatSecondsAsHoursAndMinutes(3600)
                    ->shouldBeCalled()
@@ -266,7 +271,7 @@ class SlashCommandHandlerTest extends TestCase
 
         $this->timeEntryProphecy->getTimerType()
                                 ->shouldBeCalled()
-                                ->willReturn('break');
+                                ->willReturn(TimerType::BREAK);
 
         $this->databaseHelper->flushAndPersist($this->timeEntryProphecy->reveal())
                              ->shouldBeCalled();
@@ -278,7 +283,7 @@ class SlashCommandHandlerTest extends TestCase
     {
         $this->sc->getCommand()
            ->shouldBeCalled()
-           ->willReturn("/ds");
+           ->willReturn(SlashCommandHandler::DAILY_SUMMARY);
 
         $this->sc->getText()
            ->shouldBeCalled()
@@ -287,10 +292,6 @@ class SlashCommandHandlerTest extends TestCase
         $this->sc->getTriggerId()
                  ->shouldBeCalled()
                  ->willReturn("234.234.234");
-
-        $this->userProvider->getDbUserBySlackId('user1')
-                           ->shouldBeCalled()
-                           ->willReturn($this->user->reveal());
 
         $this->dailySummaryHandler->getDailySummarySubmitView('234.234.234')
                                   ->shouldBeCalled()
@@ -301,4 +302,26 @@ class SlashCommandHandlerTest extends TestCase
 
         $this->slashCommandHandler->getSlashCommandToExecute($this->sc->reveal());
     }
+
+    public function testRegisterCommand()
+    {
+        $this->sc->getCommand()
+                 ->shouldBeCalled()
+                 ->willReturn(SlashCommandHandler::REGISTER);
+
+        $this->sc->getText()
+                 ->shouldBeCalled()
+                 ->willReturn('day');
+
+        $this->userProvider->getDbUserBySlackId('user1')
+                           ->shouldBeCalled()
+                           ->willReturn($this->user->reveal());
+
+        $this->time->getTimesSpentByTyeAndPeriod($this->user->reveal(), 'day')
+                   ->shouldBeCalled()
+                   ->willReturn(['work' => 3600, 'break' => 600]);
+
+        $this->slashCommandHandler->getSlashCommandToExecute($this->sc->reveal());
+    }
+
 }

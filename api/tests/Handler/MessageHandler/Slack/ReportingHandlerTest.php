@@ -2,6 +2,7 @@
 
 namespace App\Tests\Handler\MessageHandler\Slack;
 
+use App\Entity\Slack\SlashCommand;
 use App\Entity\User;
 use App\Handler\MessageHandler\Slack\ReportingHandler;
 use App\Services\Time;
@@ -16,6 +17,7 @@ class ReportingHandlerTest extends TestCase
 
     private $time;
     private $user;
+    private $slashCommand;
 
     private ReportingHandler $reportinghandler;
 
@@ -23,7 +25,7 @@ class ReportingHandlerTest extends TestCase
     {
         $this->time = $this->prophesize(Time::class);
         $this->user = $this->prophesize(User::class);
-
+        $this->slashCommand = $this->prophesize(SlashCommand::class);
         $this->reportinghandler = new ReportingHandler(
             $this->time->reveal()
         );
@@ -33,7 +35,16 @@ class ReportingHandlerTest extends TestCase
     {
         $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
             ->shouldBeCalled()
-            ->willReturn([3600, 600]);
-        $this->reportinghandler->getUserReport($this->user->reveal(), '/day');
+            ->willReturn(['work' => 3600, 'break' => 600]);
+
+        $this->slashCommand->getText()->shouldBeCalled()->willReturn('day');
+        $this->time->formatSecondsAsHoursAndMinutes(3600)
+                   ->shouldBeCalled()
+                   ->willReturn('1h 0min');
+
+        $this->time->formatSecondsAsHoursAndMinutes(600)
+                   ->shouldBeCalled()
+                   ->willReturn('0h 10min');
+        $this->reportinghandler->getUserReport($this->user->reveal(), $this->slashCommand->reveal());
     }
 }

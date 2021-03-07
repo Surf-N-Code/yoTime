@@ -141,7 +141,7 @@ class BotMessageHandlerTest extends TestCase
 
         $this->time->getTimesSpentByTypeAndPeriod($user, 'day')
             ->shouldBeCalled()
-            ->willReturn([3600, 600]);
+            ->willReturn(['work' => 3600, 'break' => 600]);
 
         $this->time->formatSecondsAsHoursAndMinutes(3000)
             ->shouldBeCalled()
@@ -158,7 +158,7 @@ class BotMessageHandlerTest extends TestCase
             $this->slackClient->reveal(),
             $this->databaseHelper->reveal()
         );
-        $botMessageHandler->parseEventType($this->buildEvent('app_mention', '/bye'));
+        $botMessageHandler->parseEventType($this->buildEvent('app_mention', 'bye'));
     }
 
     public function testByeEventNotPunchedIn()

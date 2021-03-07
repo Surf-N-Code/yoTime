@@ -31,10 +31,7 @@ class ReportingHandler
     {
         $period = str_replace(SlashCommandHandler::REPORT, '', $command->getText());
         try {
-            extract(
-                $this->time->getTimesSpentByTypeAndPeriod($user, $period),
-                EXTR_OVERWRITE
-            );
+            extract($this->time->getTimesSpentByTypeAndPeriod($user, $period), EXTR_OVERWRITE);
         } catch (MessageHandlerException $e) {
             $m = new SlackMessage();
             return $m->addTextSection($e->getMessage());

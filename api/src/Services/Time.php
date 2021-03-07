@@ -7,7 +7,6 @@ use App\Entity\Timer;
 use App\Entity\TimerType;use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
 use App\Repository\TimerRepository;
-use App\Repository\UserRepository;
 use App\ObjectFactories\TimerFactory;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,35 +14,26 @@ class Time
 {
     private $timeEntryRepository;
 
-    private $userRepository;
-
-    private $dateTimeProvider;
-
     private $timerFactory;
 
     public function __construct(
         TimerRepository $timeEntryRepository,
-        UserRepository $userRepository,
-        DateTimeProvider $dateTimeProvider,
         TimerFactory $timerFactory
     )
     {
         $this->timeEntryRepository = $timeEntryRepository;
-        $this->userRepository = $userRepository;
-        $this->dateTimeProvider = $dateTimeProvider;
         $this->timerFactory = $timerFactory;
     }
 
     public function startTimer(User $user, $timerType, \DateTime $dateStart = null): Timer
     {
-        $currentUserTime = $this->dateTimeProvider->getLocalUserTime($user);
-        return $this->timerFactory->createTimerObject($timerType, $user, $dateStart ?? $currentUserTime);
+        return $this->timerFactory->createTimerObject($timerType, $user, $dateStart ?? new \DateTime('now'));
     }
 
-    public function stopTimer(User $user, Timer $timer): Timer
+    public function stopTimer(Timer $timer): Timer
     {
-        $currentUserTime = $this->dateTimeProvider->getLocalUserTime($user);
-        return $timer->setDateEnd($currentUserTime);
+        $timer->setDateEnd(new \DateTime('now'));
+        return $timer;
     }
 
     public function addTaskToTimer(Timer $timeEntry, string $taskDescription): Timer
@@ -87,7 +77,7 @@ class Time
         }
         $timeParts = explode(':', $timeString);
 
-        $dateStart = (new \DateTime($this->dateTimeProvider->getLocalUserTime($user)->format('Y-m-d H:i:s')))->setTime(1,0,0);
+        $dateStart = (new \DateTime('now'))->setTime(1,0,0);
         $dateEnd = clone($dateStart);
         $dateEnd->add(new \DateInterval(sprintf('PT%sH%sM', $timeParts[0], $timeParts[1])));
         return $this->timerFactory->createTimerObject($timerType, $user, $dateStart, $dateEnd);
@@ -126,7 +116,6 @@ class Time
         try {
             $timeEntries = $this->timeEntryRepository->findTimeEntriesByPeriod(
                 $user,
-                $this->dateTimeProvider->getLocalUserTime($user),
                 $period,
                 false,
                 $timerType
@@ -140,7 +129,7 @@ class Time
         foreach ($timeEntries as $timer) {
             if (!$timer->getDateEnd()) {
                 //currently running timer
-                $tE = $this->dateTimeProvider->getLocalUserTime($user)->getTimestamp();
+                $tE = (new \DateTime('now'))->getTimestamp();
             } else {
                 $tE = $timer->getDateEnd()->getTimestamp();
             }

@@ -116,6 +116,7 @@ class InteractionEventControllerIntegrationTest extends IntegrationTestCase
         $em->persist($ds);
         $em->flush();
 
+
         $response = $client->request(
             'POST',
             '/slack/event/interaction',

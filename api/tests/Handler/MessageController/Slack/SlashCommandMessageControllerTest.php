@@ -79,7 +79,7 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        self::assertEquals(Response::HTTP_PRECONDITION_FAILED, $response->getStatusCode());
+        self::assertEquals(Response::HTTP_OK, $response->getStatusCode());
     }
 
     public function testLateHiCommand()
@@ -116,7 +116,7 @@ class SlashCommandMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        self::assertEquals(Response::HTTP_PRECONDITION_FAILED, $response->getStatusCode());
+        self::assertEquals(Response::HTTP_OK, $response->getStatusCode());
     }
 
     public function testLateBreakCommand()

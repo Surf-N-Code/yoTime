@@ -24,17 +24,6 @@ export const sleep = (milliseconds: number) => {
     return new Promise(res => setTimeout(res, milliseconds))
 }
 
-export const waitForSyncedTimer = async (condition, time) => {
-    return await new Promise(resolve => {
-        const interval = setInterval(() => {
-            if (condition) {
-                resolve();
-                clearInterval(interval);
-            }
-        }, time);
-    });
-}
-
 export const getUniqueValuesForProperty = (array, uniqueProperty) => {
     let unique = [];
     let distinct = [];
@@ -45,4 +34,9 @@ export const getUniqueValuesForProperty = (array, uniqueProperty) => {
         }
     }
     return distinct;
+}
+
+export const utcDate = (dateString) => {
+    let userDate = new Date(dateString);
+    return new Date(Date.UTC(userDate.getUTCFullYear(), userDate.getUTCMonth(), userDate.getUTCDate(), userDate.getUTCHours(), userDate.getUTCMinutes(), userDate.getUTCSeconds()));
 }

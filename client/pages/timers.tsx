@@ -5,8 +5,6 @@ import {differenceInDays, differenceInSeconds, format} from 'date-fns';
 import isToday from 'date-fns/isToday';
 import cn from 'classnames';
 import {v4 as uuidv4} from 'uuid';
-import {ActionAnimations, SwipeableList, SwipeableListItem} from '@sandstreamdev/react-swipeable-list';
-import '@sandstreamdev/react-swipeable-list/dist/styles.css';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Transition } from 'react-transition-group';
 import fetch from 'isomorphic-unfetch';
@@ -20,7 +18,7 @@ import {toHHMMSS} from "../utilities";
 import {GetServerSideProps} from "next";
 import Cookies from "universal-cookie";
 import {log} from "util";
-import {sleep} from "../utilities/lib";
+import {sleep, utcDate} from "../utilities/lib";
 
 const TimerData = (pageIndex, initialData) => {
     const [auth, authDispatch] = useAuth();
@@ -76,10 +74,11 @@ export const Timers = ({validToken, initialData}) => {
     }
 
     const generateSubTimerHtml = (timer: ITimer, formattedDiffInMinPerTimer: string) => {
-        const dateStart = new Date(timer.date_start);
+        const dateStart = utcDate(timer.date_start);
         const isRunning = typeof timer.date_end === 'undefined' || timer.date_end === null;
         const timerStartString = format(dateStart, 'HH:mm');
 
+        console.log(dateStart, timer.date_start);
         let diffInDays = 0;
         let timerEndString = '...';
         if (!isRunning) {
@@ -224,6 +223,7 @@ export const Timers = ({validToken, initialData}) => {
                                             }
                                             totalWorkDuration += diffInSWork;
                                             totalBreakDuration += diffInSBreak;
+                                            console.log(diffInSBreak, diffInSWork);
                                             return generateSubTimerHtml(subTimer, toHHMMSS(subTimer.timer_type === 'work' ? diffInSWork : diffInSBreak));
                                         }
                                     })
