@@ -15,4 +15,4 @@ App\Entity\Timer:
     user: '@user_*'
     dateStart: <getDateStart()>
     dateEnd: <getDateEnd($dateStart)>
-    timerType: punch
+    timerType: break
