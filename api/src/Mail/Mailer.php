@@ -52,6 +52,6 @@ class Mailer {
 
         $subject = sprintf('Daily Summary of %s', $user->getFirstName());
         $content = sprintf('<strong>%s</strong><br>Work: %s<br>Break: %s<br><pre>%s</pre>', $user->getFirstName(), $ormattedTimeOnWork, $formattedTimeOnBreak, $summary);
-        $this->send('mailer@yotime.com', 'ndilthey@gmail.com', $subject, $content);
+        $this->send($_ENV['MAIL_SENDER'], 'ndilthey@gmail.com', $subject, $content);
     }
 }

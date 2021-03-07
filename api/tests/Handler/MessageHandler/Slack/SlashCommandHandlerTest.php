@@ -59,10 +59,6 @@ class SlashCommandHandlerTest extends TestCase
 
         $this->sc = $this->prophesize(SlashCommand::class);
 
-        $this->sc->getUserId()
-           ->shouldBeCalled()
-           ->willReturn('user1');
-
         $this->sc->getResponseUrl()
            ->shouldBeCalled()
            ->willReturn('https://www.slack.com/api');
@@ -85,6 +81,10 @@ class SlashCommandHandlerTest extends TestCase
         $this->sc->getCommand()
                  ->shouldBeCalled()
                  ->willReturn(SlashCommandHandler::START_WORK);
+
+        $this->sc->getUserId()
+                 ->shouldBeCalled()
+                 ->willReturn('user1');
 
         $this->sc->getText()
                  ->shouldBeCalled()
@@ -114,6 +114,10 @@ class SlashCommandHandlerTest extends TestCase
                   ->shouldBeCalled()
                   ->willReturn(SlashCommandHandler::START_BREAK);
 
+        $this->sc->getUserId()
+                 ->shouldBeCalled()
+                 ->willReturn('user1');
+
         $this->sc->getText()
                  ->shouldBeCalled()
                  ->willReturn("");
@@ -131,7 +135,7 @@ class SlashCommandHandlerTest extends TestCase
                                 ->willReturn(TimerType::BREAK);
 
         $this->databaseHelper->flushAndPersist($this->timeEntryProphecy->reveal())
-                             ->shouldBeCalled();
+                              ->shouldBeCalled();
 
         $this->slashCommandHandler->getSlashCommandToExecute($this->sc->reveal());
     }
@@ -145,6 +149,10 @@ class SlashCommandHandlerTest extends TestCase
         $this->sc->getText()
            ->shouldBeCalled()
            ->willReturn("07:30");
+
+        $this->sc->getUserId()
+                 ->shouldBeCalled()
+                 ->willReturn('user1');
 
         $this->userProvider->getDbUserBySlackId('user1')
                            ->shouldBeCalled()
@@ -177,6 +185,10 @@ class SlashCommandHandlerTest extends TestCase
            ->shouldBeCalled()
            ->willReturn("07:30");
 
+        $this->sc->getUserId()
+                 ->shouldBeCalled()
+                 ->willReturn('user1');
+
         $this->userProvider->getDbUserBySlackId('user1')
                            ->shouldBeCalled()
                            ->willReturn($this->user->reveal());
@@ -200,6 +212,10 @@ class SlashCommandHandlerTest extends TestCase
         $this->sc->getText()
            ->shouldBeCalled()
            ->willReturn("Task desc");
+
+        $this->sc->getUserId()
+                 ->shouldBeCalled()
+                 ->willReturn('user1');
 
         $this->userProvider->getDbUserBySlackId('user1')
                            ->shouldBeCalled()
@@ -244,6 +260,10 @@ class SlashCommandHandlerTest extends TestCase
         $this->sc->getText()
            ->shouldBeCalled()
            ->willReturn("Task desc");
+
+        $this->sc->getUserId()
+                 ->shouldBeCalled()
+                 ->willReturn('user1');
 
         $this->userProvider->getDbUserBySlackId('user1')
                            ->shouldBeCalled()
@@ -313,13 +333,17 @@ class SlashCommandHandlerTest extends TestCase
                  ->shouldBeCalled()
                  ->willReturn('day');
 
-        $this->userProvider->getDbUserBySlackId('user1')
+        $this->sc->getUserId()
+                 ->shouldBeCalled()
+                 ->willReturn('user1');
+
+        $this->userProvider->getSlackUser('user1')
                            ->shouldBeCalled()
                            ->willReturn($this->user->reveal());
 
-        $this->time->getTimesSpentByTyeAndPeriod($this->user->reveal(), 'day')
-                   ->shouldBeCalled()
-                   ->willReturn(['work' => 3600, 'break' => 600]);
+        $this->userProvider->populateUserEntityFromSlackInfo($this->user->reveal())
+                           ->shouldBeCalled()
+                           ->willReturn($this->user->reveal());
 
         $this->slashCommandHandler->getSlashCommandToExecute($this->sc->reveal());
     }

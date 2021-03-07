@@ -145,7 +145,7 @@ class BotMessageHandlerTest extends TestCase
 
         $this->time->formatSecondsAsHoursAndMinutes(3000)
             ->shouldBeCalled()
-            ->willReturn('0h 20min');
+            ->willReturn('1h 0min');
 
         $this->time->formatSecondsAsHoursAndMinutes(600)
                    ->shouldBeCalled()

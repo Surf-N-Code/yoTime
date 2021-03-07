@@ -110,8 +110,8 @@ class DailySummaryHandlerTest extends TestCase
         $this->dailySummaryProphecy->setIsSyncedToPersonio(true)
             ->shouldBeCalled();
 
-        $this->time->formatSecondsAsHoursAndMinutes(3000)
-                   ->shouldBeCalled()->willReturn('0h 20min');
+        $this->time->formatSecondsAsHoursAndMinutes(3600)
+                   ->shouldBeCalled()->willReturn('1h 0min');
 
         $this->time->formatSecondsAsHoursAndMinutes(600)
                    ->shouldBeCalled()->willReturn('0h 10min');
@@ -121,7 +121,7 @@ class DailySummaryHandlerTest extends TestCase
 
         $this->dailySummaryProphecy->getDailySummary()->shouldBeCalled()->willReturn('Daily summary notes');
 
-        $this->mailer->sendDailySummaryMail(600, 3000, $this->user->reveal(), 'Daily summary notes')
+        $this->mailer->sendDailySummaryMail(600, 3600, $this->user->reveal(), 'Daily summary notes')
                      ->shouldBeCalled();
 
         $this->personio->postAttendanceForEmployee(2269559, $this->dailySummaryProphecy->reveal())
@@ -176,8 +176,8 @@ class DailySummaryHandlerTest extends TestCase
         $this->dailySummaryProphecy->setIsSyncedToPersonio(true)
                                    ->shouldBeCalled();
 
-        $this->time->formatSecondsAsHoursAndMinutes(3000)
-                   ->shouldBeCalled()->willReturn('0h 20min');
+        $this->time->formatSecondsAsHoursAndMinutes(3600)
+                   ->shouldBeCalled()->willReturn('mh 0min');
 
         $this->time->formatSecondsAsHoursAndMinutes(600)
                    ->shouldBeCalled()->willReturn('0h 10min');
@@ -185,7 +185,7 @@ class DailySummaryHandlerTest extends TestCase
         $this->databaseHelper->flushAndPersist($this->dailySummaryProphecy->reveal())
                              ->shouldBeCalled();
 
-        $this->mailer->sendDailySummaryMail(600, 3000, $this->user->reveal(), 'Daily summary notes')
+        $this->mailer->sendDailySummaryMail(600, 3600, $this->user->reveal(), 'Daily summary notes')
                      ->shouldNotBeCalled();
 
         $this->personio->postAttendanceForEmployee(2269559, $this->dailySummaryProphecy->reveal())
@@ -240,8 +240,8 @@ class DailySummaryHandlerTest extends TestCase
         $this->dailySummaryProphecy->setIsSyncedToPersonio(true)
                                    ->shouldBeCalled();
 
-        $this->time->formatSecondsAsHoursAndMinutes(3000)
-                   ->shouldBeCalled()->willReturn('0h 20min');
+        $this->time->formatSecondsAsHoursAndMinutes(3600)
+                   ->shouldBeCalled()->willReturn('1h 0min');
 
         $this->time->formatSecondsAsHoursAndMinutes(600)
                    ->shouldBeCalled()->willReturn('0h 10min');
@@ -249,7 +249,7 @@ class DailySummaryHandlerTest extends TestCase
         $this->databaseHelper->flushAndPersist($this->dailySummaryProphecy->reveal())
                              ->shouldBeCalled();
 
-        $this->mailer->sendDailySummaryMail(600, 3000, $this->user->reveal(), 'Daily summary notes')
+        $this->mailer->sendDailySummaryMail(600, 3600, $this->user->reveal(), 'Daily summary notes')
                      ->shouldNotBeCalled();
 
         $this->personio->postAttendanceForEmployee(2269559, $this->dailySummaryProphecy->reveal())
@@ -304,8 +304,8 @@ class DailySummaryHandlerTest extends TestCase
         $this->dailySummaryProphecy->setIsSyncedToPersonio(true)
                                    ->shouldBeCalled();
 
-        $this->time->formatSecondsAsHoursAndMinutes(3000)
-                   ->shouldBeCalled()->willReturn('0h 20min');
+        $this->time->formatSecondsAsHoursAndMinutes(3600)
+                   ->shouldBeCalled()->willReturn('1h 0min');
 
         $this->time->formatSecondsAsHoursAndMinutes(600)
                    ->shouldBeCalled()->willReturn('0h 10min');
@@ -315,7 +315,7 @@ class DailySummaryHandlerTest extends TestCase
 
         $this->dailySummaryProphecy->getDailySummary()->shouldBeCalled()->willReturn('Daily summary notes');
 
-        $this->mailer->sendDailySummaryMail(600, 3000, $this->user->reveal(), 'Daily summary notes')
+        $this->mailer->sendDailySummaryMail(600, 3600, $this->user->reveal(), 'Daily summary notes')
                      ->shouldBeCalled();
 
         $this->personio->postAttendanceForEmployee(2269559, $this->dailySummaryProphecy->reveal())
@@ -371,7 +371,7 @@ class DailySummaryHandlerTest extends TestCase
                                    ->shouldBeCalled();
 
         $this->time->formatSecondsAsHoursAndMinutes(3600)
-                   ->shouldBeCalled()->willReturn('0h 30min');
+                   ->shouldBeCalled()->willReturn('1h 0min');
 
         $this->time->formatSecondsAsHoursAndMinutes(0)
                    ->shouldBeCalled()->willReturn('0h 0min');
@@ -413,7 +413,7 @@ class DailySummaryHandlerTest extends TestCase
                                   ->willReturn(true);
 
         $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
-                   ->shouldBeCalled()->willReturn([3600, 0]);
+                   ->shouldBeCalled()->willReturn(['work' => 3600, 'break' => 0]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()
@@ -434,7 +434,7 @@ class DailySummaryHandlerTest extends TestCase
                                    ->shouldBeCalled();
 
         $this->time->formatSecondsAsHoursAndMinutes(3600)
-                   ->shouldBeCalled()->willReturn('0h 30min');
+                   ->shouldBeCalled()->willReturn('1h 0min');
 
         $this->time->formatSecondsAsHoursAndMinutes(0)
                    ->shouldBeCalled()->willReturn('0h 0min');
@@ -512,8 +512,8 @@ class DailySummaryHandlerTest extends TestCase
         $this->dailySummaryProphecy->setIsSyncedToPersonio(true)
                                    ->shouldBeCalled();
 
-        $this->time->formatSecondsAsHoursAndMinutes(3000)
-                   ->shouldBeCalled()->willReturn('0h 20min');
+        $this->time->formatSecondsAsHoursAndMinutes(3600)
+                   ->shouldBeCalled()->willReturn('1h 0min');
 
         $this->time->formatSecondsAsHoursAndMinutes(600)
                    ->shouldBeCalled()->willReturn('0h 10min');
@@ -523,7 +523,7 @@ class DailySummaryHandlerTest extends TestCase
 
         $this->dailySummaryProphecy->getDailySummary()->shouldBeCalled()->willReturn('Daily summary notes');
 
-        $this->mailer->sendDailySummaryMail(600, 3000, $this->user->reveal(), 'Daily summary notes')
+        $this->mailer->sendDailySummaryMail(600, 3600, $this->user->reveal(), 'Daily summary notes')
                      ->shouldBeCalled()
                      ->willThrow(MessageHandlerException::class);
 
@@ -558,7 +558,7 @@ class DailySummaryHandlerTest extends TestCase
                                   ->willReturn(false);
 
         $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
-                   ->shouldBeCalled()->willReturn([3600, 600]);
+                   ->shouldBeCalled()->willReturn(['work' => 3600, 'break' => 600]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()
@@ -578,8 +578,8 @@ class DailySummaryHandlerTest extends TestCase
         $this->dailySummaryProphecy->setIsSyncedToPersonio(true)
                                    ->shouldNotBeCalled();
 
-        $this->time->formatSecondsAsHoursAndMinutes(3000)
-                   ->shouldBeCalled()->willReturn('0h 20min');
+        $this->time->formatSecondsAsHoursAndMinutes(3600)
+                   ->shouldBeCalled()->willReturn('1h 0min');
 
         $this->time->formatSecondsAsHoursAndMinutes(600)
                    ->shouldBeCalled()->willReturn('0h 10min');

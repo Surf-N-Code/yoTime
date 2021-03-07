@@ -73,7 +73,7 @@ class BotMessageHandler
 
                 extract($this->time->getTimesSpentByTypeAndPeriod($user, 'day'), EXTR_OVERWRITE);
 
-                $formattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($work - $break);
+                $formattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($work);
                 $formattedTimeOnBreak = $this->time->formatSecondsAsHoursAndMinutes($break);
                 $m->addTextSection(sprintf('You spent `%s` on work and `%s` on break.', $formattedTimeOnWork, $formattedTimeOnBreak));
                 $this->databaseHelper->flushAndPersist($punchTimerStatusDto->getTimer());

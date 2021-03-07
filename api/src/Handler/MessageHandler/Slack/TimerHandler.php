@@ -48,7 +48,7 @@ class TimerHandler
 
         if ($commandStr === SlashCommandHandler::START_BREAK) {
             $statusText = 'Shortly away';
-            $emoji = ':zzz:';
+            $emoji = ':away:';
         }
 
         $this->slackUserClient->slackApiCall('POST', 'users.profile.set', [

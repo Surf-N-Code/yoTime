@@ -52,7 +52,7 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
             })
 
             let breakInSeconds = totalTimeAtWork - secondsWorking;
-            console.log('hier')
+            console.log(endDate, startDate);
             setStartTime(format(new Date(startDate), 'HH:mm'));
             setEndTime(format(new Date(endDate), 'HH:mm'));
             setBreakDuration(toHHMM(breakInSeconds));
@@ -80,8 +80,8 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
     const createDateFromString = (string) => {
         const hs = Number(string.split(':')[0]);
         const ms = Number(string.split(':')[1]);
-        // return new Date("getFullYear" in date ? date.getFullYear() : 2020, "getMonth" in date ? date.getMonth() : 12, "getDate" in date ? date.getDate() : 1, hs, ms, 0);
-        return new Date(date[0].getFullYear(), date[0].getMonth(), date[0].getDate(), hs, ms, 0);
+        return new Date("getFullYear" in date ? date.getFullYear() : 2020, "getMonth" in date ? date.getMonth() : 12, "getDate" in date ? date.getDate() : 1, hs, ms, 0);
+        // return new Date(date[0].getFullYear(), date[0].getMonth(), date[0].getDate(), hs, ms, 0);
     }
 
     const deleteDaily = async (dailyId) => {
