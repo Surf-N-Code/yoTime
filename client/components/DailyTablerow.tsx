@@ -3,7 +3,6 @@ import React from "react";
 import cn from 'classnames';
 import {toHHMMSS} from "../utilities/lib";
 import isToday from "date-fns/isToday";
-import {ActionAnimations, SwipeableList, SwipeableListItem} from "@sandstreamdev/react-swipeable-list";
 
 export const DailyTablerow = ({daily, onClick}) => {
     const workSubBreak = daily.time_worked_in_s - daily.time_break_in_s;

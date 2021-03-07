@@ -26,37 +26,19 @@ class TimeTest extends TestCase
 
     use ProphecyTrait;
 
-    private $em;
-    private $logger;
-    private $userRepository;
     private $user;
-    private $timeProphecy;
-    private $time;
-    private $task;
+    private Time $time;
     private $timer;
-    private $timeEntryRepository;
-    private $timerType;
-    private $dateTimeProvider;
     private $timerFactory;
 
     public function setup(): void
     {
-        $this->em = $this->prophesize(EntityManagerInterface::class);
-        $this->logger = $this->prophesize(LoggerInterface::class);
-        $this->userRepository = $this->prophesize(UserRepository::class);
-        $this->timeEntryRepository = $this->prophesize(TimerRepository::class);
-        $this->task = $this->prophesize(Task::class);
         $this->timer = $this->prophesize(Timer::class);
         $this->user = $this->prophesize(User::class);
-        $this->timerType = $this->prophesize(TimerType::class);
-        $this->timeProphecy = $this->prophesize(Time::class);
-        $this->dateTimeProvider = $this->prophesize(DateTimeProvider::class);
         $this->timerFactory = $this->prophesize(TimerFactory::class);
 
         $this->time = new Time(
-            $this->timeEntryRepository->reveal(),
-            $this->userRepository->reveal(),
-            $this->dateTimeProvider->reveal(),
+            ($this->prophesize(TimerRepository::class))->reveal(),
             $this->timerFactory->reveal()
         );
     }
@@ -64,10 +46,6 @@ class TimeTest extends TestCase
     public function testStartTimer()
     {
         $date = new \DateTime('now');
-        $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
-            ->shouldBeCalled()
-            ->willReturn((new \DateTime()));
-
         $this->timerFactory->createTimerObject(TimerType::WORK, $this->user->reveal(), $date)
             ->shouldBeCalled()
             ->willReturn($this->timer->reveal());
@@ -81,19 +59,11 @@ class TimeTest extends TestCase
 
     public function testStopTimer()
     {
-        $date = new \DateTime('now');
-        $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
-                               ->shouldBeCalled()
-                               ->willReturn($date);
-
-        $this->timer->setDateEnd($date)
+        $this->timer->setDateEnd(Argument::type('datetime'))
             ->shouldBeCalled()
             ->willReturn($this->timer->reveal());
 
-        $this->time->stopTimer(
-            $this->user->reveal(),
-            $this->timer->reveal()
-        );
+        $this->time->stopTimer($this->timer->reveal());
     }
 
 
@@ -102,10 +72,6 @@ class TimeTest extends TestCase
     {
         preg_match('/^([01]?\d|2[0-3]):?([0-5]\d)/', $timeString, $militaryTime);
         $date = \DateTime::createFromFormat('Y-m-d H:i', date('Y-m-d').' '.$militaryTime[1].':'.$militaryTime[2]);
-        $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
-                               ->shouldBeCalled()
-                               ->willReturn($date);
-
         $this->timerFactory->createTimerObject(TimerType::WORK, $this->user->reveal(), $date)
                            ->shouldBeCalled()
                            ->willReturn($this->timer->reveal());
@@ -128,16 +94,15 @@ class TimeTest extends TestCase
      */
     public function testAddFinishedTimerValidForm($timeString)
     {
-        $userLocalTime = new \DateTime('2019-09-09 01:00:00');
-        $this->dateTimeProvider->getLocalUserTime($this->user->reveal())
-                               ->shouldBeCalled()
-                               ->willReturn($userLocalTime);
+        $dateStart = (new \DateTime('now'))->setTime(1,0,0);
 
-        $dateEnd = clone($userLocalTime);
+        $dateEnd = clone($dateStart);
         $timeParts = explode(':', $timeString);
         $dateEnd->add(new \DateInterval(sprintf('PT%sH%sM', $timeParts[0], $timeParts[1])));
 
-        $this->timerFactory->createTimerObject(TimerType::WORK, $this->user->reveal(), $userLocalTime ,$dateEnd);
+        $this->timerFactory->createTimerObject(TimerType::WORK, $this->user->reveal(), $dateStart ,$dateEnd)
+            ->shouldBeCalled()
+            ->willReturn($this->timer->reveal());
         $this->time->addFinishedTimer($this->user->reveal(), TimerType::WORK, $timeString);
     }
 

@@ -47,6 +47,9 @@ class ResetPasswordHandlerTest extends IntegrationTestCase
 
         $this->user->setPassword('encodedPassword')
                    ->shouldBeCalled();
+        $this->user->getEmail()
+                   ->shouldBeCalled()
+                   ->willReturn('ndilthey@gmail.com');
 
         $this->userProvider->randomPassword()
                            ->shouldBeCalled()

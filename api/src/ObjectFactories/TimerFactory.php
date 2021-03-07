@@ -16,11 +16,11 @@ class TimerFactory
         \DateTime $dateEnd = null
     ): Timer
     {
-        $timeEntry = new Timer();
-        $timeEntry->setDateStart($dateStart);
-        $timeEntry->setDateEnd($dateEnd);
-        $timeEntry->setTimerType($timerType);
-        $timeEntry->setUser($user);
-        return $timeEntry;
+        $timer = new Timer();
+        $timer->setDateStart($dateStart);
+        $timer->setDateEnd($dateEnd);
+        $timer->setTimerType($timerType);
+        $timer->setUser($user);
+        return $timer;
     }
 }

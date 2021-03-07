@@ -89,7 +89,8 @@ class DailySummaryHandlerTest extends TestCase
                                   ->willReturn(true);
 
         $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
-                   ->shouldBeCalled()->willReturn([3600, 600]);
+                   ->shouldBeCalled()
+                   ->willReturn(['work' => 3600, 'break' => 600]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()
@@ -154,7 +155,8 @@ class DailySummaryHandlerTest extends TestCase
                                   ->willReturn(true);
 
         $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
-                   ->shouldBeCalled()->willReturn([3600, 600]);
+                   ->shouldBeCalled()
+                   ->willReturn(['work' => 3600, 'break' => 600]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()
@@ -217,7 +219,8 @@ class DailySummaryHandlerTest extends TestCase
                                   ->willReturn(false);
 
         $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
-                   ->shouldBeCalled()->willReturn([3600, 600]);
+                   ->shouldBeCalled()
+                   ->willReturn(['work' => 3600, 'break' => 600]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()
@@ -280,7 +283,8 @@ class DailySummaryHandlerTest extends TestCase
                                   ->willReturn(false);
 
         $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
-                   ->shouldBeCalled()->willReturn([3600, 600]);
+                   ->shouldBeCalled()
+                   ->willReturn(['work' => 3600, 'break' => 600]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()
@@ -345,7 +349,8 @@ class DailySummaryHandlerTest extends TestCase
                                   ->willReturn(true);
 
         $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
-                   ->shouldBeCalled()->willReturn([3600, 0]);
+                   ->shouldBeCalled()
+                   ->willReturn(['work' => 3600, 'break' => 0]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()
@@ -486,7 +491,8 @@ class DailySummaryHandlerTest extends TestCase
                                   ->willReturn(false);
 
         $this->time->getTimesSpentByTypeAndPeriod($this->user->reveal(), 'day')
-                   ->shouldBeCalled()->willReturn([3600, 600]);
+                   ->shouldBeCalled()
+                   ->willReturn(['work' => 3600, 'break' => 600]);
 
         $this->dailySummaryRepo->findOneBy(Argument::type('array'))
                                ->shouldBeCalled()

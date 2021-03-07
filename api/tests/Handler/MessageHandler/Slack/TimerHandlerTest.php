@@ -58,7 +58,7 @@ class TimerHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn($this->timer->reveal());
 
-        $this->time->stopTimer($this->user->reveal(), $this->timer->reveal())
+        $this->time->stopTimer($this->timer->reveal())
             ->shouldBeCalled();
 
         $this->time->startTimer($this->user->reveal(), TimerType::WORK)
@@ -73,7 +73,7 @@ class TimerHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn($this->timer->reveal());
 
-        $this->time->stopTimer($this->user->reveal(), $this->timer->reveal())
+        $this->time->stopTimer($this->timer->reveal())
                    ->shouldBeCalled()
                    ->willReturn($this->timer->reveal());
 
@@ -86,7 +86,7 @@ class TimerHandlerTest extends TestCase
                                   ->shouldBeCalled()
                                   ->willReturn($this->timer->reveal());
 
-        $this->time->stopTimer($this->user->reveal(), $this->timer->reveal())
+        $this->time->stopTimer($this->timer->reveal())
                    ->shouldBeCalled()
                    ->willReturn($this->timer->reveal());
 
@@ -112,7 +112,7 @@ class TimerHandlerTest extends TestCase
                             ->shouldBeCalled()
                             ->willReturn([$this->timer->reveal()]);
 
-        $this->time->stopTimer($this->user->reveal(), $this->timer->reveal())
+        $this->time->stopTimer($this->timer->reveal())
                    ->shouldBeCalled()
                    ->willReturn($this->timer->reveal());
 
@@ -131,7 +131,7 @@ class TimerHandlerTest extends TestCase
                     ->shouldBeCalled()
                     ->willReturn($date);
 
-        $this->time->stopTimer($this->user->reveal(), $this->timer->reveal())
+        $this->time->stopTimer($this->timer->reveal())
                    ->shouldNotBeCalled();
         $punchTimerStatusDto = $this->timerHandler->punchOut($this->user->reveal());
         self::assertFalse($punchTimerStatusDto->didSignOut());

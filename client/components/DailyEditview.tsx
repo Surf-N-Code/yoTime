@@ -12,8 +12,6 @@ import 'react-calendar/dist/Calendar.css';
 import {ITimer} from "../types/timer.types";
 import {FetcherFunc, useGlobalMessaging, useAuth} from "../services";
 import {IDaily} from "../types/daily.types";
-import {FormField} from "./FormField";
-import {create} from "domain";
 import {IDailiesApiResult, ITimerApiResult} from "../types/apiResult.types";
 import useSWR from "swr";
 
@@ -31,11 +29,10 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
     const [endTime, setEndTime] = useState('18:00');
     const [sendMail, setSendMail] = useState(true);
     const [auth, setAuth] = useAuth();
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState<Date | Date[]>(new Date());
     const [breakDuration, setBreakDuration] = useState('00:00');
     const [message, messageDispatch] = useGlobalMessaging();
     const forceUpdate = useForceUpdate();
-    const [value, onChange] = useState(new Date());
 
     const today = format(new Date(), 'yyyy-MM-dd');
     const timerUrl = `/timers?date_start[after]=${today}&order[date_start]=asc`;
@@ -83,7 +80,8 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
     const createDateFromString = (string) => {
         const hs = Number(string.split(':')[0]);
         const ms = Number(string.split(':')[1]);
-        return new Date(date.getFullYear(), date.getMonth(), date.getDate(), hs, ms, 0);
+        // return new Date("getFullYear" in date ? date.getFullYear() : 2020, "getMonth" in date ? date.getMonth() : 12, "getDate" in date ? date.getDate() : 1, hs, ms, 0);
+        return new Date(date[0].getFullYear(), date[0].getMonth(), date[0].getDate(), hs, ms, 0);
     }
 
     const deleteDaily = async (dailyId) => {
@@ -126,7 +124,7 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
         const tempId = uuidv4();
 
         const updatedDaily = {
-            date: date,
+            date: date[0],
             daily_summary: dailySummaryText,
             is_email_sent: sendMail,
             is_synced_to_personio: true,

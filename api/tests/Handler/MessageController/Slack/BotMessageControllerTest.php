@@ -113,7 +113,7 @@ class BotMessageControllerTest extends IntegrationTestCase
             ]
         );
 
-        self::assertEquals(Response::HTTP_PRECONDITION_FAILED, $response->getStatusCode());
+        self::assertEquals(Response::HTTP_OK, $response->getStatusCode());
     }
 
     public function testSlackBotVerification()
