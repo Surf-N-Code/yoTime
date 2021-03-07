@@ -12,6 +12,7 @@ use App\Handler\MessageHandler\Slack\TimerHandler;
 use App\Repository\TimerRepository;
 use App\Services\DatabaseHelper;
 use App\Services\Time;
+use App\Slack\SlackUserClient;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
@@ -24,6 +25,7 @@ class TimerHandlerTest extends TestCase
     private $time;
     private $user;
     private $timer;
+    private $slackUserClient;
     private $databaseHelper;
     private TimerHandler $timerHandler;
 
@@ -31,12 +33,14 @@ class TimerHandlerTest extends TestCase
     {
         $this->timeEntryRepository = $this->prophesize(TimerRepository::class);
         $this->user = $this->prophesize(User::class);
+        $this->slackUserClient = $this->prophesize(SlackUserClient::class);
         $this->time = $this->prophesize(Time::class);
         $this->timer = $this->prophesize(Timer::class);
 
         $this->timerHandler = new TimerHandler(
             $this->time->reveal(),
-            $this->timeEntryRepository->reveal()
+            $this->timeEntryRepository->reveal(),
+            $this->slackUserClient->reveal()
         );
     }
 
@@ -49,6 +53,18 @@ class TimerHandlerTest extends TestCase
         $this->time->startTimer($this->user->reveal(), TimerType::WORK)
                    ->shouldBeCalled()
                    ->willReturn($this->timer->reveal());
+        $this->slackUserClient->slackApiCall(
+            'POST',
+            'users.profile.set',
+            [
+                'profile' => [
+                    'status_text' => '',
+                    'status_emoji' => '',
+                    'status_expiration' => 0
+                ]
+            ]
+        )->shouldBeCalled();
+
         $this->timerHandler->startTimer($this->user->reveal(), '/'.TimerType::WORK);
     }
 
@@ -64,6 +80,19 @@ class TimerHandlerTest extends TestCase
         $this->time->startTimer($this->user->reveal(), TimerType::WORK)
                    ->shouldBeCalled()
                    ->willReturn($this->timer->reveal());
+
+        $this->slackUserClient->slackApiCall(
+            'POST',
+            'users.profile.set',
+            [
+                'profile' => [
+                    'status_text' => '',
+                    'status_emoji' => '',
+                    'status_expiration' => 0
+                ]
+            ]
+        )->shouldBeCalled();
+
         $this->timerHandler->startTimer($this->user->reveal(), '/'.TimerType::WORK);
     }
 
@@ -76,6 +105,18 @@ class TimerHandlerTest extends TestCase
         $this->time->stopTimer($this->timer->reveal())
                    ->shouldBeCalled()
                    ->willReturn($this->timer->reveal());
+
+        $this->slackUserClient->slackApiCall(
+            'POST',
+            'users.profile.set',
+            [
+                'profile' => [
+                    'status_text' => '',
+                    'status_emoji' => '',
+                    'status_expiration' => 0
+                ]
+            ]
+        )->shouldBeCalled();
 
         $this->timerHandler->stopTimer($this->user->reveal());
     }
@@ -93,6 +134,18 @@ class TimerHandlerTest extends TestCase
         $this->time->addTaskToTimer($this->timer->reveal(), 'My Task')
             ->shouldBeCalled()
             ->willReturn($this->timer->reveal());
+
+        $this->slackUserClient->slackApiCall(
+            'POST',
+            'users.profile.set',
+            [
+                'profile' => [
+                    'status_text' => '',
+                    'status_emoji' => '',
+                    'status_expiration' => 0
+                ]
+            ]
+        )->shouldBeCalled();
 
         $this->timerHandler->stopTimer($this->user->reveal(), 'My Task');
     }
@@ -115,6 +168,18 @@ class TimerHandlerTest extends TestCase
         $this->time->stopTimer($this->timer->reveal())
                    ->shouldBeCalled()
                    ->willReturn($this->timer->reveal());
+
+        $this->slackUserClient->slackApiCall(
+            'POST',
+            'users.profile.set',
+            [
+                'profile' => [
+                    'status_text' => '',
+                    'status_emoji' => '',
+                    'status_expiration' => 0
+                ]
+            ]
+        )->shouldBeCalled();
 
         $punchTimerStatusDto = $this->timerHandler->punchOut($this->user->reveal());
         self::assertTrue($punchTimerStatusDto->didSignOut());

@@ -5,11 +5,14 @@ namespace App\Handler\MessageHandler\Slack;
 
 
 use App\Entity\Slack\PunchTimerStatusDto;
+use App\Entity\Slack\SlackUser;
 use App\Entity\Timer;use App\Entity\TimerType;
 use App\Entity\User;
 use App\Exceptions\MessageHandlerException;
 use App\Repository\TimerRepository;
+use App\Services\DatabaseHelper;
 use App\Services\Time;
+use App\Slack\SlackClient;
 use App\Slack\SlackUserClient;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -67,6 +70,14 @@ class TimerHandler
             $timer = $this->time->addTaskToTimer($timer, $taskDescription);
         }
 
+        $this->slackUserClient->slackApiCall('POST', 'users.profile.set', [
+            'profile' => [
+                'status_text' => '',
+                'status_emoji' => '',
+                'status_expiration' => 0
+            ]
+        ]);
+
         return $this->time->stopTimer($timer);
     }
 
@@ -86,16 +97,24 @@ class TimerHandler
 
         $latestTimer = $timers[count($timers)-1];
 
-        $punchedOut = false;
+        $isPunchedOut = true;
         foreach ($timers as $timer) {
             if (!$timer->getDateEnd()) {
-                $punchedOut = true;
+                $isPunchedOut = false;
             }
         }
 
-        if (!$punchedOut) {
+        if ($isPunchedOut) {
             return new PunchTimerStatusDto(false, $latestTimer);
         }
+
+        $this->slackUserClient->slackApiCall('POST', 'users.profile.set', [
+            'profile' => [
+                'status_text' => '',
+                'status_emoji' => '',
+                'status_expiration' => 0
+            ]
+        ]);
 
         $this->time->stopTimer($latestTimer);
         return new PunchTimerStatusDto(true, $latestTimer);
