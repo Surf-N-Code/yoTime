@@ -5,10 +5,10 @@ import {toHHMMSS} from "../utilities/lib";
 import isToday from "date-fns/isToday";
 
 export const DailyTablerow = ({daily, onClick}) => {
-    const workSubBreak = daily.time_worked_in_s - daily.time_break_in_s;
-    const formattedDiffInMinPerDayWork = toHHMMSS(workSubBreak > 0 ? workSubBreak : workSubBreak * -1);
+    const formattedDiffInMinPerDayWork = toHHMMSS(daily.time_worked_in_s);
     const formattedDiffInMinPerDayBreak = toHHMMSS(daily.time_break_in_s);
     const todayDaily = isToday(new Date(daily.start_time));
+    console.log(daily, formattedDiffInMinPerDayBreak, formattedDiffInMinPerDayWork);
     return (
          <div key={daily.id} className="w-full bg-white p-3 mb-1 border-gray-300 border-l-4 hover:border-teal-600 rounded-md cursor-pointer" onClick={() => onClick(daily)}>
             <div className={"flex"}>
