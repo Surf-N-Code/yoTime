@@ -191,6 +191,8 @@ export const Timers = ({validToken, initialData}) => {
         setManualTimerModalVisible((prevVal) => {return !prevVal});
     }
 
+    const totalPages = Math.ceil(data?.['hydra:member']?.length === 0 ? 1 : data['hydra:totalItems'] / 30);
+
     const hasTimer = typeof data !== 'undefined' && typeof data['hydra:member'] !== 'undefined' && data['hydra:member'].length !== 0;
 
     let daysRendered = [];
@@ -278,15 +280,19 @@ export const Timers = ({validToken, initialData}) => {
                             setRunningTimer={setRunningTimer}
                         />
                     </div>
-                    <div>
-                        <Pagination
-                            currentPage={pageIndex}
-                            setPageIndex={setPageIndex}
-                            // totalPages={Math.ceil(typeof data === 'undefined' || typeof data['hydra:member'] === 'undefined' || data['hydra:member'].length === 0 ? 30 / 30 : data['hydra:totalItems'] / 30)}
-                            totalPages={Math.ceil(data?.['hydra:member']?.length === 0 ? 1 : data['hydra:totalItems'] / 30)}
-                            path="timers"
-                        />
-                    </div>
+                    {totalPages > 1 ?
+                        <div>
+                            <Pagination
+                                currentPage={pageIndex}
+                                setPageIndex={setPageIndex}
+                                // totalPages={Math.ceil(typeof data === 'undefined' || typeof data['hydra:member'] === 'undefined' || data['hydra:member'].length === 0 ? 30 / 30 : data['hydra:totalItems'] / 30)}
+                                totalPages={totalPages}
+                                path="timers"
+                            />
+                        </div>
+                        :
+                        ''
+                    }
                     {runningTimer ?
                         <div className="fixed bottom-0 right-6 ml-3">
                             <div className="flex mb-3">
