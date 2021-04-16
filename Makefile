@@ -1,5 +1,5 @@
-fix.load.dev:
+fixtures.dev:
 	docker-compose exec php bin/console hautelook:fix:load -e dev
 
-fix.load.test:
+fixtures.test:
 	docker-compose exec php bin/console hautelook:fix:load -e test
