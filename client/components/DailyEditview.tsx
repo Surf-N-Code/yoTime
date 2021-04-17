@@ -29,10 +29,9 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
     const [endTime, setEndTime] = useState('18:00');
     const [sendMail, setSendMail] = useState(true);
     const [auth, setAuth] = useAuth();
-    const [date, setDate] = useState<Date | Date[]>(new Date());
+    const [date, setDate] = useState<Date>(new Date());
     const [breakDuration, setBreakDuration] = useState('00:00');
     const [message, messageDispatch] = useGlobalMessaging();
-    const forceUpdate = useForceUpdate();
 
     const today = format(new Date(), 'yyyy-MM-dd');
     const timerUrl = `/timers?date_start[after]=${today}&order[date_start]=asc`;
@@ -44,15 +43,17 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
             let secondsWorking = 0;
             let startDate = timers?.['hydra:member']?.[0].date_start;
             let endDate = timers?.['hydra:member']?.[timers['hydra:totalItems']-1].date_end;
-            let totalTimeAtWork = differenceInSeconds(new Date(endDate), new Date(startDate))
-            timers?.['hydra:member'].map((timer: ITimer) => {
+            if (endDate === undefined) {
+                endDate = new Date();
+            }
+            let totalTimeAtWork = differenceInSeconds(new Date(endDate), new Date(startDate));
+            timers['hydra:member']?.map((timer: ITimer) => {
                 if (timer.timer_type != 'break') {
-                    secondsWorking += differenceInSeconds(new Date(timer.date_end), new Date(timer.date_start));
+                    secondsWorking += differenceInSeconds(new Date(endDate), new Date(timer.date_start));
                 }
             })
 
             let breakInSeconds = totalTimeAtWork - secondsWorking;
-            console.log(endDate, startDate);
             setStartTime(format(new Date(startDate), 'HH:mm'));
             setEndTime(format(new Date(endDate), 'HH:mm'));
             setBreakDuration(toHHMM(breakInSeconds));
@@ -61,27 +62,24 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
 
     useEffect(() => {
         if (dailyToEdit) {
-            console.log('use effect edit dailyToEdit ', dailyToEdit)
             const startDate = new Date(dailyToEdit.start_time);
             const endDate = new Date(dailyToEdit.end_time);
             setStartTime(startDate.toTimeString().substr(0,5));
             setEndTime(endDate.toTimeString().substr(0,5));
             setDate(startDate);
-            setBreakDuration(toHHMM(dailyToEdit.time_break_in_s))
+            setBreakDuration(typeof dailyToEdit.time_break_in_s !== 'undefined' ? toHHMM(dailyToEdit.time_break_in_s) : '00:00');
             setDailySummaryText(dailyToEdit.daily_summary)
             return;
         }
 
-        // setStartTime('09:00');
-        // setEndTime('18:00');
         setDate(new Date());
     }, [dailyToEdit]);
 
     const createDateFromString = (string) => {
         const hs = Number(string.split(':')[0]);
         const ms = Number(string.split(':')[1]);
-        return new Date("getFullYear" in date ? date.getFullYear() : 2020, "getMonth" in date ? date.getMonth() : 12, "getDate" in date ? date.getDate() : 1, hs, ms, 0);
-        // return new Date(date[0].getFullYear(), date[0].getMonth(), date[0].getDate(), hs, ms, 0);
+        // return new Date("getFullYear" in date ? date.getFullYear() : 2020, "getMonth" in date ? date.getMonth() : 12, "getDate" in date ? date.getDate() : 1, hs, ms, 0);
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate(), hs, ms, 0);
     }
 
     const deleteDaily = async (dailyId) => {
@@ -111,7 +109,7 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
         const startDate = createDateFromString(startTime);
         const endDate = createDateFromString(endTime);
         const startBreak = createDateFromString('00:00');
-        const breakEnd = createDateFromString(breakDuration);
+        const breakEnd = breakDuration !== '00:00' ? createDateFromString(breakDuration) : 0;
         if (isBefore(endDate, startDate)) {
             messageDispatch({
                 type: 'setMessage',
@@ -130,7 +128,7 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
             is_synced_to_personio: true,
             start_time: startDate,
             end_time: endDate,
-            time_break_in_s: differenceInSeconds(breakEnd, startBreak),
+            time_break_in_s: breakDuration !== '00:00' ? differenceInSeconds(breakEnd, startBreak) : 0,
             time_worked_in_s: differenceInSeconds(endDate, startDate)
         }
 
@@ -157,7 +155,6 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
             toggleDailyEditView();
             await mutateDailies((data) => {
                 let newHydra = [];
-                console.log(updatedDaily);
                 if (typeof data !== 'undefined' && typeof data['hydra:member'] !== 'undefined') {
                     newHydra = [{id: tempId, ...updatedDaily}, ...data?.['hydra:member']];
                 } else {
@@ -181,7 +178,7 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
                     daily.daily_summary = dailySummaryText;
                     daily.is_email_sent = sendMail;
                     daily.is_synced_to_personio = true;
-                    daily.time_break_in_s = differenceInSeconds(breakEnd, startBreak);
+                    daily.time_break_in_s = breakDuration !== '00:00' ? differenceInSeconds(breakEnd, startBreak) : 0,
                     daily.time_worked_in_s = differenceInSeconds(endDate, startDate);
                 }
             })
