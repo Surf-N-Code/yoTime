@@ -162,7 +162,7 @@ export const Timers = ({validToken, initialData}) => {
         }
         setRunningTimer((prevTimer) => {return {id: tempId, 'optimisticTimer': true, ...newTimer}});
 
-        await mutateTimers((data) => {
+        await mutateTimers(() => {
             let newHydra = [{id: tempId, ...newTimer}, ...data['hydra:member']].sort((a, b) => new Date(b.date_start).getTime() - new Date(a.date_start).getTime());
             return {
                 ...data,
