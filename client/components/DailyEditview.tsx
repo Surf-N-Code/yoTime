@@ -40,16 +40,18 @@ export const DailyEditview = ({mutateDailies, toggleDailyEditView, isEditViewVis
     useEffect(() => {
         if (timers) {
             //calculate total time spent today
+            let firstTimerOfDay =  timers?.['hydra:member']?.[0];
+            let lastTimerOfDay =  timers?.['hydra:member']?.[timers['hydra:totalItems']-1];
             let secondsWorking = 0;
-            let startDate = timers?.['hydra:member']?.[0].date_start;
-            let endDate = timers?.['hydra:member']?.[timers['hydra:totalItems']-1].date_end;
+            let startDate = firstTimerOfDay?.date_start;
+            let endDate = lastTimerOfDay.date_end;
             if (endDate === undefined) {
                 endDate = new Date();
             }
             let totalTimeAtWork = differenceInSeconds(new Date(endDate), new Date(startDate));
             timers['hydra:member']?.map((timer: ITimer) => {
                 if (timer.timer_type != 'break') {
-                    secondsWorking += differenceInSeconds(new Date(endDate), new Date(timer.date_start));
+                    secondsWorking += differenceInSeconds(timer.date_end === undefined ? new Date() : new Date(timer.date_end), new Date(timer.date_start));
                 }
             })
 
