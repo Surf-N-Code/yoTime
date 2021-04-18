@@ -188,11 +188,10 @@ class DailySummaryHandler
 
         if ($doSendMail) {
             try {
-                $this->mailer->sendDailySummaryMail($break, $work, $user, $ds->getDailySummary());
-                $subject = sprintf('Daily Summary of %s', $user->getFirstName());
                 $formattedTimeOnBreak = $this->time->formatSecondsAsHoursAndMinutes($break);
-                $ormattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($work);
-                $content = sprintf('<strong>%s</strong><br>Work: %s<br>Break: %s<br><pre>%s</pre>', $user->getFirstName(), $ormattedTimeOnWork, $formattedTimeOnBreak, $summary);
+                $formattedTimeOnWork = $this->time->formatSecondsAsHoursAndMinutes($work);
+                $subject = sprintf('Daily Summary of %s. Work: %s Break: %s', $user->getFirstName(), $formattedTimeOnWork, $formattedTimeOnBreak);
+                $content = sprintf('<strong>%s</strong><br>Work: %s<br>Break: %s<br><pre>%s</pre>', $user->getFirstName(), $formattedTimeOnWork, $formattedTimeOnBreak, $summary);
 
                 $this->mailer->send($_ENV['MAIL_SENDER'], $user->getEmail(), $subject, $content);
                 $ds->setIsEmailSent(true);
