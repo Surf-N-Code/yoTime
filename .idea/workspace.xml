@@ -34,11 +34,18 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="">
+    <list default="true" id="2df92827-2dcb-4f20-8586-3c37d7affe23" name="Default Changelist" comment="Fix daily t">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/fixtures/dev/timer.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/dev/timer.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/fixtures/test/timer.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/test/timer.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Repository/TimerRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Repository/TimerRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/fixtures/dev/users.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/fixtures/dev/users.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/DataPersister/DailySummaryPersister.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/DataPersister/DailySummaryPersister.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/EventListener/TimerListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/EventListener/TimerListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/DailySummaryHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/tests/Handler/MessageHandler/Slack/DailySummaryHandlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/utilities/lib.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/utilities/lib.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/yarn-error.log" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn-error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
     </list>
     <list id="36bbc5dc-e4f2-4196-ab8f-40dd5b1e71f8" name=".idea" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +73,7 @@
         <entry key="$PROJECT_DIR$" value="pagination-test" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/client" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -274,7 +281,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -318,10 +325,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="PHPUnit.tests" />
-        <item itemvalue="PHPUnit.RegisterUserHandlerTest.testRegister" />
+        <item itemvalue="PHPUnit.TimerHandlerTest" />
         <item itemvalue="PHPUnit.SlashCommandHandlerTest.testRegisterCommand" />
         <item itemvalue="PHPUnit.SetUserListenerTest.testAddTimer" />
-        <item itemvalue="PHPUnit.TimerHandlerTest" />
+        <item itemvalue="PHPUnit.RegisterUserHandlerTest.testRegister" />
       </list>
     </recent_temporary>
   </component>
@@ -429,119 +436,17 @@
       <workItem from="1613157737566" duration="6301000" />
       <workItem from="1615015046122" duration="2821000" />
       <workItem from="1615038003457" duration="3305000" />
-      <workItem from="1615102814387" duration="18480000" />
-    </task>
-    <task id="LOCAL-00051" summary="Add authentication (wip)">
-      <created>1603991822281</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1603991822282</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Add close function when clicking somewhere when menu is open">
-      <created>1603992131271</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1603992131271</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Add close function when clicking somewhere when menu is open">
-      <created>1603992376158</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1603992376158</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Add swagger decorator for token and add setuserlistener as well as userprovider password encoder in services">
-      <created>1604162230756</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1604162230757</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Update fixtures with various users and encoded passwords">
-      <created>1604162266598</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1604162266598</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Add set user doctrine entity listeners">
-      <created>1604162345029</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1604162345029</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Add user filter query extension">
-      <created>1604162363247</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1604162363247</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Add user filter query extension">
-      <created>1604162378455</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1604162378456</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Use Response constants for http code responses">
-      <created>1604162407057</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1604162407057</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Add and update tests">
-      <created>1604162421983</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1604162421983</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Update fixtures for dev env">
-      <created>1604171536744</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1604171536744</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Working adding new timer and optimistically updating the ui">
-      <created>1604298386250</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1604298386250</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Attempt to add timer to state">
-      <created>1604751609094</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1604751609094</updated>
-    </task>
-    <task id="LOCAL-00064" summary="Add pause timer and fix start stopping timer including counting up seconds properly">
-      <created>1604856670012</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1604856670012</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Remove button outline and handle z-index of menu and header properly">
-      <created>1604857466416</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1604857466416</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Create usercreatelistener to throw a 409 status code on duplicate email when registering">
-      <created>1605969554439</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1605969554440</updated>
+      <workItem from="1615102814387" duration="24658000" />
+      <workItem from="1615183493948" duration="25000" />
+      <workItem from="1615183632835" duration="428000" />
+      <workItem from="1615201043804" duration="260000" />
+      <workItem from="1615201437836" duration="4848000" />
+      <workItem from="1615309431628" duration="599000" />
+      <workItem from="1615356926072" duration="2247000" />
+      <workItem from="1615363925217" duration="1870000" />
+      <workItem from="1618599842811" duration="8047000" />
+      <workItem from="1618741718799" duration="43000" />
+      <workItem from="1618741778105" duration="452000" />
     </task>
     <task id="LOCAL-00067" summary="Pre removing stop timer attempts">
       <created>1606054346841</created>
@@ -774,7 +679,119 @@
       <option name="project" value="LOCAL" />
       <updated>1615128599026</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="Fix fixtures">
+      <created>1615128948053</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1615128948053</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Remove worktime calculation worktime - breaktime">
+      <created>1615134016797</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1615134016797</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Format daily times correctly">
+      <created>1615134207186</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1615134207186</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Show pagination only when we have multiple pages">
+      <created>1615205272122</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1615205272122</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Adjust makefile">
+      <created>1618599902493</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1618599902493</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Fix broken daily edit view when timer is running">
+      <created>1618680525270</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1618680525270</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Fix break duration miscalculation">
+      <created>1618682938153</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1618682938153</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Remove path from paginatoin">
+      <created>1618683296397</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1618683296397</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Fix daily edit view">
+      <created>1618741978174</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1618741978174</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Fix Daily Table row time calculation">
+      <created>1618742027208</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1618742027208</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Fix daily table row time calculation">
+      <created>1618742055403</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1618742055403</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Remove comment and unsued prop">
+      <created>1618742074229</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1618742074229</updated>
+    </task>
+    <task id="LOCAL-00112" summary="Add key to daily table row divs">
+      <created>1618742100590</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1618742100590</updated>
+    </task>
+    <task id="LOCAL-00113" summary="Use js conditional on daily user last name">
+      <created>1618742146161</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1618742146161</updated>
+    </task>
+    <task id="LOCAL-00114" summary="Remove animations from timers and wrap pagination in conditional when &gt; 1 page">
+      <created>1618742190419</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1618742190419</updated>
+    </task>
+    <task id="LOCAL-00115" summary="Remove obsolete function and add utcDate func to lib">
+      <created>1618742229142</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1618742229142</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -809,22 +826,6 @@
       <path value="$PROJECT_DIR$/YoTime/api" />
       <path value="$PROJECT_DIR$/api" />
     </ignored-roots>
-    <MESSAGE value="Implement reporting and dailies" />
-    <MESSAGE value="Implement reporting &amp; token server validation" />
-    <MESSAGE value="Implement reset password endpoin" />
-    <MESSAGE value="Implement reset-password front and backend" />
-    <MESSAGE value="Typo &amp; extend gitignore" />
-    <MESSAGE value="Hid employee dropdown when non-admin user ist logged in" />
-    <MESSAGE value="Use dashboard as startscreen. Implement Dashboard" />
-    <MESSAGE value="Add idea to gitignore" />
-    <MESSAGE value="Working timer cache update" />
-    <MESSAGE value="Fix editing timer and updating button with update or add text" />
-    <MESSAGE value="Update yarn and wip sorting filter on reporting view" />
-    <MESSAGE value="Optimize reporting loading" />
-    <MESSAGE value="Fix sorting for single user cases in reporting" />
-    <MESSAGE value="Refactor typeofs, use swr properly, enable updating running timer" />
-    <MESSAGE value="Open up slack endpoints to the public" />
-    <MESSAGE value="Remove some typeof code" />
     <MESSAGE value="Add react calendar types and prepare for heroku build" />
     <MESSAGE value="Get getTimesSpentByTypeAndPeriod function to have 1 query instead of two per timer type" />
     <MESSAGE value="Add reporting endpoint" />
@@ -834,7 +835,23 @@
     <MESSAGE value="Fix tests &amp; use server time instead of usre local time" />
     <MESSAGE value="Add function to set user status to away in case of a break" />
     <MESSAGE value="Add some logging, fix some tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add some logging, fix some tests" />
+    <MESSAGE value="Fix fixtures" />
+    <MESSAGE value="Remove worktime calculation worktime - breaktime" />
+    <MESSAGE value="Format daily times correctly" />
+    <MESSAGE value="Show pagination only when we have multiple pages" />
+    <MESSAGE value="Adjust makefile" />
+    <MESSAGE value="Fix broken daily edit view when timer is running" />
+    <MESSAGE value="Fix break duration miscalculation" />
+    <MESSAGE value="Remove path from paginatoin" />
+    <MESSAGE value="Fix daily edit view" />
+    <MESSAGE value="Fix Daily Table row time calculation" />
+    <MESSAGE value="Fix daily table row time calculation" />
+    <MESSAGE value="Remove comment and unsued prop" />
+    <MESSAGE value="Add key to daily table row divs" />
+    <MESSAGE value="Use js conditional on daily user last name" />
+    <MESSAGE value="Remove animations from timers and wrap pagination in conditional when &gt; 1 page" />
+    <MESSAGE value="Remove obsolete function and add utcDate func to lib" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove obsolete function and add utcDate func to lib" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -854,11 +871,6 @@
           <line>75</line>
           <option name="timeStamp" value="117" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/api/src/Handler/MessageHandler/Slack/SlashCommandHandler.php</url>
-          <line>151</line>
-          <option name="timeStamp" value="120" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -868,13 +880,13 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/yoTime@DailySummaryPersisterTest.xml" NAME="DailySummaryPersisterTest Coverage Results" MODIFIED="1607542048692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@TimerHandlerTest_testStartWorkTimer.xml" NAME="TimerHandlerTest.testStartWorkTimer Coverage Results" MODIFIED="1602322847941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/yoTime@DailySummaryHandlerTest.xml" NAME="DailySummaryHandlerTest Coverage Results" MODIFIED="1600629596029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@tests.xml" NAME="tests Coverage Results" MODIFIED="1607626543090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/yoTime@DailySummaryPersisterTest.xml" NAME="DailySummaryPersisterTest Coverage Results" MODIFIED="1607542048692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/yoTime@DailySummaryHandlerTest.xml" NAME="DailySummaryHandlerTest Coverage Results" MODIFIED="1600629596029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@DailySummaryHandlerTest_testHandleModalSubmissionFailedPersonioSync.xml" NAME="DailySummaryHandlerTest.testHandleModalSubmissionFailedPersonioSync Coverage Results" MODIFIED="1600593206568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/yoTime@DailySummaryPersisteIntegrationTest_testAddDailySummary.xml" NAME="DailySummaryPersisteIntegrationTest.testAddDailySummary Coverage Results" MODIFIED="1607618898681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@TimerHandlerTest.xml" NAME="TimerHandlerTest Coverage Results" MODIFIED="1602324601715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/yoTime@SlashCommandHandlerTest.xml" NAME="SlashCommandHandlerTest Coverage Results" MODIFIED="1597698388851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/yoTime@DailySummaryPersisteIntegrationTest_testAddDailySummary.xml" NAME="DailySummaryPersisteIntegrationTest.testAddDailySummary Coverage Results" MODIFIED="1607618898681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
