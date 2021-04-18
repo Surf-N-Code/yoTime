@@ -185,7 +185,7 @@ class DailySummaryHandlerTest extends TestCase
         $this->databaseHelper->flushAndPersist($this->dailySummaryProphecy->reveal())
                              ->shouldBeCalled();
 
-        $this->mailer->sendDailySummaryMail(600, 3600, $this->user->reveal(), 'Daily summary notes')
+        $this->mailer->send('ndilthey@gmail.com', $this->user->reveal(), 'Daily summary notes')
                      ->shouldNotBeCalled();
 
         $this->personio->postAttendanceForEmployee(2269559, $this->dailySummaryProphecy->reveal())

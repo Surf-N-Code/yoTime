@@ -41,6 +41,8 @@ class DailySummaryPersister implements ContextAwareDataPersisterInterface
         } catch (\Exception $e) {
             if ($e instanceof \Doctrine\DBAL\Exception\UniqueConstraintViolationException) {
                 throw new UniqueConstraintViolationException(sprintf('A daily summary for this date: %s already exists.', $data->getDate()->format('Y-m-d')));
+            } else {
+                throw new \Exception($e->getMessage());
             }
         }
 
@@ -69,7 +71,7 @@ class DailySummaryPersister implements ContextAwareDataPersisterInterface
         if (!$isMailSent) {
             $user = $ds->getUser();
             $mailSubject = 'Daily Summary - ' . $user->getFirstName() . ' ' . $user->getLastName();
-            $this->mailer->send($_ENV['MAIL_SENDER'], 'ndilthey@gmail.com', $mailSubject, $ds->getDailySummary());
+            $this->mailer->send($_ENV['MAIL_SENDER'], $user->getEmail(), $mailSubject, $ds->getDailySummary());
         }
     }
 }
