@@ -6,7 +6,6 @@ import { GlobalMessagingProvider } from '../services/GlobalMessaging.context';
 import { AppProps } from 'next/app';
 
 export default function App ({ Component, pageProps }: AppProps) {
-    console.log(pageProps);
     return (
         <AuthProvider>
             <GlobalMessagingProvider>

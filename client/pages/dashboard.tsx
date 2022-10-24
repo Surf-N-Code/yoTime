@@ -1,17 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import Layout from "../components/Layout";
 import useSWR from "swr";
-import {ITimerApiResult} from "../types/apiResult.types";
+import {ITimerApiResult} from "../types";
 import {useAuth, FetcherFunc, IsoFetcher} from "../services";
 import {differenceInSeconds, format, isToday, startOfWeek} from "date-fns";
 import {GetServerSideProps} from "next";
 import Cookies from "universal-cookie";
 import TokenService from "../services/Token.service";
-import {ITimer} from "../types/timer.types";
+import {ITimer} from "../types";
 import {HighlightNumberCard} from "../components/HighlightNumber";
-import {toHHMM, toHHMMSS} from "../utilities/lib";
+import { toHHMMSS} from "../utilities";
 import {useRouter} from "next/router";
-import {getUniqueValuesForProperty} from '../utilities';
 
 export const Dashboard = (props) => {
     const [auth, authDispatch] = useAuth();
